@@ -7,10 +7,11 @@ export const NavBar = () => {
     return (
         <div className={styles.container}>
             {navElements.map((el, index) =>
-                <AltarinText index={index}><div className={styles.navElement}>
-                    {el}
-                    <div className={styles.round} />
-                </div>
+                <AltarinText index={index}>
+                    <div className={`${styles.navElement} ${index == 0 && styles.active}`}>
+                        {el}
+                        <div className={styles.round} />
+                    </div>
                 </AltarinText>
             )}
         </div>
