@@ -14,6 +14,7 @@
         column-gap: 25px;
         align-items: center;
         text-transform: uppercase;
+        cursor: pointer;
 
         .round {
             width: 16px;
@@ -21,10 +22,21 @@
             border: 2px solid #7C674B;
             border-radius: 50%;
         }
+
+        &:hover {
+            transition: all 0.3s;
+            color: #EDD1AB;
+
+            .round {
+                background-image: radial-gradient(#EDD1AB 0%, #785B36 100%);
+                box-shadow: 0px 4px 16px -2px rgba(237, 209, 171, 0.5);
+            }
+        }
     }
 
     .active {
         color: #EDD1AB;
+
         .round {
             background-image: radial-gradient(#EDD1AB 0%, #785B36 100%);
             box-shadow: 0px 4px 16px -2px rgba(237, 209, 171, 0.5);
