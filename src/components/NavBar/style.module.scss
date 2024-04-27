@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+    align-items: end;
+    .navElement {
+        display: flex;
+        color: #7C674B;
+        font-family: 'Copperplate CC';
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 22.08px;
+        column-gap: 25px;
+        align-items: center;
+        text-transform: uppercase;
+        .round {
+            width: 16px;
+            height: 16px;
+            border: 2px solid #7C674B;
+            border-radius: 50%;
+        }
+    }
+}

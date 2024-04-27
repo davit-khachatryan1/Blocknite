@@ -1,11 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.scss';
 import ScrollContainer from './components/ScrollContainer';
+import { NavBar } from './components/NavBar';
 
 function App() {
   return (
-    <ScrollContainer />
+    <div>
+      <ScrollContainer />
+      <div className='navbar'>
+        <NavBar />
+      </div>
+    </div>
   );
 }
 

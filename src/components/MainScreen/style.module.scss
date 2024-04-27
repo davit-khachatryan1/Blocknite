@@ -8,4 +8,129 @@
         left: 0;
         object-fit: cover;
     }
+
+    .logo {
+        width: 261px;
+        height: 177px;
+        object-fit: cover;
+        position: relative;
+    }
+
+    .line {
+        border-color: #DEA963;
+        background: #DEA963;
+        position: relative;
+        max-width: 412px;
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .presale {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+
+        button {
+            width: 100%;
+            background-color: #101825;
+            color: #FFFFFF;
+            font-size: 28px;
+            font-family: 'Beaufort-Medium';
+            font-weight: 500;
+            line-height: 28px;
+        }
+    }
+
+    .buttonContainer {
+        display: flex;
+        column-gap: 30px;
+        margin-left: 80px;
+        margin-top: 130px;
+    }
+
+    .twoButtonMain {
+        overflow: hidden;
+        position: relative;
+
+        .twoButton {
+            display: flex;
+            width: max-content;
+            background-color: #10182550;
+            border: 2px solid #7C674B;
+            border-radius: 50px;
+
+            button {
+                color: #7C674B;
+                font-size: 16px;
+                font-family: 'Copperplate CC';
+                font-weight: 700;
+                line-height: 22px;
+                border: none;
+                background: transparent;
+                padding: 12px 24px;
+            }
+
+            :global(.active) {
+                margin: -2px 0 -2px -2px;
+                border: 2px solid #DEA963;
+                color: #DEA963;
+            }
+        }
+
+        .copyBlock {
+            color: #7C674B;
+            font-size: 16px;
+            font-family: 'Copperplate CC';
+            font-weight: 700;
+            line-height: 22px;
+            display: flex;
+            align-items: center;
+            column-gap: 20px;
+
+            .copy {
+                margin: -2px 0 -2px -2px;
+                border: 2px solid #DEA963;
+                color: #DEA963;
+                width: 44px;
+                height: 44px;
+                border-radius: 44px;
+                position: relative;
+
+                .square {
+                    width: 14px;
+                    height: 14px;
+                    border: 2px solid #DEA963;
+                    border-radius: 2px;
+                    position: absolute;
+                    top: 10px;
+                    left: 10px;
+                }
+                .square:last-of-type{
+                    top: 15px;
+                    left: 15px;
+                }
+            }
+        }
+    }
+
+    .infoBlock {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: max-content;
+        margin: 60px 0 0 80px;
+    }
+
+    .description {
+        position: relative;
+        font-weight: 700;
+        font-family: 'Copperplate CC';
+        font-size: 22px;
+        line-height: 30.36px;
+        text-align: center;
+        max-width: 412px;
+        color: #EDD1AB;
+        margin: 20px 0;
+        overflow: hidden;
+    }
 }
