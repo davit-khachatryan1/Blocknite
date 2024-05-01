@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import {Screen} from '../Screen'
-import { MainScreen } from '../MainScreen';
-import { SecondScreen } from '../SecondScreen';
-import { ThirdScreen } from '../ThirdScreen';
-import { FourthScreen } from '../FourthScreen';
-import { FifthScreen } from '../FifthScreen';
-import { SixthScreen } from '../SixthScreen';
+import { useState, useEffect, useRef } from 'react';
+import { Screen } from '../Screen'
 import styles from './style.module.scss'
+import { screens } from '../../constants/screens';
+import { useStateProvider } from '../../context/state';
+import { useNavigate } from 'react-router-dom';
 
 const ScrollContainer = () => {
+  const navigate = useNavigate();
+  const { page, updatePage } = useStateProvider();
   const [scrollY, setScrollY] = useState(0);
+  const pages = useRef(null)
 
   const handleScroll = () => {
     setScrollY(window.scrollY);
@@ -20,20 +20,38 @@ const ScrollContainer = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Define your screens here
-  const screens = [
-    { color: 'blue', text: 'Screen 1', component: <MainScreen/> },
-    { color: 'black', text: 'Screen 2', component: <SecondScreen/> },
-    { color: 'green', text: 'Screen 3', component: <ThirdScreen/> },
-    { color: 'yellow', text: 'Screen 4', component: <FourthScreen/> },
-    { color: 'gray', text: 'Screen 5', component: <FifthScreen/> },
-    { color: 'red', text: 'Screen 6', component: <SixthScreen/> },
-  ];
+  const checkCenter = () => {
+    console.log(pages);
+    if (pages.current) {
+      const children = (pages.current as any).children
+      for (let i = 0; i < children.length; i++) {
+        const ref = children[i];
+        if (ref) {
+          const rect = ref.getBoundingClientRect();
+          const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+          const center = rect.top + rect.height / 2;
+
+
+          const isElementCentered = rect.top < windowHeight / 2 && rect.top > -windowHeight / 2;
+          if (isElementCentered) {
+            updatePage(screens[i].id, navigate)
+          }
+        }
+      }
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", checkCenter);
+    return () => {
+      window.removeEventListener("scroll", checkCenter);
+    };
+  }, [])
 
   return (
-    <div style={{ height: `${100 * screens.length}vh` }} className={styles.container}>
+    <div className={styles.container} ref={pages}>
       {screens.map((screen, index) => (
-        <Screen key={index} color={screen.color} text={screen.text} scrollY={scrollY - (index - 1) * window.innerHeight} component={screen.component} />
+        <Screen key={index} id={screen.id} scrollY={scrollY - (index - 1) * window.innerHeight} component={screen.component} />
       ))}
     </div>
   );
