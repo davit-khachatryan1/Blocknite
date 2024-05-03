@@ -12,24 +12,24 @@ const ScrollContainer = () => {
 
 
   const checkCenter = () => {
-    // setTimeout(() => {
-    //   if (pages.current && !fromPage) {
-    //     const children = (pages.current as any).children
-    //     for (let i = 0; i < children.length; i++) {
-    //       const ref = children[i];
-    //       if (ref) {
-    //         const rect = ref.getBoundingClientRect();
-    //         const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    setTimeout(() => {
+      if (pages.current && !fromPage) {
+        const children = (pages.current as any).children
+        for (let i = 0; i < children.length; i++) {
+          const ref = children[i];
+          if (ref) {
+            const rect = ref.getBoundingClientRect();
+            const windowHeight = window.innerHeight || document.documentElement.clientHeight;
 
 
-    //         const isElementCentered = rect.top < windowHeight / 2 && rect.top > -windowHeight / 2;
-    //         if (isElementCentered) {
-    //           updatePage(screens[i].id, navigate)
-    //         }
-    //       }
-    //     }
-    //   }
-    // }, 500)
+            const isElementCentered = rect.top < windowHeight / 2 && rect.top > -windowHeight / 2;
+            if (isElementCentered) {
+              updatePage(screens[i].id, navigate)
+            }
+          }
+        }
+      }
+    }, 500)
   }
 
   useEffect(() => {

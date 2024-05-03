@@ -1,10 +1,10 @@
 
 import { motion, useAnimation, useTransform, useViewportScroll } from 'framer-motion';
 import styles from './style.module.scss'
-import { useEffect, useRef } from 'react';
-import { useStateProvider } from '../../context/state';
+import { useEffect, useRef, useState } from 'react';
 import Slider from 'react-slick';
 import { useInView } from 'react-intersection-observer';
+import Typewriter from '../TypeWriter';
 
 const settings = {
     infinite: true,
@@ -26,6 +26,11 @@ const items = [
 ]
 
 export const ThirdScreen = () => {
+    const [infoTitles, setInfoTitles] = useState({
+        first: true,
+        second: true,
+        third: true,
+    });
     const { scrollYProgress } = useViewportScroll();
     // const opacity = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
     const translateY = useTransform(scrollYProgress, [0, 0.1], [-50, 20]);
@@ -132,19 +137,39 @@ export const ThirdScreen = () => {
             blockControls1.start({ height: '199px', transition: { duration: 0.5, } })
             blockControls2.start({ height: '199px', transition: { duration: 0.5, } })
             blockControls3.start({ height: '199px', transition: { duration: 0.5, } })
+            setInfoTitles({
+                first: true,
+                second: true,
+                third: true,
+            })
 
         } else if (elemCenter2 < windowCenter) {
             blockControls1.start({ height: '199px', transition: { duration: 0.5, } })
             blockControls2.start({ height: '199px', transition: { duration: 0.5, } })
             blockControls3.start({ height: '0', transition: { duration: 0.2, } })
+            setInfoTitles({
+                first: true,
+                second: true,
+                third: false,
+            })
         } else if (elemCenter1 < windowCenter) {
             blockControls1.start({ height: '199px', transition: { duration: 0.5, } })
             blockControls2.start({ height: '0', transition: { duration: 0.2, } })
             blockControls3.start({ height: '0', transition: { duration: 0.2, } })
+            setInfoTitles({
+                first: true,
+                second: false,
+                third: false,
+            })
         } else {
             blockControls1.start({ height: '0', transition: { duration: 0.2, } })
             blockControls2.start({ height: '0', transition: { duration: 0.2, } })
             blockControls3.start({ height: '0', transition: { duration: 0.2, } })
+            setInfoTitles({
+                first: false,
+                second: false,
+                third: false,
+            })
         }
     };
 
@@ -251,7 +276,12 @@ export const ThirdScreen = () => {
                         <div className={`${styles.line} ${styles.lineTop}`} />
                         <div className={styles.round}>1</div>
                         <div className={styles.textBlock}>
-                            <div className={styles.title}><span>Buy</span> $NITE</div>
+                            {infoTitles.first &&
+                                <div className={styles.title}>
+                                    <Typewriter classname="titleOrange" text="Buy" time={200} delay={100} />
+                                    <Typewriter classname="titleWhite" text="$NITE" time={300} delay={300} />
+                                </div>
+                            }
                             <div className={styles.description}>Nites are used to power the blocknite ecosystem, from buying and selling items to activating Soul Stones.</div>
                         </div>
                         <div className={`${styles.line} ${styles.lineBottom}`} />
@@ -270,7 +300,12 @@ export const ThirdScreen = () => {
                         <div className={`${styles.line} ${styles.lineTop}`} />
                         <div className={styles.round}>2</div>
                         <div className={styles.textBlock}>
-                            <div className={styles.title}><span>Get a</span> Treanin</div>
+                            {infoTitles.second &&
+                                <div className={styles.title}>
+                                    <Typewriter classname="titleOrange" text="Get a" time={200} delay={100} />
+                                    <Typewriter classname="titleWhite" text="Treanin" time={300} delay={300} />
+                                </div>
+                            }
                             <div className={styles.description}>Treanin are created when you activate a Soul Stone, you can also buy them from players at the marketplace.</div>
                         </div>
                         <div className={`${styles.line} ${styles.lineBottom}`} />
@@ -289,7 +324,12 @@ export const ThirdScreen = () => {
                         <div className={`${styles.line} ${styles.lineTop}`} />
                         <div className={styles.round}>3</div>
                         <div className={styles.textBlock}>
-                            <div className={styles.title}><span>Fight &</span> earn!</div>
+                            {infoTitles.third &&
+                                <div className={styles.title}>
+                                    <Typewriter classname="titleOrange" text="Fight & " time={300} delay={100} />
+                                    <Typewriter classname="titleWhite" text="earn!" time={200} delay={400} />
+                                </div>
+                            }
                             <div className={styles.description}>Battle Orgurin monsters at the battlegrounds, with new features such as boss fights and PVP coming soon.</div>
                         </div>
                         <div className={`${styles.line} ${styles.lineBottom}`} />

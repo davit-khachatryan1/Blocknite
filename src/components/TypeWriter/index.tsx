@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 
 import styles from './style.module.scss';
 
-const Typewriter = ({ text, classname, delay = 0 }: any) => {
+const Typewriter = ({ text, classname, delay = 0, time = 500 }: any) => {
     const [displayedText, setDisplayedText] = useState('');
-    const typingSpeed = 500 / text.length;
+    const typingSpeed = time / text.length;
 
     useEffect(() => {
         let index = -1;

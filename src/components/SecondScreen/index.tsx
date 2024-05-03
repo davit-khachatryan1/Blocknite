@@ -11,7 +11,7 @@ const settings = {
     slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 7000,
     nextArrow: <img src='/icons/arrow-right-slider.svg' />,
     prevArrow: <img src='/icons/arrow-left-slider.svg' />
 };
@@ -58,18 +58,6 @@ export const SecondScreen = () => {
         } else {
             controls.start({ width: 0 });
         }
-
-        // if (pageREf.current) {
-        //     const rect = (pageREf.current as any).getBoundingClientRect();
-        //     const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-        //     const center = rect.top + rect.height / 2;
-            
-
-        //     const isElementCentered = rect.top < windowHeight / 2 && rect.top > -windowHeight / 2;
-        //     if(isElementCentered){
-        //         updatePage('SecondScreen')
-        //     }
-        // }
     }
 
     useEffect(() => {
