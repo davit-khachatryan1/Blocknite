@@ -43,8 +43,7 @@ export const FourthScreen = () => {
 
     const refMain = useRef(null);
     useEffect(() => {
-
-        const handleScroll = (event: any) => {
+        const handleScroll = () => {
             if (refMain.current) {
                 const bounding = (refMain.current as any).getBoundingClientRect()
                 const innerHeight = (refMain.current as any).offsetHeight;
