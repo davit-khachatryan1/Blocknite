@@ -4,6 +4,7 @@ import React, { createContext, useContext, useState, ReactNode } from 'react';
 interface UserProfile {
     page: string;
     updatePage: (name: string, navigate: any) => void;
+    fromPage: boolean;
 }
 
 // Create the context with a default undefined value, properly typed
@@ -24,14 +25,19 @@ interface StateProviderProps {
 
 export const StateProvider: React.FC<StateProviderProps> = ({ children }) => {
     const [page, setPage] = useState('');
+    const [fromPage, setFromPage] = useState(false);
 
-    const updatePage = (id: string, navigate:any) => {
+    const updatePage = (id: string, navigate: any) => {
         setPage(id);
+        setFromPage(true);
+        setTimeout(() => {
+            setFromPage(false)
+        }, 2000)
         navigate(`#${id}`)
     };
 
     return (
-        <StateProviderContext.Provider value={{ page, updatePage }}>
+        <StateProviderContext.Provider value={{ page, updatePage, fromPage }}>
             {children}
         </StateProviderContext.Provider>
     );

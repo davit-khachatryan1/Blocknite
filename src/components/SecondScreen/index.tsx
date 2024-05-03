@@ -180,8 +180,7 @@ export const SecondScreen = () => {
                 <div className={styles.carouselContainer}>
                     <Slider {...settings}>
                         {items.map((item, index) =>
-
-                            <div className={styles.swiperElement}> <img src={item.src} alt={`Slide ${index}`} style={{ height: '40px', width: 'auto', objectFit: 'contain' }} /></div>
+                            <div className={styles.swiperElement} key={index}> <img src={item.src} alt={`Slide ${index}`} style={{ height: '40px', width: 'auto', objectFit: 'contain' }} /></div>
                         )}
                     </Slider>
                 </div>

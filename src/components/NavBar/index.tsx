@@ -29,7 +29,7 @@ export const NavBar = () => {
     return (
         <div className={styles.container}>
             {screens.map((el, index) =>
-                <AltarinText index={index}>
+                <AltarinText index={index} key={index}>
                     <div className={`${styles.navElement} ${el.id === page && styles.active}`} onClick={() => scrollTo(el.id)}>
                         {el.name}
                         <div className={styles.round} />
