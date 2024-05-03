@@ -29,7 +29,7 @@ const ScrollContainer = () => {
           }
         }
       }
-    }, 500)
+    }, 200)
   }
 
   useEffect(() => {
