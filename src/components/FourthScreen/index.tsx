@@ -51,10 +51,10 @@ export const FourthScreen = () => {
 
 
                 let newSegments = { ...segments };
-                if (top > innerHeight * 0.4 && top < innerHeight * 0.78) {
-                    const dif = innerHeight * 0.78 - innerHeight * 0.4;
-                    newSegments = { ...newSegments, Orange: { color: '#C3A46550', rotation: -50, degrees: 270 / dif * (top - (innerHeight * 0.4)) } }
-                } else if (top < innerHeight * 0.4) {
+                if (top > innerHeight * 0.3 && top < innerHeight * 0.78) {
+                    const dif = innerHeight * 0.78 - innerHeight * 0.3;
+                    newSegments = { ...newSegments, Orange: { color: '#C3A46550', rotation: -50, degrees: 270 / dif * (top - (innerHeight * 0.3)) } }
+                } else if (top < innerHeight * 0.3) {
                     newSegments = { ...newSegments, Orange: { color: '#C3A46550', rotation: -50, degrees: 0 } }
                 } else {
                     newSegments = { ...newSegments, Orange: { color: '#C3A46550', rotation: -50, degrees: 270 } }
