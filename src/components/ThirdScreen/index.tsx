@@ -198,7 +198,6 @@ export const ThirdScreen = () => {
 
     return (
         <div className={styles.container}>
-            <img src="/bg-images/third-bg.png" className={styles.bgImage} />
             <div className={styles.titleBlock}>
                 <div style={{ width: '168px', display: 'flex', justifyContent: 'center', marginTop: '30px' }}>
                     <motion.div

@@ -42,7 +42,7 @@ const ScrollContainer = () => {
   return (
     <div className={styles.container} ref={pages}>
       {screens.map((screen, index) => (
-        <Screen key={index} id={screen.id} component={screen.component} />
+        <Screen key={index} id={screen.id} component={screen.component} imageUrl={screen.imageUrl} />
       ))}
     </div>
   );

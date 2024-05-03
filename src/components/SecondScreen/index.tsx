@@ -69,7 +69,6 @@ export const SecondScreen = () => {
 
     return (
         <div className={styles.container} ref={pageREf}>
-            <img src="/bg-images/second-bg.png" className={styles.bgImage} />
             <div className={styles.titleBlock}>
                 <div style={{ width: '168px', display: 'flex', justifyContent: 'center', marginTop: '30px' }}>
                     <motion.div

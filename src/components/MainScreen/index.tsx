@@ -6,7 +6,6 @@ import Typewriter from '../TypeWriter';
 export const MainScreen = () => {
     return (
         <div className={styles.container}>
-            <img src="/bg-images/main-bg.png" className={styles.bgImage} alt='main-bg' />
             <div className={styles.infoBlock}>
                 <motion.img
                     className={styles.logo}
