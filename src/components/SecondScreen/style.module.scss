@@ -71,6 +71,7 @@
         display: flex;
         column-gap: 100px;
         align-items: center;
+
         .title {
             font-weight: 500;
             font-size: 30px;
@@ -85,14 +86,22 @@
         .carouselContainer {
             position: relative;
             width: 1433px;
+
             .swiperElement {
+                cursor: pointer;
                 img {
                     height: 40px;
                     width: auto;
                     margin: 0 auto;
+                    outline: none !important;
                 }
             }
 
+            :global(.slick-slide) {
+                div {
+                    outline: none !important;
+                }
+            }
         }
     }
 }
