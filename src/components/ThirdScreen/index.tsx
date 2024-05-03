@@ -132,7 +132,7 @@ export const ThirdScreen = () => {
 
         const rect3 = boundingClientRect3;
         const elemCenter3 = rect3.top + rect3.height / 2 - 350;
-
+        
         if (elemCenter3 < windowCenter) {
             blockControls1.start({ height: '199px', transition: { duration: 0.5, } })
             blockControls2.start({ height: '199px', transition: { duration: 0.5, } })
@@ -174,8 +174,8 @@ export const ThirdScreen = () => {
     };
 
     useEffect(() => {
-        updateHeight()
-    }, [entryFirstBlock1, entryFirstBlock2, entryFirstBlock3, inViewFirstBlock1, inViewFirstBlock1, inViewFirstBlock1])
+            updateHeight()
+    }, [entryFirstBlock1, entryFirstBlock2, entryFirstBlock3, inViewFirstBlock1, inViewFirstBlock2, inViewFirstBlock3])
 
     const controlsBottom = useAnimation();
     const controlsBottomSlider = useAnimation();
