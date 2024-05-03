@@ -1,10 +1,10 @@
-
 import { motion, useAnimation, useTransform, useViewportScroll } from 'framer-motion';
-import styles from './style.module.scss'
 import { useEffect, useRef, useState } from 'react';
 import Slider from 'react-slick';
 import { useInView } from 'react-intersection-observer';
 import Typewriter from '../TypeWriter';
+
+import styles from './style.module.scss';
 
 const settings = {
     infinite: true,
@@ -13,7 +13,7 @@ const settings = {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 7000,
-    nextArrow: <img src='/icons/arrow-right-slider.svg' />,
+    nextArrow: <img src='/icons/arrow-right-slider.svg' alt="Next" />,
     prevArrow: <></>
 };
 
@@ -23,7 +23,7 @@ const items = [
     { id: '3', text: 'Battle the Orgurin grunts and level up your Treanin, getting bonus rewards. Are you brave enough to take on the Orgurin boss?' },
     { id: '4', text: 'Buy and sell Treanin & Manna Stones at the marketplace.' },
     { id: '5', text: 'Participate in the Blocknite community & devise the best strategies for maximising rewards.' },
-]
+];
 
 export const ThirdScreen = () => {
     const [infoTitles, setInfoTitles] = useState({
@@ -32,10 +32,7 @@ export const ThirdScreen = () => {
         third: true,
     });
     const { scrollYProgress } = useViewportScroll();
-    // const opacity = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
     const translateY = useTransform(scrollYProgress, [0, 0.1], [-50, 20]);
-
-    // const descriptionOpacity = useTransform(scrollYProgress, [0.1, 0.15], [0, 1]);
     const descriptionTranslateY = useTransform(scrollYProgress, [0.1, 0.15], [-50, 20]);
 
     const controls = useAnimation();
@@ -49,9 +46,8 @@ export const ThirdScreen = () => {
             const rect = (ref1.current as any).getBoundingClientRect();
             const windowHeight = window.innerHeight || document.documentElement.clientHeight;
             const center = rect.top + rect.height / 2;
-
-
             const isElementCentered = center > 0 && center < windowHeight / 2;
+
             if (isElementCentered) {
                 controls.start({
                     width: '168px',
@@ -63,21 +59,19 @@ export const ThirdScreen = () => {
         } else {
             controls.start({ width: 0 });
         }
-    }
+    };
 
     useEffect(() => {
         window.addEventListener("scroll", checkCenter);
-        return () => {
-            window.removeEventListener("scroll", checkCenter);
-        };
-    }, [])
+        return () => window.removeEventListener("scroll", checkCenter);
+    }, []);
 
     const refTitle = useRef(null);
     const refDescription = useRef(null);
 
     const calcCenter = (ref: any) => {
         if (!ref.current) return 0;
-        const rect = (ref.current as any).getBoundingClientRect();
+        const rect = ref.current.getBoundingClientRect();
         return (rect.top + rect.bottom) / 2;
     };
 
@@ -118,64 +112,42 @@ export const ThirdScreen = () => {
     });
 
     const updateHeight = () => {
-        const boundingClientRect1 = entryFirstBlock1 ? entryFirstBlock1?.boundingClientRect : { top: 0, height: 0 }
-        const boundingClientRect2 = entryFirstBlock2 ? entryFirstBlock2?.boundingClientRect : { top: 0, height: 0 }
-        const boundingClientRect3 = entryFirstBlock3 ? entryFirstBlock3?.boundingClientRect : { top: 0, height: 0 }
+        const boundingClientRect1 = entryFirstBlock1?.boundingClientRect || { top: 0, height: 0 };
+        const boundingClientRect2 = entryFirstBlock2?.boundingClientRect || { top: 0, height: 0 };
+        const boundingClientRect3 = entryFirstBlock3?.boundingClientRect || { top: 0, height: 0 };
 
         const windowHeight = window.innerHeight;
         const windowCenter = windowHeight / 2;
-        const rect1 = boundingClientRect1;
-        const elemCenter1 = rect1.top + rect1.height / 2 - 350;
+        const elemCenter1 = boundingClientRect1.top + boundingClientRect1.height / 2 - 350;
+        const elemCenter2 = boundingClientRect2.top + boundingClientRect2.height / 2 - 350;
+        const elemCenter3 = boundingClientRect3.top + boundingClientRect3.height / 2 - 350;
 
-        const rect2 = boundingClientRect2;
-        const elemCenter2 = rect2.top + rect2.height / 2 - 350;
-
-        const rect3 = boundingClientRect3;
-        const elemCenter3 = rect3.top + rect3.height / 2 - 350;
-        
         if (elemCenter3 < windowCenter) {
-            blockControls1.start({ height: '199px', transition: { duration: 0.5, } })
-            blockControls2.start({ height: '199px', transition: { duration: 0.5, } })
-            blockControls3.start({ height: '199px', transition: { duration: 0.5, } })
-            setInfoTitles({
-                first: true,
-                second: true,
-                third: true,
-            })
-
+            blockControls1.start({ height: '199px', transition: { duration: 0.5 } });
+            blockControls2.start({ height: '199px', transition: { duration: 0.5 } });
+            blockControls3.start({ height: '199px', transition: { duration: 0.5 } });
+            setInfoTitles({ first: true, second: true, third: true });
         } else if (elemCenter2 < windowCenter) {
-            blockControls1.start({ height: '199px', transition: { duration: 0.5, } })
-            blockControls2.start({ height: '199px', transition: { duration: 0.5, } })
-            blockControls3.start({ height: '0', transition: { duration: 0.2, } })
-            setInfoTitles({
-                first: true,
-                second: true,
-                third: false,
-            })
+            blockControls1.start({ height: '199px', transition: { duration: 0.5 } });
+            blockControls2.start({ height: '199px', transition: { duration: 0.5 } });
+            blockControls3.start({ height: '0', transition: { duration: 0.2 } });
+            setInfoTitles({ first: true, second: true, third: false });
         } else if (elemCenter1 < windowCenter) {
-            blockControls1.start({ height: '199px', transition: { duration: 0.5, } })
-            blockControls2.start({ height: '0', transition: { duration: 0.2, } })
-            blockControls3.start({ height: '0', transition: { duration: 0.2, } })
-            setInfoTitles({
-                first: true,
-                second: false,
-                third: false,
-            })
+            blockControls1.start({ height: '199px', transition: { duration: 0.5 } });
+            blockControls2.start({ height: '0', transition: { duration: 0.2 } });
+            blockControls3.start({ height: '0', transition: { duration: 0.2 } });
+            setInfoTitles({ first: true, second: false, third: false });
         } else {
-            blockControls1.start({ height: '0', transition: { duration: 0.2, } })
-            blockControls2.start({ height: '0', transition: { duration: 0.2, } })
-            blockControls3.start({ height: '0', transition: { duration: 0.2, } })
-            setInfoTitles({
-                first: false,
-                second: false,
-                third: false,
-            })
+            blockControls1.start({ height: '0', transition: { duration: 0.2 } });
+            blockControls2.start({ height: '0', transition: { duration: 0.2 } });
+            blockControls3.start({ height: '0', transition: { duration: 0.2 } });
+            setInfoTitles({ first: false, second: false, third: false });
         }
     };
 
     useEffect(() => {
-            updateHeight()
-    }, [entryFirstBlock1, entryFirstBlock2, entryFirstBlock3, inViewFirstBlock1, inViewFirstBlock2, inViewFirstBlock3])
+        updateHeight();
+    }, [entryFirstBlock1, entryFirstBlock2, entryFirstBlock3, inViewFirstBlock1, inViewFirstBlock2, inViewFirstBlock3]);
 
     const controlsBottom = useAnimation();
     const controlsBottomSlider = useAnimation();
@@ -195,6 +167,7 @@ export const ThirdScreen = () => {
             }
         }
     }, [controlsBottom, inView, entry]);
+
 
     return (
         <div className={styles.container}>
