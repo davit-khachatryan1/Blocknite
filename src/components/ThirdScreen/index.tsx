@@ -116,7 +116,6 @@ export const ThirdScreen = () => {
         const boundingClientRect1 = entryFirstBlock1?.boundingClientRect || { top: 0, height: 0 };
         const boundingClientRect2 = entryFirstBlock2?.boundingClientRect || { top: 0, height: 0 };
         const boundingClientRect3 = entryFirstBlock3?.boundingClientRect || { top: 0, height: 0 };
-        console.log('boundingClientRect1', boundingClientRect1);
 
         const windowHeight = window.innerHeight;
         const windowCenter = windowHeight / 2;
