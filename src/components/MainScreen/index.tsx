@@ -19,9 +19,25 @@ export const MainScreen = () => {
                     transition={{ duration: 0.7 }}
                 />
                 <Typewriter text="ALTARIN" classname="altarin" />
-                <hr className={styles.line} />
+                <motion.hr
+                    className={styles.line}
+                    initial="hidden"
+                    animate="visible"
+                    transition={{ duration: 0.7, delay: 1 }}
+                    variants={{
+                        hidden: { width: '0' },
+                        visible: { width: '100%' },
+                    }} />
                 <Typewriter text="Defend your home" classname="name" delay={1000} />
-                <hr className={styles.line} />
+                <motion.hr
+                    className={styles.line}
+                    initial="hidden"
+                    animate="visible"
+                    transition={{ duration: 0.7, delay: 1 }}
+                    variants={{
+                        hidden: { width: '0' },
+                        visible: { width: '100%' },
+                    }} />
                 <motion.div
                     className={styles.description}
                     initial="hidden"
@@ -76,8 +92,8 @@ export const MainScreen = () => {
                 >
                     <div className={`${styles.twoButton} ${styles.copyBlock}`}>
                         <div className={styles.copy}>
-                            <div className={styles.square}/>
-                            <div className={styles.square}/>
+                            <div className={styles.square} />
+                            <div className={styles.square} />
                         </div>
                         <div>
                             0x123456789aBcDeF1234567890aBcDeF1234567890

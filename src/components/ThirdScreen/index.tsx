@@ -69,9 +69,9 @@ export const ThirdScreen = () => {
     const refTitle = useRef(null);
     const refDescription = useRef(null);
 
-    const calcCenter = (ref: any) => {
-        if (!ref.current) return 0;
-        const rect = ref.current.getBoundingClientRect();
+    const calcCenter = (refElement: any) => {
+        if (!refElement.current) return 0;
+        const rect = refElement.current.getBoundingClientRect();
         return (rect.top + rect.bottom) / 2;
     };
 
@@ -100,21 +100,23 @@ export const ThirdScreen = () => {
 
     const [refFirstBlock1, inViewFirstBlock1, entryFirstBlock1] = useInView({
         triggerOnce: false,
-        threshold: 1,
+        threshold: 0.1,
     });
     const [refFirstBlock2, inViewFirstBlock2, entryFirstBlock2] = useInView({
         triggerOnce: false,
-        threshold: 1,
+        threshold: 0.1,
     });
     const [refFirstBlock3, inViewFirstBlock3, entryFirstBlock3] = useInView({
         triggerOnce: false,
-        threshold: 1,
+        threshold: 0.1,
     });
 
     const updateHeight = () => {
+        
         const boundingClientRect1 = entryFirstBlock1?.boundingClientRect || { top: 0, height: 0 };
         const boundingClientRect2 = entryFirstBlock2?.boundingClientRect || { top: 0, height: 0 };
         const boundingClientRect3 = entryFirstBlock3?.boundingClientRect || { top: 0, height: 0 };
+        console.log('boundingClientRect1', boundingClientRect1);
 
         const windowHeight = window.innerHeight;
         const windowCenter = windowHeight / 2;

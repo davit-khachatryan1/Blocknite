@@ -1,0 +1,37 @@
+.container {
+    overflow: hidden;
+    width: 358px;
+    height: 78px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    .title {
+        color: #101825;
+        text-transform: uppercase;
+        font-size: 22px;
+        line-height: 30px;
+        font-weight: 700;
+        width: 270px;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+    }
+
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+.right {
+    margin-right: auto;
+    height: 78px;
+    position: relative;
+}
+
+.left {
+    height: 78px;
+    margin-left: auto;
+    position: relative;
+}
