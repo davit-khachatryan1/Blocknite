@@ -157,6 +157,7 @@ export const FifthScreen = () => {
                         <RoadMapCard title='Launch' right={true} />
                         <div className={styles.info}>
                             <RoadMapText
+                                right={true}
                                 texts={
                                     [
                                         'Launch our Trailer & socials',
@@ -172,6 +173,7 @@ export const FifthScreen = () => {
                         <RoadMapCard title='Enrichment' right={true} />
                         <div className={styles.info}>
                             <RoadMapText
+                                right={true}
                                 texts={
                                     [
                                         'Add new items (FuseStone, NameStone..)',

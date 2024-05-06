@@ -25,10 +25,15 @@ export const RoadMapText = ({ right = false, texts = [] }: { texts: string[], ri
             animate={controls}
             initial='hidden'
             variants={{
-                hidden: { opacity: 0 },
+                hidden: {
+                    opacity: 0,
+                    ...(right ? { marginLeft: '-200px', marginRight: '200px' } : { marginLeft: '200px', marginRight: '-200px' }),
+                },
                 visible: {
                     opacity: 1,
-                    transition: { duration: 0.8, delay: 0.5 }
+                    marginLeft: '0',
+                    marginRight: '0',
+                    transition: { duration: 0.5, delay: 0.8 }
                 }
             }}
         >
