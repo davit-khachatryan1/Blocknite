@@ -1,4 +1,4 @@
-import { motion, useAnimation, useTransform, useViewportScroll } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import Slider from 'react-slick';
 import { useInView } from 'react-intersection-observer';
@@ -31,124 +31,71 @@ export const ThirdScreen = () => {
         second: true,
         third: true,
     });
-    const { scrollYProgress } = useViewportScroll();
-    const translateY = useTransform(scrollYProgress, [0, 0.1], [-50, 20]);
-    const descriptionTranslateY = useTransform(scrollYProgress, [0.1, 0.15], [-50, 20]);
-
     const controls = useAnimation();
     const blockControls1 = useAnimation();
     const blockControls2 = useAnimation();
     const blockControls3 = useAnimation();
-    const ref1 = useRef(null);
 
-    const checkCenter = () => {
-        if (ref1.current) {
-            const rect = (ref1.current as any).getBoundingClientRect();
-            const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-            const center = rect.top + rect.height / 2;
-            const isElementCentered = center > 0 && center < windowHeight / 2;
-
-            if (isElementCentered) {
-                controls.start({
-                    width: '168px',
-                    transition: { duration: 0.5, ease: 'easeOut' }
-                });
-            } else if (center > windowHeight) {
-                controls.start({ width: 0 });
-            }
-        } else {
-            controls.start({ width: 0 });
-        }
-    };
+    const titleControls = useAnimation();
+    const [refTitle, inVewTitle] = useInView({
+        triggerOnce: false,
+        threshold: 1,
+    });
 
     useEffect(() => {
-        window.addEventListener("scroll", checkCenter);
-        return () => window.removeEventListener("scroll", checkCenter);
-    }, []);
+        if (inVewTitle) {
+            titleControls.start('visible')
+        } else {
+            titleControls.start('hidden')
+        }
+    }, [inVewTitle])
 
-    const refTitle = useRef(null);
+    const ref1 = useRef(null);
+
     const refDescription = useRef(null);
 
-    const calcCenter = (refElement: any) => {
-        if (!refElement.current) return 0;
-        const rect = refElement.current.getBoundingClientRect();
-        return (rect.top + rect.bottom) / 2;
-    };
-
-    const opacity = useTransform(scrollYProgress, value => {
-        const elementCenter = calcCenter(refTitle);
-        const viewportCenter = window.innerHeight / 2;
-
-        if (elementCenter <= viewportCenter) {
-            return 1;
-        } else {
-            const distanceToCenter = Math.abs(elementCenter - viewportCenter);
-            return Math.max(0, 1 - distanceToCenter / viewportCenter);
-        }
-    });
-
-    const opacityDescription = useTransform(scrollYProgress, value => {
-        const elementCenter = calcCenter(refDescription);
-        const viewportCenter = window.innerHeight / 2;
-        if (elementCenter <= viewportCenter) {
-            return 1;
-        } else {
-            const distanceToCenter = Math.abs(elementCenter - viewportCenter);
-            return Math.max(0, 1 - distanceToCenter / viewportCenter);
-        }
-    });
-
-    const [refFirstBlock1, inViewFirstBlock1, entryFirstBlock1] = useInView({
+    const [refFirstBlock1, inViewFirstBlock1] = useInView({
         triggerOnce: false,
-        threshold: 0.1,
+        threshold: 1,
     });
-    const [refFirstBlock2, inViewFirstBlock2, entryFirstBlock2] = useInView({
+    const [refFirstBlock2, inViewFirstBlock2] = useInView({
         triggerOnce: false,
-        threshold: 0.1,
+        threshold: 1,
     });
-    const [refFirstBlock3, inViewFirstBlock3, entryFirstBlock3] = useInView({
+    const [refFirstBlock3, inViewFirstBlock3] = useInView({
         triggerOnce: false,
-        threshold: 0.1,
+        threshold: 1,
     });
 
     const updateHeight = () => {
-        
-        const boundingClientRect1 = entryFirstBlock1?.boundingClientRect || { top: 0, height: 0 };
-        const boundingClientRect2 = entryFirstBlock2?.boundingClientRect || { top: 0, height: 0 };
-        const boundingClientRect3 = entryFirstBlock3?.boundingClientRect || { top: 0, height: 0 };
-
-        const windowHeight = window.innerHeight;
-        const windowCenter = windowHeight / 2;
-        const elemCenter1 = boundingClientRect1.top + boundingClientRect1.height / 2 - 350;
-        const elemCenter2 = boundingClientRect2.top + boundingClientRect2.height / 2 - 350;
-        const elemCenter3 = boundingClientRect3.top + boundingClientRect3.height / 2 - 350;
-
-        if (elemCenter3 < windowCenter) {
+        let obj = { first: true, second: true, third: true };
+        if (inViewFirstBlock3) {
             blockControls1.start({ height: '199px', transition: { duration: 0.5 } });
             blockControls2.start({ height: '199px', transition: { duration: 0.5 } });
             blockControls3.start({ height: '199px', transition: { duration: 0.5 } });
-            setInfoTitles({ first: true, second: true, third: true });
-        } else if (elemCenter2 < windowCenter) {
+            obj = { first: true, second: true, third: true };
+        } else if (inViewFirstBlock2) {
             blockControls1.start({ height: '199px', transition: { duration: 0.5 } });
             blockControls2.start({ height: '199px', transition: { duration: 0.5 } });
             blockControls3.start({ height: '0', transition: { duration: 0.2 } });
-            setInfoTitles({ first: true, second: true, third: false });
-        } else if (elemCenter1 < windowCenter) {
+            obj = { first: true, second: true, third: false };
+        } else if (inViewFirstBlock1) {
             blockControls1.start({ height: '199px', transition: { duration: 0.5 } });
             blockControls2.start({ height: '0', transition: { duration: 0.2 } });
             blockControls3.start({ height: '0', transition: { duration: 0.2 } });
-            setInfoTitles({ first: true, second: false, third: false });
+            obj = { first: true, second: false, third: false };
         } else {
             blockControls1.start({ height: '0', transition: { duration: 0.2 } });
             blockControls2.start({ height: '0', transition: { duration: 0.2 } });
             blockControls3.start({ height: '0', transition: { duration: 0.2 } });
-            setInfoTitles({ first: false, second: false, third: false });
+            obj = { first: false, second: false, third: false };
         }
+        setInfoTitles(obj);
     };
 
     useEffect(() => {
         updateHeight();
-    }, [entryFirstBlock1, entryFirstBlock2, entryFirstBlock3, inViewFirstBlock1, inViewFirstBlock2, inViewFirstBlock3]);
+    }, [inViewFirstBlock1, inViewFirstBlock2, inViewFirstBlock3]);
 
     const controlsBottom = useAnimation();
     const controlsBottomSlider = useAnimation();
@@ -169,11 +116,10 @@ export const ThirdScreen = () => {
         }
     }, [controlsBottom, inView, entry]);
 
-
     return (
         <div className={styles.container}>
             <div className={styles.titleBlock}>
-                <div style={{ width: '168px', display: 'flex', justifyContent: 'center', marginTop: '30px' }}>
+                <div style={{ width: '168px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <motion.div
                         ref={ref1}
                         initial={{ width: '0', height: '29px' }}
@@ -197,15 +143,21 @@ export const ThirdScreen = () => {
                 </div>
                 <motion.div
                     ref={refTitle}
-                    style={{
-                        opacity,
-                        translateY,
+                    animate={titleControls}
+                    initial="hidden"
+                    variants={{
+                        hidden: { opacity: 0, transform: 'translateY(-25px)' },
+                        visible: {
+                            opacity: 1,
+                            transform: 'translateY(0)',
+                            transition: { duration: 0.8 }
+                        }
                     }}
                 >
                     <div>How to play & Earn</div>
                 </motion.div>
 
-                <div style={{ width: '168px', display: 'flex', justifyContent: 'center', marginTop: '30px' }}>
+                <div style={{ width: '168px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <motion.div
                         initial={{ width: '0', height: '29px' }}
                         animate={controls}
@@ -229,11 +181,17 @@ export const ThirdScreen = () => {
             </div>
             <motion.div
                 ref={refDescription}
-                style={{
-                    opacity: opacityDescription,
-                    translateY: descriptionTranslateY,
-                }}
                 className={styles.subTitle}
+                animate={titleControls}
+                initial="hidden"
+                variants={{
+                    hidden: { opacity: 0, transform: 'translateY(-25px)' },
+                    visible: {
+                        opacity: 1,
+                        transform: 'translateY(0)',
+                        transition: { duration: 0.8, delay: 0.8 }
+                    }
+                }}
             >
                 Partake in our airdrop competition and win millions of $NITE token!
             </motion.div>

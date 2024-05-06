@@ -12,7 +12,6 @@ export const FifthScreen = () => {
     const titleImgControls = useAnimation();
     const [titleRef, inViewTitle] = useInView({
         triggerOnce: false,
-        threshold: 1,
     });
     const [lineControls1, inViewTitle1] = useInView({
         triggerOnce: false,

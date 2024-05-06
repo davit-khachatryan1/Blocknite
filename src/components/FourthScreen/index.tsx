@@ -46,11 +46,23 @@ export const FourthScreen = () => {
         triggerOnce: false,
         threshold: 1,
     });
+    const [titleRef, inViewTitle] = useInView({
+        triggerOnce: false,
+    });
+    const titleControls = useAnimation();
+    useEffect(() => {
+        if (inViewTitle) {
+            titleControls.start('visible')
+        } else {
+            titleControls.start('hidden')
+        }
+    }, [inViewTitle])
 
     const blockControls1 = useAnimation();
     const blockControls2 = useAnimation();
     const blockControls3 = useAnimation();
     const blockControls4 = useAnimation();
+    const mainTitleValueControls = useAnimation();
 
     const [percent1, title1, line1, dot1] = [useAnimation(), useAnimation(), useAnimation(), useAnimation()];
     const [percent2, title2, line2, dot2] = [useAnimation(), useAnimation(), useAnimation(), useAnimation()];
@@ -93,7 +105,7 @@ export const FourthScreen = () => {
     const startAnimation = (control: any, animation: any, name: 'first' | 'second' | 'third' | 'fourth') => {
         control.animate.start({
             pathLength: 1,
-            transition: { duration: 2 }
+            transition: { duration: 1.5 }
         })
 
         animation.percent.start('visible')
@@ -105,7 +117,7 @@ export const FourthScreen = () => {
     const stopAnimation = (control: any, animation: any, name: 'first' | 'second' | 'third' | 'fourth') => {
         control.animate.start({
             pathLength: 0,
-            transition: { duration: 2 }
+            transition: { duration: 1.5 }
         })
 
         animation.percent.start('hidden')
@@ -143,9 +155,14 @@ export const FourthScreen = () => {
         if (inViewFirstBlock4) {
             startAnimation(segments.Red, animations.second, 'second')
             newAnimations.second.isValue = true;
+            mainTitleValueControls.start('visible')
         } else {
             stopAnimation(segments.Red, animations.second, 'second')
             newAnimations.second.isValue = false;
+        }
+
+        if (!inViewFirstBlock1 && !inViewFirstBlock2 && !inViewFirstBlock3 && !inViewFirstBlock4) {
+            mainTitleValueControls.start('hidden')
         }
         setAnimations(newAnimations)
     }, [inViewFirstBlock1, inViewFirstBlock2, inViewFirstBlock3, inViewFirstBlock4])
@@ -214,11 +231,38 @@ export const FourthScreen = () => {
                         />
                     ))}
                 </motion.svg>
+                <motion.div
+                    className={styles.mainTitleValue}
+                    animate={mainTitleValueControls}
+                    initial="hidden"
+                    variants={{
+                        hidden: { opacity: 0 },
+                        visible: {
+                            opacity: 1,
+                            transition: { duration: 0.8, delay: 1.5 }
+                        }
+                    }}
+                >
+                    <div className={styles.title}>Total supply</div>
+                    <div className={styles.value}>2 500 000 000 </div>
+                </motion.div>
             </div>
             <div className={styles.infoBlock}>
-                <div className={styles.titleBlock}>
+                <motion.div className={styles.titleBlock}
+                    ref={titleRef}
+                    animate={titleControls}
+                    initial="hidden"
+                    variants={{
+                        hidden: { opacity: 0, transform: 'translateY(-25px)' },
+                        visible: {
+                            opacity: 1,
+                            transform: 'translateY(0)',
+                            transition: { duration: 0.8 }
+                        }
+                    }}
+                >
                     TOKENOMICS
-                </div>
+                </motion.div>
                 <div className={styles.content}>
                     {Object.values(segments).map((segment, index) => (
                         <div key={index} className={styles.eachBlock} ref={segment.ref}>
