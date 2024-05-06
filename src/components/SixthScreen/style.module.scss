@@ -2,11 +2,20 @@
     width: 100%;
     height: 100%;
 
-    .bgImage {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+    .submit {
+        position: relative;
+        width: 328px;
+        overflow: hidden;
+
+        button {
+            width: 100%;
+            background-color: #101825;
+            color: #FFFFFF;
+            font-size: 28px;
+            font-family: 'Beaufort-Medium';
+            font-weight: 500;
+            line-height: 28px;
+            text-transform: uppercase;
+        }
     }
 }

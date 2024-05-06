@@ -60,7 +60,7 @@ export const MainScreen = () => {
                         visible: { opacity: 1, y: 0, x: 0, scale: 1, height: 61 },
                     }}
                 >
-                    <Button>PRESALE</Button>
+                    <Button withIcon={true}>PRESALE</Button>
                 </motion.div>
             </div>
 

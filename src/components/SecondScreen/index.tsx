@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useInView } from 'react-intersection-observer';
 
 const settings = {
     infinite: true,
@@ -38,6 +39,20 @@ export const SecondScreen = () => {
     const controls = useAnimation();
     const ref1 = useRef(null);
     const pageREf = useRef(null);
+
+    const titleControls = useAnimation();
+    const [refTitle, inVewTitle] = useInView({
+        triggerOnce: false,
+        threshold: 1,
+    });
+
+    useEffect(() => {
+        if (inVewTitle) {
+            titleControls.start('visible')
+        } else {
+            titleControls.start('hidden')
+        }
+    }, [inVewTitle])
     
     const checkCenter = () => {
         if (ref1.current) {
@@ -70,7 +85,7 @@ export const SecondScreen = () => {
     return (
         <div className={styles.container} ref={pageREf}>
             <div className={styles.titleBlock}>
-                <div style={{ width: '168px', display: 'flex', justifyContent: 'center', marginTop: '30px' }}>
+                <div style={{ width: '168px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <motion.div
                         ref={ref1}
                         initial={{ width: '0', height: '29px' }}
@@ -93,15 +108,22 @@ export const SecondScreen = () => {
                     </motion.div>
                 </div>
                 <motion.div
-                    style={{
-                        opacity,
-                        translateY,
+                    ref={refTitle}
+                    animate={titleControls}
+                    initial="hidden"
+                    variants={{
+                        hidden: { opacity: 0, transform: 'translateY(-25px)' },
+                        visible: {
+                            opacity: 1,
+                            transform: 'translateY(0)',
+                            transition: { duration: 0.8 }
+                        }
                     }}
                 >
                     <div>Trea is waiting for you</div>
                 </motion.div>
 
-                <div style={{ width: '168px', display: 'flex', justifyContent: 'center', marginTop: '30px' }}>
+                <div style={{ width: '168px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <motion.div
                         initial={{ width: '0', height: '29px' }}
                         animate={controls}
@@ -124,11 +146,17 @@ export const SecondScreen = () => {
                 </div>
             </div>
             <motion.div
-                style={{
-                    opacity: descriptionOpacity,
-                    translateY: descriptionTranslateY,
-                }}
                 className={styles.description}
+                animate={titleControls}
+                initial="hidden"
+                variants={{
+                    hidden: { opacity: 0, transform: 'translateY(-25px)' },
+                    visible: {
+                        opacity: 1,
+                        transform: 'translateY(0)',
+                        transition: { duration: 0.8, delay: 0.8 }
+                    }
+                }}
             >
                 Embark on a heroic quest to defend Mithruon from the Orgurin onslaught.
             </motion.div>

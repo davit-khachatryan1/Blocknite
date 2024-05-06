@@ -276,7 +276,7 @@ export const FourthScreen = () => {
                                             opacity: 1,
                                             fontSize: '28px',
                                             marginRight: '10px',
-                                            transition: { duration: 0.5, delay: 1.1 }
+                                            transition: { duration: 0.8, delay: 1.1 }
                                         }
                                     }}
                                 >{segment.percent}</motion.div>
@@ -301,7 +301,7 @@ export const FourthScreen = () => {
                                         hidden: { width: 0 },
                                         visible: {
                                             width: segment.lineWidth,
-                                            transition: { duration: 0.5, delay: 0.5 }
+                                            transition: { duration: 0.8, delay: 0.5 }
                                         }
                                     }}
                                     className={styles.line} style={{ width: segment.lineWidth }} />

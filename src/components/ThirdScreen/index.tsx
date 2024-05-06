@@ -116,6 +116,31 @@ export const ThirdScreen = () => {
         }
     }, [controlsBottom, inView, entry]);
 
+    const checkCenter = () => {
+        if (ref1.current) {
+            const rect = (ref1.current as any).getBoundingClientRect();
+            const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+            const center = rect.top + rect.height / 2;
+            const isElementCentered = center > 0 && center < windowHeight / 2;
+
+            if (isElementCentered) {
+                controls.start({
+                    width: '168px',
+                    transition: { duration: 0.5, ease: 'easeOut' }
+                });
+            } else if (center > windowHeight) {
+                controls.start({ width: 0 });
+            }
+        } else {
+            controls.start({ width: 0 });
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener("scroll", checkCenter);
+        return () => window.removeEventListener("scroll", checkCenter);
+    }, []);
+
     return (
         <div className={styles.container}>
             <div className={styles.titleBlock}>
