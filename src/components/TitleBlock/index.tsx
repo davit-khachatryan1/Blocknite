@@ -12,7 +12,7 @@ const TitleBlock = ({ title, description }: any) => {
     const titleControls = useAnimation();
     const [refTitle, inVewTitle] = useInView({
         triggerOnce: false,
-        threshold: 1,
+        threshold: 0,
     });
 
     useEffect(() => {
