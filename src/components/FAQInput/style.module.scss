@@ -1,0 +1,86 @@
+.input {
+    height: 53px;
+    width: 100%;
+    border-radius: 30px;
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid #7C674B;
+    color: #EDD1AB;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22px;
+    font-family: 'Copperplate CC';
+    align-items: center;
+    padding-left: 30px;
+    background: #101825;
+    opacity: 0.7;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+    &:hover {
+        transition: 0.3s;
+        color: #FFFFFF;
+        opacity: 1;
+    }
+
+    .vector {
+        width: 53px;
+        height: 53px;
+        border-radius: 30px;
+        border: 2px solid #7C674B;
+        margin-right: -2px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            transition: 0.8s;
+            transform: rotate(45deg);
+        }
+    }
+}
+
+.textBlock {
+    display: flex;
+    margin-top: -24px;
+    position: relative;
+    background: linear-gradient(to bottom, #101825, #10182500);
+    ;
+
+    .divide {
+        width: 4px;
+        height: 100px;
+        opacity: 0.8;
+        background: linear-gradient(to bottom, #7C674B, #7C674B30);
+
+        &:first-of-type {
+            margin-right: 20px;
+        }
+
+        &:last-of-type {
+            margin-left: 20px;
+        }
+    }
+
+    .text {
+        padding-top: 24px;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 22px;
+        color: #EDD1AB;
+        margin-top: 20px;
+    }
+}
+
+.active {
+    .input {
+        opacity: 1;
+        color: #FFFFFF;
+        .vector {
+            img {
+                transition: 0.75s;
+                transform: rotate(0);
+            }
+        }
+    }
+}
