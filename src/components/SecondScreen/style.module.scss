@@ -3,7 +3,7 @@
 .container {
     width: 100%;
     height: 100%;
-    padding: calcVW(60) calcVW(80) 0 calcVW(80);
+    padding: calcVW(80);
     display: flex;
     flex-direction: column;
 
@@ -64,6 +64,7 @@
 
             .swiperElement {
                 cursor: pointer;
+
                 img {
                     height: calcVW(40);
                     width: auto;
