@@ -21,25 +21,7 @@ export const MainScreen = () => {
                     transition={{ duration: 0.7 }}
                 />
                 <Typewriter text="ALTARIN" classname="altarin" />
-                <motion.hr
-                    className={styles.line}
-                    initial="hidden"
-                    animate="visible"
-                    transition={{ duration: 0.7, delay: 1 }}
-                    variants={{
-                        hidden: { width: '0' },
-                        visible: { width: '100%' },
-                    }} />
                 <Typewriter text="Defend your home" classname="name" delay={1000} />
-                <motion.hr
-                    className={styles.line}
-                    initial="hidden"
-                    animate="visible"
-                    transition={{ duration: 0.7, delay: 1 }}
-                    variants={{
-                        hidden: { width: '0' },
-                        visible: { width: '100%' },
-                    }} />
                 <motion.div
                     className={styles.description}
                     initial="hidden"
@@ -47,7 +29,7 @@ export const MainScreen = () => {
                     transition={{ duration: 0.5, delay: 1.5 }}
                     variants={{
                         hidden: { opacity: 1, y: 0, x: 0, scale: 1, height: 0 },
-                        visible: { opacity: 1, y: 0, x: 0, scale: 1, height: calcVW('70px') },
+                        visible: { opacity: 1, y: 0, x: 0, scale: 1, height: calcVW('35px') },
                     }}
                 >
                     Stop the Orgurin, The fate of Trea is in your hands.

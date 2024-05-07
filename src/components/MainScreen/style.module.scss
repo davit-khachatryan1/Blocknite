@@ -20,18 +20,9 @@
         position: relative;
     }
 
-    .line {
-        border-color: #DEA963;
-        background: #DEA963;
-        position: relative;
-        max-width: calcVW(412);
-        margin-left: 0;
-        height: calcVW(2);
-    }
-
     .presale {
         position: relative;
-        width: 100%;
+        width: calcVW(308);
         overflow: hidden;
 
         button {
@@ -119,7 +110,6 @@
     .infoBlock {
         display: flex;
         flex-direction: column;
-        align-items: center;
         width: max-content;
     }
 
@@ -129,8 +119,6 @@
         font-family: 'Copperplate CC';
         font-size: calcVW(22);
         line-height: calcVW(30.36);
-        text-align: center;
-        max-width: calcVW(412);
         color: #EDD1AB;
         margin: calcVW(20) 0;
         overflow: hidden;

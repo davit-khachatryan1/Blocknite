@@ -14,13 +14,12 @@
 .name {
     position: relative;
     font-weight: 700;
-    font-size: calcVW(34);
-    line-height: calcVW(46.92);
+    font-size: calcVW(100);
+    line-height: calcVW(138);
     color: #DEA963;
     text-transform: uppercase;
     font-family: 'Copperplate CC';
-    margin: calcVW(15) 0;
-    height: calcVW(47);
+    height: calcVW(138);
 }
 
 .titleOrange {
@@ -29,7 +28,7 @@
     font-weight: 700;
     line-height: calcVW(38);
     font-family: 'Copperplate CC';
-    color: #DEA963;
+    color: #de638c;
 }
 
 .titleWhite {
