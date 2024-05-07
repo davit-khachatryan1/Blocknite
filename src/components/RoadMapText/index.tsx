@@ -2,6 +2,7 @@ import { motion, useAnimation } from 'framer-motion';
 import styles from './style.module.scss'
 import { useInView } from 'react-intersection-observer';
 import { useEffect } from 'react';
+import { calcVW } from '../../utils/hooks/functions';
 
 export const RoadMapText = ({ right = false, texts = [] }: { texts: string[], right?: boolean }) => {
     const controls = useAnimation();
@@ -27,7 +28,7 @@ export const RoadMapText = ({ right = false, texts = [] }: { texts: string[], ri
             variants={{
                 hidden: {
                     opacity: 0,
-                    ...(right ? { marginLeft: '-100px', marginRight: '100px' } : { marginLeft: '100px', marginRight: '-100px' }),
+                    ...(right ? { marginLeft: calcVW('-100px'), marginRight: calcVW('100px') } : { marginLeft: calcVW('100px'), marginRight: calcVW('-100px') }),
                 },
                 visible: {
                     opacity: 1,

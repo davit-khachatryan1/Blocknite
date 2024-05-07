@@ -1,35 +1,39 @@
+@import "../../styles/abstract/functions";
+
 .button {
-    padding: 12px 24px;
-    border: 2px solid #DEA963;
-    border-radius: 50px;
+    padding: calcVW(12) calcVW(24);
+    border: calcVW(2) solid #DEA963;
+    border-radius: calcVW(50);
     position: relative;
     cursor: pointer;
 
     .icon {
         position: absolute;
+        width: calcVW(16);
+        height: calcVW(16);
 
         &:nth-of-type(1) {
             transform: rotate(0deg);
-            left: -2px;
-            top: -2px;
+            left: calcVW(-2);
+            top: calcVW(-2);
         }
 
         &:nth-of-type(2) {
             transform: rotate(90deg);
-            right: -2px;
-            top: -2px;
+            right: calcVW(-2);
+            top: calcVW(-2);
         }
 
         &:nth-of-type(3) {
             transform: rotate(180deg);
-            right: -2px;
-            bottom: -2px;
+            right: calcVW(-2);
+            bottom: calcVW(-2);
         }
-        
+
         &:nth-of-type(4) {
             transform: rotate(270deg);
-            left: -2px;
-            bottom: -2px;
+            left: calcVW(-2);
+            bottom: calcVW(-2);
         }
     }
 }

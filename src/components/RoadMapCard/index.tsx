@@ -2,6 +2,7 @@ import { motion, useAnimation } from 'framer-motion';
 import styles from './style.module.scss'
 import { useInView } from 'react-intersection-observer';
 import { useEffect } from 'react';
+import { calcVW } from '../../utils/hooks/functions';
 
 export const RoadMapCard = ({ right = false, title = 'Pre-Launch' }) => {
     const controls = useAnimation();
@@ -27,7 +28,7 @@ export const RoadMapCard = ({ right = false, title = 'Pre-Launch' }) => {
             variants={{
                 hidden: { width: '0' },
                 visible: {
-                    width: '358px',
+                    width: calcVW('358px'),
                     transition: { duration: 0.8, delay: 0.5 }
                 }
             }}

@@ -4,7 +4,8 @@ export const Screen = ({ id, component, imageUrl }: any) => {
   return <div style={{
     // height: '100vh',
     width: '100%',
-    position: 'relative'
+    position: 'relative',
+    display: 'flex'
   }}
     id={id}
   >

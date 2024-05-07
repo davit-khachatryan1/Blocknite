@@ -4,6 +4,7 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import TitleBlock from '../TitleBlock';
+import { calcVW } from '../../utils/hooks/functions';
 
 const settings = {
     infinite: true,
@@ -66,7 +67,7 @@ export const SecondScreen = () => {
                 <div className={styles.carouselContainer}>
                     <Slider {...settings}>
                         {items.map((item, index) =>
-                            <div className={styles.swiperElement} key={index}> <img src={item.src} alt={`Slide ${index}`} style={{ height: '40px', width: 'auto', objectFit: 'contain' }} /></div>
+                            <div className={styles.swiperElement} key={index}> <img src={item.src} alt={`Slide ${index}`} style={{ height: calcVW('40px'), width: 'auto', objectFit: 'contain' }} /></div>
                         )}
                     </Slider>
                 </div>

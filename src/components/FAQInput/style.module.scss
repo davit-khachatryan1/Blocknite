@@ -1,17 +1,18 @@
+@import "../../styles/abstract/functions";
+
 .input {
-    height: 53px;
+    height: calcVW(53);
     width: 100%;
-    border-radius: 30px;
+    border-radius: calcVW(30);
     display: flex;
     justify-content: space-between;
-    border: 2px solid #7C674B;
+    border: calcVW(2) solid #7C674B;
     color: #EDD1AB;
-    font-size: 16px;
+    font-size: calcVW(16);
     font-weight: 700;
-    line-height: 22px;
     font-family: 'Copperplate CC';
     align-items: center;
-    padding-left: 30px;
+    padding-left: calcVW(30);
     background: #101825;
     opacity: 0.7;
     position: relative;
@@ -24,11 +25,11 @@
     }
 
     .vector {
-        width: 53px;
-        height: 53px;
-        border-radius: 30px;
-        border: 2px solid #7C674B;
-        margin-right: -2px;
+        width: calcVW(53);
+        height: calcVW(53);
+        border-radius: calcVW(30);
+        border: calcVW(2) solid #7C674B;
+        margin-right: calcVW(-2);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -36,39 +37,41 @@
         img {
             transition: 0.8s;
             transform: rotate(45deg);
+            width: calcVW(18.9);
+            height: calcVW(18.9);
         }
     }
 }
 
 .textBlock {
     display: flex;
-    margin-top: -24px;
+    margin-top: calcVW(-24);
     position: relative;
     background: linear-gradient(to bottom, #101825, #10182500);
     ;
 
     .divide {
-        width: 4px;
-        height: 100px;
+        width: calcVW(4);
+        height: auto;
         opacity: 0.8;
         background: linear-gradient(to bottom, #7C674B, #7C674B30);
 
         &:first-of-type {
-            margin-right: 20px;
+            margin-right: calcVW(20);
         }
 
         &:last-of-type {
-            margin-left: 20px;
+            margin-left: calcVW(20);
         }
     }
 
     .text {
-        padding-top: 24px;
+        padding-top: calcVW(24);
         font-weight: 500;
-        font-size: 16px;
-        line-height: 22px;
+        font-size: calcVW(16);
+        line-height: calcVW(22);
         color: #EDD1AB;
-        margin-top: 20px;
+        margin-top: calcVW(20);
     }
 }
 

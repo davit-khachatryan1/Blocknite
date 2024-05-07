@@ -1,7 +1,9 @@
+@import "../../styles/abstract/functions";
+
 .container {
     display: flex;
     flex-direction: column;
-    row-gap: 25px;
+    row-gap: calcVW(25);
     align-items: end;
 
     .navElement {
@@ -10,18 +12,18 @@
         color: #7C674B;
         font-family: 'Copperplate CC';
         font-weight: 700;
-        font-size: 16px;
-        line-height: 22.08px;
-        column-gap: 25px;
+        font-size: calcVW(16);
+        line-height: calcVW(22.08);
+        column-gap: calcVW(25);
         align-items: center;
         text-transform: uppercase;
         cursor: pointer;
 
         .round {
             transition: all 0.3s;
-            width: 16px;
-            height: 16px;
-            border: 2px solid #7C674B;
+            width: calcVW(16);
+            height: calcVW(16);
+            border: calcVW(2) solid #7C674B;
             border-radius: 50%;
         }
 
@@ -31,7 +33,7 @@
 
             .round {
                 background-image: radial-gradient(#EDD1AB 0%, #785B36 100%);
-                box-shadow: 0px 4px 16px -2px rgba(237, 209, 171, 0.5);
+                box-shadow: 0 calcVW(4) calcVW(16) calcVW(-2) rgba(237, 209, 171, 0.5);
             }
         }
     }
@@ -43,7 +45,7 @@
         .round {
             transition: all 0.3s;
             background-image: radial-gradient(#EDD1AB 0%, #785B36 100%);
-            box-shadow: 0px 4px 16px -2px rgba(237, 209, 171, 0.5);
+            box-shadow: 0 calcVW(4) calcVW(16) calcVW(-2) rgba(237, 209, 171, 0.5);
         }
     }
 }

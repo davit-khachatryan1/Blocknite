@@ -1,8 +1,9 @@
-import {useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 import styles from './style.module.scss';
+import { calcVW } from '../../utils/hooks/functions';
 
 const TitleBlock = ({ title, description }: any) => {
     const controls = useAnimation();
@@ -32,7 +33,7 @@ const TitleBlock = ({ title, description }: any) => {
             const isElementCentered = center > 0 && center < windowHeight / 2;
             if (isElementCentered) {
                 controls.start({
-                    width: '168px',
+                    width: calcVW('168px'),
                     transition: { duration: 0.5, ease: 'easeOut' }
                 });
             } else if (center > windowHeight) {
@@ -53,13 +54,13 @@ const TitleBlock = ({ title, description }: any) => {
     return <>
 
         <div className={styles.titleBlock}>
-            <div style={{ width: '168px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <div style={{ width: calcVW('168px'), display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <motion.div
                     ref={ref1}
-                    initial={{ width: '0', height: '29px' }}
+                    initial={{ width: '0', height: calcVW('29px') }}
                     animate={controls}
                     style={{
-                        height: '29px',
+                        height: calcVW('29px'),
                         overflow: 'hidden',
                         position: 'relative',
                         display: 'flex',
@@ -80,7 +81,7 @@ const TitleBlock = ({ title, description }: any) => {
                 animate={titleControls}
                 initial="hidden"
                 variants={{
-                    hidden: { opacity: 0, transform: 'translateY(-25px)' },
+                    hidden: { opacity: 0, transform: `translateY(${calcVW('-25px')})` },
                     visible: {
                         opacity: 1,
                         transform: 'translateY(0)',
@@ -91,12 +92,12 @@ const TitleBlock = ({ title, description }: any) => {
                 <div>{title}</div>
             </motion.div>
 
-            <div style={{ width: '168px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <div style={{ width: calcVW('168px'), display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <motion.div
-                    initial={{ width: '0', height: '29px' }}
+                    initial={{ width: '0', height: calcVW('29px') }}
                     animate={controls}
                     style={{
-                        height: '29px',
+                        height: calcVW('29px'),
                         overflow: 'hidden',
                         position: 'relative',
                         display: 'flex',
@@ -118,7 +119,7 @@ const TitleBlock = ({ title, description }: any) => {
             animate={titleControls}
             initial="hidden"
             variants={{
-                hidden: { opacity: 0, transform: 'translateY(-25px)' },
+                hidden: { opacity: 0, transform: `translateY(${calcVW('-25px')})` },
                 visible: {
                     opacity: 1,
                     transform: 'translateY(0)',

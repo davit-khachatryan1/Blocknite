@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion';
-import styles from './style.module.scss'
 import { Button } from '../Button';
 import Typewriter from '../TypeWriter';
+import { calcVW } from '../../utils/hooks/functions';
+
+import styles from './style.module.scss'
 
 export const MainScreen = () => {
     return (
@@ -45,7 +47,7 @@ export const MainScreen = () => {
                     transition={{ duration: 0.5, delay: 1.5 }}
                     variants={{
                         hidden: { opacity: 1, y: 0, x: 0, scale: 1, height: 0 },
-                        visible: { opacity: 1, y: 0, x: 0, scale: 1, height: 61 },
+                        visible: { opacity: 1, y: 0, x: 0, scale: 1, height: calcVW('65px') },
                     }}
                 >
                     Stop the Orgurin, The fate of Trea is in your hands.
@@ -57,7 +59,7 @@ export const MainScreen = () => {
                     transition={{ duration: 0.5, delay: 2 }}
                     variants={{
                         hidden: { opacity: 1, y: 0, x: 0, scale: 1, height: 0 },
-                        visible: { opacity: 1, y: 0, x: 0, scale: 1, height: 61 },
+                        visible: { opacity: 1, y: 0, x: 0, scale: 1, height: calcVW('65px') },
                     }}
                 >
                     <Button withIcon={true}>PRESALE</Button>
@@ -72,7 +74,7 @@ export const MainScreen = () => {
                     transition={{ duration: 0.5, delay: 2.5 }}
                     variants={{
                         hidden: { opacity: 1, y: 0, x: 0, scale: 1, height: 0 },
-                        visible: { opacity: 1, y: 0, x: 0, scale: 1, height: 61 },
+                        visible: { opacity: 1, y: 0, x: 0, scale: 1, height: calcVW('50px') },
                     }}
                 >
                     <div className={styles.twoButton}>
@@ -87,7 +89,7 @@ export const MainScreen = () => {
                     transition={{ duration: 0.5, delay: 2.5 }}
                     variants={{
                         hidden: { opacity: 1, y: 0, x: 0, scale: 1, height: 0 },
-                        visible: { opacity: 1, y: 0, x: 0, scale: 1, height: 61 },
+                        visible: { opacity: 1, y: 0, x: 0, scale: 1, height: calcVW('50px') },
                     }}
                 >
                     <div className={`${styles.twoButton} ${styles.copyBlock}`}>

@@ -1,7 +1,9 @@
+@import "../../styles/abstract/functions";
+
 .container {
     width: 100%;
     height: 100%;
-    padding: 60px 0 0 80px;
+    padding: calcVW(60) 0 0 calcVW(80);
 
     .bgImage {
         position: absolute;
@@ -12,8 +14,8 @@
     }
 
     .logo {
-        width: 261px;
-        height: 177px;
+        width: calcVW(261);
+        height: calcVW(177);
         object-fit: cover;
         position: relative;
     }
@@ -22,9 +24,9 @@
         border-color: #DEA963;
         background: #DEA963;
         position: relative;
-        max-width: 412px;
+        max-width: calcVW(412);
         margin-left: 0;
-        height: 2px;
+        height: calcVW(2);
     }
 
     .presale {
@@ -36,17 +38,16 @@
             width: 100%;
             background-color: #101825;
             color: #FFFFFF;
-            font-size: 28px;
+            font-size: calcVW(28);
             font-family: 'Beaufort-Medium';
             font-weight: 500;
-            line-height: 28px;
         }
     }
 
     .buttonContainer {
         display: flex;
-        column-gap: 30px;
-        margin-top: 130px;
+        column-gap: calcVW(30);
+        margin-top: calcVW(130);
     }
 
     .twoButtonMain {
@@ -57,59 +58,60 @@
             display: flex;
             width: max-content;
             background-color: #10182550;
-            border: 2px solid #7C674B;
-            border-radius: 50px;
+            border: calcVW(2) solid #7C674B;
+            border-radius: calcVW(50);
+            height: 100%;
 
             button {
                 color: #7C674B;
-                font-size: 16px;
+                font-size: calcVW(16);
                 font-family: 'Copperplate CC';
                 font-weight: 700;
-                line-height: 22px;
                 border: none;
                 background: transparent;
-                padding: 12px 24px;
+                padding: calcVW(12) calcVW(24);
             }
 
             :global(.active) {
-                margin: -2px 0 -2px -2px;
-                border: 2px solid #DEA963;
+                margin: calcVW(-2) 0 calcVW(-2) calcVW(-2);
+                border: calcVW(2) solid #DEA963;
                 color: #DEA963;
             }
         }
 
         .copyBlock {
             color: #7C674B;
-            font-size: 16px;
+            font-size: calcVW(16);
             font-family: 'Copperplate CC';
             font-weight: 700;
-            line-height: 22px;
+            line-height: calcVW(22);
             display: flex;
             align-items: center;
-            column-gap: 20px;
-            padding-right: 30px;
+            column-gap: calcVW(20);
+            padding-right: calcVW(30);
+            height: calcVW(50);
 
             .copy {
-                margin: -2px 0 -2px -2px;
-                border: 2px solid #DEA963;
+                margin: calcVW(-2) 0 calcVW(-2) calcVW(-2);
+                border: calcVW(2) solid #DEA963;
                 color: #DEA963;
-                width: 44px;
-                height: 44px;
-                border-radius: 44px;
+                width: calcVW(44);
+                height: calcVW(44);
+                border-radius: calcVW(44);
                 position: relative;
 
                 .square {
-                    width: 14px;
-                    height: 14px;
-                    border: 2px solid #DEA963;
-                    border-radius: 2px;
+                    width: calcVW(14);
+                    height: calcVW(14);
+                    border: calcVW(2) solid #DEA963;
+                    border-radius: calcVW(2);
                     position: absolute;
-                    top: 10px;
-                    left: 10px;
+                    top: calcVW(10);
+                    left: calcVW(10);
                 }
                 .square:last-of-type{
-                    top: 15px;
-                    left: 15px;
+                    top: calcVW(15);
+                    left: calcVW(15);
                 }
             }
         }
@@ -126,12 +128,12 @@
         position: relative;
         font-weight: 700;
         font-family: 'Copperplate CC';
-        font-size: 22px;
-        line-height: 30.36px;
+        font-size: calcVW(22);
+        line-height: calcVW(30.36);
         text-align: center;
-        max-width: 412px;
+        max-width: calcVW(412);
         color: #EDD1AB;
-        margin: 20px 0;
+        margin: calcVW(20) 0;
         overflow: hidden;
     }
 }

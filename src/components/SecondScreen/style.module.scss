@@ -1,45 +1,56 @@
+@import "../../styles/abstract/functions";
+
 .container {
     width: 100%;
     height: 100%;
-    padding: 60px 80px 0 80px;
+    padding: calcVW(60) calcVW(80) 0 calcVW(80);
     display: flex;
     flex-direction: column;
 
     .playButton {
         position: absolute;
-        width: 176px;
-        height: 176px;
+        width: calcVW(176);
+        height: calcVW(176);
         display: flex;
         justify-content: center;
         align-items: center;
-        left: calc(50% - 88px);
-        top: calc(50% - 88px);
+        left: calc(50% - calcVW(88));
+        top: calc(50% - calcVW(88));
+
+        .mainCircle {
+            width: calcVW(144);
+            height: calcVW(144);
+        }
 
         .partCircle1 {
             position: absolute;
             left: 0;
             top: 0;
+            width: calcVW(178);
+            height: calcVW(178);
         }
 
         .partCircle2 {
             position: absolute;
-            left: 8px;
-            top: 8px;
+            left: calcVW(8);
+            top: calcVW(8);
+            width: calcVW(161);
+            height: calcVW(161);
         }
     }
 
     .carousel {
         margin-top: auto;
-        margin-bottom: 140px;
+        margin-bottom: calcVW(140);
         width: 100%;
         display: flex;
-        column-gap: 100px;
+        column-gap: calcVW(100);
         align-items: center;
 
         .title {
             font-weight: 500;
-            font-size: 30px;
-            line-height: 30px;
+            font-size: calcVW(30);
+            line-height: calcVW(30);
             font-family: 'Beaufort-Medium';
             color: #DEA963;
             position: relative;
@@ -49,12 +60,12 @@
 
         .carouselContainer {
             position: relative;
-            width: 1433px;
+            width: calcVW(1433);
 
             .swiperElement {
                 cursor: pointer;
                 img {
-                    height: 40px;
+                    height: calcVW(40);
                     width: auto;
                     margin: 0 auto;
                     outline: none !important;

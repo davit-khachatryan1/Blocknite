@@ -1,17 +1,19 @@
+@import "../../styles/abstract/functions";
+
 .container {
     overflow: hidden;
-    width: 358px;
-    height: 78px;
+    width: calcVW(358);
+    height: calcVW(78);
     position: absolute;
     display: flex;
     align-items: center;
     .title {
         color: #101825;
         text-transform: uppercase;
-        font-size: 22px;
-        line-height: 30px;
+        font-size: calcVW(22);
+        line-height: calcVW(30);
         font-weight: 700;
-        width: 270px;
+        width: calcVW(270);
         text-align: center;
         position: relative;
         z-index: 1;
@@ -21,17 +23,19 @@
         position: absolute;
         top: 0;
         left: 0;
+        width: calcVW(359);
+        height: calcVW(78);
     }
 }
 
 .right {
     margin-right: auto;
-    height: 78px;
+    height: calcVW(78);
     position: relative;
 }
 
 .left {
-    height: 78px;
+    height: calcVW(78);
     margin-left: auto;
     position: relative;
 }

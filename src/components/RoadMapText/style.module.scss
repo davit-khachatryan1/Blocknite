@@ -1,24 +1,29 @@
-    .info {
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 22px;
-        text-transform: uppercase;
-        color: #101825;
-        margin-top: 30px;
-        .dot {
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            background: #101825;
-            margin-top: 8px;
-        }
-        .text {
-            text-wrap: wrap;
-            max-width: 240px;
-        }
-        div {
-            display: flex;
-            column-gap: 5px;
-            
-        }
+@import "../../styles/abstract/functions";
+
+.info {
+    font-weight: 500;
+    font-size: calcVW(16);
+    line-height: calcVW(22);
+    text-transform: uppercase;
+    color: #101825;
+    margin-top: calcVW(30);
+
+    .dot {
+        width: calcVW(5);
+        height: calcVW(5);
+        border-radius: 50%;
+        background: #101825;
+        margin-top: calcVW(8);
     }
+
+    .text {
+        text-wrap: wrap;
+        max-width: calcVW(240);
+    }
+
+    div {
+        display: flex;
+        column-gap: calcVW(5);
+
+    }
+}

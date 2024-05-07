@@ -1,12 +1,14 @@
+@import "../../styles/abstract/functions";
+
 .container {
     width: 100%;
     height: 100%;
     position: relative;
 
     .titleBlock {
-        width: 409.52px;
-        height: 112px;
-        margin-top: 100px;
+        width: calcVW(409.52);
+        height: calcVW(112);
+        margin-top: calcVW(100);
 
         .title {
             display: flex;
@@ -15,17 +17,17 @@
             position: relative;
             width: 100%;
             height: 100%;
-            line-height: 48px;
-            font-size: 48px;
+            line-height: calcVW(48);
+            font-size: calcVW(48);
             font-family: 'Beaufort-Medium';
             font-weight: 500;
             text-transform: uppercase;
             color: #DEA963;
             background: #101825;
             opacity: 0.8;
-            border: 2px solid #7C674B;
+            border: calcVW(2) solid #7C674B;
             border-left: 0;
-            border-radius: 0 80px 80px 0;
+            border-radius: 0 calcVW(80) calcVW(80) 0;
 
             img {
                 position: absolute;
@@ -46,41 +48,41 @@
 
     .map {
         display: flex;
-        padding: 80px 0 0 80px;
+        padding: calcVW(80) 0 0 calcVW(80);
 
         .lineBlock {
             overflow: hidden;
         }
         .infoElement {
-            width: 358px;
+            width: calcVW(358);
 
             &:last-of-type {
-                margin-left: -33px;
+                margin-left: calcVW(-33);
                 .oneBlock {
                     &:nth-of-type(1) {
-                        margin-top: 130px;
+                        margin-top: calcVW(130);
                     }
                     &:nth-of-type(2) {
-                        margin-top: 100px;
+                        margin-top: calcVW(100);
                     }
                 }
                 .info {
-                    margin-left: 100px;
+                    margin-left: calcVW(100);
                 }
             }
 
             &:first-of-type {
-                margin-right: -33px;
+                margin-right: calcVW(-33);
                 .oneBlock {
                     &:nth-of-type(2) {
-                        margin-top: 75px;
+                        margin-top: calcVW(75);
                     }
                 }
             }
         }
 
         .mainLine {
-            margin-top: 17px;
+            margin-top: calcVW(17);
         }
     }
 }

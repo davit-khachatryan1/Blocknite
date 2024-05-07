@@ -3,6 +3,7 @@ import styles from './style.module.scss';
 import { useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import Typewriter from '../TypeWriter';
+import { calcVW } from '../../utils/hooks/functions';
 
 function polarToCartesian(centerX: number, centerY: number, radius: number, angleInDegrees: number) {
     const angleInRadians = (angleInDegrees - 90) * Math.PI / 180.0;
@@ -25,8 +26,8 @@ function describeArc(x: number, y: number, radius: number, startAngle: number, e
 
 export const FourthScreen = () => {
 
-    const strokeWidth = 108;
-    const radius = 240;
+    const strokeWidth = calcVW(108);
+    const radius = calcVW(240) as number;
 
     const refMain = useRef(null);
 
@@ -173,7 +174,7 @@ export const FourthScreen = () => {
             rotation: -50,
             degrees: 270,
             percent: '80%',
-            lineWidth: 800,
+            lineWidth: calcVW(800),
             title: 'Ecosystem',
             value: '2 000 000 000',
             animate: blockControls1,
@@ -184,7 +185,7 @@ export const FourthScreen = () => {
             rotation: 221.5,
             degrees: 5,
             percent: '10%',
-            lineWidth: 650,
+            lineWidth: calcVW(650),
             title: 'Presale',
             value: '250 000 000',
             animate: blockControls4,
@@ -195,7 +196,7 @@ export const FourthScreen = () => {
             rotation: 228,
             degrees: 38.5,
             percent: '9%',
-            lineWidth: 650,
+            lineWidth: calcVW(650),
             title: 'Liquidity',
             value: '225 000 000',
             animate: blockControls3,
@@ -206,7 +207,7 @@ export const FourthScreen = () => {
             rotation: 268,
             degrees: 40.5,
             percent: '1%',
-            lineWidth: 690,
+            lineWidth: calcVW(690),
             title: 'Airdrop',
             value: '25 000 000',
             animate: blockControls2,
@@ -217,14 +218,14 @@ export const FourthScreen = () => {
     return (
         <div className={styles.container} ref={refMain}>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', position: 'absolute', left: 0, top: 0, width: '100%' }}>
-                <motion.svg width="595" height="595" viewBox="0 0 595 595" >
+                <motion.svg width={`${calcVW(595)}`} height={`${calcVW(595)}`} viewBox={`0 0 ${calcVW(595)} ${calcVW(595)}"`} >
                     {Object.values(segments).map((segment, index) => (
                         <motion.path
                             key={index}
                             fill="none"
                             strokeWidth={strokeWidth}
                             stroke={segment.color}
-                            d={describeArc(297.5, 297.5, radius, segment.rotation, segment.rotation + segment.degrees)}
+                            d={describeArc(calcVW(297.5) as number, calcVW(297.5) as number, radius, segment.rotation, segment.rotation + segment.degrees)}
                             initial={{ pathLength: 0 }}
                             animate={segment.animate}
                             custom={index}
@@ -253,7 +254,7 @@ export const FourthScreen = () => {
                     animate={titleControls}
                     initial="hidden"
                     variants={{
-                        hidden: { opacity: 0, transform: 'translateY(-25px)' },
+                        hidden: { opacity: 0, transform: `translateY(${calcVW('-25px')})` },
                         visible: {
                             opacity: 1,
                             transform: 'translateY(0)',
@@ -271,11 +272,11 @@ export const FourthScreen = () => {
                                     animate={Object.values(animations)[index].percent}
                                     initial="hidden"
                                     variants={{
-                                        hidden: { opacity: 0, fontSize: '0px', marginRight: '0px' },
+                                        hidden: { opacity: 0, fontSize: '0', marginRight: '0' },
                                         visible: {
                                             opacity: 1,
-                                            fontSize: '28px',
-                                            marginRight: '10px',
+                                            fontSize: calcVW('28px'),
+                                            marginRight: calcVW('10px'),
                                             transition: { duration: 0.8, delay: 1.1 }
                                         }
                                     }}
@@ -311,7 +312,7 @@ export const FourthScreen = () => {
                                     variants={{
                                         hidden: { width: 0, height: 0 },
                                         visible: {
-                                            width: 8, height: 8,
+                                            width: calcVW(8), height: calcVW(8),
                                             transition: { duration: 0.1, delay: 1 }
                                         }
                                     }}

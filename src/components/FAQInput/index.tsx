@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
@@ -33,7 +33,7 @@ const FAQInput = ({ title, description, index, setActive, active }: any) => {
             initial="hidden"
             variants={{
                 hidden: {
-                    opacity: 0, height: '0px',
+                    opacity: 0, height: '0',
                     transition: { duration: 0.75 }
                 },
                 visible: {

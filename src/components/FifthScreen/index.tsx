@@ -4,6 +4,7 @@ import { useInView } from 'react-intersection-observer';
 import { useEffect } from 'react';
 import { RoadMapCard } from '../RoadMapCard';
 import { RoadMapText } from '../RoadMapText';
+import { calcVW } from '../../utils/hooks/functions';
 
 export const FifthScreen = () => {
 
@@ -45,26 +46,26 @@ export const FifthScreen = () => {
         if (inViewTitle4) {
             lineControls.stop()
             lineControls.start({
-                height: '732px',
+                height: calcVW('732px'),
                 transition: { duration: 0.5 }
             })
         } else if (inViewTitle3) {
             lineControls.stop()
             lineControls.start({
-                height: '600px',
+                height: calcVW('600px'),
                 transition: { duration: 0.5 }
             })
 
         } else if (inViewTitle2) {
             lineControls.stop()
             lineControls.start({
-                height: '400px',
+                height: calcVW('400px'),
                 transition: { duration: 0.5 }
             })
         } else if (inViewTitle1) {
             lineControls.stop()
             lineControls.start({
-                height: '200px',
+                height: calcVW('200px'),
                 transition: { duration: 0.5 }
             })
         }
@@ -95,7 +96,7 @@ export const FifthScreen = () => {
                         variants={{
                             hidden: { width: '0', height: '0' },
                             visible: {
-                                width: 'auto', height: 'auto',
+                                width: calcVW('34px'), height: calcVW('34px'),
                                 transition: { duration: 0.3, delay: 0.8 }
                             }
                         }} />
@@ -106,7 +107,7 @@ export const FifthScreen = () => {
                         variants={{
                             hidden: { width: '0', height: '0' },
                             visible: {
-                                width: 'auto', height: 'auto',
+                                width: calcVW('34px'), height: calcVW('34px'),
                                 transition: { duration: 0.3, delay: 0.8 }
                             }
                         }} />

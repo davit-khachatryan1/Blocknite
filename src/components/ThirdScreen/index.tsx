@@ -6,6 +6,7 @@ import Typewriter from '../TypeWriter';
 
 import styles from './style.module.scss';
 import TitleBlock from '../TitleBlock';
+import { calcVW } from '../../utils/hooks/functions';
 
 const settings = {
     infinite: true,
@@ -52,17 +53,17 @@ export const ThirdScreen = () => {
     const updateHeight = () => {
         let obj = { first: true, second: true, third: true };
         if (inViewFirstBlock3) {
-            blockControls1.start({ height: '199px', transition: { duration: 0.5 } });
-            blockControls2.start({ height: '199px', transition: { duration: 0.5 } });
-            blockControls3.start({ height: '199px', transition: { duration: 0.5 } });
+            blockControls1.start({ height: calcVW('199px'), transition: { duration: 0.5 } });
+            blockControls2.start({ height: calcVW('199px'), transition: { duration: 0.5 } });
+            blockControls3.start({ height: calcVW('199px'), transition: { duration: 0.5 } });
             obj = { first: true, second: true, third: true };
         } else if (inViewFirstBlock2) {
-            blockControls1.start({ height: '199px', transition: { duration: 0.5 } });
-            blockControls2.start({ height: '199px', transition: { duration: 0.5 } });
+            blockControls1.start({ height: calcVW('199px'), transition: { duration: 0.5 } });
+            blockControls2.start({ height: calcVW('199px'), transition: { duration: 0.5 } });
             blockControls3.start({ height: '0', transition: { duration: 0.2 } });
             obj = { first: true, second: true, third: false };
         } else if (inViewFirstBlock1) {
-            blockControls1.start({ height: '199px', transition: { duration: 0.5 } });
+            blockControls1.start({ height: calcVW('199px'), transition: { duration: 0.5 } });
             blockControls2.start({ height: '0', transition: { duration: 0.2 } });
             blockControls3.start({ height: '0', transition: { duration: 0.2 } });
             obj = { first: true, second: false, third: false };
@@ -177,12 +178,12 @@ export const ThirdScreen = () => {
                 ref={ref}
                 className={styles.bottomContainer}>
                 <motion.img
+                    className={styles.decorations}
                     src='/icons/decorations.svg'
-
                     initial="hidden"
                     animate={controlsBottom}
                     variants={{
-                        hidden: { opacity: 0, marginLeft: '-200px' },
+                        hidden: { opacity: 0, marginLeft: calcVW('-200px') },
                         visible: {
                             opacity: 1,
                             marginLeft: '0',
