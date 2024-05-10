@@ -5,7 +5,7 @@ import { useInView } from 'react-intersection-observer';
 import styles from './style.module.scss';
 import { calcVW } from '../../utils/hooks/functions';
 
-const TitleBlock = ({ title, description }: any) => {
+const TitleBlock = ({ title, description, mobileClassName, descriptionBottom }: any) => {
     const controls = useAnimation();
     const ref1 = useRef(null);
 
@@ -54,7 +54,7 @@ const TitleBlock = ({ title, description }: any) => {
     return <>
 
         <div className={styles.titleBlock}>
-            <div style={{ width: calcVW('168px'), display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <div style={{ width: calcVW('168px'), display: 'flex', justifyContent: 'center', alignItems: 'center' }} className={mobileClassName && styles.isMobile}>
                 <motion.div
                     ref={ref1}
                     initial={{ width: '0', height: calcVW('29px') }}
@@ -92,7 +92,7 @@ const TitleBlock = ({ title, description }: any) => {
                 <div>{title}</div>
             </motion.div>
 
-            <div style={{ width: calcVW('168px'), display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <div style={{ width: calcVW('168px'), display: 'flex', justifyContent: 'center', alignItems: 'center' }} className={mobileClassName && styles.isMobile}>
                 <motion.div
                     initial={{ width: '0', height: calcVW('29px') }}
                     animate={controls}
@@ -115,7 +115,7 @@ const TitleBlock = ({ title, description }: any) => {
             </div>
         </div>
         <motion.div
-            className={styles.description}
+            className={`${styles.description} ${descriptionBottom && styles.descriptionBottom}`}
             animate={titleControls}
             initial="hidden"
             variants={{

@@ -14,7 +14,15 @@ const settings = {
     autoplay: true,
     autoplaySpeed: 7000,
     nextArrow: <img src='/icons/arrow-right-slider.svg' />,
-    prevArrow: <img src='/icons/arrow-left-slider.svg' />
+    prevArrow: <img src='/icons/arrow-left-slider.svg' />,
+    responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 1,
+          }
+        },
+      ]
 };
 
 const items = [
@@ -31,7 +39,7 @@ const items = [
 export const SecondScreen = () => {
     return (
         <div className={styles.container}>
-            <TitleBlock title="Trea is waiting for you" description="Embark on a heroic quest to defend Mithruon from the Orgurin onslaught." />
+            <TitleBlock title="Trea is waiting for you" description="Embark on a heroic quest to defend Mithruon from the Orgurin onslaught." mobileClassName={true} descriptionBottom={true}/>
             <div className={styles.playButton}>
                 <img src='/icons/main-circle.svg' className={styles.mainCircle} />
                 <motion.img

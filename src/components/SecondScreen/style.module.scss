@@ -80,4 +80,45 @@
             }
         }
     }
+
+    @media (max-width: 768px) {
+        padding: calcVWM(16);
+
+        .playButton {
+            width: calcVWM(92);
+            height: calcVWM(92);
+            left: calc(50% - calcVWM(44));
+            top: calc(50% - calcVWM(44));
+
+            .mainCircle {
+                width: calcVWM(77);
+                height: calcVWM(77);
+            }
+
+            .partCircle1 {
+                width: calcVWM(94);
+                height: calcVWM(94);
+            }
+
+            .partCircle2 {
+                left: calcVWM(4);
+                top: calcVWM(4);
+                width: calcVWM(85);
+                height: calcVWM(85);
+            }
+        }
+
+        .carousel {
+            flex-direction: column;
+
+            .carouselContainer {
+                width: calcVWM(235);
+                .swiperElement {
+                    img {
+                        height: calcVWM(22);
+                    }
+                }
+            }
+        }
+    }
 }
