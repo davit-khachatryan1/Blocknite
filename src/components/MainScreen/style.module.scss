@@ -20,6 +20,10 @@
         position: relative;
     }
 
+    .line {
+        display: none;
+    }
+
     .mainButtons {
         display: flex;
         column-gap: calcVW(24);
@@ -44,6 +48,7 @@
             overflow: hidden;
             display: flex;
             align-items: center;
+
             button {
                 box-shadow: none;
                 border: 0;
@@ -54,6 +59,7 @@
                 text-decoration: underline;
                 color: #DEA963;
             }
+
             &:hover {
                 button {
                     color: #FFFFFF;
@@ -88,6 +94,7 @@
                 border: none;
                 background: transparent;
                 padding: calcVW(12) calcVW(24);
+
                 &:hover {
                     margin: calcVW(-2) calcVW(-2) calcVW(-2) calcVW(-2);
                     border: calcVW(2) solid #FFFFFF;
@@ -98,6 +105,7 @@
                 margin: calcVW(-2) calcVW(-2) calcVW(-2) calcVW(-2);
                 border: calcVW(2) solid #DEA963;
                 color: #DEA963;
+
                 &:hover {
                     margin: calcVW(-2) calcVW(-2) calcVW(-2) calcVW(-2);
                     border: calcVW(2) solid #DEA963;
@@ -160,5 +168,61 @@
         color: #EDD1AB;
         margin: calcVW(20) 0;
         overflow: hidden;
+    }
+
+    @media (max-width: 768px) {
+        padding: calcVWM(16) calcVWM(16) calcVWM(32) calcVWM(16);
+
+        .logo {
+            width: calcVWM(126);
+            height: calcVWM(80);
+            margin: calcVWM(-16) 0 0 calcVWM(-16);
+        }
+
+        .line {
+            display: block;
+            width: 100%;
+            border-color: #DEA963;
+            background: #DEA963;
+            position: relative;
+            margin-left: 0;
+            height: calcVWM(2);
+        }
+
+        .infoBlock {
+            width: 100%;
+            height: 100%;
+            row-gap: calcVWM(16);
+        }
+
+        .description {
+            font-size: calcVWM(11);
+            line-height: calcVWM(15);
+            height: calcVWM(30);
+            text-align: center;
+        }
+
+        .mainButtons {
+            height: calcVWM(60);
+
+            .documentation {
+                display: none
+            }
+
+            .presale {
+                width: 100%;
+                height: calcVWM(60);
+
+                button {
+                    font-size: calcVWM(26);
+                    line-height: calcVWM(26);
+                    height: 100%;
+                }
+            }
+        }
+
+        .buttonContainer {
+            display: none;
+        }
     }
 }

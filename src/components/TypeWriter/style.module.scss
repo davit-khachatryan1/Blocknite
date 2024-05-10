@@ -46,3 +46,20 @@
     font-family: 'Copperplate CC';
     color: #8A7760;
 }
+
+@media (max-width: 768px) {
+    .altarin {
+        font-size: calcVWM(48);
+        line-height: calcVWM(48);
+        height: calcVWM(48);
+        text-align: center;
+        margin-top: auto;
+    }
+
+    .name {
+        font-size: calcVWM(23);
+        line-height: calcVWM(31);
+        height: calcVWM(31);
+        text-align: center;
+    }
+}

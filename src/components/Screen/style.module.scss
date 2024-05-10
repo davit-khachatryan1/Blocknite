@@ -4,4 +4,20 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    @media (max-width: 768px) {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .bgImage {
+        display: none;
+    }
+    .bgMobile {
+        display: block;
+        width: 100%;
+        height: 100%;
+        max-height: calcVWM(568);
+        object-fit: cover;
+    }
 }

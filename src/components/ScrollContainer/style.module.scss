@@ -4,6 +4,7 @@
     // scroll-behavior: smooth;
 
     // Styling the scrollbar (for browsers that support this)
+    overflow: hidden;
     &::-webkit-scrollbar {
         width: 10px;
     }
