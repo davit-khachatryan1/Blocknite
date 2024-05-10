@@ -111,6 +111,7 @@
                         line-height: calcVW(22);
                         font-family: 'CopperplateEF';
                         color: #EDD1AB;
+                        text-transform: uppercase;
                     }
                 }
 
@@ -196,6 +197,110 @@
                 height: calcVW(20);
                 width: calcVW(20);
             }
+        }
+    }
+
+    .mobileSlider {
+        display: none;
+    }
+
+    @media (max-width: 768px) {
+        .mobileSlider {
+            display: block;
+            margin-top: auto;
+            margin-bottom: calcVWM(56);
+        }
+
+        .desktop {
+            display: none;
+        }
+
+        .mainBlock {
+            height: calcVWM(103);
+
+            .infoBlockContainer {
+                height: calcVWM(103);
+
+                .infoBlock {
+                    height: calcVWM(103);
+                    border-radius: calcVWM(50) 0 0 calcVWM(50);
+                    border-left: calcVWM(2) solid #DEA963;
+                    max-width: calcVWM(288);
+                    width: calcVWM(288);
+
+                    .leftBorder {
+                        left: calcVWM(-2);
+                        top: calcVWM(-2);
+                        height: calc(100% + calcVWM(4));
+                        width: calcVWM(100);
+                        border: calcVWM(2) solid #DEA963;
+                        border-radius: calcVWM(98) 0 0 calcVWM(98);
+                        border-right: 0;
+                    }
+
+                    .line {
+                        height: calcVWM(2);
+                        width: calcVWM(248);
+                        width: calcVWM(248);
+                        border-top-left-radius: calcVWM(20);
+                    }
+
+                    .lineTop {
+                        top: calcVWM(-0.2);
+                    }
+
+                    .lineBottom {
+                        bottom: calcVWM(-0.2);
+                    }
+
+                    .round {
+                        min-width: calcVWM(56);
+                        height: calcVWM(56);
+                        margin: calcVWM(23);
+                        border: calcVWM(2) solid #DEA963;
+                        font-weight: 500;
+                        font-size: calcVWM(34);
+                        line-height: calcVWM(34);
+                        margin-right: calcVWM(16);
+
+                    }
+
+                    .textBlock {
+                        max-width: initial;
+
+                        .title {
+                            column-gap: calcVWM(8);
+                            height: calcVWM(16);
+                            margin-bottom: calcVWM(4);
+                        }
+
+                        .description {
+                            font-size: calcVWM(9);
+                            line-height: calcVWM(12);
+                        }
+                    }
+                }
+            }
+        }
+
+        :global(.slick-prev) {
+            position: absolute;
+            top: calcVWM(140);
+            left: calcVWM(116);
+            width: calcVWM(22);
+            height: calcVWM(22);
+        }
+
+        :global(.slick-next) {
+            position: absolute;
+            top: calcVWM(140);
+            left: calcVWM(176);
+            width: calcVWM(22);
+            height: calcVWM(22);
+        }
+
+        .carouselContainer {
+            display: none;
         }
     }
 }
