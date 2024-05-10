@@ -1,7 +1,7 @@
 
 export const calcVW = (value: string | number) => {
     let num = 0.000520833333;
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth <= 576) {
         num = 0.003125
     }
     if (typeof value == 'string') {

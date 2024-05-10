@@ -88,7 +88,7 @@ export const ThirdScreen = () => {
     };
 
     useEffect(() => {
-        if (window.innerWidth > 768) {
+        if (window.innerWidth > 576) {
             updateHeight();
         }
     }, [inViewFirstBlock1, inViewFirstBlock2, inViewFirstBlock3]);

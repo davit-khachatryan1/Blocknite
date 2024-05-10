@@ -170,7 +170,7 @@
         overflow: hidden;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 576px) {
         padding: calcVWM(16) calcVWM(16) calcVWM(32) calcVWM(16);
 
         .logo {
