@@ -20,18 +20,45 @@
         position: relative;
     }
 
-    .presale {
-        position: relative;
-        width: calcVW(308);
-        overflow: hidden;
+    .mainButtons {
+        display: flex;
+        column-gap: calcVW(24);
+        align-items: center;
 
-        button {
-            width: 100%;
-            background-color: #101825;
-            color: #FFFFFF;
-            font-size: calcVW(28);
-            font-family: 'Beaufort-Medium';
-            font-weight: 500;
+        .presale {
+            position: relative;
+            width: calcVW(308);
+            overflow: hidden;
+
+            button {
+                width: 100%;
+                background-color: #101825;
+                color: #FFFFFF;
+                font-size: calcVW(28);
+                font-family: 'Beaufort-Medium';
+                font-weight: 500;
+            }
+        }
+
+        .documentation {
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            button {
+                box-shadow: none;
+                border: 0;
+                background-color: transparent;
+                font-size: calcVW(26);
+                line-height: calcVW(26);
+                font-weight: 500;
+                text-decoration: underline;
+                color: #DEA963;
+            }
+            &:hover {
+                button {
+                    color: #FFFFFF;
+                }
+            }
         }
     }
 
@@ -61,12 +88,21 @@
                 border: none;
                 background: transparent;
                 padding: calcVW(12) calcVW(24);
+                &:hover {
+                    margin: calcVW(-2) calcVW(-2) calcVW(-2) calcVW(-2);
+                    border: calcVW(2) solid #FFFFFF;
+                }
             }
 
             :global(.active) {
-                margin: calcVW(-2) 0 calcVW(-2) calcVW(-2);
+                margin: calcVW(-2) calcVW(-2) calcVW(-2) calcVW(-2);
                 border: calcVW(2) solid #DEA963;
                 color: #DEA963;
+                &:hover {
+                    margin: calcVW(-2) calcVW(-2) calcVW(-2) calcVW(-2);
+                    border: calcVW(2) solid #DEA963;
+                    box-shadow: none;
+                }
             }
         }
 
@@ -89,6 +125,7 @@
                 height: calcVW(44);
                 border-radius: calcVW(44);
                 position: relative;
+                cursor: pointer;
 
                 .square {
                     width: calcVW(14);
@@ -99,7 +136,8 @@
                     top: calcVW(10);
                     left: calcVW(10);
                 }
-                .square:last-of-type{
+
+                .square:last-of-type {
                     top: calcVW(15);
                     left: calcVW(15);
                 }

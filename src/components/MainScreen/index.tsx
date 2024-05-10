@@ -4,8 +4,12 @@ import Typewriter from '../TypeWriter';
 import { calcVW } from '../../utils/hooks/functions';
 
 import styles from './style.module.scss'
+import { useState } from 'react';
 
 export const MainScreen = () => {
+    const [active, setActive] = useState('$NITE address');
+    console.log(active);
+
     return (
         <div className={styles.container}>
             <div className={styles.infoBlock}>
@@ -34,18 +38,34 @@ export const MainScreen = () => {
                 >
                     Stop the Orgurin, The fate of Trea is in your hands.
                 </motion.div>
-                <motion.div
-                    className={styles.presale}
-                    initial="hidden"
-                    animate="visible"
-                    transition={{ duration: 0.5, delay: 2 }}
-                    variants={{
-                        hidden: { opacity: 1, y: 0, x: 0, scale: 1, height: 0 },
-                        visible: { opacity: 1, y: 0, x: 0, scale: 1, height: calcVW('70px') },
-                    }}
-                >
-                    <Button withIcon={true}>PRESALE</Button>
-                </motion.div>
+                <div className={styles.mainButtons}>
+                    <motion.div
+                        className={styles.presale}
+                        initial="hidden"
+                        animate="visible"
+                        transition={{ duration: 0.5, delay: 2 }}
+                        variants={{
+                            hidden: { opacity: 1, y: 0, x: 0, scale: 1, height: 0 },
+                            visible: { opacity: 1, y: 0, x: 0, scale: 1, height: calcVW('70px') },
+                        }}
+                    >
+                        <Button withIcon={true}>PRESALE</Button>
+                    </motion.div>
+
+                    <motion.div
+                        className={styles.documentation}
+                        initial="hidden"
+                        animate="visible"
+                        transition={{ duration: 0.5, delay: 2 }}
+                        variants={{
+                            hidden: { opacity: 1, y: 0, x: 0, scale: 1, height: 0 },
+                            visible: { opacity: 1, y: 0, x: 0, scale: 1, height: calcVW('70px') },
+                        }}
+                    >
+                        <Button >DOCUMENTATION</Button>
+                    </motion.div>
+
+                </div>
             </div>
 
             <div className={styles.buttonContainer}>
@@ -60,8 +80,8 @@ export const MainScreen = () => {
                     }}
                 >
                     <div className={styles.twoButton}>
-                        <Button classname="active">$NITE address</Button>
-                        <Button>Treanin address</Button>
+                        <Button classname={active === '$NITE address' && "active"} onClick={() => setActive('$NITE address')}>$NITE address</Button>
+                        <Button classname={active === 'Treanin address' && "active"} onClick={() => setActive('Treanin address')}>Treanin address</Button>
                     </div>
                 </motion.div>
                 <motion.div
@@ -75,7 +95,13 @@ export const MainScreen = () => {
                     }}
                 >
                     <div className={`${styles.twoButton} ${styles.copyBlock}`}>
-                        <div className={styles.copy}>
+                        <div className={styles.copy}
+                            onClick={() =>
+                                navigator.clipboard.writeText(
+                                    active === '$NITE address' ?
+                                        '0x123456789aBcDeF1234567890aBcDeF1234567890' :
+                                        '0x123456789aBcDeF1234567890aBcDeF1234567890'
+                                )}>
                             <div className={styles.square} />
                             <div className={styles.square} />
                         </div>

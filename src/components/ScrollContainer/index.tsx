@@ -3,6 +3,7 @@ import { Screen } from '../Screen'
 import styles from './style.module.scss'
 import { screens } from '../../constants/screens';
 import { useStateProvider } from '../../context/state';
+import { Footer } from '../Footer';
 
 const ScrollContainer = () => {
   const { updatePage } = useStateProvider();
@@ -20,7 +21,7 @@ const ScrollContainer = () => {
 
 
           const isElementCentered = rect.top < windowHeight / 2 && rect.top > -windowHeight / 2;
-          if (isElementCentered) {
+          if (isElementCentered && screens[i]?.id) {
             updatePage(screens[i].id)
           }
         }
@@ -40,6 +41,7 @@ const ScrollContainer = () => {
       {screens.map((screen, index) => (
         <Screen key={index} id={screen.id} component={screen.component} imageUrl={screen.imageUrl} />
       ))}
+      <Footer/>
     </div>
   );
 };

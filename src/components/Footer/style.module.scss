@@ -1,0 +1,54 @@
+@import "../../styles/abstract/functions";
+
+.container {
+    height: calcVW(694);
+    background-color: #101825;
+    padding: calcVW(100) 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    .logo {
+        width: calcVW(270);
+        height: calcVW(59);
+    }
+
+    .fantasy {
+        width: calcVW(270);
+        height: calcVW(172);
+    }
+
+    .socialSites {
+        display: flex;
+        column-gap: calcVW(24);
+
+        img {
+            width: calcVW(48);
+            height: calcVW(48);
+        }
+    }
+
+    .info {
+        font-size: calcVW(16);
+        line-height: calcVW(22.08);
+        font-weight: 700;
+        color: #FFFFFF;
+        text-transform: uppercase;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        row-gap: calcVW(8);
+
+        .support {
+            display: flex;
+            column-gap: calcVW(8);
+
+            a {
+                color: #FFFFFF;
+                text-decoration: none;
+            }
+        }
+    }
+}
