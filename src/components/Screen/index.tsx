@@ -1,16 +1,20 @@
+import { useRef } from 'react';
 import styles from './style.module.scss'
 
 export const Screen = ({ id, component, imageUrl, mobileImage }: any) => {
+  const imageRef = useRef(null);
+  console.log(imageRef?.current ? (imageRef?.current as any).offsetHeight : 'auto');
+  
   return <div style={{
-    // height: '100vh',
     width: '100%',
     position: 'relative',
-    display: 'flex'
+    display: 'flex',
+    maxHeight: imageRef?.current ? (imageRef?.current as any).offsetHeight : 'auto'
   }}
     className={styles.container}
     id={id}
   >
-    <img src={imageUrl} className={styles.bgImage} alt='main-bg' />
+    <img src={imageUrl} className={styles.bgImage} alt='main-bg' ref={imageRef}/>
     <img src={mobileImage} className={styles.bgMobile} alt='main-bg' />
     <div style={{
       position: 'absolute',
