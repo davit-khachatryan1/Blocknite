@@ -17,7 +17,7 @@ const settings = {
     prevArrow: <img src='/icons/arrow-left-slider.svg' />,
     responsive: [
         {
-          breakpoint: 576,
+          breakpoint: 577,
           settings: {
             slidesToShow: 1,
           }
