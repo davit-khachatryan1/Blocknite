@@ -189,9 +189,9 @@ export const ThirdScreen = () => {
             </div>
             <Slider {...settingsMobile} className={styles.mobileSlider} afterChange={(e) => {
                 const obj = { first: false, second: false, third: false };
-                if (e == 0) {
+                if (e === 0) {
                     obj.first = true;
-                } else if (e == 1) {
+                } else if (e === 1) {
                     obj.second = true;
                 } else {
                     obj.third = true;
