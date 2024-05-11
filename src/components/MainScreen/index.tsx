@@ -70,7 +70,7 @@ export const MainScreen = () => {
                         <Button withIcon={true}>PRESALE</Button>
                     </motion.div>
 
-                    {/* <motion.div
+                    <motion.div
                         className={`${styles.documentation} ${styles.presale}`}
                         initial="hidden"
                         animate="visible"
@@ -81,7 +81,7 @@ export const MainScreen = () => {
                         }}
                     >
                         <Button withIcon={true}>DOCUMENTATION</Button>
-                    </motion.div> */}
+                    </motion.div>
 
                 </div>
             </div>
