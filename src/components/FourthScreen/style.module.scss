@@ -109,13 +109,17 @@
         .titleBlock {
             width: max-content;
             margin: 0 auto;
-            margin-top: calcVWM(80);
+            margin-top: calcVWM(70);
             font-size: calcVWM(34);
             line-height: calcVWM(34);
             font-weight: 500;
             font-family: 'Beaufort-Medium';
         }
 
+        .content {
+            margin-bottom: calcVWM(16);
+            row-gap: calcVWM(8) !important;
+        }
         .infoBlock {
             display: flex;
             flex-direction: column;
@@ -136,7 +140,7 @@
                 .title {
                     font-size: calcVWM(11) !important;
                     line-height: calcVWM(15) !important;
-                    width: calcVWM(80);
+                    width: calcVWM(105);
                     text-align: end;
                 }
             }
