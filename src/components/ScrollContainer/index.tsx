@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Screen } from '../Screen'
 import styles from './style.module.scss'
 import { screens } from '../../constants/screens';
@@ -7,6 +7,7 @@ import { Footer } from '../Footer';
 
 const ScrollContainer = () => {
   const { updatePage } = useStateProvider();
+  const [resize, setOnResize] = useState(true);
   const pages = useRef(null)
 
 
@@ -29,19 +30,30 @@ const ScrollContainer = () => {
     }
   }
 
+  const onResize = () => {
+    if (resize) {
+      setOnResize(false)
+      setTimeout(() => {
+        setOnResize(true)
+      }, 100)
+    }
+  }
+
   useEffect(() => {
     window.addEventListener("scroll", checkCenter);
+    window.addEventListener("resize", onResize);
     return () => {
       window.removeEventListener("scroll", checkCenter);
+      window.removeEventListener("resize", onResize);
     };
   }, [])
 
   return (
     <div className={styles.container} ref={pages}>
-      {screens.map((screen, index) => (
-        <Screen key={index} id={screen.id} component={screen.component} imageUrl={screen.imageUrl} mobileImage={screen.imageMobile}/>
+      {resize && screens.map((screen, index) => (
+        <Screen key={index} id={screen.id} component={screen.component} imageUrl={screen.imageUrl} mobileImage={screen.imageMobile} />
       ))}
-      <Footer/>
+      <Footer />
     </div>
   );
 };
