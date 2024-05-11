@@ -198,7 +198,7 @@ export const ThirdScreen = () => {
                 }
                 setInfoTitles(obj);
             }}>
-                <div className={styles.mainBlock} ref={refFirstBlock1}>
+                <div className={styles.mainBlock}>
                     <div
                         className={styles.infoBlockContainer}>
                         <div className={styles.infoBlock}>
@@ -220,7 +220,7 @@ export const ThirdScreen = () => {
                         </div>
                     </div>
                 </div>
-                <div className={styles.mainBlock} ref={refFirstBlock2}>
+                <div className={styles.mainBlock}>
                     <div
                         className={styles.infoBlockContainer}>
                         <div className={styles.infoBlock}>
@@ -242,7 +242,7 @@ export const ThirdScreen = () => {
                         </div>
                     </div>
                 </div>
-                <div className={styles.mainBlock} ref={refFirstBlock3}>
+                <div className={styles.mainBlock}>
                     <div
                         className={styles.infoBlockContainer}>
                         <div className={styles.infoBlock}>

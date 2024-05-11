@@ -127,11 +127,11 @@
 
             .copy {
                 margin: calcVW(-2) 0 calcVW(-2) calcVW(-2);
-                border: calcVW(2) solid #DEA963;
-                color: #DEA963;
-                width: calcVW(44);
-                height: calcVW(44);
-                border-radius: calcVW(44);
+                border: calcVW(2) solid #7C674B;
+                color: #7C674B;
+                width: calcVW(46);
+                height: calcVW(46);
+                border-radius: calcVW(46);
                 position: relative;
                 cursor: pointer;
 
@@ -141,13 +141,13 @@
                     border: calcVW(2) solid #DEA963;
                     border-radius: calcVW(2);
                     position: absolute;
-                    top: calcVW(10);
-                    left: calcVW(10);
+                    top: calcVW(12);
+                    left: calcVW(12);
                 }
 
                 .square:last-of-type {
-                    top: calcVW(15);
-                    left: calcVW(15);
+                    top: calcVW(17);
+                    left: calcVW(17);
                 }
             }
         }
