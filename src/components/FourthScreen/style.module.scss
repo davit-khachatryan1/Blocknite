@@ -158,5 +158,16 @@
                 width: calcVWM(105);
             }
         }
+        .mainTitleValue {
+            .title{
+
+                font-size: calcVWM(9);   
+                line-height: calcVWM(12.5);   
+            }
+            .value {
+                font-size: calcVWM(12);
+                line-height: calcVWM(16.5);
+            }
+        }
     }
 }

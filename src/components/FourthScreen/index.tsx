@@ -26,8 +26,8 @@ function describeArc(x: number, y: number, radius: number, startAngle: number, e
 
 export const FourthScreen = () => {
 
-    const strokeWidth = calcVW(108, 35.4);
-    const radius = calcVW(240, 78.6) as number;
+    const strokeWidth = calcVW(108, 28.4);
+    const radius = calcVW(240, 80.6) as number;
 
     const refMain = useRef(null);
 
