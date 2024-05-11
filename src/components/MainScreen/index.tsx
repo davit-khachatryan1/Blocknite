@@ -70,8 +70,8 @@ export const MainScreen = () => {
                         <Button withIcon={true}>PRESALE</Button>
                     </motion.div>
 
-                    <motion.div
-                        className={styles.documentation}
+                    {/* <motion.div
+                        className={`${styles.documentation} ${styles.presale}`}
                         initial="hidden"
                         animate="visible"
                         transition={{ duration: 0.5, delay: 2 }}
@@ -80,8 +80,8 @@ export const MainScreen = () => {
                             visible: { opacity: 1, y: 0, x: 0, scale: 1, height: calcVW('70px') },
                         }}
                     >
-                        <Button >DOCUMENTATION</Button>
-                    </motion.div>
+                        <Button withIcon={true}>DOCUMENTATION</Button>
+                    </motion.div> */}
 
                 </div>
             </div>

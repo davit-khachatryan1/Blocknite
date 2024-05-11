@@ -27,7 +27,8 @@
     .mainButtons {
         display: flex;
         column-gap: calcVW(24);
-        align-items: center;
+        row-gap: calcVW(16);
+        flex-direction: column;
 
         .presale {
             position: relative;
@@ -41,29 +42,6 @@
                 font-size: calcVW(28);
                 font-family: 'Beaufort-Medium';
                 font-weight: 500;
-            }
-        }
-
-        .documentation {
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-
-            button {
-                box-shadow: none;
-                border: 0;
-                background-color: transparent;
-                font-size: calcVW(26);
-                line-height: calcVW(26);
-                font-weight: 500;
-                text-decoration: underline;
-                color: #DEA963;
-            }
-
-            &:hover {
-                button {
-                    color: #FFFFFF;
-                }
             }
         }
     }
