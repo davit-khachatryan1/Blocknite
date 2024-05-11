@@ -80,7 +80,7 @@ export const MainScreen = () => {
                             visible: { opacity: 1, y: 0, x: 0, scale: 1, height: calcVW('70px') },
                         }}
                     >
-                        <Button withIcon={true}>DOCUMENTATION</Button>
+                        <Button withIcon={true}>GitBook</Button>
                     </motion.div>
 
                 </div>
