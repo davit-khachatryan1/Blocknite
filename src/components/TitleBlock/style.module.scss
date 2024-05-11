@@ -34,7 +34,7 @@
         font-size: calcVWM(34);
         line-height: calcVWM(34);
         text-align: center;
-        margin-top: calcVWM(100);
+        margin-top: calcVWM(80);
         margin-bottom: calcVWM(16);
 
         .isMobile {
@@ -43,13 +43,12 @@
     }
 
     .description {
-
         font-size: calcVWM(11);
         line-height: calcVWM(16);
         max-width: calcVWM(206);
     }
 
     .descriptionBottom {
-        margin-top: calcVWM(184);
+        margin-top: calcVWM(170);
     }
 }

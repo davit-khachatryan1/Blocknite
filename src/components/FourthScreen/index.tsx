@@ -26,8 +26,8 @@ function describeArc(x: number, y: number, radius: number, startAngle: number, e
 
 export const FourthScreen = () => {
 
-    const strokeWidth = calcVW(108);
-    const radius = calcVW(240) as number;
+    const strokeWidth = calcVW(108, 35.4);
+    const radius = calcVW(240, 78.6) as number;
 
     const refMain = useRef(null);
 
@@ -218,14 +218,14 @@ export const FourthScreen = () => {
     return (
         <div className={styles.container} ref={refMain}>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', position: 'absolute', left: 0, top: 0, width: '100%' }}>
-                <motion.svg width={`${calcVW(595)}`} height={`${calcVW(595)}`} viewBox={`0 0 ${calcVW(595)} ${calcVW(595)}"`} >
+                <motion.svg width={`${calcVW(595, 195)}`} height={`${calcVW(595, 195)}`} viewBox={`0 0 ${calcVW(595, 195)} ${calcVW(595, 195)}"`} className={styles.motionSvg}>
                     {Object.values(segments).map((segment, index) => (
                         <motion.path
                             key={index}
                             fill="none"
                             strokeWidth={strokeWidth}
                             stroke={segment.color}
-                            d={describeArc(calcVW(297.5) as number, calcVW(297.5) as number, radius, segment.rotation, segment.rotation + segment.degrees)}
+                            d={describeArc(calcVW(297.5, 97.5) as number, calcVW(297.5, 97.5) as number, radius, segment.rotation, segment.rotation + segment.degrees)}
                             initial={{ pathLength: 0 }}
                             animate={segment.animate}
                             custom={index}

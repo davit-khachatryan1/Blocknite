@@ -1,13 +1,14 @@
 
-export const calcVW = (value: string | number) => {
+export const calcVW = (value: string | number, mobileValue?: number) => {
+    const mediaValue = mobileValue || value
     let num = 0.000520833333;
     if (window.innerWidth <= 576) {
         num = 0.003125
     }
-    if (typeof value == 'string') {
-        const newValue = value.replace('px', '')
+    if (typeof mediaValue == 'string') {
+        const newValue = mediaValue.replace('px', '')
         return Number(newValue) * num * window.innerWidth + 'px'
     } else {
-        return Number(value) * num * window.innerWidth
+        return Number(mediaValue) * num * window.innerWidth
     }
 }

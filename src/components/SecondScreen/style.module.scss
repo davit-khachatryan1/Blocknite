@@ -88,7 +88,7 @@
             width: calcVWM(92);
             height: calcVWM(92);
             left: calc(50% - calcVWM(44));
-            top: calc(50% - calcVWM(44));
+            top: calc(50% - calcVWM(80));
 
             .mainCircle {
                 width: calcVWM(77);
@@ -118,6 +118,12 @@
                         height: calcVWM(22);
                     }
                 }
+            }
+            .title { 
+                font-weight: 500;
+                line-height: calcVWM(18);
+                font-size: calcVWM(18);
+                margin-bottom: calcVWM(16);
             }
         }
     }
