@@ -74,8 +74,8 @@
                 padding: calcVW(12) calcVW(24);
 
                 &:hover {
-                    margin: calcVW(-2) calcVW(-2) calcVW(-2) calcVW(-2);
-                    border: calcVW(2) solid #FFFFFF;
+                    color: #DEA963;
+                    box-shadow: none;
                 }
             }
 
