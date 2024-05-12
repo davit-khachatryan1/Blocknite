@@ -7,7 +7,7 @@ import { Footer } from '../Footer';
 
 const ScrollContainer = () => {
   const { updatePage } = useStateProvider();
-  const [resize, setOnResize] = useState(true);
+  const [resize, setOnResize] = useState(1);
   const pages = useRef(null)
 
 
@@ -31,10 +31,10 @@ const ScrollContainer = () => {
   }
 
   const onResize = () => {
-    if (resize) {
-      setOnResize(false)
+    if (resize && resize != window.innerWidth) {
+      setOnResize(0)
       setTimeout(() => {
-        setOnResize(true)
+        setOnResize(window.innerWidth)
       }, 100)
     }
   }
