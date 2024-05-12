@@ -43,7 +43,7 @@ export const SixthScreen = () => {
 
     return (
         <div className={styles.container}>
-            <TitleBlock title="frequently asked questions" description="Lorem ipsum dolor sit amet consectetur. Et massa fusce eget mi molestie egestas." />
+            <TitleBlock title="frequently asked questions" secondTitle="FAQ" mobileClassName={true} description="Lorem ipsum dolor sit amet consectetur. Et massa fusce eget mi molestie egestas." withOutDescription={true}/>
 
             <div className={styles.inputBlock}>
                 {FAQList.map((el, index) =>

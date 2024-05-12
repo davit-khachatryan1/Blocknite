@@ -5,7 +5,7 @@ import { useInView } from 'react-intersection-observer';
 import styles from './style.module.scss';
 import { calcVW } from '../../utils/hooks/functions';
 
-const TitleBlock = ({ title, description, mobileClassName, descriptionBottom }: any) => {
+const TitleBlock = ({ title, description, mobileClassName, descriptionBottom, secondTitle, withOutDescription = false }: any) => {
     const controls = useAnimation();
     const ref1 = useRef(null);
 
@@ -89,7 +89,7 @@ const TitleBlock = ({ title, description, mobileClassName, descriptionBottom }: 
                     }
                 }}
             >
-                <div>{title}</div>
+                <div>{secondTitle || title}</div>
             </motion.div>
 
             <div style={{ width: calcVW('168px'), display: 'flex', justifyContent: 'center', alignItems: 'center' }} className={mobileClassName && styles.isMobile}>
@@ -114,21 +114,23 @@ const TitleBlock = ({ title, description, mobileClassName, descriptionBottom }: 
                 </motion.div>
             </div>
         </div>
-        <motion.div
-            className={`${styles.description} ${descriptionBottom && styles.descriptionBottom}`}
-            animate={titleControls}
-            initial="hidden"
-            variants={{
-                hidden: { opacity: 0, transform: `translateY(${calcVW('-25px')})` },
-                visible: {
-                    opacity: 1,
-                    transform: 'translateY(0)',
-                    transition: { duration: 0.8, delay: 0.8 }
-                }
-            }}
-        >
-            {description}
-        </motion.div>
+        {!withOutDescription &&
+            <motion.div
+                className={`${styles.description} ${descriptionBottom && styles.descriptionBottom}`}
+                animate={titleControls}
+                initial="hidden"
+                variants={{
+                    hidden: { opacity: 0, transform: `translateY(${calcVW('-25px')})` },
+                    visible: {
+                        opacity: 1,
+                        transform: 'translateY(0)',
+                        transition: { duration: 0.8, delay: 0.8 }
+                    }
+                }}
+            >
+                {description}
+            </motion.div>
+        }
     </>
 };
 

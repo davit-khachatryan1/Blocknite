@@ -29,4 +29,18 @@
         flex-direction: column;
         row-gap: calcVW(44);
     }
+
+    @media (max-width: 576px) {
+        padding: calcVWM(16);
+
+        .submit {
+            display: none;
+        }
+
+        .inputBlock {
+            max-width: initial;
+            row-gap: calcVWM(40);
+            margin-top: calcVWM(32);
+        }
+    }
 }
