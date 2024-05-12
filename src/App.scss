@@ -1,5 +1,6 @@
 @import './fonts.scss';
 @import './styles/abstract/functions';
+@import "./styles/base/variables";
 
 body {
   width: 100vw;
@@ -15,7 +16,7 @@ html {
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -30,11 +31,11 @@ html {
   }
 
   &::-webkit-scrollbar-thumb {
-    background: #DEA963;
+    background: $gold-400;
     border-radius: calcVW(10);
 
     &:hover {
-      background: #cf8728;
+      background: $gold-300;
       cursor: pointer;
     }
   }

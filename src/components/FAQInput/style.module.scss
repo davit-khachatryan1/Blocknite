@@ -1,4 +1,5 @@
 @import "../../styles/abstract/functions";
+@import "../../styles/base/variables";
 
 .input {
     height: calcVW(53);
@@ -6,14 +7,14 @@
     border-radius: calcVW(30);
     display: flex;
     justify-content: space-between;
-    border: calcVW(2) solid #7C674B;
-    color: #EDD1AB;
+    border: calcVW(2) solid $brown-400;
+    color: $beige-400;
     font-size: calcVW(16);
     font-weight: 700;
     font-family: 'Copperplate CC';
     align-items: center;
     padding-left: calcVW(30);
-    background: #101825;
+    background: $black-400;
     opacity: 0.7;
     position: relative;
     z-index: 1;
@@ -21,7 +22,7 @@
 
     &:hover {
         transition: 0.3s;
-        color: #FFFFFF;
+        color: $white-400;
         opacity: 1;
     }
 
@@ -29,7 +30,7 @@
         width: calcVW(53);
         height: calcVW(53);
         border-radius: calcVW(30);
-        border: calcVW(2) solid #7C674B;
+        border: calcVW(2) solid $brown-400;
         margin-right: calcVW(-2);
         display: flex;
         justify-content: center;
@@ -48,14 +49,13 @@
     display: flex;
     margin-top: calcVW(-24);
     position: relative;
-    background: linear-gradient(to bottom, #101825, #10182500);
-    ;
+    background: linear-gradient(to bottom, $black-400, transparent);
 
     .divide {
         width: calcVW(4);
         height: auto;
         opacity: 0.8;
-        background: linear-gradient(to bottom, #7C674B, #7C674B30);
+        background: linear-gradient(to bottom, $brown-400, $brown-100);
 
         &:first-of-type {
             margin-right: calcVW(20);
@@ -71,7 +71,7 @@
         font-weight: 500;
         font-size: calcVW(16);
         line-height: calcVW(22);
-        color: #EDD1AB;
+        color: $beige-400;
         margin-top: calcVW(20);
     }
 }
@@ -79,7 +79,7 @@
 .active {
     .input {
         opacity: 1;
-        color: #FFFFFF;
+        color: $white-400;
 
         .vector {
             img {
@@ -94,7 +94,7 @@
     .input {
         height: calcVWM(44);
         border-radius: calcVWM(30);
-        border: calcVWM(2) solid #7C674B;
+        border: calcVWM(2) solid $brown-400;
         font-size: calcVWM(11);
         padding-left: calcVWM(16);
 
@@ -102,7 +102,7 @@
             min-width: calcVWM(44);
             min-height: calcVWM(44);
             border-radius: calcVWM(30);
-            border: calcVWM(2) solid #7C674B;
+            border: calcVWM(2) solid $brown-400;
             margin-right: calcVWM(-2);
             margin-left: calcVWM(5);
 
@@ -117,7 +117,7 @@
 
     .textBlock {
         margin-top: calcVWM(-24);
-        background: linear-gradient(to bottom, #101825, #10182500);
+        background: linear-gradient(to bottom, $black-400, transparent);
 
         .divide {
             width: calcVWM(12);

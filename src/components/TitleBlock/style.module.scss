@@ -1,4 +1,5 @@
 @import "../../styles/abstract/functions";
+@import "../../styles/base/variables";
 
 .titleBlock {
     position: relative;
@@ -8,7 +9,7 @@
     font-size: calcVW(48);
     line-height: calcVW(48);
     font-family: 'Beaufort-Medium';
-    color: #DEA963;
+    color: $gold-400;
     column-gap: calcVW(30);
     margin: 0 auto;
     max-width: max-content;
@@ -22,7 +23,7 @@
     line-height: calcVW(30);
     font-family: 'Copperplate CC';
     font-weight: 700;
-    color: #EDD1AB;
+    color: $beige-400;
     max-width: calcVW(590);
     margin: 0 auto;
     margin-top: calcVW(20);

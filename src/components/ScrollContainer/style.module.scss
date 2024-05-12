@@ -1,3 +1,5 @@
+@import "../../styles/base/variables";
+
 .container {
     // height: 100vh;
     // overflow-y: scroll;
@@ -10,14 +12,14 @@
     }
 
     &::-webkit-scrollbar-track {
-        background: #f1f1f1;
+        background: $black-100;
     }
 
     &::-webkit-scrollbar-thumb {
-        background: #888;
+        background: $black-200;
 
         &:hover {
-            background: #555;
+            background: $black-300;
         }
     }
 }

@@ -1,4 +1,5 @@
 @import "../../styles/abstract/functions";
+@import "../../styles/base/variables";
 
 .container {
     width: 100%;
@@ -23,7 +24,7 @@
         font-size: calcVW(48);
         line-height: calcVW(48);
         font-family: 'Beaufort-Medium';
-        color: #DEA963;
+        color: $gold-400;
         column-gap: calcVW(30);
         margin: 0 auto;
         max-width: max-content;
@@ -36,7 +37,7 @@
         line-height: calcVW(30);
         font-family: 'Copperplate CC';
         font-weight: 700;
-        color: #EDD1AB;
+        color: $beige-400;
         max-width: calcVW(590);
         margin: 0 auto;
         margin-top: calcVW(20);
@@ -70,7 +71,7 @@
             .infoBlock {
                 margin: calcVW(2);
                 border-radius: calcVW(196) 0 0 calcVW(196);
-                border-left: calcVW(2) solid #DEA963;
+                border-left: calcVW(2) solid $gold-400;
                 border-right: 0;
                 display: flex;
                 align-items: center;
@@ -84,7 +85,7 @@
                 .round {
                     width: calcVW(105);
                     height: calcVW(105);
-                    border: calcVW(2) solid #DEA963;
+                    border: calcVW(2) solid $gold-400;
                     border-radius: 50%;
                     margin: calcVW(45);
                     display: flex;
@@ -94,7 +95,7 @@
                     line-height: calcVW(48);
                     font-weight: 500;
                     font-family: 'Beaufort-Medium';
-                    color: #FFFFFF;
+                    color: $white-400;
                 }
 
                 .textBlock {
@@ -110,7 +111,7 @@
                         font-weight: 500;
                         line-height: calcVW(22);
                         font-family: 'CopperplateEF';
-                        color: #EDD1AB;
+                        color: $beige-400;
                         text-transform: uppercase;
                     }
                 }
@@ -145,7 +146,7 @@
                     top: calcVW(-2);
                     height: calc(100% + calcVW(4));
                     width: calcVW(100);
-                    border: calcVW(2) solid #DEA963;
+                    border: calcVW(2) solid $gold-400;
                     border-right: 0;
                     z-index: 100;
                     border-radius: calcVW(98) 0 0 calcVW(98);
@@ -171,7 +172,7 @@
             line-height: calcVW(30);
             font-weight: 700;
             font-family: 'Copperplate CC';
-            color: #EDD1AB;
+            color: $beige-400;
 
             .swiperElement {
                 height: 100%;
@@ -228,7 +229,7 @@
                 .infoBlock {
                     height: calcVWM(103);
                     border-radius: calcVWM(50) 0 0 calcVWM(50);
-                    border-left: calcVWM(2) solid #DEA963;
+                    border-left: calcVWM(2) solid $gold-400;
                     max-width: calcVWM(288);
                     width: calcVWM(288);
 
@@ -237,7 +238,7 @@
                         top: calcVWM(-2);
                         height: calc(100% + calcVWM(4));
                         width: calcVWM(100);
-                        border: calcVWM(2) solid #DEA963;
+                        border: calcVWM(2) solid $gold-400;
                         border-radius: calcVWM(98) 0 0 calcVWM(98);
                         border-right: 0;
                     }
@@ -261,7 +262,7 @@
                         min-width: calcVWM(56);
                         height: calcVWM(56);
                         margin: calcVWM(23);
-                        border: calcVWM(2) solid #DEA963;
+                        border: calcVWM(2) solid $gold-400;
                         font-weight: 500;
                         font-size: calcVWM(34);
                         line-height: calcVWM(34);
