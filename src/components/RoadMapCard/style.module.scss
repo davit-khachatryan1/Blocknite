@@ -11,9 +11,7 @@
     .title {
         color: $black-400;
         text-transform: uppercase;
-        font-size: calcVW(22);
-        line-height: calcVW(30);
-        font-weight: 700;
+        @include subtitle;
         width: calcVW(270);
         text-align: center;
         position: relative;

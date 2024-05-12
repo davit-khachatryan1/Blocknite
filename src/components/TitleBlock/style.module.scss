@@ -5,10 +5,7 @@
     position: relative;
     transform: translate(0%, 0%);
     display: flex;
-    font-weight: 500;
-    font-size: calcVW(48);
-    line-height: calcVW(48);
-    font-family: 'Beaufort-Medium';
+    @include header2;
     color: $gold-400;
     column-gap: calcVW(30);
     margin: 0 auto;
@@ -19,10 +16,7 @@
 .description {
     position: relative;
     transform: translate(-50%, -50%);
-    font-size: calcVW(22);
-    line-height: calcVW(30);
-    font-family: 'Copperplate CC';
-    font-weight: 700;
+    @include subtitle;
     color: $beige-400;
     max-width: calcVW(590);
     margin: 0 auto;
@@ -32,8 +26,7 @@
 
 @media (max-width: 576px) {
     .titleBlock {
-        font-size: calcVWM(34);
-        line-height: calcVWM(34);
+        @include header2-mobile;
         text-align: center;
         margin-top: calcVWM(80);
         margin-bottom: calcVWM(16);
@@ -44,8 +37,7 @@
     }
 
     .description {
-        font-size: calcVWM(11);
-        line-height: calcVWM(16);
+        @include subtitle-mobile;
         max-width: calcVWM(206);
     }
 

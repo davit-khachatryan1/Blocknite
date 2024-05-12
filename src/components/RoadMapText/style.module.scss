@@ -2,9 +2,7 @@
 @import "../../styles/base/variables";
 
 .info {
-    font-weight: 500;
-    font-size: calcVW(16);
-    line-height: calcVW(22);
+    @include body;
     text-transform: uppercase;
     color: $black-400;
     margin-top: calcVW(30);

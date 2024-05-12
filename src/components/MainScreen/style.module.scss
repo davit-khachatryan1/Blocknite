@@ -40,9 +40,7 @@
                 width: 100%;
                 background-color: $black-400;
                 color: $white-400;
-                font-size: calcVW(28);
-                font-family: 'Beaufort-Medium';
-                font-weight: 500;
+                @include button;
             }
         }
     }
@@ -67,9 +65,7 @@
 
             button {
                 color: $brown-400;
-                font-size: calcVW(16);
-                font-family: 'Copperplate CC';
-                font-weight: 700;
+                @include bold;
                 border: none;
                 background: transparent;
                 padding: calcVW(12) calcVW(24);
@@ -95,9 +91,7 @@
 
         .copyBlock {
             color: $brown-400;
-            font-size: calcVW(16);
-            font-family: 'Copperplate CC';
-            font-weight: 700;
+            @include bold;
             display: flex;
             align-items: center;
             column-gap: calcVW(20);
@@ -140,10 +134,7 @@
 
     .description {
         position: relative;
-        font-weight: 700;
-        font-family: 'Copperplate CC';
-        font-size: calcVW(22);
-        line-height: calcVW(30.36);
+        @include bold;
         color: $beige-400;
         margin: calcVW(20) 0;
         overflow: hidden;
@@ -175,8 +166,7 @@
         }
 
         .description {
-            font-size: calcVWM(11);
-            line-height: calcVWM(15);
+            @include bold-mobile;
             height: calcVWM(30);
             text-align: center;
         }
@@ -193,8 +183,7 @@
                 height: calcVWM(60);
 
                 button {
-                    font-size: calcVWM(26);
-                    line-height: calcVWM(26);
+                    @include button-mobile;
                     height: 100%;
                 }
             }

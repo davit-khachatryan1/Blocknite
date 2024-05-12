@@ -32,9 +32,7 @@
     }
 
     .info {
-        font-size: calcVW(16);
-        line-height: calcVW(22.08);
-        font-weight: 700;
+        @include bold;
         color: $white-400;
         text-transform: uppercase;
         display: flex;
@@ -50,6 +48,46 @@
             a {
                 color: $white-400;
                 text-decoration: none;
+            }
+        }
+    }
+
+    @media (max-width: 576px) {
+        height: calcVWM(406);
+
+        .logo {
+            width: calcVWM(184);
+            height: calcVWM(41);
+        }
+
+        .fantasy {
+            width: calcVWM(181);
+            height: calcVWM(115);
+        }
+
+        .socialSites {
+            column-gap: calcVWM(12);
+
+            img {
+                width: calcVWM(38);
+                height: calcVWM(38);
+            }
+        }
+
+        .info {
+            @include bold-mobile;
+            row-gap: calcVWM(8);
+            text-align: center;
+
+            .support {
+                column-gap: calcVWM(8);
+            }
+
+            div {
+                &:last-of-type {
+                    max-width: calcVWM(230);
+                    text-align: center;
+                }
             }
         }
     }

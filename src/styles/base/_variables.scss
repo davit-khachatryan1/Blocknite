@@ -1,3 +1,5 @@
+@import "../abstract/functions";
+
 $beige-400: #EDD1AB;
 $beige-300: #EDD1AB75;
 $beige-200: #EDD1AB50;
@@ -20,3 +22,202 @@ $black-100: #10182525;
 
 $white-400: #FFFFFF;
 
+
+@mixin header1 {
+    $fs: calcVW(100);
+    $ff: 'Beaufort-Medium';
+    $fw: 500;
+    $lh: calcVW(100);
+
+    font-size: $fs;
+    font-family: $ff;
+    font-weight: $fw;
+    text-transform: uppercase;
+    line-height: $lh;
+}
+
+@mixin header2 {
+    $fs: calcVW(48);
+    $ff: 'Beaufort-Medium';
+    $fw: 500;
+    $lh: calcVW(48);
+
+    font-size: $fs;
+    font-family: $ff;
+    font-weight: $fw;
+    text-transform: uppercase;
+    line-height: $lh;
+}
+
+@mixin header3 {
+    $fs: calcVW(30);
+    $ff: 'Beaufort-Medium';
+    $fw: 500;
+    $lh: calcVW(30);
+
+    font-size: $fs;
+    font-family: $ff;
+    font-weight: $fw;
+    text-transform: uppercase;
+    line-height: $lh;
+}
+
+@mixin subtitle {
+    $fs: calcVW(22);
+    $ff: 'Copperplate CC';
+    $fw: 700;
+    $lh: calcVW(30);
+
+    font-size: $fs;
+    font-family: $ff;
+    font-weight: $fw;
+    line-height: $lh;
+}
+
+@mixin header4 {
+    $fs: calcVW(28);
+    $ff: 'Copperplate CC';
+    $fw: 700;
+    $lh: calcVW(38.64);
+
+    font-size: $fs;
+    font-family: $ff;
+    font-weight: $fw;
+    line-height: $lh;
+}
+
+@mixin body {
+    $fs: calcVW(16);
+    $ff: 'CopperplateEF';
+    $fw: 500;
+    $lh: calcVW(22);
+
+    font-size: $fs;
+    font-family: $ff;
+    font-weight: $fw;
+    line-height: $lh;
+}
+
+@mixin bold {
+    $fs: calcVW(16);
+    $ff: 'Copperplate CC';
+    $fw: 700;
+    $lh: calcVW(22);
+
+    font-size: $fs;
+    font-family: $ff;
+    font-weight: $fw;
+    line-height: $lh;
+}
+
+@mixin button {
+    $fs: calcVW(26);
+    $ff: 'Beaufort-Medium';
+    $fw: 500;
+    $lh: calcVW(26);
+
+    font-size: $fs;
+    font-family: $ff;
+    font-weight: $fw;
+    line-height: $lh;
+}
+
+
+@mixin header1-mobile {
+    $ff: 'Beaufort-Medium';
+    $fw: 500;
+    $fs: calcVWM(70);
+    $lh: calcVWM(70);
+
+    font-size: $fs;
+    font-family: $ff;
+    font-weight: $fw;
+    text-transform: uppercase;
+    line-height: $lh;
+}
+
+@mixin header2-mobile {
+    $ff: 'Beaufort-Medium';
+    $fw: 500;
+    $fs: calcVWM(34);
+    $lh: calcVWM(34);
+
+    font-size: $fs;
+    font-family: $ff;
+    font-weight: $fw;
+    text-transform: uppercase;
+    line-height: $lh;
+}
+
+@mixin header3-mobile {
+    $ff: 'Beaufort-Medium';
+    $fw: 500;
+    $fs: calcVWM(18);
+    $lh: calcVWM(18);
+
+    font-size: $fs;
+    font-family: $ff;
+    font-weight: $fw;
+    text-transform: uppercase;
+    line-height: $lh;
+}
+
+@mixin subtitle-mobile {
+    $ff: 'Copperplate CC';
+    $fw: 700;
+    $fs: calcVWM(11);
+    $lh: calcVWM(15.18);
+
+    font-size: $fs;
+    font-family: $ff;
+    font-weight: $fw;
+    line-height: $lh;
+}
+
+@mixin header4-mobile {
+    $ff: 'Copperplate CC';
+    $fw: 700;
+    $fs: calcVWM(14);
+    $lh: calcVWM(19.32);
+
+    font-size: $fs;
+    font-family: $ff;
+    font-weight: $fw;
+    line-height: $lh;
+}
+
+@mixin body-mobile {
+    $ff: 'CopperplateEF';
+    $fw: 500;
+    $fs: calcVWM(12);
+    $lh: calcVWM(16.8);
+
+    font-size: $fs;
+    font-family: $ff;
+    font-weight: $fw;
+    line-height: $lh;
+}
+
+@mixin bold-mobile {
+    $ff: 'Copperplate CC';
+    $fw: 700;
+    $fs: calcVWM(11);
+    $lh: calcVWM(15.18);
+
+    font-size: $fs;
+    font-family: $ff;
+    font-weight: $fw;
+    line-height: $lh;
+}
+
+@mixin button-mobile {
+    $ff: 'Beaufort-Medium';
+    $fw: 500;
+    $fs: calcVWM(26);
+    $lh: calcVWM(26);
+
+    font-size: $fs;
+    font-family: $ff;
+    font-weight: $fw;
+    line-height: $lh;
+}

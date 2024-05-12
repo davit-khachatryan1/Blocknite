@@ -20,10 +20,7 @@
         position: relative;
         transform: translate(0%, 0%);
         display: flex;
-        font-weight: 500;
-        font-size: calcVW(48);
-        line-height: calcVW(48);
-        font-family: 'Beaufort-Medium';
+        @include header2;
         color: $gold-400;
         column-gap: calcVW(30);
         margin: 0 auto;
@@ -33,10 +30,7 @@
     .subTitle {
         position: relative;
         transform: translate(-50%, -50%);
-        font-size: calcVW(22);
-        line-height: calcVW(30);
-        font-family: 'Copperplate CC';
-        font-weight: 700;
+        @include subtitle;
         color: $beige-400;
         max-width: calcVW(590);
         margin: 0 auto;
@@ -91,10 +85,7 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    font-size: calcVW(48);
-                    line-height: calcVW(48);
-                    font-weight: 500;
-                    font-family: 'Beaufort-Medium';
+                    @include header2;
                     color: $white-400;
                 }
 
@@ -107,10 +98,7 @@
                     }
 
                     .description {
-                        font-size: calcVW(16);
-                        font-weight: 500;
-                        line-height: calcVW(22);
-                        font-family: 'CopperplateEF';
+                        @include body;
                         color: $beige-400;
                         text-transform: uppercase;
                     }
@@ -168,10 +156,7 @@
         .carouselContainer {
             width: calcVW(805);
             margin-left: calcVW(30);
-            font-size: calcVW(22);
-            line-height: calcVW(30);
-            font-weight: 700;
-            font-family: 'Copperplate CC';
+            @include subtitle;
             color: $beige-400;
 
             .swiperElement {
@@ -209,7 +194,7 @@
         .mobileSlider {
             display: block;
             margin-top: auto;
-            margin-bottom: calcVWM(56);
+            margin-bottom: calcVWM(80);
         }
 
         .bottomContainer {
@@ -263,10 +248,8 @@
                         height: calcVWM(56);
                         margin: calcVWM(23);
                         border: calcVWM(2) solid $gold-400;
-                        font-weight: 500;
-                        font-size: calcVWM(34);
-                        line-height: calcVWM(34);
                         margin-right: calcVWM(16);
+                        @include header2-mobile;
 
                     }
 

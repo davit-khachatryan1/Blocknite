@@ -11,10 +11,7 @@
         transition: all 0.3s;
         display: flex;
         color: $brown-400;
-        font-family: 'Copperplate CC';
-        font-weight: 700;
-        font-size: calcVW(16);
-        line-height: calcVW(22.08);
+        @include bold;
         column-gap: calcVW(25);
         align-items: center;
         text-transform: uppercase;

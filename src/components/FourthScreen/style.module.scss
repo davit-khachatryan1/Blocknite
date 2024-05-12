@@ -14,18 +14,12 @@
         justify-content: center;
 
         .value {
-            font-size: calcVW(28);
-            font-weight: 700;
-            line-height: calcVW(38);
-            font-family: 'Copperplate CC';
+            @include header4;
             color: $white-400;
         }
 
         .title {
-            font-size: calcVW(22);
-            font-weight: 700;
-            line-height: calcVW(30);
-            font-family: 'Copperplate CC';
+            @include subtitle;
             color: $beige-400;
         }
     }
@@ -34,10 +28,7 @@
         position: relative;
         transform: translate(0%, 0%);
         display: flex;
-        font-weight: 500;
-        font-size: calcVW(48);
-        line-height: calcVW(48);
-        font-family: 'Beaufort-Medium';
+        @include header2;
         color: $gold-400;
     }
 
@@ -80,18 +71,12 @@
             }
 
             .percent {
-                font-weight: 700;
-                font-size: calcVW(28);
-                line-height: calcVW(38);
-                font-family: 'Copperplate CC';
+                @include header4;
                 color: $white-400;
             }
 
             .title {
-                font-weight: 700;
-                font-size: calcVW(16);
-                line-height: calcVW(22);
-                font-family: 'Copperplate CC';
+                @include bold;
                 color: $beige-400;
             }
 
@@ -111,16 +96,14 @@
             width: max-content;
             margin: 0 auto;
             margin-top: calcVWM(70);
-            font-size: calcVWM(34);
-            line-height: calcVWM(34);
-            font-weight: 500;
-            font-family: 'Beaufort-Medium';
+            @include header2-mobile;
         }
 
         .content {
             margin-bottom: calcVWM(16);
             row-gap: calcVWM(8) !important;
         }
+
         .infoBlock {
             display: flex;
             flex-direction: column;
@@ -139,8 +122,7 @@
 
             .info {
                 .title {
-                    font-size: calcVWM(11) !important;
-                    line-height: calcVWM(15) !important;
+                    @include bold-mobile;
                     width: calcVWM(105);
                     text-align: end;
                 }
@@ -159,15 +141,14 @@
                 width: calcVWM(105);
             }
         }
-        .mainTitleValue {
-            .title{
 
-                font-size: calcVWM(9);   
-                line-height: calcVWM(12.5);   
+        .mainTitleValue {
+            .title {
+                @include subtitle-mobile;
             }
+
             .value {
-                font-size: calcVWM(12);
-                line-height: calcVWM(16.5);
+                @include header4-mobile;
             }
         }
     }

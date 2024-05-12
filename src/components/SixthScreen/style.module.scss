@@ -16,9 +16,7 @@
             width: 100%;
             background-color: $black-400;
             color: $white-400;
-            font-size: calcVW(28);
-            font-family: 'Beaufort-Medium';
-            font-weight: 500;
+            @include header4;
             text-transform: uppercase;
         }
     }

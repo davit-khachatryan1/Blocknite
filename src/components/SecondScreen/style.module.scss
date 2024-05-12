@@ -49,10 +49,7 @@
         align-items: center;
 
         .title {
-            font-weight: 500;
-            font-size: calcVW(30);
-            line-height: calcVW(30);
-            font-family: 'Beaufort-Medium';
+            @include header3;
             color: $gold-400;
             position: relative;
             text-transform: uppercase;
@@ -121,9 +118,7 @@
                 }
             }
             .title { 
-                font-weight: 500;
-                line-height: calcVWM(18);
-                font-size: calcVWM(18);
+                @include header3-mobile;
                 margin-bottom: calcVWM(16);
             }
         }

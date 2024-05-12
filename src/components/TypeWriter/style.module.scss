@@ -2,56 +2,41 @@
 @import "../../styles/base/variables";
 
 .altarin {
-    font-weight: 500;
-    font-size: calcVW(100);
     position: relative;
-    line-height: calcVW(100);
+    @include header1;
     color: $white-400;
-    font-family: 'Beaufort-Medium';
     margin: calcVW(40) 0 calcVW(15) 0;
     height: calcVW(100);
 }
 
 .name {
     position: relative;
-    font-weight: 700;
-    font-size: calcVW(100);
     line-height: calcVW(138);
     color: $gold-400;
     text-transform: uppercase;
-    font-family: 'Copperplate CC';
     height: calcVW(138);
+    @include header1;
+    font-weight: 700;
 }
 
 .titleOrange {
-
-    font-size: calcVW(28);
-    font-weight: 700;
-    line-height: calcVW(38);
-    font-family: 'Copperplate CC';
+    @include header1;
     color: $white-400;
 }
 
 .titleWhite {
-    font-size: calcVW(28);
-    font-weight: 700;
-    line-height: calcVW(38);
-    font-family: 'Copperplate CC';
+    @include header1;
     color: $gold-400;
 }
 
 .value {
-    font-weight: 700;
-    font-size: calcVW(16);
-    line-height: calcVW(22);
-    font-family: 'Copperplate CC';
+    @include bold;
     color: $beige-300;
 }
 
 @media (max-width: 576px) {
     .altarin {
-        font-size: calcVWM(48);
-        line-height: calcVWM(48);
+        @include header1-mobile;
         height: calcVWM(48);
         text-align: center;
         margin-top: auto;
@@ -64,17 +49,14 @@
         text-align: center;
     }
     .titleOrange {
-        font-size: calcVWM(12);
-        line-height: calcVWM(16);
+        @include body-mobile;
     }
     
     .titleWhite {
-        font-size: calcVWM(12);
-        line-height: calcVWM(16);
+        @include body-mobile;
     }
 
     .value {
-        font-size: calcVWM(11);
-        line-height: calcVWM(15);
+        @include bold-mobile;
     }
 }
