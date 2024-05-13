@@ -19,9 +19,6 @@ export const RoadMapCard = ({ right = false, title = 'Pre-Launch', first = '' })
         }
     }, [inView])
 
-    console.log(first);
-    
-
     return (
         <motion.div ref={ref}
             style={{ overflow: 'hidden' }}

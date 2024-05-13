@@ -8,7 +8,6 @@ import { useState } from 'react';
 
 export const MainScreen = () => {
     const [active, setActive] = useState('$NITE address');
-    console.log(active);
 
     return (
         <div className={styles.container}>
