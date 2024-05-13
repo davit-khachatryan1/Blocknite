@@ -12,7 +12,7 @@ export const RoadMapText = ({ right = false, texts = [] }: { texts: string[], ri
     });
 
     useEffect(() => {
-        if (inView) {
+        if (inView || window.innerWidth <= 576) {
             controls.start('visible');
         } else {
             controls.start('hidden');
@@ -38,8 +38,8 @@ export const RoadMapText = ({ right = false, texts = [] }: { texts: string[], ri
                 }
             }}
         >
-            {texts.map(el =>
-                <div>
+            {texts.map((el, index) =>
+                <div key={index}>
                     <div className={styles.dot} />
                     <div className={styles.text}>
                         {el}

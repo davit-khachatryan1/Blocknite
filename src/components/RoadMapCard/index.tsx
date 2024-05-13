@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer';
 import { useEffect } from 'react';
 import { calcVW } from '../../utils/hooks/functions';
 
-export const RoadMapCard = ({ right = false, title = 'Pre-Launch' }) => {
+export const RoadMapCard = ({ right = false, title = 'Pre-Launch', first = '' }) => {
     const controls = useAnimation();
     const [ref, inView] = useInView({
         triggerOnce: false,
@@ -12,12 +12,15 @@ export const RoadMapCard = ({ right = false, title = 'Pre-Launch' }) => {
     });
 
     useEffect(() => {
-        if (inView) {
+        if (inView || window.innerWidth <= 576) {
             controls.start('visible');
         } else {
             controls.start('hidden');
         }
     }, [inView])
+
+    console.log(first);
+    
 
     return (
         <motion.div ref={ref}
@@ -28,11 +31,13 @@ export const RoadMapCard = ({ right = false, title = 'Pre-Launch' }) => {
             variants={{
                 hidden: { width: '0' },
                 visible: {
-                    width: calcVW('358px'),
+                    width: calcVW('358px', 288),
                     transition: { duration: 0.8, delay: 0.5 }
                 }
             }}
         >
+            {first && <div className={styles[first]}/>}
+
             <div className={styles.container} style={{
                 justifyContent: right ? 'flex-end' : 'flex-start',
                 right: right ? 'auto' : 0
@@ -41,7 +46,8 @@ export const RoadMapCard = ({ right = false, title = 'Pre-Launch' }) => {
                 <div className={styles.title}>
                     {title}
                 </div>
-                <img src={right ? "/icons/map-card-right.svg" : "/icons/map-card-left.svg"} alt="" />
+                <img src={right ? "/icons/map-card-right.svg" : "/icons/map-card-left.svg"} alt="" className={styles.desktopIcon}/>
+                <img src={"/icons/map-card-mobile.svg"} alt="" className={styles.mobileIcon} />
             </div>
         </motion.div>
     );

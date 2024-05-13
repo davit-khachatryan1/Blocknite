@@ -8,6 +8,7 @@
     position: absolute;
     display: flex;
     align-items: center;
+
     .title {
         color: $black-400;
         text-transform: uppercase;
@@ -25,6 +26,10 @@
         width: calcVW(359);
         height: calcVW(78);
     }
+
+    .mobileIcon {
+        display: none;
+    }
 }
 
 .right {
@@ -37,4 +42,81 @@
     height: calcVW(78);
     margin-left: auto;
     position: relative;
+}
+
+@media (max-width: 576px) {
+    .right {
+        position: relative;
+        height: calcVWM(135);
+        margin: 0;
+        z-index: 100;
+    }
+
+    .left {
+        position: relative;
+        z-index: 100;
+        height: calcVWM(135);
+        margin: 0;
+        overflow: visible !important;
+        .first-short {
+            height: 2px;
+            background: $brown-400;
+            width: calcVWM(182);
+            margin-left: auto;
+            margin-top: calcVWM(11);
+            margin-bottom: calcVWM(-13);
+            margin-right: calcVWM(-16.5);
+            position: relative;
+            z-index: 999;
+        }
+        .long {
+            height: 2px;
+            background: $brown-400;
+            width: calcVWM(320);
+            margin-left: calcVWM(-15);
+            margin-top: calcVWM(11);
+            margin-bottom: calcVWM(-13);
+            position: relative;
+            z-index: 999;
+        }
+        .last-short {
+            height: 2px;
+            background: $brown-400;
+            width: calcVWM(182);
+            margin-right: auto;
+            margin-top: calcVWM(11);
+            margin-bottom: calcVWM(-13);
+            margin-left: calcVWM(-17);
+            position: relative;
+            z-index: 999;
+        }
+    }
+
+    .container {
+        width: calcVWM(288);
+        height: calcVWM(135);
+
+        .desktopIcon {
+            display: none;
+        }
+
+        .mobileIcon {
+            display: flex;
+            width: calcVWM(288);
+            height: calcVWM(135);
+        }
+
+        .title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: auto;
+            @include header4-mobile;
+            width: calcVWM(288);
+            height: calcVWM(76);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+    }
 }

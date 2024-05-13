@@ -5,6 +5,18 @@ import { useEffect } from 'react';
 import { RoadMapCard } from '../RoadMapCard';
 import { RoadMapText } from '../RoadMapText';
 import { calcVW } from '../../utils/hooks/functions';
+import Slider from 'react-slick';
+
+const settings = {
+    infinite: false,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 7000,
+    nextArrow: <img src='/icons/arrow-right-slider.svg' />,
+    prevArrow: <img src='/icons/arrow-left-slider.svg' />,
+};
 
 export const FifthScreen = () => {
 
@@ -113,6 +125,21 @@ export const FifthScreen = () => {
                         }} />
                 </motion.div>
             </div>
+            <motion.div className={styles.titleBlockMobile}
+                    ref={titleRef}
+                    animate={titleControls}
+                    initial="hidden"
+                    variants={{
+                        hidden: { opacity: 0, transform: `translateY(${calcVW('-25px')})` },
+                        visible: {
+                            opacity: 1,
+                            transform: 'translateY(0)',
+                            transition: { duration: 0.8 }
+                        }
+                    }}
+                >
+                    Roadmap
+                </motion.div>
             <div className={styles.map}>
                 <div className={styles.infoElement}>
                     <div className={styles.oneBlock} ref={lineControls1}>
@@ -187,6 +214,73 @@ export const FifthScreen = () => {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className={styles.mapMobile}>
+                <Slider {...settings}>
+                    <div className={styles.cardMobile}>
+                        <RoadMapCard title='Pre-Launch' first='first-short' />
+                        <div className={styles.info}>
+                            <RoadMapText
+                                texts={
+                                    [
+                                        'Launch social medias',
+                                        'Develop the Blocknite landing page & dapp',
+                                        'Create listing on PinkSale',
+                                        'Audit & launch our smart contracts'
+                                    ]
+                                }
+                            />
+                        </div>
+                    </div>
+                    <div className={styles.cardMobile}>
+                        <RoadMapCard title='Launch' first='long' />
+                        <div className={styles.info}>
+                            <RoadMapText
+                                right={true}
+                                texts={
+                                    [
+                                        'Launch our Trailer & socials',
+                                        'Contact influencers',
+                                        'Create listing on PinkSale',
+                                        'Select presale whitelist from our community'
+                                    ]
+                                }
+                            />
+                        </div>
+                    </div>
+                    <div className={styles.cardMobile}>
+                        <RoadMapCard title='Activation' first='long' />
+                        <div className={styles.info}>
+                            <RoadMapText
+                                texts={
+                                    [
+                                        'Launch on PancakeSwap & CoinGecko',
+                                        'Launch our innovative dapp!',
+                                        'Kick-off our gaming ecosystem with Treanin creation',
+                                        'Begin airdrop competition'
+                                    ]
+                                }
+                            />
+                        </div>
+                    </div>
+                    <div className={styles.cardMobile}>
+                        <RoadMapCard title='Enrichment' first='last-short' />
+                        <div className={styles.info}>
+                            <RoadMapText
+                                right={true}
+                                texts={
+                                    [
+                                        'Add new items (FuseStone, NameStone..)',
+                                        'Add new Orgurin enemies',
+                                        'Add amazing boss fights',
+                                        'Discuss listing with CEXs',
+                                        'Grow team to add more features'
+                                    ]
+                                }
+                            />
+                        </div>
+                    </div>
+                </Slider>
             </div>
         </div >
     );
