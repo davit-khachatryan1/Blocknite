@@ -20,12 +20,12 @@
 }
 
 .titleOrange {
-    @include header1;
+    @include header4;
     color: $white-400;
 }
 
 .titleWhite {
-    @include header1;
+    @include header4;
     color: $gold-400;
 }
 
