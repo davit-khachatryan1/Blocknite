@@ -187,7 +187,7 @@ export const ThirdScreen = () => {
                     </div>
                 </motion.div>
             </div>
-            {window.innerWidth < 576 &&
+            {window.innerWidth <= 576 &&
             <Slider {...settingsMobile} className={styles.mobileSlider} afterChange={(e) => {
                 const obj = { first: false, second: false, third: false };
                 if (e === 0) {
