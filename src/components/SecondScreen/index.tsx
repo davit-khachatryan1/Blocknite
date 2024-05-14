@@ -5,7 +5,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import TitleBlock from '../TitleBlock';
 import { calcVW } from '../../utils/hooks/functions';
-import { DetailedHTMLProps, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useStateProvider } from '../../context/state';
 
 const settings = {
     infinite: true,
@@ -38,6 +39,7 @@ const items = [
 ]
 
 export const SecondScreen = () => {
+    const { windowWidth } = useStateProvider()
     const videoId = 'ZaBl4QRO1oM';
     const [player, setPlayer] = useState<any>(null);
     const [isPlaying, setIsPlaying] = useState(false);
@@ -94,14 +96,14 @@ export const SecondScreen = () => {
         } else {
             controls.start({
                 opacity: 1,
-                zIndex: 999
+                zIndex: 100
             })
         }
     }, [isPlaying])
 
     return (
         <div className={styles.container}>
-            <TitleBlock title="Trea is waiting for you" description="Embark on a heroic quest to defend Mithruon from the Orgurin onslaught." mobileClassName={true} descriptionBottom={true} />
+            <TitleBlock title="Trea is waiting for you" description="Embark on a heroic quest to defend Mithruon from the Orgurin onslaught." mobileClassName={windowWidth <= 576} descriptionBottom={true} />
             <motion.div className={styles.playButton} onClick={handlePlayVideo} animate={controls}>
                 <img src='/icons/main-circle.svg' className={styles.mainCircle} />
                 <motion.img
@@ -155,7 +157,7 @@ export const SecondScreen = () => {
                 <div className={styles.carouselContainer}>
                     <Slider {...settings}>
                         {items.map((item, index) =>
-                            <div className={styles.swiperElement} key={index}> <img src={item.src} alt={`Slide ${index}`} style={{ height: calcVW('40px'), width: 'auto', objectFit: 'contain' }} /></div>
+                            <div className={styles.swiperElement} key={index}> <img src={item.src} alt={`Slide ${index}`} style={{ height: calcVW('40px', windowWidth), width: 'auto', objectFit: 'contain' }} /></div>
                         )}
                     </Slider>
                 </div>

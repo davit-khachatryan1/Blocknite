@@ -1,9 +1,17 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './style.module.scss'
+import { useStateProvider } from '../../context/state';
 
 export const Screen = ({ id, component, imageUrl, mobileImage }: any) => {
+  const { windowWidth } = useStateProvider()
   const imageRef = useRef(null);
   const [elementHeight, setElementHeight] = useState(0)
+
+  useEffect(() => {
+    if (windowWidth && imageRef?.current) {
+      setElementHeight((imageRef?.current as any).offsetHeight)
+    }
+  }, [windowWidth])
 
   return <div style={{
     width: '100%',

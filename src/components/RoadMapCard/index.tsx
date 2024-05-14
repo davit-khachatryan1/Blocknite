@@ -1,24 +1,23 @@
 import { motion, useAnimation } from 'framer-motion';
 import styles from './style.module.scss'
-import { useInView } from 'react-intersection-observer';
 import { useEffect } from 'react';
 import { calcVW } from '../../utils/hooks/functions';
 import { useStateProvider } from '../../context/state';
 
 export const RoadMapCard = ({ right = false, title = 'Pre-Launch', first = '', isAnimate = false, duration = 0, delay = 0 }) => {
     const controls = useAnimation();
-    const { scrolling } = useStateProvider();
+    const { scrolling, windowWidth } = useStateProvider();
 
 
     useEffect(() => {
         if (!scrolling) {
-            if (isAnimate || window.innerWidth <= 576) {
+            if (isAnimate || windowWidth <= 576) {
                 controls.start('visible');
             } else {
                 controls.start('hidden');
             }
         }
-    }, [isAnimate, scrolling])
+    }, [isAnimate, scrolling, windowWidth])
 
     return (
         <motion.div
@@ -29,7 +28,7 @@ export const RoadMapCard = ({ right = false, title = 'Pre-Launch', first = '', i
             variants={{
                 hidden: { width: '0' },
                 visible: {
-                    width: calcVW('358px', 288),
+                    width: calcVW('358px',windowWidth, 288),
                     transition: { duration, delay }
                 }
             }}

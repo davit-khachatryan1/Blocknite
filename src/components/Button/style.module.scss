@@ -12,6 +12,11 @@
     align-items: center;
     column-gap: calcVW(16);
 
+    .leftIcon {
+        width: calcVW(24);
+        height: calcVW(24);
+    }
+
     .icon {
         position: absolute;
         width: calcVW(16);
@@ -56,6 +61,11 @@
         border: calcVWM(2) solid $gold-400;
         border-radius: calcVWM(50);
         column-gap: calcVWM(16);
+
+        .leftIcon {
+            width: calcVWM(24);
+            height: calcVWM(24);
+        }
 
         .icon {
             width: calcVWM(20);

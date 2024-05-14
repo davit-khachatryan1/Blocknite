@@ -40,7 +40,7 @@ const items = [
 ];
 
 export const ThirdScreen = () => {
-    const { scrolling } = useStateProvider();
+    const { scrolling, windowWidth, windowHeight } = useStateProvider();
     const [infoTitles, setInfoTitles] = useState({
         first: true,
         second: false,
@@ -67,17 +67,17 @@ export const ThirdScreen = () => {
     const updateHeight = () => {
         let obj = { first: true, second: true, third: true };
         if (inViewFirstBlock3) {
-            blockControls1.start({ height: calcVW('199px'), transition: { duration: 0.5 } });
-            blockControls2.start({ height: calcVW('199px'), transition: { duration: 0.5 } });
-            blockControls3.start({ height: calcVW('199px'), transition: { duration: 0.5 } });
+            blockControls1.start({ height: calcVW('199px', windowWidth), transition: { duration: 0.5 } });
+            blockControls2.start({ height: calcVW('199px', windowWidth), transition: { duration: 0.5 } });
+            blockControls3.start({ height: calcVW('199px', windowWidth), transition: { duration: 0.5 } });
             obj = { first: true, second: true, third: true };
         } else if (inViewFirstBlock2) {
-            blockControls1.start({ height: calcVW('199px'), transition: { duration: 0.5 } });
-            blockControls2.start({ height: calcVW('199px'), transition: { duration: 0.5 } });
+            blockControls1.start({ height: calcVW('199px', windowWidth), transition: { duration: 0.5 } });
+            blockControls2.start({ height: calcVW('199px', windowWidth), transition: { duration: 0.5 } });
             blockControls3.start({ height: '0', transition: { duration: 0.2 } });
             obj = { first: true, second: true, third: false };
         } else if (inViewFirstBlock1) {
-            blockControls1.start({ height: calcVW('199px'), transition: { duration: 0.5 } });
+            blockControls1.start({ height: calcVW('199px', windowWidth), transition: { duration: 0.5 } });
             blockControls2.start({ height: '0', transition: { duration: 0.2 } });
             blockControls3.start({ height: '0', transition: { duration: 0.2 } });
             obj = { first: true, second: false, third: false };
@@ -91,12 +91,12 @@ export const ThirdScreen = () => {
     };
 
     useEffect(() => {
-        if (window.innerWidth > 576) {
+        if (windowWidth > 576) {
             if (!scrolling) {
                 updateHeight();
             }
         }
-    }, [inViewFirstBlock1, inViewFirstBlock2, inViewFirstBlock3, scrolling]);
+    }, [inViewFirstBlock1, inViewFirstBlock2, inViewFirstBlock3, scrolling, windowWidth]);
 
     const controlsBottom = useAnimation();
     const controlsBottomSlider = useAnimation();
@@ -111,17 +111,17 @@ export const ThirdScreen = () => {
                 controlsBottom.start('visible');
                 controlsBottomSlider.start('visible');
             } else {
-                if (entry && entry.boundingClientRect.top < window.innerHeight) {
+                if (entry && entry.boundingClientRect.top < windowHeight) {
                     controlsBottom.start('hidden');
                     controlsBottomSlider.start('hidden');
                 }
             }
         }
-    }, [controlsBottom, inView, entry, scrolling]);
+    }, [controlsBottom, inView, entry, scrolling, windowHeight]);
 
     return (
         <div className={styles.container}>
-            <TitleBlock title="How to play & Earn" description="Partake in our airdrop competition and win millions of $NITE token!" mobileClassName={true} />
+            <TitleBlock title="How to play & Earn" description="Partake in our airdrop competition and win millions of $NITE token!" mobileClassName={windowWidth <= 576} />
             <div className={`${styles.mainBlock} ${styles.desktop}`} ref={refFirstBlock1}>
                 <motion.div
                     animate={blockControls1}
@@ -194,7 +194,7 @@ export const ThirdScreen = () => {
                     </div>
                 </motion.div>
             </div>
-            {window.innerWidth <= 576 &&
+            {windowWidth <= 576 &&
                 <Slider {...settingsMobile} className={styles.mobileSlider} afterChange={(e) => {
                     const obj = { first: false, second: false, third: false };
                     if (e === 0) {
@@ -284,7 +284,7 @@ export const ThirdScreen = () => {
                     initial="hidden"
                     animate={controlsBottom}
                     variants={{
-                        hidden: { opacity: 0, marginLeft: calcVW('-200px') },
+                        hidden: { opacity: 0, marginLeft: calcVW('-200px', windowWidth) },
                         visible: {
                             opacity: 1,
                             marginLeft: '0',

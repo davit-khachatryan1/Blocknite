@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { useStateProvider } from '../../context/state';
 
 export const MainScreen = () => {
-    const { setOpenMenu } = useStateProvider();
+    const { setOpenMenu, windowWidth } = useStateProvider();
     const [active, setActive] = useState('$NITE address');
 
     return (
@@ -56,7 +56,7 @@ export const MainScreen = () => {
                     transition={{ duration: 0.5, delay: 1.5 }}
                     variants={{
                         hidden: { opacity: 1, y: 0, x: 0, scale: 1, height: 0 },
-                        visible: { opacity: 1, y: 0, x: 0, scale: 1, height: calcVW('35px') },
+                        visible: { opacity: 1, y: 0, x: 0, scale: 1, height: calcVW('35px', windowWidth) },
                     }}
                 >
                     Stop the Orgurin, The fate of Trea is in your hands.
@@ -69,7 +69,7 @@ export const MainScreen = () => {
                         transition={{ duration: 0.5, delay: 2 }}
                         variants={{
                             hidden: { opacity: 1, y: 0, x: 0, scale: 1, height: 0 },
-                            visible: { opacity: 1, y: 0, x: 0, scale: 1, height: calcVW('70px') },
+                            visible: { opacity: 1, y: 0, x: 0, scale: 1, height: calcVW('70px', windowWidth) },
                         }}
                     >
                         <Button withIcon={true}>PRESALE</Button>
@@ -82,12 +82,11 @@ export const MainScreen = () => {
                         transition={{ duration: 0.5, delay: 2 }}
                         variants={{
                             hidden: { opacity: 1, y: 0, x: 0, scale: 1, height: 0 },
-                            visible: { opacity: 1, y: 0, x: 0, scale: 1, height: calcVW('70px') },
+                            visible: { opacity: 1, y: 0, x: 0, scale: 1, height: calcVW('70px', windowWidth) },
                         }}
                     >
                         <Button buttonIcon={true}>GITBOOK</Button>
                     </motion.div>
-
                 </div>
             </div>
 
@@ -99,7 +98,7 @@ export const MainScreen = () => {
                     transition={{ duration: 0.5, delay: 2.5 }}
                     variants={{
                         hidden: { opacity: 1, y: 0, x: 0, scale: 1, height: 0 },
-                        visible: { opacity: 1, y: 0, x: 0, scale: 1, height: calcVW('50px') },
+                        visible: { opacity: 1, y: 0, x: 0, scale: 1, height: calcVW('50px', windowWidth) },
                     }}
                 >
                     <div className={styles.twoButton}>
@@ -114,7 +113,7 @@ export const MainScreen = () => {
                     transition={{ duration: 0.5, delay: 2.5 }}
                     variants={{
                         hidden: { opacity: 1, y: 0, x: 0, scale: 1, height: 0 },
-                        visible: { opacity: 1, y: 0, x: 0, scale: 1, height: calcVW('50px') },
+                        visible: { opacity: 1, y: 0, x: 0, scale: 1, height: calcVW('50px', windowWidth) },
                     }}
                 >
                     <div className={`${styles.twoButton} ${styles.copyBlock}`}>

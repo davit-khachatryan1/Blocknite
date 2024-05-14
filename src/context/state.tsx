@@ -8,6 +8,9 @@ interface UserProfile {
     setOpenMenu: (open: boolean) => void;
     scrolling: boolean;
     setScrolling: (open: boolean) => void;
+    windowWidth: number;
+    windowHeight: number;
+    setWindowSize: ({ width, height }: { width: number, height: number }) => void;
 }
 
 // Create the context with a default undefined value, properly typed
@@ -30,6 +33,7 @@ export const StateProvider: React.FC<StateProviderProps> = ({ children }) => {
     const [page, setPage] = useState('');
     const [open, setOpen] = useState(false);
     const [scrolling, setScrolling] = useState(true);
+    const [windowSize, setWindow] = useState({ width: window.innerWidth, height: window.innerHeight });
 
     const updatePage = (id: string, type = true) => {
         setScrolling(type);
@@ -38,12 +42,18 @@ export const StateProvider: React.FC<StateProviderProps> = ({ children }) => {
         (window as any)["scrolling"] = type;
     };
 
+    const setWindowSize = (val: { width: number, height: number }) => {
+        (window as any)['customWidth'] = val.width;
+        (window as any)['customHeight'] = val.height;
+        setWindow(val)
+    }
+
     const setOpenMenu = (open: boolean) => {
         setOpen(open);
     };
 
     return (
-        <StateProviderContext.Provider value={{ page, updatePage, setOpenMenu, open, scrolling, setScrolling }}>
+        <StateProviderContext.Provider value={{ page, updatePage, setOpenMenu, open, scrolling, setScrolling, windowWidth: windowSize.width, windowHeight: windowSize.height, setWindowSize }}>
             {children}
         </StateProviderContext.Provider>
     );

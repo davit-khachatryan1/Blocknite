@@ -6,19 +6,19 @@ import { calcVW } from '../../utils/hooks/functions';
 import { useStateProvider } from '../../context/state';
 
 export const RoadMapText = ({ right = false, texts = [], isAnimate = false, duration = 0, delay = 0 }: { texts: string[], right?: boolean, isAnimate?: boolean, duration?: number, delay?: number }) => {
-    const { scrolling } = useStateProvider();
+    const { scrolling, windowWidth } = useStateProvider();
     const controls = useAnimation();
 
 
     useEffect(() => {
         if (!scrolling) {
-            if (isAnimate || window.innerWidth <= 576) {
+            if (isAnimate || windowWidth <= 576) {
                 controls.start('visible');
             } else {
                 controls.start('hidden');
             }
         }
-    }, [isAnimate, scrolling])
+    }, [isAnimate, scrolling, windowWidth])
 
     return (
         <motion.div
@@ -29,7 +29,7 @@ export const RoadMapText = ({ right = false, texts = [], isAnimate = false, dura
             variants={{
                 hidden: {
                     opacity: 0,
-                    ...(right ? { marginLeft: calcVW('-100px'), marginRight: calcVW('100px') } : { marginLeft: calcVW('100px'), marginRight: calcVW('-100px') }),
+                    ...(right ? { marginLeft: calcVW('-100px', windowWidth), marginRight: calcVW('100px', windowWidth) } : { marginLeft: calcVW('100px', windowWidth), marginRight: calcVW('-100px', windowWidth) }),
                 },
                 visible: {
                     opacity: 1,

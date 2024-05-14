@@ -20,7 +20,7 @@ const settings = {
 };
 
 export const FifthScreen = () => {
-    const { scrolling } = useStateProvider();
+    const { scrolling, windowWidth } = useStateProvider();
 
     const titleControls = useAnimation();
     const lineControls = useAnimation();
@@ -63,12 +63,12 @@ export const FifthScreen = () => {
             if (inViewTitle1 || inViewTitle2 || inViewTitle3 || inViewTitle4) {
                 lineControls.stop()
                 lineControls.start({
-                    height: calcVW('732px'),
+                    height: calcVW('732px', windowWidth),
                     transition: { duration: 2 }
                 })
             } else {
                 lineControls.start({
-                    height: calcVW('0'),
+                    height: calcVW('0', windowWidth),
                     transition: { duration: 0 }
                 })
             }
@@ -99,7 +99,7 @@ export const FifthScreen = () => {
                         variants={{
                             hidden: { width: '0', height: '0' },
                             visible: {
-                                width: calcVW('34px'), height: calcVW('34px'),
+                                width: calcVW('34px', windowWidth), height: calcVW('34px', windowWidth),
                                 transition: { duration: 0.3, delay: 0.8 }
                             }
                         }} />
@@ -110,7 +110,7 @@ export const FifthScreen = () => {
                         variants={{
                             hidden: { width: '0', height: '0' },
                             visible: {
-                                width: calcVW('34px'), height: calcVW('34px'),
+                                width: calcVW('34px', windowWidth), height: calcVW('34px', windowWidth),
                                 transition: { duration: 0.3, delay: 0.8 }
                             }
                         }} />
@@ -121,7 +121,7 @@ export const FifthScreen = () => {
                 animate={titleControls}
                 initial="hidden"
                 variants={{
-                    hidden: { opacity: 0, transform: `translateY(${calcVW('-25px')})` },
+                    hidden: { opacity: 0, transform: `translateY(${calcVW('-25px', windowWidth)})` },
                     visible: {
                         opacity: 1,
                         transform: 'translateY(0)',

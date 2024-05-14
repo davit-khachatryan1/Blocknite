@@ -3,7 +3,7 @@ import styles from './style.module.scss'
 export const Button = ({ withIcon = false, classname, children, onClick, buttonIcon = false }: any) => {
     return (
         <button className={`${styles.button} ${classname}`} onClick={onClick}>
-            {buttonIcon && <img src='/icons/button-icon.svg' alt='icon'/>}
+            {buttonIcon && <img src='/icons/button-icon.svg' alt='icon' className={styles.leftIcon}/>}
             {children}
             {withIcon &&
                 <>

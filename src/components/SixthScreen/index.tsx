@@ -27,7 +27,7 @@ const FAQList = [
 ]
 
 export const SixthScreen = () => {
-    const { scrolling } = useStateProvider();
+    const { scrolling, windowWidth } = useStateProvider();
     const [active, setActive] = useState(0);
     const enterAppControls = useAnimation();
     const [refEnterApp, inVewEnterApp] = useInView({
@@ -47,7 +47,7 @@ export const SixthScreen = () => {
 
     return (
         <div className={styles.container}>
-            <TitleBlock title="frequently asked questions" secondTitle="FAQ" mobileClassName={true} description="Lorem ipsum dolor sit amet consectetur. Et massa fusce eget mi molestie egestas." withOutDescription={true} />
+            <TitleBlock title="frequently asked questions" secondTitle="FAQ" mobileClassName={windowWidth <= 576} description="Lorem ipsum dolor sit amet consectetur. Et massa fusce eget mi molestie egestas." withOutDescription={true} />
 
             <div className={styles.inputBlock}>
                 {FAQList.map((el, index) =>

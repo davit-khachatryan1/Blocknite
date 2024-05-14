@@ -7,7 +7,7 @@ import { calcVW } from '../../utils/hooks/functions';
 import { useStateProvider } from '../../context/state';
 
 const TitleBlock = ({ title, description, mobileClassName, descriptionBottom, secondTitle, withOutDescription = false }: any) => {
-    const { scrolling } = useStateProvider();
+    const { scrolling, windowWidth } = useStateProvider();
     const controls = useAnimation();
     const ref1 = useRef(null);
 
@@ -26,9 +26,9 @@ const TitleBlock = ({ title, description, mobileClassName, descriptionBottom, se
             }
         }
     }, [inVewTitle, scrolling])
-
+    
     const checkCenter = () => {
-        if (!scrolling) {
+        if (!(window as any)["scrolling"]) {
             if (ref1.current) {
                 const rect = (ref1.current as any).getBoundingClientRect();
                 const windowHeight = window.innerHeight || document.documentElement.clientHeight;
@@ -38,7 +38,7 @@ const TitleBlock = ({ title, description, mobileClassName, descriptionBottom, se
                 const isElementCentered = center > 0 && center < windowHeight / 2;
                 if (isElementCentered) {
                     controls.start({
-                        width: calcVW('168px'),
+                        width: calcVW('168px', (window as any).customWidth),
                         transition: { duration: 0.5, ease: 'easeOut' }
                     });
                 } else if (center > windowHeight) {
@@ -55,18 +55,18 @@ const TitleBlock = ({ title, description, mobileClassName, descriptionBottom, se
         return () => {
             window.removeEventListener("scroll", checkCenter);
         };
-    }, [])
+    }, [ref1])
 
     return <>
 
         <div className={styles.titleBlock}>
-            <div style={{ width: calcVW('168px'), display: 'flex', justifyContent: 'center', alignItems: 'center' }} className={mobileClassName && styles.isMobile}>
+            <div style={{ width: calcVW('168px', windowWidth), display: 'flex', justifyContent: 'center', alignItems: 'center' }} className={mobileClassName && styles.isMobile}>
                 <motion.div
                     ref={ref1}
-                    initial={{ width: '0', height: calcVW('29px') }}
+                    initial={{ width: '0', height: calcVW('29px', windowWidth) }}
                     animate={controls}
                     style={{
-                        height: calcVW('29px'),
+                        height: calcVW('29px', windowWidth),
                         overflow: 'hidden',
                         position: 'relative',
                         display: 'flex',
@@ -87,7 +87,7 @@ const TitleBlock = ({ title, description, mobileClassName, descriptionBottom, se
                 animate={titleControls}
                 initial="hidden"
                 variants={{
-                    hidden: { opacity: 0, transform: `translateY(${calcVW('-25px')})` },
+                    hidden: { opacity: 0, transform: `translateY(${calcVW('-25px', windowWidth)})` },
                     visible: {
                         opacity: 1,
                         transform: 'translateY(0)',
@@ -95,15 +95,15 @@ const TitleBlock = ({ title, description, mobileClassName, descriptionBottom, se
                     }
                 }}
             >
-                <div>{secondTitle || title}</div>
+                <div>{mobileClassName && secondTitle ? secondTitle : title}</div>
             </motion.div>
 
-            <div style={{ width: calcVW('168px'), display: 'flex', justifyContent: 'center', alignItems: 'center' }} className={mobileClassName && styles.isMobile}>
+            <div style={{ width: calcVW('168px', windowWidth), display: 'flex', justifyContent: 'center', alignItems: 'center' }} className={mobileClassName && styles.isMobile}>
                 <motion.div
-                    initial={{ width: '0', height: calcVW('29px') }}
+                    initial={{ width: '0', height: calcVW('29px', windowWidth) }}
                     animate={controls}
                     style={{
-                        height: calcVW('29px'),
+                        height: calcVW('29px', windowWidth),
                         overflow: 'hidden',
                         position: 'relative',
                         display: 'flex',
@@ -126,7 +126,7 @@ const TitleBlock = ({ title, description, mobileClassName, descriptionBottom, se
                 animate={titleControls}
                 initial="hidden"
                 variants={{
-                    hidden: { opacity: 0, transform: `translateY(${calcVW('-25px')})` },
+                    hidden: { opacity: 0, transform: `translateY(${calcVW('-25px', windowWidth)})` },
                     visible: {
                         opacity: 1,
                         transform: 'translateY(0)',
