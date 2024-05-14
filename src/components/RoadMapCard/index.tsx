@@ -4,23 +4,20 @@ import { useInView } from 'react-intersection-observer';
 import { useEffect } from 'react';
 import { calcVW } from '../../utils/hooks/functions';
 
-export const RoadMapCard = ({ right = false, title = 'Pre-Launch', first = '' }) => {
+export const RoadMapCard = ({ right = false, title = 'Pre-Launch', first = '', isAnimate = false, duration = 0, delay = 0 }) => {
     const controls = useAnimation();
-    const [ref, inView] = useInView({
-        triggerOnce: false,
-        threshold: 1,
-    });
+
 
     useEffect(() => {
-        if (inView || window.innerWidth <= 576) {
+        if (isAnimate || window.innerWidth <= 576) {
             controls.start('visible');
         } else {
             controls.start('hidden');
         }
-    }, [inView])
+    }, [isAnimate])
 
     return (
-        <motion.div ref={ref}
+        <motion.div 
             style={{ overflow: 'hidden' }}
             className={`${right ? styles.right : styles.left}`}
             animate={controls}
@@ -29,7 +26,7 @@ export const RoadMapCard = ({ right = false, title = 'Pre-Launch', first = '' })
                 hidden: { width: '0' },
                 visible: {
                     width: calcVW('358px', 288),
-                    transition: { duration: 0.8, delay: 0.5 }
+                    transition: { duration, delay }
                 }
             }}
         >

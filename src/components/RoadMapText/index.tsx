@@ -4,23 +4,20 @@ import { useInView } from 'react-intersection-observer';
 import { useEffect } from 'react';
 import { calcVW } from '../../utils/hooks/functions';
 
-export const RoadMapText = ({ right = false, texts = [] }: { texts: string[], right?: boolean }) => {
+export const RoadMapText = ({ right = false, texts = [], isAnimate = false, duration = 0, delay = 0 }: { texts: string[], right?: boolean, isAnimate?: boolean, duration?: number, delay?: number }) => {
     const controls = useAnimation();
-    const [ref, inView] = useInView({
-        triggerOnce: false,
-        threshold: 1,
-    });
+
 
     useEffect(() => {
-        if (inView || window.innerWidth <= 576) {
+        if (isAnimate || window.innerWidth <= 576) {
             controls.start('visible');
         } else {
             controls.start('hidden');
         }
-    }, [inView])
+    }, [isAnimate])
 
     return (
-        <motion.div ref={ref}
+        <motion.div 
             style={{ overflow: 'hidden' }}
             className={styles.info}
             animate={controls}
@@ -34,7 +31,7 @@ export const RoadMapText = ({ right = false, texts = [] }: { texts: string[], ri
                     opacity: 1,
                     marginLeft: '0',
                     marginRight: '0',
-                    transition: { duration: 0.8, delay: 0.8 }
+                    transition: { duration, delay }
                 }
             }}
         >
