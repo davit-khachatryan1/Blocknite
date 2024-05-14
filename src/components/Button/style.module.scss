@@ -2,11 +2,15 @@
 @import "../../styles/base/variables";
 
 .button {
-    padding: calcVW(12) calcVW(24);
+    padding: calcVW(18) calcVW(24);
     border: calcVW(2) solid $gold-400;
     border-radius: calcVW(50);
     position: relative;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: calcVW(16);
 
     .icon {
         position: absolute;

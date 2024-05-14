@@ -70,7 +70,7 @@ export const MainScreen = () => {
                     </motion.div>
 
                     <motion.div
-                        className={`${styles.documentation} ${styles.presale}`}
+                        className={`${styles.documentation}`}
                         initial="hidden"
                         animate="visible"
                         transition={{ duration: 0.5, delay: 2 }}
@@ -79,7 +79,7 @@ export const MainScreen = () => {
                             visible: { opacity: 1, y: 0, x: 0, scale: 1, height: calcVW('70px') },
                         }}
                     >
-                        <Button withIcon={true}>GitBook</Button>
+                        <Button buttonIcon={true}>GitBook</Button>
                     </motion.div>
 
                 </div>

@@ -28,8 +28,6 @@
     .mainButtons {
         display: flex;
         column-gap: calcVW(24);
-        row-gap: calcVW(16);
-        flex-direction: column;
 
         .presale {
             position: relative;
@@ -41,6 +39,20 @@
                 background-color: $black-400;
                 color: $white-400;
                 @include button;
+            }
+        }
+        .documentation {
+            position: relative;
+            width: calcVW(308);
+            overflow: hidden;
+
+            button {
+                width: 100%;
+                background-color: $black-300;
+                color: $white-400;
+                @include button;
+                border: 0;
+                padding: calcVW(20) calcVW(26);
             }
         }
     }
@@ -144,9 +156,9 @@
         padding: calcVWM(16) calcVWM(16) calcVWM(32) calcVWM(16);
 
         .logo {
-            width: calcVWM(126);
-            height: calcVWM(80);
-            margin: calcVWM(-16) 0 0 calcVWM(-16);
+            width: calcVWM(217);
+            height: calcVWM(68);
+            margin: calcVWM(-16) auto 0 auto;
         }
 
         .line {

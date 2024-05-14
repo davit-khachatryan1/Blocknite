@@ -43,6 +43,18 @@
         height: calcVW(199);
         display: flex;
         width: 100%;
+        &:nth-last-child(3) {
+            justify-content: center;
+        }
+
+        &:nth-last-child(2) {
+
+            justify-content: flex-end;
+        }
+
+        &:nth-last-child(4) {
+            margin-top: calcVW(40);
+        }
 
         .infoBlockContainer {
             height: max-content;
@@ -194,18 +206,6 @@
 
         .mainBlock {
             height: calcVWM(103);
-            &:nth-last-child(4) {
-                justify-content: center;
-            }
-    
-            &:nth-last-child(3) {
-    
-                justify-content: flex-end;
-            }
-    
-            &:nth-last-child(5) {
-                margin-top: calcVW(40);
-            }
 
             .infoBlockContainer {
                 height: calcVWM(103);
