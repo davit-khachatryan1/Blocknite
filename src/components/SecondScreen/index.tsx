@@ -58,7 +58,6 @@ export const SecondScreen = () => {
                 },
                 playerVars: {
                     autoplay: 0, // Don't autoplay on load
-                    controls: 0, // No controls
                     enablejsapi: 1, // Enable JS API
                     modestbranding: 1, // Minimal YouTube branding
                     rel: 0, // Don't show related videos after the end
