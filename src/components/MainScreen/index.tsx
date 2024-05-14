@@ -5,12 +5,18 @@ import { calcVW } from '../../utils/hooks/functions';
 
 import styles from './style.module.scss'
 import { useState } from 'react';
+import { useStateProvider } from '../../context/state';
 
 export const MainScreen = () => {
+    const { setOpenMenu } = useStateProvider();
     const [active, setActive] = useState('$NITE address');
 
     return (
         <div className={styles.container}>
+            <div className={`${styles.menu}`}>
+                <img src="/icons/menu-open.svg" alt="menu" className={styles.menuOpenIcon} onClick={() => setOpenMenu(true)}/>
+            </div>
+
             <div className={styles.infoBlock}>
                 <motion.img
                     className={styles.logo}
@@ -79,7 +85,7 @@ export const MainScreen = () => {
                             visible: { opacity: 1, y: 0, x: 0, scale: 1, height: calcVW('70px') },
                         }}
                     >
-                        <Button buttonIcon={true}>GitBook</Button>
+                        <Button buttonIcon={true}>GITBOOK</Button>
                     </motion.div>
 
                 </div>
@@ -128,7 +134,6 @@ export const MainScreen = () => {
                     </div>
                 </motion.div>
             </div>
-
         </div>
     );
 };

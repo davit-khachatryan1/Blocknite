@@ -6,24 +6,39 @@ import { useStateProvider } from '../../context/state';
 import { Footer } from '../Footer';
 
 const ScrollContainer = () => {
-  const { updatePage } = useStateProvider();
+  const { updatePage, setScrolling, scrolling } = useStateProvider();
   const [resize, setOnResize] = useState(1);
   const pages = useRef(null)
 
 
   const checkCenter = () => {
+
     if (pages.current) {
       const children = (pages.current as any).children
+
       for (let i = 0; i < children.length; i++) {
         const ref = children[i];
-        if (ref) {
+        if (ref && children[i]?.id == (window as any)["pageValue"]) {
+          const rect = ref.getBoundingClientRect();
+          const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+          const isElementCentered = rect.top < windowHeight / 2 && rect.top > -windowHeight / 2;
+          if (isElementCentered) {
+            setTimeout(() => {
+              setScrolling(false);
+              (window as any)["scrolling"] = false;
+            }, 200)
+          }
+        }
+        if (!(window as any)["scrolling"]) {
           const rect = ref.getBoundingClientRect();
           const windowHeight = window.innerHeight || document.documentElement.clientHeight;
 
 
           const isElementCentered = rect.top < windowHeight / 2 && rect.top > -windowHeight / 2;
           if (isElementCentered && screens[i]?.id) {
-            updatePage(screens[i].id)
+            setTimeout(()=>{
+              updatePage(screens[i].id, false)
+            }, 200)
           }
         }
       }

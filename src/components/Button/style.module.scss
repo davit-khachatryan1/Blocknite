@@ -55,6 +55,7 @@
         padding: calcVWM(12) calcVWM(24);
         border: calcVWM(2) solid $gold-400;
         border-radius: calcVWM(50);
+        column-gap: calcVWM(16);
 
         .icon {
             width: calcVWM(20);

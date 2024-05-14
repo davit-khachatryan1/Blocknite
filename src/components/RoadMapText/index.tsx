@@ -3,21 +3,25 @@ import styles from './style.module.scss'
 import { useInView } from 'react-intersection-observer';
 import { useEffect } from 'react';
 import { calcVW } from '../../utils/hooks/functions';
+import { useStateProvider } from '../../context/state';
 
 export const RoadMapText = ({ right = false, texts = [], isAnimate = false, duration = 0, delay = 0 }: { texts: string[], right?: boolean, isAnimate?: boolean, duration?: number, delay?: number }) => {
+    const { scrolling } = useStateProvider();
     const controls = useAnimation();
 
 
     useEffect(() => {
-        if (isAnimate || window.innerWidth <= 576) {
-            controls.start('visible');
-        } else {
-            controls.start('hidden');
+        if (!scrolling) {
+            if (isAnimate || window.innerWidth <= 576) {
+                controls.start('visible');
+            } else {
+                controls.start('hidden');
+            }
         }
-    }, [isAnimate])
+    }, [isAnimate, scrolling])
 
     return (
-        <motion.div 
+        <motion.div
             style={{ overflow: 'hidden' }}
             className={styles.info}
             animate={controls}

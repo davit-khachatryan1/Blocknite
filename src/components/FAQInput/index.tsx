@@ -3,8 +3,10 @@ import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 import styles from './style.module.scss';
+import { useStateProvider } from '../../context/state';
 
 const FAQInput = ({ title, description, index, setActive, active }: any) => {
+    const { scrolling } = useStateProvider();
     const titleControls = useAnimation();
     const [refTitle, inVewTitle] = useInView({
         triggerOnce: false,
@@ -12,12 +14,14 @@ const FAQInput = ({ title, description, index, setActive, active }: any) => {
     });
 
     useEffect(() => {
-        if (inVewTitle && active == index) {
-            titleControls.start('visible')
-        } else {
-            titleControls.start('hidden')
+        if (!scrolling) {
+            if (inVewTitle && active == index) {
+                titleControls.start('visible')
+            } else {
+                titleControls.start('hidden')
+            }
         }
-    }, [inVewTitle, active, index])
+    }, [inVewTitle, active, index, scrolling])
 
     return <div className={`${(active === index) && styles.active}`}>
         <div className={styles.input} onClick={() => setActive(index == active ? -1 : index)}>

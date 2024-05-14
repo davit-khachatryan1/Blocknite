@@ -3,7 +3,11 @@ import React, { createContext, useContext, useState, ReactNode } from 'react';
 // Define the type for the user profile context
 interface UserProfile {
     page: string;
-    updatePage: (name: string) => void;
+    open: boolean;
+    updatePage: (name: string, type?: boolean) => void;
+    setOpenMenu: (open: boolean) => void;
+    scrolling: boolean;
+    setScrolling: (open: boolean) => void;
 }
 
 // Create the context with a default undefined value, properly typed
@@ -24,13 +28,22 @@ interface StateProviderProps {
 
 export const StateProvider: React.FC<StateProviderProps> = ({ children }) => {
     const [page, setPage] = useState('');
+    const [open, setOpen] = useState(false);
+    const [scrolling, setScrolling] = useState(true);
 
-    const updatePage = (id: string) => {
+    const updatePage = (id: string, type = true) => {
+        setScrolling(type);
         setPage(id);
+        (window as any)["pageValue"] = id;
+        (window as any)["scrolling"] = type;
+    };
+
+    const setOpenMenu = (open: boolean) => {
+        setOpen(open);
     };
 
     return (
-        <StateProviderContext.Provider value={{ page, updatePage }}>
+        <StateProviderContext.Provider value={{ page, updatePage, setOpenMenu, open, scrolling, setScrolling }}>
             {children}
         </StateProviderContext.Provider>
     );

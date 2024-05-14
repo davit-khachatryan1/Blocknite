@@ -5,6 +5,7 @@ import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useEffect, useState } from 'react';
 import FAQInput from '../FAQInput';
+import { useStateProvider } from '../../context/state';
 
 const FAQList = [
     {
@@ -26,6 +27,7 @@ const FAQList = [
 ]
 
 export const SixthScreen = () => {
+    const { scrolling } = useStateProvider();
     const [active, setActive] = useState(0);
     const enterAppControls = useAnimation();
     const [refEnterApp, inVewEnterApp] = useInView({
@@ -34,20 +36,22 @@ export const SixthScreen = () => {
     });
 
     useEffect(() => {
-        if (inVewEnterApp) {
-            enterAppControls.start('visible')
-        } else {
-            enterAppControls.start('hidden')
+        if (!scrolling) {
+            if (inVewEnterApp) {
+                enterAppControls.start('visible')
+            } else {
+                enterAppControls.start('hidden')
+            }
         }
-    }, [inVewEnterApp])
+    }, [inVewEnterApp, scrolling])
 
     return (
         <div className={styles.container}>
-            <TitleBlock title="frequently asked questions" secondTitle="FAQ" mobileClassName={true} description="Lorem ipsum dolor sit amet consectetur. Et massa fusce eget mi molestie egestas." withOutDescription={true}/>
+            <TitleBlock title="frequently asked questions" secondTitle="FAQ" mobileClassName={true} description="Lorem ipsum dolor sit amet consectetur. Et massa fusce eget mi molestie egestas." withOutDescription={true} />
 
             <div className={styles.inputBlock}>
                 {FAQList.map((el, index) =>
-                    <FAQInput key={index} title={el.title} description={el.description} index={index} active={active} setActive={setActive}/>
+                    <FAQInput key={index} title={el.title} description={el.description} index={index} active={active} setActive={setActive} />
                 )}
             </div>
             <motion.div className={styles.submit}

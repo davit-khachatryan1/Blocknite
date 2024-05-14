@@ -7,6 +7,7 @@ import Typewriter from '../TypeWriter';
 import styles from './style.module.scss';
 import TitleBlock from '../TitleBlock';
 import { calcVW } from '../../utils/hooks/functions';
+import { useStateProvider } from '../../context/state';
 
 const settings = {
     infinite: true,
@@ -39,11 +40,13 @@ const items = [
 ];
 
 export const ThirdScreen = () => {
+    const { scrolling } = useStateProvider();
     const [infoTitles, setInfoTitles] = useState({
         first: true,
         second: false,
         third: false,
     });
+    
     const blockControls1 = useAnimation();
     const blockControls2 = useAnimation();
     const blockControls3 = useAnimation();
@@ -89,9 +92,11 @@ export const ThirdScreen = () => {
 
     useEffect(() => {
         if (window.innerWidth > 576) {
-            updateHeight();
+            if (!scrolling) {
+                updateHeight();
+            }
         }
-    }, [inViewFirstBlock1, inViewFirstBlock2, inViewFirstBlock3]);
+    }, [inViewFirstBlock1, inViewFirstBlock2, inViewFirstBlock3, scrolling]);
 
     const controlsBottom = useAnimation();
     const controlsBottomSlider = useAnimation();
@@ -101,16 +106,18 @@ export const ThirdScreen = () => {
     });
 
     useEffect(() => {
-        if (inView) {
-            controlsBottom.start('visible');
-            controlsBottomSlider.start('visible');
-        } else {
-            if (entry && entry.boundingClientRect.top < window.innerHeight) {
-                controlsBottom.start('hidden');
-                controlsBottomSlider.start('hidden');
+        if (!scrolling) {
+            if (inView) {
+                controlsBottom.start('visible');
+                controlsBottomSlider.start('visible');
+            } else {
+                if (entry && entry.boundingClientRect.top < window.innerHeight) {
+                    controlsBottom.start('hidden');
+                    controlsBottomSlider.start('hidden');
+                }
             }
         }
-    }, [controlsBottom, inView, entry]);
+    }, [controlsBottom, inView, entry, scrolling]);
 
     return (
         <div className={styles.container}>
@@ -188,84 +195,84 @@ export const ThirdScreen = () => {
                 </motion.div>
             </div>
             {window.innerWidth <= 576 &&
-            <Slider {...settingsMobile} className={styles.mobileSlider} afterChange={(e) => {
-                const obj = { first: false, second: false, third: false };
-                if (e === 0) {
-                    obj.first = true;
-                } else if (e === 1) {
-                    obj.second = true;
-                } else {
-                    obj.third = true;
-                }
-                setInfoTitles(obj);
-            }}>
-                <div className={styles.mainBlock}>
-                    <div
-                        className={styles.infoBlockContainer}>
-                        <div className={styles.infoBlock}>
-                            <div className={`${styles.line} ${styles.lineTop}`} />
-                            <div className={styles.round}>1</div>
-                            <div className={styles.textBlock}>
-                                <div className={styles.title}>
-                                    {infoTitles.first &&
-                                        <Typewriter classname="titleOrange" text="Buy" time={200} delay={100} />
-                                    }
-                                    {infoTitles.first &&
-                                        <Typewriter classname="titleWhite" text="$NITE" time={300} delay={300} />
-                                    }
+                <Slider {...settingsMobile} className={styles.mobileSlider} afterChange={(e) => {
+                    const obj = { first: false, second: false, third: false };
+                    if (e === 0) {
+                        obj.first = true;
+                    } else if (e === 1) {
+                        obj.second = true;
+                    } else {
+                        obj.third = true;
+                    }
+                    setInfoTitles(obj);
+                }}>
+                    <div className={styles.mainBlock}>
+                        <div
+                            className={styles.infoBlockContainer}>
+                            <div className={styles.infoBlock}>
+                                <div className={`${styles.line} ${styles.lineTop}`} />
+                                <div className={styles.round}>1</div>
+                                <div className={styles.textBlock}>
+                                    <div className={styles.title}>
+                                        {infoTitles.first &&
+                                            <Typewriter classname="titleOrange" text="Buy" time={200} delay={100} />
+                                        }
+                                        {infoTitles.first &&
+                                            <Typewriter classname="titleWhite" text="$NITE" time={300} delay={300} />
+                                        }
+                                    </div>
+                                    <div className={styles.description}>Nites are used to power the blocknite ecosystem, from buying and selling items to activating Soul Stones.</div>
                                 </div>
-                                <div className={styles.description}>Nites are used to power the blocknite ecosystem, from buying and selling items to activating Soul Stones.</div>
+                                <div className={`${styles.line} ${styles.lineBottom}`} />
+                                <div className={styles.leftBorder} />
                             </div>
-                            <div className={`${styles.line} ${styles.lineBottom}`} />
-                            <div className={styles.leftBorder} />
                         </div>
                     </div>
-                </div>
-                <div className={styles.mainBlock}>
-                    <div
-                        className={styles.infoBlockContainer}>
-                        <div className={styles.infoBlock}>
-                            <div className={`${styles.line} ${styles.lineTop}`} />
-                            <div className={styles.round}>2</div>
-                            <div className={styles.textBlock}>
-                                <div className={styles.title}>
-                                    {infoTitles.second &&
-                                        <Typewriter classname="titleOrange" text="Get a" time={200} delay={100} />
-                                    }
-                                    {infoTitles.second &&
-                                        <Typewriter classname="titleWhite" text="Treanin" time={300} delay={300} />
-                                    }
+                    <div className={styles.mainBlock}>
+                        <div
+                            className={styles.infoBlockContainer}>
+                            <div className={styles.infoBlock}>
+                                <div className={`${styles.line} ${styles.lineTop}`} />
+                                <div className={styles.round}>2</div>
+                                <div className={styles.textBlock}>
+                                    <div className={styles.title}>
+                                        {infoTitles.second &&
+                                            <Typewriter classname="titleOrange" text="Get a" time={200} delay={100} />
+                                        }
+                                        {infoTitles.second &&
+                                            <Typewriter classname="titleWhite" text="Treanin" time={300} delay={300} />
+                                        }
+                                    </div>
+                                    <div className={styles.description}>Treanin are created when you activate a Soul Stone, you can also buy them from players at the marketplace.</div>
                                 </div>
-                                <div className={styles.description}>Treanin are created when you activate a Soul Stone, you can also buy them from players at the marketplace.</div>
+                                <div className={`${styles.line} ${styles.lineBottom}`} />
+                                <div className={styles.leftBorder} />
                             </div>
-                            <div className={`${styles.line} ${styles.lineBottom}`} />
-                            <div className={styles.leftBorder} />
                         </div>
                     </div>
-                </div>
-                <div className={styles.mainBlock}>
-                    <div
-                        className={styles.infoBlockContainer}>
-                        <div className={styles.infoBlock}>
-                            <div className={`${styles.line} ${styles.lineTop}`} />
-                            <div className={styles.round}>3</div>
-                            <div className={styles.textBlock}>
-                                <div className={styles.title}>
-                                    {infoTitles.third &&
-                                        <Typewriter classname="titleOrange" text="Fight & " time={300} delay={100} />
-                                    }
-                                    {infoTitles.third &&
-                                        <Typewriter classname="titleWhite" text="earn!" time={200} delay={400} />
-                                    }
+                    <div className={styles.mainBlock}>
+                        <div
+                            className={styles.infoBlockContainer}>
+                            <div className={styles.infoBlock}>
+                                <div className={`${styles.line} ${styles.lineTop}`} />
+                                <div className={styles.round}>3</div>
+                                <div className={styles.textBlock}>
+                                    <div className={styles.title}>
+                                        {infoTitles.third &&
+                                            <Typewriter classname="titleOrange" text="Fight & " time={300} delay={100} />
+                                        }
+                                        {infoTitles.third &&
+                                            <Typewriter classname="titleWhite" text="earn!" time={200} delay={400} />
+                                        }
+                                    </div>
+                                    <div className={styles.description}>Battle Orgurin monsters at the battlegrounds, with new features such as boss fights and PVP coming soon.</div>
                                 </div>
-                                <div className={styles.description}>Battle Orgurin monsters at the battlegrounds, with new features such as boss fights and PVP coming soon.</div>
+                                <div className={`${styles.line} ${styles.lineBottom}`} />
+                                <div className={styles.leftBorder} />
                             </div>
-                            <div className={`${styles.line} ${styles.lineBottom}`} />
-                            <div className={styles.leftBorder} />
                         </div>
                     </div>
-                </div>
-            </Slider>
+                </Slider>
             }
 
             <div

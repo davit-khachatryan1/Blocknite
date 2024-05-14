@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import Typewriter from '../TypeWriter';
 import { calcVW } from '../../utils/hooks/functions';
+import { useStateProvider } from '../../context/state';
 
 function polarToCartesian(centerX: number, centerY: number, radius: number, angleInDegrees: number) {
     const angleInRadians = (angleInDegrees - 90) * Math.PI / 180.0;
@@ -25,6 +26,7 @@ function describeArc(x: number, y: number, radius: number, startAngle: number, e
 }
 
 export const FourthScreen = () => {
+    const { scrolling } = useStateProvider();
 
     const strokeWidth = calcVW(108, 28.4);
     const radius = calcVW(240, 80.6) as number;
@@ -52,12 +54,14 @@ export const FourthScreen = () => {
     });
     const titleControls = useAnimation();
     useEffect(() => {
-        if (inViewTitle) {
-            titleControls.start('visible')
-        } else {
-            titleControls.start('hidden')
+        if (!scrolling) {
+            if (inViewTitle) {
+                titleControls.start('visible')
+            } else {
+                titleControls.start('hidden')
+            }
         }
-    }, [inViewTitle])
+    }, [inViewTitle, scrolling])
 
     const blockControls1 = useAnimation();
     const blockControls2 = useAnimation();
@@ -113,7 +117,6 @@ export const FourthScreen = () => {
         animation.title.start('visible')
         animation.line.start('visible')
         animation.dot.start('visible')
-
     }
     const stopAnimation = (control: any, animation: any, name: 'first' | 'second' | 'third' | 'fourth') => {
         control.animate.start({
@@ -130,43 +133,46 @@ export const FourthScreen = () => {
 
     useEffect(() => {
         const newAnimations = { ...animations };
-        if (inViewFirstBlock1) {
-            startAnimation(segments.Orange, animations.first, 'first')
-            newAnimations.first.isValue = true;
-        } else {
-            stopAnimation(segments.Orange, animations.first, 'first')
-            newAnimations.first.isValue = false;
-        }
+        if (!scrolling) {
+            if (inViewFirstBlock1) {
+                startAnimation(segments.Orange, animations.first, 'first')
+                newAnimations.first.isValue = true;
+            } else {
+                stopAnimation(segments.Orange, animations.first, 'first')
+                newAnimations.first.isValue = false;
+            }
 
-        if (inViewFirstBlock2) {
-            startAnimation(segments.Green, animations.fourth, 'fourth')
-            newAnimations.fourth.isValue = true;
-        } else {
-            stopAnimation(segments.Green, animations.fourth, 'fourth')
-            newAnimations.fourth.isValue = false;
-        }
+            if (inViewFirstBlock2) {
+                startAnimation(segments.Green, animations.fourth, 'fourth')
+                newAnimations.fourth.isValue = true;
+            } else {
+                stopAnimation(segments.Green, animations.fourth, 'fourth')
+                newAnimations.fourth.isValue = false;
+            }
 
-        if (inViewFirstBlock3) {
-            startAnimation(segments.Yellow, animations.third, 'third')
-            newAnimations.third.isValue = true;
-        } else {
-            stopAnimation(segments.Yellow, animations.third, 'third')
-            newAnimations.third.isValue = false;
-        }
-        if (inViewFirstBlock4) {
-            startAnimation(segments.Red, animations.second, 'second')
-            newAnimations.second.isValue = true;
-            mainTitleValueControls.start('visible')
-        } else {
-            stopAnimation(segments.Red, animations.second, 'second')
-            newAnimations.second.isValue = false;
-        }
+            if (inViewFirstBlock3) {
+                startAnimation(segments.Yellow, animations.third, 'third')
+                newAnimations.third.isValue = true;
+            } else {
+                stopAnimation(segments.Yellow, animations.third, 'third')
+                newAnimations.third.isValue = false;
+            }
 
-        if (!inViewFirstBlock1 && !inViewFirstBlock2 && !inViewFirstBlock3 && !inViewFirstBlock4) {
-            mainTitleValueControls.start('hidden')
+            if (inViewFirstBlock4) {
+                startAnimation(segments.Red, animations.second, 'second')
+                newAnimations.second.isValue = true;
+                mainTitleValueControls.start('visible')
+            } else {
+                stopAnimation(segments.Red, animations.second, 'second')
+                newAnimations.second.isValue = false;
+            }
+
+            if (!inViewFirstBlock1 && !inViewFirstBlock2 && !inViewFirstBlock3 && !inViewFirstBlock4) {
+                mainTitleValueControls.start('hidden')
+            }
+            setAnimations(newAnimations)
         }
-        setAnimations(newAnimations)
-    }, [inViewFirstBlock1, inViewFirstBlock2, inViewFirstBlock3, inViewFirstBlock4])
+    }, [inViewFirstBlock1, inViewFirstBlock2, inViewFirstBlock3, inViewFirstBlock4, scrolling])
 
     const [segments] = useState({
         Orange: {
@@ -218,7 +224,7 @@ export const FourthScreen = () => {
     return (
         <div className={styles.container} ref={refMain}>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', position: 'absolute', left: 0, top: 0, width: '100%' }}>
-                <motion.svg width={`${calcVW(595, 195)}`} height={`${calcVW(595, 195)}`} viewBox={`0 0 ${calcVW(595, 195)} ${calcVW(595, 195)}"`} className={styles.motionSvg}>
+                <motion.svg width={`${calcVW(595, 195)}`} height={`${calcVW(595, 195)}`} viewBox={`0 0 ${calcVW(595, 195)} ${calcVW(595, 195)}`} className={styles.motionSvg}>
                     {Object.values(segments).map((segment, index) => (
                         <motion.path
                             key={index}

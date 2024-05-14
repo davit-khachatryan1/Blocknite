@@ -41,6 +41,7 @@
                 @include button;
             }
         }
+
         .documentation {
             position: relative;
             width: calcVW(308);
@@ -52,7 +53,7 @@
                 color: $white-400;
                 @include button;
                 border: 0;
-                padding: calcVW(20) calcVW(26);
+                padding: calcVW(20) calcVW(28);
             }
         }
     }
@@ -152,8 +153,31 @@
         overflow: hidden;
     }
 
+    .menu {
+        display: none;
+    }
+
     @media (max-width: 576px) {
         padding: calcVWM(16) calcVWM(16) calcVWM(32) calcVWM(16);
+
+        .menu {
+            display: flex;
+            position: absolute;
+            width: 100%;
+            height: calcVWM(80);
+            background: linear-gradient(to bottom, $black-400, transparent);
+            top: 0;
+            left: 0;
+
+            .menuOpenIcon {
+                display: block;
+                margin-top: calcVWM(28);
+                margin-right: calcVWM(16);
+                margin-left: auto;
+                width: calcVWM(24);
+                height: calcVWM(24);
+            }
+        }
 
         .logo {
             width: calcVWM(217);
@@ -184,10 +208,20 @@
         }
 
         .mainButtons {
-            height: calcVWM(60);
+            height: calcVWM(160);
+            row-gap: calcVWM(24);
+            flex-direction: column;
+
 
             .documentation {
-                display: none
+                width: 100%;
+
+
+                button {
+                    border: calcVWM(2) solid $white-400;
+                    @include button-mobile;
+                    padding: calcVWM(16) calcVWM(22);
+                }
             }
 
             .presale {

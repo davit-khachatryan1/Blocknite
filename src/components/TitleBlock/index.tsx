@@ -4,8 +4,10 @@ import { useInView } from 'react-intersection-observer';
 
 import styles from './style.module.scss';
 import { calcVW } from '../../utils/hooks/functions';
+import { useStateProvider } from '../../context/state';
 
 const TitleBlock = ({ title, description, mobileClassName, descriptionBottom, secondTitle, withOutDescription = false }: any) => {
+    const { scrolling } = useStateProvider();
     const controls = useAnimation();
     const ref1 = useRef(null);
 
@@ -16,31 +18,35 @@ const TitleBlock = ({ title, description, mobileClassName, descriptionBottom, se
     });
 
     useEffect(() => {
-        if (inVewTitle) {
-            titleControls.start('visible')
-        } else {
-            titleControls.start('hidden')
+        if (!scrolling) {
+            if (inVewTitle) {
+                titleControls.start('visible')
+            } else {
+                titleControls.start('hidden')
+            }
         }
-    }, [inVewTitle])
+    }, [inVewTitle, scrolling])
 
     const checkCenter = () => {
-        if (ref1.current) {
-            const rect = (ref1.current as any).getBoundingClientRect();
-            const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-            const center = rect.top + rect.height / 2;
+        if (!scrolling) {
+            if (ref1.current) {
+                const rect = (ref1.current as any).getBoundingClientRect();
+                const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+                const center = rect.top + rect.height / 2;
 
 
-            const isElementCentered = center > 0 && center < windowHeight / 2;
-            if (isElementCentered) {
-                controls.start({
-                    width: calcVW('168px'),
-                    transition: { duration: 0.5, ease: 'easeOut' }
-                });
-            } else if (center > windowHeight) {
+                const isElementCentered = center > 0 && center < windowHeight / 2;
+                if (isElementCentered) {
+                    controls.start({
+                        width: calcVW('168px'),
+                        transition: { duration: 0.5, ease: 'easeOut' }
+                    });
+                } else if (center > windowHeight) {
+                    controls.start({ width: 0 });
+                }
+            } else {
                 controls.start({ width: 0 });
             }
-        } else {
-            controls.start({ width: 0 });
         }
     }
 

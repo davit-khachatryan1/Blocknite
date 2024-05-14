@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import styles from './style.module.scss'
 
 export const Screen = ({ id, component, imageUrl, mobileImage }: any) => {
@@ -9,7 +9,8 @@ export const Screen = ({ id, component, imageUrl, mobileImage }: any) => {
     width: '100%',
     position: 'relative',
     display: 'flex',
-    maxHeight: elementHeight || 'auto'
+    maxHeight: elementHeight || 'auto',
+    overflow: 'hidden'
   }}
     className={styles.container}
     id={id}
@@ -25,7 +26,8 @@ export const Screen = ({ id, component, imageUrl, mobileImage }: any) => {
       height: '100%',
       left: 0,
       top: 0,
-      zIndex: 1
+      zIndex: 1,
+      overflow: 'hidden'
     }}>
       {component}
     </div>

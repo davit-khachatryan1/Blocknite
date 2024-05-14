@@ -6,6 +6,7 @@ import { RoadMapCard } from '../RoadMapCard';
 import { RoadMapText } from '../RoadMapText';
 import { calcVW } from '../../utils/hooks/functions';
 import Slider from 'react-slick';
+import { useStateProvider } from '../../context/state';
 
 const settings = {
     infinite: false,
@@ -19,6 +20,7 @@ const settings = {
 };
 
 export const FifthScreen = () => {
+    const { scrolling } = useStateProvider();
 
     const titleControls = useAnimation();
     const lineControls = useAnimation();
@@ -44,31 +46,34 @@ export const FifthScreen = () => {
     });
 
     useEffect(() => {
-        if (inViewTitle) {
-            titleControls.start('visible');
-            titleImgControls.start('visible');
-        } else {
-            titleControls.start('hidden');
-            titleImgControls.start('hidden');
+        if (!scrolling) {
+            if (inViewTitle) {
+                titleControls.start('visible');
+                titleImgControls.start('visible');
+            } else {
+                titleControls.start('hidden');
+                titleImgControls.start('hidden');
+            }
         }
-    }, [inViewTitle])
+    }, [inViewTitle, scrolling])
 
 
     useEffect(() => {
-        if (inViewTitle1 || inViewTitle2 || inViewTitle3 || inViewTitle4) {
-            lineControls.stop()
-            lineControls.start({
-                height: calcVW('732px'),
-                transition: { duration: 2 }
-            })
-        } else {
-            lineControls.start({
-                height: calcVW('0'),
-                transition: { duration: 0 }
-            })
+        if (!scrolling) {
+            if (inViewTitle1 || inViewTitle2 || inViewTitle3 || inViewTitle4) {
+                lineControls.stop()
+                lineControls.start({
+                    height: calcVW('732px'),
+                    transition: { duration: 2 }
+                })
+            } else {
+                lineControls.start({
+                    height: calcVW('0'),
+                    transition: { duration: 0 }
+                })
+            }
         }
-
-    }, [inViewTitle1, inViewTitle2, inViewTitle3, inViewTitle4])
+    }, [inViewTitle1, inViewTitle2, inViewTitle3, inViewTitle4, scrolling])
 
     return (
         <div className={styles.container}>
@@ -129,10 +134,10 @@ export const FifthScreen = () => {
             <div className={styles.map}>
                 <div className={styles.infoElement}>
                     <div className={styles.oneBlock} ref={lineControls1}>
-                        <RoadMapCard title='Pre-Launch' isAnimate={inViewTitle1} duration={0.5} />
+                        <RoadMapCard title='Pre-Launch' isAnimate={inViewTitle1 || inViewTitle2 || inViewTitle3 || inViewTitle4} duration={0.5} />
                         <div className={styles.info}>
                             <RoadMapText
-                                isAnimate={inViewTitle1}
+                                isAnimate={inViewTitle1 || inViewTitle2 || inViewTitle3 || inViewTitle4}
                                 duration={0.5}
                                 delay={0.2}
                                 texts={
@@ -148,11 +153,11 @@ export const FifthScreen = () => {
                     </div>
                     <div className={styles.oneBlock} ref={lineControls3}>
                         <RoadMapCard title='Activation'
-                            isAnimate={inViewTitle1} duration={0.5} delay={1.4}
+                            isAnimate={inViewTitle1 || inViewTitle2 || inViewTitle3 || inViewTitle4} duration={0.5} delay={1.4}
                         />
                         <div className={styles.info}>
                             <RoadMapText
-                                isAnimate={inViewTitle1} duration={0.5} delay={1.6}
+                                isAnimate={inViewTitle1 || inViewTitle2 || inViewTitle3 || inViewTitle4} duration={0.5} delay={1.6}
 
                                 texts={
                                     [
@@ -175,11 +180,11 @@ export const FifthScreen = () => {
                 <div className={styles.infoElement} >
                     <div className={styles.oneBlock} ref={lineControls2}>
                         <RoadMapCard title='Launch' right={true}
-                            isAnimate={inViewTitle1} duration={0.5} delay={0.7}
+                            isAnimate={inViewTitle1 || inViewTitle2 || inViewTitle3 || inViewTitle4} duration={0.5} delay={0.7}
                         />
                         <div className={styles.info}>
                             <RoadMapText
-                                isAnimate={inViewTitle1} duration={0.5} delay={0.9}
+                                isAnimate={inViewTitle1 || inViewTitle2 || inViewTitle3 || inViewTitle4} duration={0.5} delay={0.9}
                                 right={true}
                                 texts={
                                     [
@@ -194,12 +199,12 @@ export const FifthScreen = () => {
                     </div>
                     <div className={styles.oneBlock} ref={lineControls4}>
                         <RoadMapCard title='Enrichment' right={true}
-                            isAnimate={inViewTitle1} duration={0.5} delay={2.1}
+                            isAnimate={inViewTitle1 || inViewTitle2 || inViewTitle3 || inViewTitle4} duration={0.5} delay={2.1}
 
                         />
                         <div className={styles.info}>
                             <RoadMapText
-                                isAnimate={inViewTitle1} duration={0.5} delay={2.3}
+                                isAnimate={inViewTitle1 || inViewTitle2 || inViewTitle3 || inViewTitle4} duration={0.5} delay={2.3}
                                 right={true}
                                 texts={
                                     [
