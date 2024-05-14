@@ -9,6 +9,7 @@
     flex-direction: column;
 
     .playButton {
+        cursor: pointer;
         position: absolute;
         width: calcVW(176);
         height: calcVW(176);
@@ -17,6 +18,7 @@
         align-items: center;
         left: calc(50% - calcVW(88));
         top: calc(50% - calcVW(88));
+        z-index: 999;
 
         .mainCircle {
             width: calcVW(144);
@@ -40,9 +42,21 @@
         }
     }
 
+    .video {
+        position: absolute;
+        z-index: 1;
+        width: calcVW(1200);
+        height: calcVW(600);
+        top: calc(50% - calcVW(300));
+        left: calc(50% - calcVW(600));
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .carousel {
         margin-top: auto;
-        margin-bottom: calcVW(140);
+        margin-bottom: calcVW(50);
         width: 100%;
         display: flex;
         column-gap: calcVW(100);
@@ -106,18 +120,30 @@
             }
         }
 
+
+        .video {
+            position: absolute;
+            z-index: 1;
+            width: calcVWM(288);
+            height: calcVWM(150);
+            top: calc(50% - calcVWM(110));
+            left: calcVWM(16);
+        }
+
         .carousel {
             flex-direction: column;
 
             .carouselContainer {
                 width: calcVWM(235);
+
                 .swiperElement {
                     img {
                         height: calcVWM(22);
                     }
                 }
             }
-            .title { 
+
+            .title {
                 @include header3-mobile;
                 margin-bottom: calcVWM(16);
             }

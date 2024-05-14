@@ -11,6 +11,7 @@
     margin: 0 auto;
     max-width: max-content;
     text-transform: uppercase;
+    z-index: 2;
 }
 
 .description {
@@ -22,6 +23,7 @@
     margin: 0 auto;
     margin-top: calcVW(20);
     text-align: center;
+    z-index: 2;
 }
 
 @media (max-width: 576px) {
