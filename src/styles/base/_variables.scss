@@ -26,8 +26,8 @@ $white-300: #FFFFFF80;
 
 @mixin header1 {
     $fs: calcVW(100);
-    $ff: 'Beaufort-Medium';
-    $fw: 500;
+    $ff: 'Copperplate CC';
+    $fw: 700;
     $lh: calcVW(100);
 
     font-size: $fs;
@@ -89,7 +89,7 @@ $white-300: #FFFFFF80;
 
 @mixin body {
     $fs: calcVW(16);
-    $ff: 'CopperplateEF';
+    $ff: 'CopperplateEF-Medium';
     $fw: 500;
     $lh: calcVW(22);
 
@@ -188,7 +188,7 @@ $white-300: #FFFFFF80;
 }
 
 @mixin body-mobile {
-    $ff: 'CopperplateEF';
+    $ff: 'CopperplateEF-Medium';
     $fw: 500;
     $fs: calcVWM(12);
     $lh: calcVWM(16.8);

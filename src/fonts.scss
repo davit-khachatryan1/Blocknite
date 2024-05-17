@@ -1,14 +1,27 @@
 @font-face {
     font-family: 'Copperplate CC';
-    src: url('../public/fonts/copperplate-cc.bold.ttf') format('truetype'); // Adjust the path as necessary
+    src: url('../public/fonts/CopperplateCC/copperplate-cc.bold.otf') format('truetype'); 
     font-weight: normal;
     font-style: normal;
 }
 
-// If you have bold or italic variants, you can define them similarly:
 @font-face {
     font-family: 'Beaufort-Medium';
-    src: url('../public/fonts/SalmaPro-Medium.otf') format('truetype');
+    src: url('../public/fonts/Beaufort/BeaufortforLOL-Medium.ttf') format('truetype');
     font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'CopperplateEF-Bold';
+    src: url('../public/fonts/CopperplateEF/CopperplateEF-Bold.otf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'CopperplateEF-Medium';
+    src: url('../public/fonts/CopperplateEF/CopperplateEF-Medium.otf') format('truetype');
+    font-weight: 500;
     font-style: normal;
 }
