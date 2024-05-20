@@ -42,7 +42,7 @@ const items = [
 export const ThirdScreen = () => {
     const { scrolling, windowWidth, windowHeight } = useStateProvider();
     const [infoTitles, setInfoTitles] = useState({
-        first: true,
+        first: false,
         second: false,
         third: false,
     });
@@ -65,27 +65,16 @@ export const ThirdScreen = () => {
     });
 
     const updateHeight = () => {
-        let obj = { first: true, second: true, third: true };
+        let obj = {...infoTitles};
         if (inViewFirstBlock3) {
-            blockControls1.start({ height: calcVW('199px', windowWidth), transition: { duration: 0.5 } });
-            blockControls2.start({ height: calcVW('199px', windowWidth), transition: { duration: 0.5 } });
             blockControls3.start({ height: calcVW('199px', windowWidth), transition: { duration: 0.5 } });
-            obj = { first: true, second: true, third: true };
+            obj.third = true;
         } else if (inViewFirstBlock2) {
-            blockControls1.start({ height: calcVW('199px', windowWidth), transition: { duration: 0.5 } });
             blockControls2.start({ height: calcVW('199px', windowWidth), transition: { duration: 0.5 } });
-            blockControls3.start({ height: '0', transition: { duration: 0.2 } });
-            obj = { first: true, second: true, third: false };
+            obj.second = true;
         } else if (inViewFirstBlock1) {
             blockControls1.start({ height: calcVW('199px', windowWidth), transition: { duration: 0.5 } });
-            blockControls2.start({ height: '0', transition: { duration: 0.2 } });
-            blockControls3.start({ height: '0', transition: { duration: 0.2 } });
-            obj = { first: true, second: false, third: false };
-        } else {
-            blockControls1.start({ height: '0', transition: { duration: 0.2 } });
-            blockControls2.start({ height: '0', transition: { duration: 0.2 } });
-            blockControls3.start({ height: '0', transition: { duration: 0.2 } });
-            obj = { first: false, second: false, third: false };
+            obj.first = true;
         }
         setInfoTitles(obj);
     };
@@ -110,11 +99,6 @@ export const ThirdScreen = () => {
             if (inView) {
                 controlsBottom.start('visible');
                 controlsBottomSlider.start('visible');
-            } else {
-                if (entry && entry.boundingClientRect.top < windowHeight) {
-                    controlsBottom.start('hidden');
-                    controlsBottomSlider.start('hidden');
-                }
             }
         }
     }, [controlsBottom, inView, entry, scrolling, windowHeight]);

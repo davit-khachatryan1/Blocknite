@@ -57,8 +57,6 @@ export const FourthScreen = () => {
         if (!scrolling) {
             if (inViewTitle) {
                 titleControls.start('visible')
-            } else {
-                titleControls.start('hidden')
             }
         }
     }, [inViewTitle, scrolling])
@@ -118,19 +116,6 @@ export const FourthScreen = () => {
         animation.line.start('visible')
         animation.dot.start('visible')
     }
-    const stopAnimation = (control: any, animation: any, name: 'first' | 'second' | 'third' | 'fourth') => {
-        control.animate.start({
-            pathLength: 0,
-            transition: { duration: 1.5 }
-        })
-
-        animation.percent.start('hidden')
-        animation.title.start('hidden')
-        animation.line.start('hidden')
-        animation.dot.start('hidden')
-        setAnimations({ ...animations, [name]: { ...animations[name], isValue: false } })
-    }
-
 
     const segments = {
         Orange: {
@@ -185,39 +170,24 @@ export const FourthScreen = () => {
             if (inViewFirstBlock1) {
                 startAnimation(segments.Orange, animations.first, 'first')
                 newAnimations.first.isValue = true;
-            } else {
-                stopAnimation(segments.Orange, animations.first, 'first')
-                newAnimations.first.isValue = false;
             }
 
             if (inViewFirstBlock2) {
                 startAnimation(segments.Green, animations.fourth, 'fourth')
                 newAnimations.fourth.isValue = true;
-            } else {
-                stopAnimation(segments.Green, animations.fourth, 'fourth')
-                newAnimations.fourth.isValue = false;
             }
 
             if (inViewFirstBlock3) {
                 startAnimation(segments.Yellow, animations.third, 'third')
                 newAnimations.third.isValue = true;
-            } else {
-                stopAnimation(segments.Yellow, animations.third, 'third')
-                newAnimations.third.isValue = false;
             }
 
             if (inViewFirstBlock4) {
                 startAnimation(segments.Red, animations.second, 'second')
                 newAnimations.second.isValue = true;
                 mainTitleValueControls.start('visible')
-            } else {
-                stopAnimation(segments.Red, animations.second, 'second')
-                newAnimations.second.isValue = false;
             }
 
-            if (!inViewFirstBlock1 && !inViewFirstBlock2 && !inViewFirstBlock3 && !inViewFirstBlock4) {
-                mainTitleValueControls.start('hidden')
-            }
             setAnimations(newAnimations)
         }
     }, [inViewFirstBlock1, inViewFirstBlock2, inViewFirstBlock3, inViewFirstBlock4, scrolling])

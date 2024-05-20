@@ -39,8 +39,6 @@ export const SixthScreen = () => {
         if (!scrolling) {
             if (inVewEnterApp) {
                 enterAppControls.start('visible')
-            } else {
-                enterAppControls.start('hidden')
             }
         }
     }, [inVewEnterApp, scrolling])

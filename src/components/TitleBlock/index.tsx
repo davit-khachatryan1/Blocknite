@@ -21,8 +21,6 @@ const TitleBlock = ({ title, description, mobileClassName, descriptionBottom, se
         if (!scrolling) {
             if (inVewTitle) {
                 titleControls.start('visible')
-            } else {
-                titleControls.start('hidden')
             }
         }
     }, [inVewTitle, scrolling])
@@ -41,11 +39,7 @@ const TitleBlock = ({ title, description, mobileClassName, descriptionBottom, se
                         width: calcVW('168px', (window as any).customWidth),
                         transition: { duration: 0.5, ease: 'easeOut' }
                     });
-                } else if (center > windowHeight) {
-                    controls.start({ width: 0 });
                 }
-            } else {
-                controls.start({ width: 0 });
             }
         }
     }

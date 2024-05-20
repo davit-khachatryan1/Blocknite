@@ -50,9 +50,6 @@ export const FifthScreen = () => {
             if (inViewTitle) {
                 titleControls.start('visible');
                 titleImgControls.start('visible');
-            } else {
-                titleControls.start('hidden');
-                titleImgControls.start('hidden');
             }
         }
     }, [inViewTitle, scrolling])
@@ -65,11 +62,6 @@ export const FifthScreen = () => {
                 lineControls.start({
                     height: calcVW('732px', windowWidth),
                     transition: { duration: 2 }
-                })
-            } else {
-                lineControls.start({
-                    height: calcVW('0', windowWidth),
-                    transition: { duration: 0 }
                 })
             }
         }

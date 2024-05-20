@@ -14,8 +14,6 @@ export const RoadMapText = ({ right = false, texts = [], isAnimate = false, dura
         if (!scrolling) {
             if (isAnimate || windowWidth <= 576) {
                 controls.start('visible');
-            } else {
-                controls.start('hidden');
             }
         }
     }, [isAnimate, scrolling, windowWidth])

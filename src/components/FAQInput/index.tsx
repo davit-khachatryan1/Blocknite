@@ -17,8 +17,6 @@ const FAQInput = ({ title, description, index, setActive, active }: any) => {
         if (!scrolling) {
             if (inVewTitle && active == index) {
                 titleControls.start('visible')
-            } else {
-                titleControls.start('hidden')
             }
         }
     }, [inVewTitle, active, index, scrolling])

@@ -13,9 +13,7 @@ export const RoadMapCard = ({ right = false, title = 'Pre-Launch', first = '', i
         if (!scrolling) {
             if (isAnimate || windowWidth <= 576) {
                 controls.start('visible');
-            } else {
-                controls.start('hidden');
-            }
+            } 
         }
     }, [isAnimate, scrolling, windowWidth])
 

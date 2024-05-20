@@ -18,16 +18,12 @@ export const Screen = ({ id, component, imageUrl, mobileImage }: any) => {
     position: 'relative',
     display: 'flex',
     maxHeight: elementHeight || 'auto',
-    overflow: 'hidden'
+    overflow: 'hidden',
+    backgroundImage: `url(${windowWidth <= 576 ? mobileImage : imageUrl})`
   }}
     className={styles.container}
     id={id}
   >
-    <img src={imageUrl} className={styles.bgImage} alt='main-bg' ref={imageRef} onLoad={(e) => {
-      const height = imageRef?.current ? (imageRef?.current as any).offsetHeight : 0;
-      setElementHeight(height)
-    }} />
-    <img src={mobileImage} className={styles.bgMobile} alt='main-bg' />
     <div style={{
       position: 'absolute',
       width: '100%',
