@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import styles from './style.module.scss'
 import { useStateProvider } from '../../context/state';
+import ParticlesComponent from '../ParticlesCanvas';
 
 export const Screen = ({ id, component, imageUrl, mobileImage }: any) => {
   const { windowWidth } = useStateProvider()
@@ -26,9 +27,18 @@ export const Screen = ({ id, component, imageUrl, mobileImage }: any) => {
     <div style={{
       width: '100%',
       height: '100%',
-      overflow: 'hidden',
-      position: 'relative',
-      zIndex: 2
+      position: 'absolute',
+      left: 0,
+      top: 0
+    }}>
+
+      <ParticlesComponent index={id}/>
+    </div>
+
+    <div style={{
+      width: '100%',
+      height: '100%',
+      overflow: 'hidden'
     }}>
       {component}
     </div>
