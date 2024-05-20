@@ -17,7 +17,6 @@ export const Screen = ({ id, component, imageUrl, mobileImage }: any) => {
     width: '100%',
     position: 'relative',
     display: 'flex',
-    maxHeight: elementHeight || 'auto',
     overflow: 'hidden',
     backgroundImage: `url(${windowWidth <= 576 ? mobileImage : imageUrl})`
   }}
