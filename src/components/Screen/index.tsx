@@ -24,12 +24,8 @@ export const Screen = ({ id, component, imageUrl, mobileImage }: any) => {
     id={id}
   >
     <div style={{
-      position: 'absolute',
       width: '100%',
       height: '100%',
-      left: 0,
-      top: 0,
-      zIndex: 1,
       overflow: 'hidden'
     }}>
       {component}
