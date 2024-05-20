@@ -3,6 +3,7 @@
 
 .container {
     height: calcVW(1080);
+    background-size: cover;
 }
 
 @media (max-width: 576px) {
@@ -17,6 +18,5 @@
     .container {
         max-height: initial !important;
         height: calcVWM(568);
-        background-size: cover;
     }
 }
