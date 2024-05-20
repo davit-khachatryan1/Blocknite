@@ -14,15 +14,15 @@ const FAQList = [
     },
     {
         title: 'Is the total supply increasing?',
-        description: 'You earn $NITE from playing our fantastic game! We have a lot of great features in the works that we are excited to show you, the earlier you start playing the quicker you level up your Treanin. Higher level Treanin receive more rewards and will put you in the best position to enjoy our future updates.'
+        description: 'Yes! As you can see, 80% of our funds are allocated toward “Ecosystem”. These are tokens that will be slowly created over time and issued to our users as rewards for playing our game. Without minting, there is no game. Do not worry, only carefully built smart contracts are calling these mint functions, they are not open to anything else.'
     },
     {
         title: 'Is the team Doxxed?',
-        description: 'You earn $NITE from playing our fantastic game! We have a lot of great features in the works that we are excited to show you, the earlier you start playing the quicker you level up your Treanin. Higher level Treanin receive more rewards and will put you in the best position to enjoy our future updates.'
+        description: 'The team is not currently Doxxed. We would not feel comfortable launching our incredible game with overreaching governments breathing down our necks, so to launch smoothly we have decided to remain anonymous.'
     },
     {
         title: 'Do the team control the smart contracts?',
-        description: 'You earn $NITE from playing our fantastic game! We have a lot of great features in the works that we are excited to show you, the earlier you start playing the quicker you level up your Treanin. Higher level Treanin receive more rewards and will put you in the best position to enjoy our future updates.'
+        description: 'Do the team control the smart contracts? A: Yes. We love what we have built so far and we aspire to continue building, adding brand new features to keep you happy. As such, we are required to keep control of the contracts. As soon as we revoke ownership of the contracts, we become unable to add new features. We will not be keeping control of anything that we do not need to keep control of.'
     },
 ]
 
