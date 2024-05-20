@@ -3,12 +3,16 @@
 
 .particlesBlock {
     position: absolute;
-    height: 100%;
+    height: calc(100% - calcVW(694));
     width: 100%;
     z-index: 1;
 
     :global(canvas) {
         min-height: 100%;
         height: 100%;
+    }
+
+    @media (max-width: 576px) {
+        height: calc(100% - calcVWM(406));
     }
 }
