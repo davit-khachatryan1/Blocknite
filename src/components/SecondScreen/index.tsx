@@ -43,6 +43,8 @@ export const SecondScreen = () => {
     const videoId = 'ZaBl4QRO1oM';
     const [player, setPlayer] = useState<any>(null);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [showVideo, setShowVideo] = useState(false);
+
     const playerRef = useRef(null);
     const controls = useAnimation();
 
@@ -81,6 +83,7 @@ export const SecondScreen = () => {
     };
 
     const handlePlayVideo = () => {
+        setShowVideo(true)
         if (!isPlaying && player) {
             player.playVideo();
         }
@@ -133,23 +136,7 @@ export const SecondScreen = () => {
                     src='/icons/part-circle-2.svg'
                 />
             </motion.div>
-            <div className={styles.video}>
-                {/* <video width={'100%'} height={'100%'} muted={false} ref={videoRef} controls={true} playsInline >
-                    <source  src='https://www.youtube.com/watch?v=TpbFebtTA-g' type="video/mp4"/>
-                    </video> */}
-                {/* <iframe id="player" itemType="text/html" width="640" height="390"
-                    src="https://www.youtube.com/watch?v=BBt87hIo_T4&list=RDMMBBt87hIo_T4&start_radio=1"
-                    frameBorder="0"></iframe> */}
-                {/* <iframe
-                    width="100%"
-                    height="100%"
-                    src={src}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    title="Embedded YouTube Video"
-                    style={{ position: 'absolute', left: 0, top: 0 }}
-                ></iframe> */}
+            <div className={styles.video} style={{ opacity: showVideo ? 1 : 0 }}>
                 <div ref={playerRef} style={{ width: '100%', height: '100%', position: 'absolute', left: 0, top: 0 }} />
             </div>
             <div className={styles.carousel}>

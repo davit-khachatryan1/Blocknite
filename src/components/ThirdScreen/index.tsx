@@ -16,8 +16,8 @@ const settings = {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 7000,
-    nextArrow: <img src='/icons/arrow-right-slider.svg' alt="Next" />,
-    prevArrow: <></>
+    prevArrow: <img src='/icons/arrow-right-slider.svg' alt="Next" />,
+    nextArrow: <></>
 };
 
 const settingsMobile = {
@@ -46,7 +46,7 @@ export const ThirdScreen = () => {
         second: false,
         third: false,
     });
-    
+
     const blockControls1 = useAnimation();
     const blockControls2 = useAnimation();
     const blockControls3 = useAnimation();
@@ -65,7 +65,7 @@ export const ThirdScreen = () => {
     });
 
     const updateHeight = () => {
-        let obj = {...infoTitles};
+        let obj = { ...infoTitles };
         if (inViewFirstBlock3) {
             blockControls3.start({ height: calcVW('199px', windowWidth), transition: { duration: 0.5 } });
             obj.third = true;

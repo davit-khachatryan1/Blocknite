@@ -90,6 +90,17 @@
                     outline: none !important;
                 }
             }
+            :global(.slick-prev) {
+                right: calcVW(-25);
+                left: auto;
+                transform: rotate(180deg);
+                top: calcVW(12);
+            }
+            :global(.slick-next) {
+                left: calcVW(-25);
+                transform: rotate(180deg);
+                top: calcVW(12);
+            }
         }
     }
 
@@ -139,6 +150,17 @@
                     img {
                         height: calcVWM(22);
                     }
+                }
+                :global(.slick-prev) {
+                    right: calcVWM(-30);
+                    left: auto;
+                    transform: rotate(180deg);
+                    top: calcVWM(12);
+                }
+                :global(.slick-next) {
+                    left: calcVWM(-30);
+                    transform: rotate(180deg);
+                    top: calcVWM(12);
                 }
             }
 

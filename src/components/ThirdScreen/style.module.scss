@@ -178,9 +178,11 @@
                 }
             }
 
-            :global(.slick-next) {
+            :global(.slick-prev) {
                 height: calcVW(20);
                 width: calcVW(20);
+                right: calcVW(-25);
+                left: auto;
             }
         }
     }
@@ -273,17 +275,19 @@
         :global(.slick-prev) {
             position: absolute;
             top: calcVWM(140);
-            left: calcVWM(116);
+            left: calcVWM(176);
             width: calcVWM(22);
             height: calcVWM(22);
+            transform: rotate(180deg);
         }
 
         :global(.slick-next) {
             position: absolute;
             top: calcVWM(140);
-            left: calcVWM(176);
+            left: calcVWM(116);
             width: calcVWM(22);
             height: calcVWM(22);
+            transform: rotate(180deg);
         }
 
         .carouselContainer {

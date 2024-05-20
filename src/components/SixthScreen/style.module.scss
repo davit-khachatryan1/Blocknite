@@ -30,7 +30,7 @@
     }
 
     @media (max-width: 576px) {
-        padding: calcVWM(16);
+        padding: 0 calcVWM(16) calcVWM(16) calcVWM(16);
 
         .submit {
             display: none;
