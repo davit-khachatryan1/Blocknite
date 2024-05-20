@@ -17,7 +17,8 @@
 
     .text {
         text-wrap: wrap;
-        max-width: calcVW(240);
+        max-width: calcVW(260);
+        @include body;
     }
 
     div {
