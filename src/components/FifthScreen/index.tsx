@@ -8,20 +8,19 @@ import { calcVW } from '../../utils/hooks/functions';
 import Slider from 'react-slick';
 import { useStateProvider } from '../../context/state';
 
-const settings = {
-    infinite: false,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 7000,
-    nextArrow: <img src='/icons/arrow-right-slider.svg' />,
-    prevArrow: <img src='/icons/arrow-left-slider.svg' />,
-};
-
 export const FifthScreen = () => {
     const { scrolling, windowWidth } = useStateProvider();
     const [started, setStarted] = useState(false);
+    const [settings, setSettings] = useState({
+        infinite: false,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: false,
+        autoplaySpeed: 7000,
+        nextArrow: <img src='/icons/arrow-right-slider.svg' />,
+        prevArrow: <img src='/icons/arrow-left-slider.svg' />,
+    });
 
     const titleControls = useAnimation();
     const lineControls = useAnimation();
@@ -29,6 +28,25 @@ export const FifthScreen = () => {
     const [titleRef, inViewTitle] = useInView({
         triggerOnce: false,
     });
+
+    const [mobileMap, inViewMobileMap] = useInView({
+        triggerOnce: false,
+    });
+
+    useEffect(() => {
+        if (inViewMobileMap) {
+            setSettings({
+                ...settings,
+                autoplay: true,
+            })
+        }else {
+            setSettings({
+                ...settings,
+                autoplay: false,
+            })
+        }
+    }, [inViewMobileMap])
+
     const [lineControls1, inViewTitle1] = useInView({
         triggerOnce: false,
         threshold: 1,
@@ -127,7 +145,7 @@ export const FifthScreen = () => {
             >
                 Roadmap
             </motion.div>
-            <div className={styles.map}>
+            <div className={styles.map} ref={mobileMap}>
                 <div className={styles.infoElement}>
                     <div className={styles.oneBlock} ref={lineControls1}>
                         <RoadMapCard title='Pre-Launch' isAnimate={inViewTitle1 || inViewTitle2 || inViewTitle3 || inViewTitle4} duration={0.5} />
