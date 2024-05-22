@@ -22,7 +22,7 @@ const FAQList = [
     },
     {
         title: 'Do the team control the smart contracts?',
-        description: 'Do the team control the smart contracts? A: Yes. We love what we have built so far and we aspire to continue building, adding brand new features to keep you happy. As such, we are required to keep control of the contracts. As soon as we revoke ownership of the contracts, we become unable to add new features. We will not be keeping control of anything that we do not need to keep control of.'
+        description: 'Yes. We love what we have built so far and we aspire to continue building, adding brand new features to keep you happy. As such, we are required to keep control of the contracts. As soon as we revoke ownership of the contracts, we become unable to add new features. We will not be keeping control of anything that we do not need to keep control of.'
     },
 ]
 
