@@ -16,6 +16,7 @@
     text-transform: uppercase;
     height: calcVW(138);
     @include header1;
+    text-wrap: nowrap
 }
 
 .titleOrange {
@@ -57,5 +58,6 @@
 
     .value {
         @include bold-mobile;
+        text-wrap: nowrap;
     }
 }
