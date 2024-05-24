@@ -149,7 +149,7 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
       const xi = polygon[i].x, yi = polygon[i].y;
       const xj = polygon[j].x, yj = polygon[j].y;
       const intersect = ((yi > point.y) !== (yj > point.y)) &&
-                        (point.x < (xj - xi) * (point.y - yi) / (yj - yi) + xi);
+        (point.x < (xj - xi) * (point.y - yi) / (yj - yi) + xi);
       if (intersect) isInside = !isInside;
     }
     return isInside;
@@ -187,24 +187,24 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
 
   const updateParticlePosition = useCallback((particle: Particle) => {
     particle.angle += particle.waveFrequency;
-    const waveOffset = (Math.sin(particle.angle) * particle.waveAmplitude)/20;
+    const waveOffset = (Math.sin(particle.angle) * particle.waveAmplitude);
 
     switch (movementDirection) {
       case 'left-to-right':
         particle.x += particle.speedX;
-        particle.y += waveOffset;
+        particle.y += waveOffset / particle.speedX;
         break;
       case 'right-to-left':
         particle.x += particle.speedX;
-        particle.y += waveOffset;
+        particle.y += waveOffset / particle.speedX;
         break;
       case 'top-to-bottom':
         particle.y += particle.speedY;
-        particle.x += waveOffset;
+        particle.x += waveOffset / particle.speedY;
         break;
       case 'bottom-to-top':
         particle.y += particle.speedY;
-        particle.x += waveOffset;
+        particle.x += waveOffset / particle.speedY;
         break;
     }
 
