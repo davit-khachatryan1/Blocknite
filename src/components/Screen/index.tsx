@@ -1,9 +1,12 @@
 import styles from './style.module.scss'
+import ParticleCanvas from '../Particles';
+import { useState } from 'react';
 import { useStateProvider } from '../../context/state';
-import ParticleCanvas, { Point } from '../Particles';
 
 export const Screen = ({ id, component, imageUrl, mobileImage, screen }: any) => {
   const { windowWidth } = useStateProvider()
+  const [spacesValue, setSpaces] = useState<any>([]);
+  console.log(spacesValue);
 
   return <div style={{
     width: '100%',
@@ -15,7 +18,7 @@ export const Screen = ({ id, component, imageUrl, mobileImage, screen }: any) =>
     className={styles.container}
     id={id}
   >
-    {screen.spaces &&
+    {screen?.spaces &&
       <div style={{
         width: '100%',
         height: '100%',
@@ -23,6 +26,8 @@ export const Screen = ({ id, component, imageUrl, mobileImage, screen }: any) =>
         left: 0,
         top: 0
       }}
+        onClick={e =>
+          setSpaces([...spacesValue, { x: e.clientX, y: e.clientY }])}
       >
         <ParticleCanvas
           spaces={
@@ -37,16 +42,17 @@ export const Screen = ({ id, component, imageUrl, mobileImage, screen }: any) =>
           pointMaxSize={screen.pointMaxSize}
           movementDirection={screen.movementDirection}
           noVisible={screen.noVisible}
+          divade={screen.divade}
         />
       </div>
     }
 
-    <div style={{
+    {/* <div style={{
       width: '100%',
       height: '100%',
       overflow: 'hidden'
     }}>
       {component}
-    </div>
+    </div> */}
   </div>;
 };

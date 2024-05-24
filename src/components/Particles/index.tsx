@@ -30,6 +30,7 @@ interface ParticleCanvasProps {
   minParticles: number;
   maxParticles: number;
   noVisible?: 'top' | 'left' | 'right' | 'bottom';
+  divade: number;
 }
 
 const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
@@ -43,6 +44,7 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
   minParticles,
   maxParticles,
   noVisible,
+  divade,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const particlesRef = useRef<Particle[]>([]);
@@ -187,24 +189,24 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
 
   const updateParticlePosition = useCallback((particle: Particle) => {
     particle.angle += particle.waveFrequency;
-    const waveOffset = (Math.sin(particle.angle) * particle.waveAmplitude);
+    const waveOffset = (Math.sin(particle.angle) * particle.waveAmplitude) / divade;
 
     switch (movementDirection) {
       case 'left-to-right':
         particle.x += particle.speedX;
-        particle.y += waveOffset / particle.speedX;
+        particle.y += waveOffset;
         break;
       case 'right-to-left':
         particle.x += particle.speedX;
-        particle.y += waveOffset / particle.speedX;
+        particle.y += waveOffset;
         break;
       case 'top-to-bottom':
         particle.y += particle.speedY;
-        particle.x += waveOffset / particle.speedY;
+        particle.x += waveOffset;
         break;
       case 'bottom-to-top':
         particle.y += particle.speedY;
-        particle.x += waveOffset / particle.speedY;
+        particle.x += waveOffset;
         break;
     }
 
@@ -238,7 +240,17 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
     });
   }, []);
 
-
+  const drawSpaces = useCallback((ctx: CanvasRenderingContext2D) => {
+    ctx.strokeStyle = '#000000';
+    spaces.forEach(space => {
+      ctx.beginPath();
+      ctx.moveTo(space[0].x, space[0].y);
+      space.forEach(point => ctx.lineTo(point.x, point.y));
+      ctx.closePath();
+      ctx.stroke();
+    });
+  }, [spaces]);
+  
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext('2d');
@@ -246,6 +258,7 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
       const animate = () => {
         particlesRef.current.forEach(updateParticlePosition);
         drawParticles(ctx);
+        // drawSpaces(ctx);
         requestAnimationFrame(animate);
       };
 
