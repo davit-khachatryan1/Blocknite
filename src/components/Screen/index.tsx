@@ -294,8 +294,8 @@ export const Screen = ({ id, component, imageUrl, mobileImage }: any) => {
         minSpeed={1}
         maxSpeed={3}
         pointColors={['#33FF5750']}
-        pointMinSize={1}
-        pointMaxSize={2}
+        pointMinSize={1.5}
+        pointMaxSize={2.5}
         movementDirection='left-to-right'
         noVisible="top"
       />
