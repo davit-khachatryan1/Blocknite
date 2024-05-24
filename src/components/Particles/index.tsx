@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useCallback, memo } from 'react';
+import React, { useEffect, useRef, useCallback } from 'react';
 
 export interface Point {
   x: number;
@@ -13,6 +13,9 @@ interface Particle {
   speedY: number;
   color: string;
   visible: boolean;
+  angle: number;
+  waveAmplitude: number;
+  waveFrequency: number;
 }
 
 interface ParticleCanvasProps {
@@ -54,8 +57,37 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
     };
   }, [getRandomInt]);
 
-  const createParticle = useCallback((): Particle => {
-    const { x, y } = getRandomPosition();
+  const getEdgePosition = useCallback((): { x: number; y: number } => {
+    let x, y;
+
+    switch (movementDirection) {
+      case 'left-to-right':
+        x = 0;
+        y = getRandomInt(0, window.innerHeight);
+        break;
+      case 'right-to-left':
+        x = window.innerWidth;
+        y = getRandomInt(0, window.innerHeight);
+        break;
+      case 'top-to-bottom':
+        x = getRandomInt(0, window.innerWidth);
+        y = 0;
+        break;
+      case 'bottom-to-top':
+        x = getRandomInt(0, window.innerWidth);
+        y = window.innerHeight;
+        break;
+      default:
+        x = getRandomInt(0, window.innerWidth);
+        y = getRandomInt(0, window.innerHeight);
+        break;
+    }
+
+    return { x, y };
+  }, [getRandomInt, movementDirection]);
+
+  const createParticle = useCallback((initial: boolean = false): Particle => {
+    const { x, y } = initial ? getRandomPosition() : getEdgePosition();
     let speedX = 0;
     let speedY = 0;
 
@@ -76,15 +108,21 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
 
     const size = getRandomInt(pointMinSize, pointMaxSize);
     const color = pointColors[Math.floor(Math.random() * pointColors.length)];
-    return { x, y, size, speedX, speedY, color, visible: true };
-  }, [getRandomPosition, getRandomInt, minSpeed, maxSpeed, pointColors, pointMinSize, pointMaxSize, movementDirection]);
+    const angle = Math.random() * 2 * Math.PI;
+    const waveAmplitude = Math.random() * 2 + 1; // Smaller, more random amplitude
+    const waveFrequency = Math.random() * 0.05 + 0.01; // Smaller, more random frequency
+    return { x, y, size, speedX, speedY, color, visible: true, angle, waveAmplitude, waveFrequency };
+  }, [getRandomPosition, getEdgePosition, getRandomInt, minSpeed, maxSpeed, pointColors, pointMinSize, pointMaxSize, movementDirection]);
 
   const resetParticlePosition = useCallback((particle: Particle) => {
-    const { x, y } = getRandomPosition();
+    const { x, y } = getEdgePosition();
     particle.x = x;
     particle.y = y;
     particle.visible = true;
-  }, [getRandomPosition]);
+    particle.angle = Math.random() * 2 * Math.PI;
+    particle.waveAmplitude = Math.random() * 2 + 1;
+    particle.waveFrequency = Math.random() * 0.05 + 0.01;
+  }, [getEdgePosition]);
 
   const isPointInPolygon = useCallback((point: Point, polygon: Point[]): boolean => {
     let isInside = false;
@@ -92,7 +130,7 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
       const xi = polygon[i].x, yi = polygon[i].y;
       const xj = polygon[j].x, yj = polygon[j].y;
       const intersect = ((yi > point.y) !== (yj > point.y)) &&
-        (point.x < (xj - xi) * (point.y - yi) / (yj - yi) + xi);
+                        (point.x < (xj - xi) * (point.y - yi) / (yj - yi) + xi);
       if (intersect) isInside = !isInside;
     }
     return isInside;
@@ -129,8 +167,27 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
   }, [noVisible, spaces]);
 
   const updateParticlePosition = useCallback((particle: Particle) => {
-    particle.x += particle.speedX;
-    particle.y += particle.speedY;
+    particle.angle += particle.waveFrequency;
+    const waveOffset = (Math.sin(particle.angle) * particle.waveAmplitude)/20;
+
+    switch (movementDirection) {
+      case 'left-to-right':
+        particle.x += particle.speedX;
+        particle.y += waveOffset;
+        break;
+      case 'right-to-left':
+        particle.x += particle.speedX;
+        particle.y += waveOffset;
+        break;
+      case 'top-to-bottom':
+        particle.y += particle.speedY;
+        particle.x += waveOffset;
+        break;
+      case 'bottom-to-top':
+        particle.y += particle.speedY;
+        particle.x += waveOffset;
+        break;
+    }
 
     avoidNoVisibleBorders(particle);
 
@@ -158,16 +215,6 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
     });
   }, []);
 
-  // const drawSpaces = useCallback((ctx: CanvasRenderingContext2D) => {
-  //   ctx.strokeStyle = '#000000';
-  //   spaces.forEach(space => {
-  //     ctx.beginPath();
-  //     ctx.moveTo(space[0].x, space[0].y);
-  //     space.forEach(point => ctx.lineTo(point.x, point.y));
-  //     ctx.closePath();
-  //     ctx.stroke();
-  //   });
-  // }, [spaces]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -176,28 +223,33 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
       const animate = () => {
         particlesRef.current.forEach(updateParticlePosition);
         drawParticles(ctx);
-        // drawSpaces(ctx);
         requestAnimationFrame(animate);
       };
 
       if (particlesRef.current.length === 0) {
         const numParticles = getRandomInt(minParticles, maxParticles);
 
-        // Initialize particles with delay
-        const createParticlesWithDelay = () => {
-          for (let i = 0; i < numParticles; i++) {
-            particlesRef.current.push(createParticle());
-          }
-        };
-
-        createParticlesWithDelay();
+        for (let i = 0; i < numParticles; i++) {
+          particlesRef.current.push(createParticle(true));
+        }
+        animate();
+        const timout = setTimeout(() => {
+          clearTimeout(timout)
+          const createParticlesWithDelay = () => {
+            for (let i = 0; i < numParticles; i++) {
+              const timout2 = setTimeout(() => {
+                clearTimeout(timout2)
+                particlesRef.current.push(createParticle(false));
+              }, i * 200);
+            }
+          };
+          createParticlesWithDelay();
+        }, 1000);
       }
-
-      animate();
     }
   }, []);
 
   return <canvas ref={canvasRef} width={window.innerWidth} height={window.innerHeight} />;
 };
 
-export default memo(ParticleCanvas);
+export default ParticleCanvas;

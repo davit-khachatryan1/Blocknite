@@ -291,8 +291,8 @@ export const Screen = ({ id, component, imageUrl, mobileImage }: any) => {
         }
         minParticles={300}
         maxParticles={400}
-        minSpeed={1}
-        maxSpeed={3}
+        minSpeed={3}
+        maxSpeed={6}
         pointColors={['#33FF5750']}
         pointMinSize={1.5}
         pointMaxSize={2.5}
