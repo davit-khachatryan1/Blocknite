@@ -16,6 +16,7 @@ interface Particle {
   angle: number;
   waveAmplitude: number;
   waveFrequency: number;
+  shape: Point[];
 }
 
 interface ParticleCanvasProps {
@@ -86,6 +87,22 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
     return { x, y };
   }, [getRandomInt, movementDirection]);
 
+  const createIrregularShape = useCallback((size: number): Point[] => {
+    const points: Point[] = [];
+    const numPoints = getRandomInt(5, 10); // Number of points for the irregular shape
+
+    for (let i = 0; i < numPoints; i++) {
+      const angle = (i / numPoints) * Math.PI * 2;
+      const radius = size / 2 + Math.random() * (size / 2);
+      points.push({
+        x: Math.cos(angle) * radius,
+        y: Math.sin(angle) * radius,
+      });
+    }
+
+    return points;
+  }, [getRandomInt]);
+
   const createParticle = useCallback((initial: boolean = false): Particle => {
     const { x, y } = initial ? getRandomPosition() : getEdgePosition();
     let speedX = 0;
@@ -111,8 +128,9 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
     const angle = Math.random() * 2 * Math.PI;
     const waveAmplitude = Math.random() * 2 + 1; // Smaller, more random amplitude
     const waveFrequency = Math.random() * 0.05 + 0.01; // Smaller, more random frequency
-    return { x, y, size, speedX, speedY, color, visible: true, angle, waveAmplitude, waveFrequency };
-  }, [getRandomPosition, getEdgePosition, getRandomInt, minSpeed, maxSpeed, pointColors, pointMinSize, pointMaxSize, movementDirection]);
+    const shape = createIrregularShape(size);
+    return { x, y, size, speedX, speedY, color, visible: true, angle, waveAmplitude, waveFrequency, shape };
+  }, [getRandomPosition, getEdgePosition, getRandomInt, minSpeed, maxSpeed, pointColors, pointMinSize, pointMaxSize, movementDirection, createIrregularShape]);
 
   const resetParticlePosition = useCallback((particle: Particle) => {
     const { x, y } = getEdgePosition();
@@ -122,7 +140,8 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
     particle.angle = Math.random() * 2 * Math.PI;
     particle.waveAmplitude = Math.random() * 2 + 1;
     particle.waveFrequency = Math.random() * 0.05 + 0.01;
-  }, [getEdgePosition]);
+    particle.shape = createIrregularShape(particle.size);
+  }, [getEdgePosition, createIrregularShape]);
 
   const isPointInPolygon = useCallback((point: Point, polygon: Point[]): boolean => {
     let isInside = false;
@@ -209,7 +228,11 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
       if (particle.visible) {
         ctx.fillStyle = particle.color;
         ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+        ctx.moveTo(particle.x + particle.shape[0].x, particle.y + particle.shape[0].y);
+        particle.shape.forEach(point => {
+          ctx.lineTo(particle.x + point.x, particle.y + point.y);
+        });
+        ctx.closePath();
         ctx.fill();
       }
     });
