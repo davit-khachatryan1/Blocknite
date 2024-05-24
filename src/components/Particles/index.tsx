@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useCallback, memo } from 'react';
 
-interface Point {
+export interface Point {
   x: number;
   y: number;
 }
