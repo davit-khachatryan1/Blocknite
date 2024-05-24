@@ -186,10 +186,7 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
         // Initialize particles with delay
         const createParticlesWithDelay = () => {
           for (let i = 0; i < numParticles; i++) {
-            const timeout = setTimeout(() => {
-              clearTimeout(timeout)
-              particlesRef.current.push(createParticle());
-            }, i * 50); // Adjust the delay as needed
+            particlesRef.current.push(createParticle());
           }
         };
 
