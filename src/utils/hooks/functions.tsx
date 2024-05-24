@@ -12,3 +12,12 @@ export const calcVW = (value: string | number, windowWidth = window.innerWidth, 
         return Number(mediaValue) * num * windowWidth
     }
 }
+
+export const calcVWP = (value: string | number, windowWidth = window.innerWidth, mobileValue?: number) => {
+    const mediaValue = windowWidth <= 576 && mobileValue ? mobileValue : value
+    let num = 0.000520833333;
+    if (windowWidth <= 576) {
+        num = 0.003125
+    }
+    return Math.round(Number(mediaValue) * num * windowWidth)
+}
