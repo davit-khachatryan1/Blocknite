@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useCallback } from 'react';
+import { calcVW } from '../../utils/hooks/functions';
 
 export interface Point {
   x: number;
@@ -55,8 +56,8 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
 
   const getRandomPosition = useCallback((): { x: number; y: number } => {
     return {
-      x: getRandomInt(0, window.innerWidth),
-      y: getRandomInt(0, window.innerHeight),
+      x: getRandomInt(0, (calcVW(1920) as number)),
+      y: getRandomInt(0, (calcVW(1080) as number)),
     };
   }, [getRandomInt]);
 
@@ -66,23 +67,23 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
     switch (movementDirection) {
       case 'left-to-right':
         x = 0;
-        y = getRandomInt(0, window.innerHeight);
+        y = getRandomInt(0, (calcVW(1080) as number));
         break;
       case 'right-to-left':
-        x = window.innerWidth;
-        y = getRandomInt(0, window.innerHeight);
+        x = (calcVW(1920) as number);
+        y = getRandomInt(0, (calcVW(1080) as number));
         break;
       case 'top-to-bottom':
-        x = getRandomInt(0, window.innerWidth);
+        x = getRandomInt(0, (calcVW(1920) as number));
         y = 0;
         break;
       case 'bottom-to-top':
-        x = getRandomInt(0, window.innerWidth);
-        y = window.innerHeight;
+        x = getRandomInt(0, (calcVW(1920) as number));
+        y = (calcVW(1080) as number);
         break;
       default:
-        x = getRandomInt(0, window.innerWidth);
-        y = getRandomInt(0, window.innerHeight);
+        x = getRandomInt(0, (calcVW(1920) as number));
+        y = getRandomInt(0, (calcVW(1080) as number));
         break;
     }
 
@@ -213,9 +214,9 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
     avoidNoVisibleBorders(particle);
 
     if (
-      (movementDirection === 'left-to-right' && particle.x > window.innerWidth) ||
+      (movementDirection === 'left-to-right' && particle.x > (calcVW(1920) as number)) ||
       (movementDirection === 'right-to-left' && particle.x < 0) ||
-      (movementDirection === 'top-to-bottom' && particle.y > window.innerHeight) ||
+      (movementDirection === 'top-to-bottom' && particle.y > (calcVW(1080) as number)) ||
       (movementDirection === 'bottom-to-top' && particle.y < 0)
     ) {
       resetParticlePosition(particle);
@@ -285,7 +286,7 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
     }
   }, []);
 
-  return <canvas ref={canvasRef} width={window.innerWidth} height={window.innerHeight} />;
+  return <canvas ref={canvasRef} width={calcVW(1920)} height={calcVW(1080)} />;
 };
 
 export default ParticleCanvas;
