@@ -492,7 +492,7 @@ export const screens = [
         { x: calcVWP(526), y: calcVWP(536) },
         { x: calcVWP(471), y: calcVWP(591) },
         { x: calcVWP(418), y: calcVWP(541) },
-        { x: calcVWP(364), y: calcVWP(468) },
+        { x: calcVWP(364), y: calcVWP(568) },
         { x: calcVWP(348), y: calcVWP(520) },
         { x: calcVWP(316), y: calcVWP(592) },
         { x: calcVWP(232), y: calcVWP(584) },
