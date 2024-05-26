@@ -350,7 +350,39 @@ export const screens = [
     noVisible: "top",
     divade: 5
   },
-  { id: 'how-it-works', color: 'green', name: 'How it works', component: <ThirdScreen />, imageUrl: '/bg-images/third-bg.webp', imageMobile: '/bg-images/third-mobile-bg.webp' },
+  { id: 'how-it-works', color: 'green', name: 'How it works', component: <ThirdScreen />, imageUrl: '/bg-images/third-bg.webp', imageMobile: '/bg-images/third-mobile-bg.webp',
+      spaces: [
+      [
+        {x: calcVWP(0), y: calcVWP(88)},
+        {x: calcVWP(0), y: calcVWP(550)},
+        {x: calcVWP(124), y: calcVWP(673)},
+        {x: calcVWP(287), y: calcVWP(593)},
+        {x: calcVWP(409), y: calcVWP(726)},
+        {x: calcVWP(519), y: calcVWP(824)},
+        {x: calcVWP(791), y: calcVWP(726)},
+        {x: calcVWP(1085), y: calcVWP(762)},
+        {x: calcVWP(1257), y: calcVWP(793)},
+        {x: calcVWP(1399), y: calcVWP(718)},
+        {x: calcVWP(1498), y: calcVWP(872)},
+        {x: calcVWP(1636), y: calcVWP(760)},
+        {x: calcVWP(1698), y: calcVWP(552)},
+        {x: calcVWP(1830), y: calcVWP(368)},
+        {x: calcVWP(1911), y: calcVWP(269)},
+        {x: calcVWP(1912), y: calcVWP(92)},
+      ]
+    ] as Point[][],
+
+    minParticles: 100,
+    maxParticles: 200,
+    minSpeed: 5,
+    maxSpeed: 20,
+    pointColors: ['#FF004570', '#00000070'],
+    pointMinSize: 2,
+    pointMaxSize: 3,
+    movementDirection: 'bottom-to-top',
+    noVisible: "bottom",
+    divade: 5
+},
   { id: 'tokenomics', color: 'yellow', name: 'Tokenomics', component: <FourthScreen />, imageUrl: '/bg-images/fourth-bg.webp', imageMobile: '/bg-images/fourth-mobile-bg.webp' },
   {
     id: 'roadmap', color: 'gray', name: 'Roadmap', component: <FifthScreen />, imageUrl: '/bg-images/fifth-bg.webp', imageMobile: '/bg-images/fifth-mobile-bg.webp',
