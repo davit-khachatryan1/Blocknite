@@ -69,10 +69,12 @@ export const ThirdScreen = () => {
         if (inViewFirstBlock3) {
             blockControls3.start({ height: calcVW('199px', windowWidth), transition: { duration: 0.5 } });
             obj.third = true;
-        } else if (inViewFirstBlock2) {
+        }
+        if (inViewFirstBlock2) {
             blockControls2.start({ height: calcVW('199px', windowWidth), transition: { duration: 0.5 } });
             obj.second = true;
-        } else if (inViewFirstBlock1) {
+        }
+        if (inViewFirstBlock1) {
             blockControls1.start({ height: calcVW('199px', windowWidth), transition: { duration: 0.5 } });
             obj.first = true;
         }
