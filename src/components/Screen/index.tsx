@@ -1,12 +1,9 @@
 import styles from './style.module.scss'
 import ParticleCanvas from '../Particles';
-import { useState } from 'react';
 import { useStateProvider } from '../../context/state';
 
 export const Screen = ({ id, component, imageUrl, mobileImage, screen }: any) => {
   const { windowWidth } = useStateProvider()
-  const [spacesValue, setSpaces] = useState<any>([]);
-  console.log(spacesValue);
 
   return <div style={{
     width: '100%',
@@ -26,8 +23,6 @@ export const Screen = ({ id, component, imageUrl, mobileImage, screen }: any) =>
         left: 0,
         top: 0
       }}
-        onClick={e =>
-          setSpaces([...spacesValue, { x: e.clientX, y: e.clientY }])}
       >
         <ParticleCanvas
           spaces={
