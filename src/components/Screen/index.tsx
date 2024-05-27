@@ -36,7 +36,6 @@ export const Screen = ({ id, component, imageUrl, mobileImage, screen }: any) =>
           pointMinSize={screen.pointMinSize}
           pointMaxSize={screen.pointMaxSize}
           movementDirection={screen.movementDirection}
-          noVisible={screen.noVisible}
           divade={screen.divade}
         />
       </div>

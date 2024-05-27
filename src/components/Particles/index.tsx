@@ -27,10 +27,9 @@ interface ParticleCanvasProps {
   pointColors: string[];
   pointMinSize: number;
   pointMaxSize: number;
-  movementDirection: 'left-to-right' | 'right-to-left' | 'top-to-bottom' | 'bottom-to-top';
+  movementDirection: 'left-to-right' | 'right-to-left' | 'top-to-bottom' | 'bottom-to-top' | 'left-top-to-right-bottom' | 'right-top-to-left-bottom' | 'left-bottom-to-right-top' | 'right-bottom-to-left-top';
   minParticles: number;
   maxParticles: number;
-  noVisible?: 'top' | 'left' | 'right' | 'bottom';
   divade: number;
 }
 
@@ -44,7 +43,6 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
   movementDirection,
   minParticles,
   maxParticles,
-  noVisible,
   divade,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -63,6 +61,7 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
 
   const getEdgePosition = useCallback((): { x: number; y: number } => {
     let x, y;
+    const is = Math.round(Math.random())
 
     switch (movementDirection) {
       case 'left-to-right':
@@ -80,6 +79,22 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
       case 'bottom-to-top':
         x = getRandomInt(0, (calcVW(1920) as number));
         y = (calcVW(1080) as number);
+        break;
+      case 'left-top-to-right-bottom':
+        x = is ? Math.random() * (calcVW(1920) as number) : 0;
+        y = !is ? Math.random() * (calcVW(1080) as number) : 0;
+        break;
+      case 'right-top-to-left-bottom':
+        x = is ? Math.random() * (calcVW(1920) as number) : (calcVW(1920) as number);
+        y = !is ? Math.random() * (calcVW(1080) as number) : 0;
+        break;
+      case 'left-bottom-to-right-top':
+        x = is ? Math.random() * (calcVW(1920) as number) : 0;
+        y = !is ? (800 + Math.random() * (calcVW(280) as number)) : (calcVW(1080) as number);
+        break;
+      case 'right-bottom-to-left-top':
+        x = is ? Math.random() * (calcVW(1920) as number) : (calcVW(1920) as number);
+        y = !is ? Math.random() * (calcVW(1080) as number) : (calcVW(1080) as number);
         break;
       default:
         x = getRandomInt(0, (calcVW(1920) as number));
@@ -124,6 +139,22 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
       case 'bottom-to-top':
         speedY = -getRandomInt(minSpeed, maxSpeed) / 10;
         break;
+      case 'left-top-to-right-bottom':
+        speedX = getRandomInt(minSpeed, maxSpeed) / 10;
+        speedY = getRandomInt(minSpeed, maxSpeed) / 10;
+        break;
+      case 'right-top-to-left-bottom':
+        speedX = -getRandomInt(minSpeed, maxSpeed) / 10;
+        speedY = getRandomInt(minSpeed, maxSpeed) / 10;
+        break;
+      case 'left-bottom-to-right-top':
+        speedX = getRandomInt(minSpeed, maxSpeed) / 5;
+        speedY = -getRandomInt(minSpeed, maxSpeed) / 10;
+        break;
+      case 'right-bottom-to-left-top':
+        speedX = -getRandomInt(minSpeed, maxSpeed) / 10;
+        speedY = -getRandomInt(minSpeed, maxSpeed) / 10;
+        break;
     }
 
     const size = getRandomInt(pointMinSize, pointMaxSize);
@@ -158,36 +189,6 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
     return isInside;
   }, []);
 
-  const avoidNoVisibleBorders = useCallback((particle: Particle) => {
-    if (noVisible) {
-      spaces.forEach(space => {
-        for (let i = 0, j = space.length - 1; i < space.length; j = i++) {
-          const xi = space[i].x, yi = space[i].y;
-          const xj = space[j].x, yj = space[j].y;
-
-          // Check if particle is close to the edge
-          const distToEdge = Math.abs((yj - yi) * particle.x - (xj - xi) * particle.y + xj * yi - yj * xi) /
-            Math.sqrt((yj - yi) ** 2 + (xj - xi) ** 2);
-
-          if (distToEdge < 10) { // Threshold distance to edge
-            if (noVisible === 'top' && (particle.y < yi || particle.y < yj)) {
-              particle.speedY = Math.abs(particle.speedY); // Move downwards
-            }
-            if (noVisible === 'bottom' && (particle.y > yi || particle.y > yj)) {
-              particle.speedY = -Math.abs(particle.speedY); // Move upwards
-            }
-            if (noVisible === 'left' && (particle.x < xi || particle.x < xj)) {
-              particle.speedX = Math.abs(particle.speedX); // Move right
-            }
-            if (noVisible === 'right' && (particle.x > xi || particle.x > xj)) {
-              particle.speedX = -Math.abs(particle.speedX); // Move left
-            }
-          }
-        }
-      });
-    }
-  }, [noVisible, spaces]);
-
   const updateParticlePosition = useCallback((particle: Particle) => {
     particle.angle += particle.waveFrequency;
     const waveOffset = (Math.sin(particle.angle) * particle.waveAmplitude) / divade;
@@ -209,21 +210,39 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
         particle.y += particle.speedY;
         particle.x += waveOffset;
         break;
+      case 'left-top-to-right-bottom':
+        particle.x += particle.speedX;
+        particle.y += particle.speedY + waveOffset;
+        break;
+      case 'right-top-to-left-bottom':
+        particle.x += particle.speedX;
+        particle.y += particle.speedY + waveOffset;
+        break;
+      case 'left-bottom-to-right-top':
+        particle.x += particle.speedX;
+        particle.y += particle.speedY + waveOffset;
+        break;
+      case 'right-bottom-to-left-top':
+        particle.x += particle.speedX;
+        particle.y += particle.speedY + waveOffset;
+        break;
     }
-
-    avoidNoVisibleBorders(particle);
 
     if (
       (movementDirection === 'left-to-right' && particle.x > (calcVW(1920) as number)) ||
       (movementDirection === 'right-to-left' && particle.x < 0) ||
       (movementDirection === 'top-to-bottom' && particle.y > (calcVW(1080) as number)) ||
-      (movementDirection === 'bottom-to-top' && particle.y < 0)
+      (movementDirection === 'bottom-to-top' && particle.y < 0) ||
+      (movementDirection === 'left-top-to-right-bottom' && (particle.x > (calcVW(1920) as number) || particle.y > (calcVW(1080) as number))) ||
+      (movementDirection === 'right-top-to-left-bottom' && (particle.x < 0 || particle.y > (calcVW(1080) as number))) ||
+      (movementDirection === 'left-bottom-to-right-top' && (particle.x > (calcVW(1920) as number) || particle.y < 0)) ||
+      (movementDirection === 'right-bottom-to-left-top' && (particle.x < 0 || particle.y < 0))
     ) {
       resetParticlePosition(particle);
     }
 
     particle.visible = spaces.some(space => isPointInPolygon({ x: particle.x, y: particle.y }, space));
-  }, [movementDirection, resetParticlePosition, spaces, isPointInPolygon, avoidNoVisibleBorders]);
+  }, [movementDirection, resetParticlePosition, spaces, isPointInPolygon]);
 
   const drawParticles = useCallback((ctx: CanvasRenderingContext2D) => {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
@@ -251,7 +270,7 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
       ctx.stroke();
     });
   }, [spaces]);
-  
+
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext('2d');
@@ -271,11 +290,11 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
         }
         animate();
         const timout = setTimeout(() => {
-          clearTimeout(timout)
+          clearTimeout(timout);
           const createParticlesWithDelay = () => {
             for (let i = 0; i < numParticles; i++) {
               const timout2 = setTimeout(() => {
-                clearTimeout(timout2)
+                clearTimeout(timout2);
                 particlesRef.current.push(createParticle(false));
               }, i * 200);
             }
