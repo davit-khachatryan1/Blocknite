@@ -95,11 +95,15 @@
                 left: auto;
                 transform: rotate(180deg);
                 top: calcVW(12);
+                width: calcVW(20);
+                height: calcVW(20);
             }
             :global(.slick-next) {
                 left: calcVW(-25);
                 transform: rotate(180deg);
                 top: calcVW(12);
+                width: calcVW(20);
+                height: calcVW(20);
             }
         }
     }
@@ -151,16 +155,20 @@
                         height: calcVWM(22);
                     }
                 }
-                :global(.slick-prev) {
+                :global(.slick-next) {
                     right: calcVWM(-30);
                     left: auto;
-                    transform: rotate(180deg);
+                    transform: rotate(0);
                     top: calcVWM(12);
+                    width: calcVWM(20);
+                    height: calcVWM(20);
                 }
-                :global(.slick-next) {
+                :global(.slick-prev) {
                     left: calcVWM(-30);
-                    transform: rotate(180deg);
+                    transform: rotate(0);
                     top: calcVWM(12);
+                    width: calcVWM(20);
+                    height: calcVWM(20);
                 }
             }
 

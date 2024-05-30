@@ -272,22 +272,22 @@
             }
         }
 
-        :global(.slick-prev) {
+        :global(.slick-next) {
             position: absolute;
             top: calcVWM(140);
             left: calcVWM(176);
             width: calcVWM(22);
             height: calcVWM(22);
-            transform: rotate(180deg);
+            transform: rotate(0);
         }
 
-        :global(.slick-next) {
+        :global(.slick-prev) {
             position: absolute;
             top: calcVWM(140);
             left: calcVWM(116);
             width: calcVWM(22);
             height: calcVWM(22);
-            transform: rotate(180deg);
+            transform: rotate(0);
         }
 
         .carouselContainer {

@@ -59,7 +59,7 @@
         margin: 0;
         overflow: visible !important;
         .first-short {
-            height: 2px;
+            height: calcVWM(2);
             background: $brown-400;
             width: calcVWM(182);
             margin-left: auto;
@@ -70,7 +70,7 @@
             z-index: 999;
         }
         .long {
-            height: 2px;
+            height: calcVWM(2);
             background: $brown-400;
             width: calcVWM(320);
             margin-left: calcVWM(-15);
@@ -80,7 +80,7 @@
             z-index: 999;
         }
         .last-short {
-            height: 2px;
+            height: calcVWM(2);
             background: $brown-400;
             width: calcVWM(182);
             margin-right: auto;
