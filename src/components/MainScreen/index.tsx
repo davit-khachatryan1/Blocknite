@@ -1,20 +1,66 @@
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '../Button';
 import Typewriter from '../TypeWriter';
 import { calcVW } from '../../utils/hooks/functions';
+import { useStateProvider } from '../../context/state';
 
 import styles from './style.module.scss'
-import { useState } from 'react';
-import { useStateProvider } from '../../context/state';
+
+const useScrollDeltaY = () => {
+    const [scrollData, setScrollData] = useState({ deltaY: 0, scrollTop: 0 });
+    const [lastScrollTop, setLastScrollTop] = useState(0);
+
+    const handleScroll = () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const deltaY = scrollTop - lastScrollTop;
+        setScrollData({ deltaY, scrollTop });
+        setLastScrollTop(scrollTop);
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+
+        const initialScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        setLastScrollTop(initialScrollTop);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [lastScrollTop]);
+
+    return scrollData;
+};
+
 
 export const MainScreen = () => {
     const { setOpenMenu, windowWidth } = useStateProvider();
     const [active, setActive] = useState('$NITE address');
+    const { deltaY, scrollTop } = useScrollDeltaY();
 
     return (
         <div className={styles.container}>
             <div className={`${styles.menu}`}>
-                <img src="/icons/menu-open.svg" alt="menu" className={styles.menuOpenIcon} onClick={() => setOpenMenu(true)}/>
+                <img src="/icons/menu-open.svg" alt="menu" className={styles.menuOpenIcon} onClick={() => setOpenMenu(true)}
+                    style={{
+                        ...(deltaY < 0 ? {
+                            transition: '0.2s',
+                            opacity: 1,
+                            position: 'fixed',
+                            top: 0,
+                            right: 0,
+                            zIndex: 10,
+                        } : scrollTop > (calcVW(100, windowWidth, 100) as number) ?
+                            {
+                                transition: '0.2s',
+                                opacity: 0,
+                                position: 'fixed',
+                                top: 0,
+                                right: 0,
+                                zIndex: 10,
+                            } : {})
+                    }}
+                />
             </div>
 
             <div className={styles.infoBlock}>

@@ -81,10 +81,10 @@ export const FifthScreen = () => {
                 lineControls.start({
                     height: [calcVW('60px', windowWidth), calcVW('191px', windowWidth), calcVW('191px', windowWidth), calcVW('398px', windowWidth), calcVW('398px', windowWidth), calcVW('553px', windowWidth), calcVW('553px', windowWidth), calcVW('732px', windowWidth)],
                     transition: {
-                        duration: 5, // Total duration including delays
+                        duration: 2, // Total duration including delays
                         times: [0, 1 / 7, 2 / 7, 3 / 7, 4 / 7, 5 / 7, 6 / 7, 1], // Keyframe intervals
                         ease: "easeInOut",
-                        delay: 1
+                        delay: 0.2
                     }
                 })
             }
@@ -145,15 +145,15 @@ export const FifthScreen = () => {
             >
                 Roadmap
             </motion.div>
-            <div className={styles.map} ref={mobileMap}>
+            <div className={styles.map}>
                 <div className={styles.infoElement}>
                     <div className={styles.oneBlock} ref={lineControls1}>
-                        <RoadMapCard title='Pre-Launch' isAnimate={inViewTitle1 || inViewTitle2 || inViewTitle3 || inViewTitle4} duration={0.5} />
+                        <RoadMapCard title='Pre-Launch' isAnimate={inViewTitle1 || inViewTitle2 || inViewTitle3 || inViewTitle4} duration={0.2} />
                         <div className={styles.info}>
                             <RoadMapText
                                 isAnimate={inViewTitle1 || inViewTitle2 || inViewTitle3 || inViewTitle4}
-                                duration={0.5}
-                                delay={0.5}
+                                duration={0.2}
+                                delay={0.2}
                                 texts={
                                     [
                                         'Launch social medias',
@@ -167,11 +167,11 @@ export const FifthScreen = () => {
                     </div>
                     <div className={styles.oneBlock} ref={lineControls3}>
                         <RoadMapCard title='Activation'
-                            isAnimate={inViewTitle1 || inViewTitle2 || inViewTitle3 || inViewTitle4} duration={0.5} delay={3}
+                            isAnimate={inViewTitle1 || inViewTitle2 || inViewTitle3 || inViewTitle4} duration={0.2} delay={1.2}
                         />
                         <div className={styles.info}>
                             <RoadMapText
-                                isAnimate={inViewTitle1 || inViewTitle2 || inViewTitle3 || inViewTitle4} duration={0.5} delay={3.5}
+                                isAnimate={inViewTitle1 || inViewTitle2 || inViewTitle3 || inViewTitle4} duration={0.2} delay={1.4}
 
                                 texts={
                                     [
@@ -194,11 +194,11 @@ export const FifthScreen = () => {
                 <div className={styles.infoElement} >
                     <div className={styles.oneBlock} ref={lineControls2}>
                         <RoadMapCard title='Launch' right={true}
-                            isAnimate={inViewTitle1 || inViewTitle2 || inViewTitle3 || inViewTitle4} duration={0.5} delay={1.5}
+                            isAnimate={inViewTitle1 || inViewTitle2 || inViewTitle3 || inViewTitle4} duration={0.2} delay={0.6}
                         />
                         <div className={styles.info}>
                             <RoadMapText
-                                isAnimate={inViewTitle1 || inViewTitle2 || inViewTitle3 || inViewTitle4} duration={0.5} delay={2}
+                                isAnimate={inViewTitle1 || inViewTitle2 || inViewTitle3 || inViewTitle4} duration={0.2} delay={0.8}
                                 right={true}
                                 texts={
                                     [
@@ -213,12 +213,12 @@ export const FifthScreen = () => {
                     </div>
                     <div className={styles.oneBlock} ref={lineControls4}>
                         <RoadMapCard title='Enrichment' right={true}
-                            isAnimate={inViewTitle1 || inViewTitle2 || inViewTitle3 || inViewTitle4} duration={0.5} delay={4.5}
+                            isAnimate={inViewTitle1 || inViewTitle2 || inViewTitle3 || inViewTitle4} duration={0.2} delay={1.8}
 
                         />
                         <div className={styles.info}>
                             <RoadMapText
-                                isAnimate={inViewTitle1 || inViewTitle2 || inViewTitle3 || inViewTitle4} duration={0.5} delay={5}
+                                isAnimate={inViewTitle1 || inViewTitle2 || inViewTitle3 || inViewTitle4} duration={0.2} delay={2}
                                 right={true}
                                 texts={
                                     [
@@ -234,7 +234,7 @@ export const FifthScreen = () => {
                     </div>
                 </div>
             </div>
-            <div className={styles.mapMobile}>
+            <div className={styles.mapMobile} ref={mobileMap}>
                 <Slider {...settings}>
                     <div className={styles.cardMobile}>
                         <RoadMapCard title='Pre-Launch' first='first-short' />
