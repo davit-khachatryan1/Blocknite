@@ -83,7 +83,11 @@ const TitleBlock: React.FC<TitleBlockProps> = ({
                         <img
                             src='/icons/arrow-left.svg'
                             className={styles.arrowIcon}
-                            style={{ objectFit: 'cover', objectPosition: 'center' }}
+                            style={{
+                                objectPosition: 'center',
+                                width: '100%',
+                                height: '100%',
+                            }}
                             loading='lazy'
                             alt="Arrow Left"
                         />
@@ -120,7 +124,11 @@ const TitleBlock: React.FC<TitleBlockProps> = ({
                         <img
                             src='/icons/arrow-right.svg'
                             className={styles.arrowIcon}
-                            style={{ objectFit: 'cover', objectPosition: 'center' }}
+                            style={{
+                                objectPosition: 'center',
+                                width: '100%',
+                                height: '100%',
+                            }}
                             loading='lazy'
                             alt="Arrow Right"
                         />
