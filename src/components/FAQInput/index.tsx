@@ -36,15 +36,25 @@ const FAQInput: React.FC<FAQInputProps> = ({ title, description, index, setActiv
     }), []);
 
     useEffect(() => {
-        if (!scrolling) {
-            if (inViewTitle && active === index) {
+        if (!scrolling && shouldAnimate) {
+            if (inViewTitle && active == index) {
                 setShouldAnimate(false);
-                titleControls.start('visible');
+                titleControls.start('visible')
             } else {
-                titleControls.start('hidden');
+                titleControls.start('hidden')
             }
         }
-    }, [inViewTitle, active, index, scrolling, shouldAnimate, titleControls]);
+    }, [inViewTitle, active, index, scrolling])
+
+    useEffect(() => {
+        if (!scrolling && !shouldAnimate) {
+            if (active == index) {
+                titleControls.start('visible')
+            } else {
+                titleControls.start('hidden')
+            }
+        }
+    }, [active, index, scrolling, shouldAnimate])
 
     return (
         <div className={`${(active === index) && styles.active}`}>
