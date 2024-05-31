@@ -44,7 +44,7 @@ const Screen: React.FC<ScreenProps> = ({ id, component, imageUrl, mobileImage, s
       const timeout = setTimeout(() => {
         setShowParticles(true);
         clearTimeout(timeout)
-      }, 100)
+      }, 400)
     }
   }, [windowWidth])
 
