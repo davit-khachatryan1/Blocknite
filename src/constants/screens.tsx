@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import { calcVWP } from "../utils/hooks/functions";
+import { calcVWD, calcVWP } from "../utils/hooks/functions";
 import { Point } from "../utils/interface/particles";
 
 const MainScreen = lazy(() => import("../components/MainScreen"));
@@ -356,13 +356,13 @@ export const screens = (w: number) => ([
 
     minParticles: 400,
     maxParticles: 500,
-    minSpeed: 5,
-    maxSpeed: 10,
+    minSpeed: calcVWP(5),
+    maxSpeed: calcVWP(10),
     pointColors: ['#33FF5750'],
     pointMinSize: calcVWP(2, w),
     pointMaxSize: calcVWP(3, w),
     movementDirection: 'left-bottom-to-right-top',
-    divade: 2.5
+    divade: calcVWD(2.5, w)
   },
   {
     id: 'trailer', color: 'black', name: 'Trailer', component: <SecondScreen />, imageUrl: '/bg-images/second-bg.webp', imageMobile: '/bg-images/second-mobile-bg.webp',
@@ -434,14 +434,14 @@ export const screens = (w: number) => ([
 
     minParticles: 500,
     maxParticles: 600,
-    minSpeed: 5,
-    maxSpeed: 20,
+    minSpeed: calcVWP(5),
+    maxSpeed: calcVWP(20),
     pointColors: ['#ff910080'],
     pointMinSize: calcVWP(2, w),
     pointMaxSize: calcVWP(3, w),
     movementDirection: 'bottom-to-top',
     noVisible: "top",
-    divade: 5
+    divade: calcVWD(5)
   },
   {
     id: 'how-it-works', color: 'green', name: 'How it works', component: <ThirdScreen />, imageUrl: '/bg-images/third-bg.webp', imageMobile: '/bg-images/third-mobile-bg.webp',
@@ -468,13 +468,13 @@ export const screens = (w: number) => ([
 
     minParticles: 150,
     maxParticles: 250,
-    minSpeed: 5,
-    maxSpeed: 20,
+    minSpeed: calcVWP(5),
+    maxSpeed: calcVWP(20),
     pointColors: ['#FF004570', '#00000070'],
     pointMinSize: calcVWP(2, w),
     pointMaxSize: calcVWP(3, w),
     movementDirection: 'right-bottom-to-left-top',
-    divade: 5
+    divade: calcVWD(5)
   },
   { id: 'tokenomics', color: 'yellow', name: 'Tokenomics', component: <FourthScreen />, imageUrl: '/bg-images/fourth-bg.webp', imageMobile: '/bg-images/fourth-mobile-bg.webp' },
   {
@@ -517,14 +517,14 @@ export const screens = (w: number) => ([
 
     minParticles: 400,
     maxParticles: 500,
-    minSpeed: 5,
-    maxSpeed: 10,
+    minSpeed: calcVWP(5),
+    maxSpeed: calcVWP(10),
     pointColors: ['#FF00FF60'],
     pointMinSize: calcVWP(2, w),
     pointMaxSize: calcVWP(3, w),
     movementDirection: 'right-top-to-left-bottom',
     noVisible: "left",
-    divade: 5
+    divade: calcVWD(5)
   },
   {
     id: 'faq', color: 'red', name: 'FAQ', component: <SixthScreen />, imageUrl: '/bg-images/sixth-bg.webp', imageMobile: '/bg-images/sixth-mobile-bg.webp',
@@ -593,13 +593,13 @@ export const screens = (w: number) => ([
 
     minParticles: 300,
     maxParticles: 400,
-    minSpeed: 5,
-    maxSpeed: 10,
+    minSpeed: calcVWP(5),
+    maxSpeed: calcVWP(10),
     pointColors: ['#00EEFF'],
     pointMinSize: calcVWP(1.5, w),
     pointMaxSize: calcVWP(2.5, w),
     movementDirection: 'bottom-to-top',
     noVisible: "bottom",
-    divade: 5
+    divade: calcVWD(5)
   },
 ])
