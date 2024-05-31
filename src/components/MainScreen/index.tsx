@@ -12,12 +12,12 @@ const useScrollDeltaY = () => {
     const [scrollData, setScrollData] = useState({ deltaY: 0, scrollTop: 0 });
     const [lastScrollTop, setLastScrollTop] = useState(0);
 
-    const handleScroll = useCallback(() => {
+    const handleScroll = () => {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         const deltaY = scrollTop - lastScrollTop;
         setScrollData({ deltaY, scrollTop });
         setLastScrollTop(scrollTop);
-    }, [lastScrollTop]);
+    };
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
@@ -28,7 +28,7 @@ const useScrollDeltaY = () => {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, []);
+    }, [lastScrollTop]);
 
     return scrollData;
 };
@@ -38,7 +38,7 @@ const MainScreen = () => {
     const [active, setActive] = useState('$NITE address');
     const { deltaY, scrollTop } = useScrollDeltaY();
 
-    const menuStyle: CSSProperties = {
+    const menuStyle: CSSProperties = useMemo(() => ({
         ...(deltaY < 0 ? {
             transition: '0.2s',
             opacity: 1,
@@ -54,7 +54,7 @@ const MainScreen = () => {
             right: 0,
             zIndex: 10,
         } : {})
-    };
+    }), [deltaY, scrollTop, windowWidth]);
 
     const handleMenuClick = useCallback(() => {
         setOpenMenu(true);
