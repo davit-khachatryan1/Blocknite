@@ -55,9 +55,9 @@ const Screen: React.FC<ScreenProps> = ({ id, component, imageUrl, mobileImage, s
           <ParticleCanvas {...(windowWidth <= 576 ? screen.mobile : screen.desktop)} />
         </div>
       )}
-      {/* <div style={contentStyle}>
+      <div style={contentStyle}>
         {component}
-      </div> */}
+      </div>
     </div>
   );
 };
