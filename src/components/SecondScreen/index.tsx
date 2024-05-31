@@ -16,8 +16,8 @@ const settings = {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 7000,
-    nextArrow: <img src='/icons/arrow-right-slider.svg'  loading='lazy'/>,
-    prevArrow: <img src='/icons/arrow-left-slider.svg'  loading='lazy'/>,
+    nextArrow: <img src='/icons/arrow-right-slider.svg' loading='lazy' />,
+    prevArrow: <img src='/icons/arrow-left-slider.svg' loading='lazy' />,
     responsive: [
         {
             breakpoint: 577,
@@ -109,7 +109,7 @@ const SecondScreen = () => {
         <div className={styles.container}>
             <TitleBlock title="Trea is waiting for you" description="Embark on a heroic quest to defend Mithruon from the Orgurin onslaught." mobileClassName={windowWidth <= 576} descriptionBottom={true} />
             <motion.div className={styles.playButton} onClick={handlePlayVideo} animate={controls}>
-                <img src='/icons/main-circle.svg' className={styles.mainCircle}  loading='lazy'/>
+                <img src='/icons/main-circle.svg' className={styles.mainCircle} loading='lazy' />
                 <motion.img
                     className={styles.partCircle1}
                     animate={{
@@ -145,7 +145,7 @@ const SecondScreen = () => {
                 <div className={styles.carouselContainer}>
                     <Slider {...settings}>
                         {items.map((item, index) =>
-                            <div className={styles.swiperElement} key={index}> <img src={item.src} alt={`Slide ${index}`} style={{ height: calcVW('40px', windowWidth), width: 'auto', objectFit: 'contain' }}  loading='lazy'/></div>
+                            <div className={styles.swiperElement} key={index}> <img src={item.src} alt={`Slide ${index}`} style={{ height: calcVW('40px', windowWidth), width: 'auto', objectFit: 'contain' }} loading='lazy' /></div>
                         )}
                     </Slider>
                 </div>

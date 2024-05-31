@@ -41,8 +41,8 @@ const RoadMapCard = ({ right = false, title = 'Pre-Launch', first = '', isAnimat
                 <div className={styles.title}>
                     {title}
                 </div>
-                <img src={right ? "/icons/map-card-right.svg" : "/icons/map-card-left.svg"} alt="" className={styles.desktopIcon}  loading='lazy'/>
-                <img src={"/icons/map-card-mobile.svg"} alt="" className={styles.mobileIcon}  loading='lazy'/>
+                <img src={right ? "/icons/map-card-right.svg" : "/icons/map-card-left.svg"} alt="" className={styles.desktopIcon} loading='lazy' />
+                <img src={"/icons/map-card-mobile.svg"} alt="" className={styles.mobileIcon} loading='lazy' />
             </div>
         </motion.div>
     );

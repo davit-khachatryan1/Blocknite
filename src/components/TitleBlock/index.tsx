@@ -24,7 +24,7 @@ const TitleBlock = ({ title, description, mobileClassName, descriptionBottom, se
             }
         }
     }, [inVewTitle, scrolling])
-    
+
     const checkCenter = () => {
         if (!(window as any)["scrolling"]) {
             if (ref1.current) {

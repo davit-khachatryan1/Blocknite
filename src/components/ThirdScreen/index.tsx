@@ -15,7 +15,7 @@ const settings = {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 7000,
-    prevArrow: <img src='/icons/arrow-right-slider.svg' alt="Next"  loading='lazy'/>,
+    prevArrow: <img src='/icons/arrow-right-slider.svg' alt="Next" loading='lazy' />,
     nextArrow: <></>
 };
 
@@ -26,8 +26,8 @@ const settingsMobile = {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
-    nextArrow: <img src='/icons/arrow-right-slider.svg' alt="Next"  loading='lazy'/>,
-    prevArrow: <img src='/icons/arrow-left-slider.svg' alt="Next"  loading='lazy'/>
+    nextArrow: <img src='/icons/arrow-right-slider.svg' alt="Next" loading='lazy' />,
+    prevArrow: <img src='/icons/arrow-left-slider.svg' alt="Next" loading='lazy' />
 };
 
 
