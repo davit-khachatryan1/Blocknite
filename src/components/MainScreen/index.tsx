@@ -38,7 +38,7 @@ const MainScreen = () => {
     const [active, setActive] = useState('$NITE address');
     const { deltaY, scrollTop } = useScrollDeltaY();
 
-    const menuStyle: CSSProperties = useMemo(() => ({
+    const menuStyle: CSSProperties = {
         ...(deltaY < 0 ? {
             transition: '0.2s',
             opacity: 1,
@@ -54,7 +54,7 @@ const MainScreen = () => {
             right: 0,
             zIndex: 10,
         } : {})
-    }), [deltaY, scrollTop, windowWidth]);
+    };
 
     const handleMenuClick = useCallback(() => {
         setOpenMenu(true);
