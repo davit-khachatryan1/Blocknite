@@ -62,7 +62,7 @@ const TitleBlock: React.FC<TitleBlockProps> = ({
         return () => {
             window.removeEventListener("scroll", checkCenter);
         };
-    }, [checkCenter]);
+    }, []);
 
     return (
         <>
