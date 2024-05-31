@@ -1,6 +1,7 @@
+import { memo } from 'react';
 import styles from './style.module.scss';
 
-export const Footer = () => {
+ const Footer = () => {
     const openInNewTab = (url: string) => {
         window.open(url, "_blank", "noreferrer");
       };
@@ -26,3 +27,5 @@ export const Footer = () => {
         </div>
     );
 };
+
+export default memo(Footer)

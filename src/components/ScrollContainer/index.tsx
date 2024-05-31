@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
-import { Screen } from '../Screen'
+import { lazy, memo, useEffect, useRef, useState } from 'react';
 import styles from './style.module.scss'
-import { screens } from '../../constants/screens';
 import { useStateProvider } from '../../context/state';
-import { Footer } from '../Footer';
+import { screens } from '../../constants/screens';
+
+const Screen = lazy(() => import("../Screen"));
+const Footer = lazy(() => import("../Footer"));
 
 const ScrollContainer = () => {
   const { updatePage, setScrolling, setWindowSize } = useStateProvider();
@@ -66,4 +67,4 @@ const ScrollContainer = () => {
   );
 };
 
-export default ScrollContainer;
+export default memo(ScrollContainer);

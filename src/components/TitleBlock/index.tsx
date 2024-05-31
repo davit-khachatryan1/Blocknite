@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { memo, useEffect, useRef } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
@@ -134,4 +134,4 @@ const TitleBlock = ({ title, description, mobileClassName, descriptionBottom, se
     </>
 };
 
-export default TitleBlock;
+export default memo(TitleBlock);

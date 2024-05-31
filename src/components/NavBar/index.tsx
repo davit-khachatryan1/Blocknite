@@ -1,9 +1,11 @@
-import { screens } from '../../constants/screens';
-import AltarinText from '../AnimatedText'
+import { lazy, memo } from 'react';
 import styles from './style.module.scss'
 import { useStateProvider } from '../../context/state';
+import { screens } from '../../constants/screens';
 
-export const NavBar = () => {
+const AltarinText = lazy(() => import('../AnimatedText'));
+
+const NavBar = () => {
     const { page, updatePage, setOpenMenu, open } = useStateProvider();
     const scrollTo = (id: string, type: ScrollBehavior = 'smooth') => {
         const element = document.getElementById(id);
@@ -51,3 +53,5 @@ export const NavBar = () => {
         </>
     );
 };
+
+export default memo(NavBar);

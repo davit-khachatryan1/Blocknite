@@ -1,14 +1,16 @@
-import { motion, useAnimation } from 'framer-motion';
-import styles from './style.module.scss'
+import { lazy, memo, useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { useEffect, useState } from 'react';
-import { RoadMapCard } from '../RoadMapCard';
-import { RoadMapText } from '../RoadMapText';
-import { calcVW } from '../../utils/hooks/functions';
 import Slider from 'react-slick';
+import { motion, useAnimation } from 'framer-motion';
+import { calcVW } from '../../utils/hooks/functions';
 import { useStateProvider } from '../../context/state';
 
-export const FifthScreen = () => {
+import styles from './style.module.scss'
+
+const RoadMapCard = lazy(() => import('../RoadMapCard'));
+const RoadMapText = lazy(() => import('../RoadMapText'));
+
+const FifthScreen = () => {
     const { scrolling, windowWidth } = useStateProvider();
     const [started, setStarted] = useState(false);
     const [settings, setSettings] = useState({
@@ -39,7 +41,7 @@ export const FifthScreen = () => {
                 ...settings,
                 autoplay: true,
             })
-        }else {
+        } else {
             setSettings({
                 ...settings,
                 autoplay: false,
@@ -304,3 +306,5 @@ export const FifthScreen = () => {
         </div >
     );
 };
+
+export default memo(FifthScreen) 

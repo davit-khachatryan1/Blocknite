@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, memo } from 'react';
 
 import styles from './style.module.scss';
 
-const Typewriter = ({ text, classname, delay = 0, time = 500 }: any) => {
+const TypeWriter = ({ text, classname, delay = 0, time = 500 }: any) => {
     const [displayedText, setDisplayedText] = useState('');
     const typingSpeed = time / text.length;
 
@@ -29,4 +29,4 @@ const Typewriter = ({ text, classname, delay = 0, time = 500 }: any) => {
     return <div className={styles[classname]}>{displayedText}</div>;
 };
 
-export default Typewriter;
+export default memo(TypeWriter);

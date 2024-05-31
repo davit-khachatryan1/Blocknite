@@ -1,12 +1,13 @@
+import { lazy, memo, useEffect, useRef, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
-import styles from './style.module.scss'
 import Slider from 'react-slick';
+import { useStateProvider } from '../../context/state';
+import { calcVW } from '../../utils/hooks/functions';
+import styles from './style.module.scss';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import TitleBlock from '../TitleBlock';
-import { calcVW } from '../../utils/hooks/functions';
-import { useEffect, useRef, useState } from 'react';
-import { useStateProvider } from '../../context/state';
+
+const TitleBlock = lazy(() => import("../TitleBlock"));
 
 const settings = {
     infinite: true,
@@ -38,7 +39,7 @@ const items = [
     { id: '8', src: '/networks/coin-gecko.png' },
 ]
 
-export const SecondScreen = () => {
+const SecondScreen = () => {
     const { windowWidth } = useStateProvider()
     const videoId = 'ZaBl4QRO1oM';
     const [player, setPlayer] = useState<any>(null);
@@ -152,3 +153,5 @@ export const SecondScreen = () => {
         </div>
     );
 };
+
+export default memo(SecondScreen)

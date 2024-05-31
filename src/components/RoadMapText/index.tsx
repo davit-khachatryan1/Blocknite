@@ -1,11 +1,11 @@
+import { memo, useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
-import styles from './style.module.scss'
-import { useInView } from 'react-intersection-observer';
-import { useEffect } from 'react';
 import { calcVW } from '../../utils/hooks/functions';
 import { useStateProvider } from '../../context/state';
 
-export const RoadMapText = ({ right = false, texts = [], isAnimate = false, duration = 0, delay = 0 }: { texts: string[], right?: boolean, isAnimate?: boolean, duration?: number, delay?: number }) => {
+import styles from './style.module.scss'
+
+const RoadMapText = ({ right = false, texts = [], isAnimate = false, duration = 0, delay = 0 }: { texts: string[], right?: boolean, isAnimate?: boolean, duration?: number, delay?: number }) => {
     const { scrolling, windowWidth } = useStateProvider();
     const controls = useAnimation();
 
@@ -48,3 +48,4 @@ export const RoadMapText = ({ right = false, texts = [], isAnimate = false, dura
         </motion.div>
     );
 };
+export default memo(RoadMapText);

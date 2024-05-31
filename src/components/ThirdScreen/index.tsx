@@ -1,13 +1,14 @@
 import { motion, useAnimation } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { lazy, memo, useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import { useInView } from 'react-intersection-observer';
-import Typewriter from '../TypeWriter';
-
-import styles from './style.module.scss';
-import TitleBlock from '../TitleBlock';
 import { calcVW } from '../../utils/hooks/functions';
 import { useStateProvider } from '../../context/state';
+
+import styles from './style.module.scss';
+
+const TitleBlock = lazy(() => import("../TitleBlock"));
+const TypeWriter = lazy(() => import("../TypeWriter"));
 
 const settings = {
     infinite: true,
@@ -39,7 +40,7 @@ const items = [
     { id: '5', text: 'Participate in the Blocknite community & devise the best strategies for maximising rewards.' },
 ];
 
-export const ThirdScreen = () => {
+const ThirdScreen = () => {
     const { scrolling, windowWidth, windowHeight } = useStateProvider();
     const [infoTitles, setInfoTitles] = useState({
         first: false,
@@ -121,8 +122,8 @@ export const ThirdScreen = () => {
                         <div className={styles.textBlock}>
                             {infoTitles.first &&
                                 <div className={styles.title}>
-                                    <Typewriter classname="titleOrange" text="Buy" time={200} delay={100} />
-                                    <Typewriter classname="titleWhite" text="$NITE" time={300} delay={300} />
+                                    <TypeWriter classname="titleOrange" text="Buy" time={200} delay={100} />
+                                    <TypeWriter classname="titleWhite" text="$NITE" time={300} delay={300} />
                                 </div>
                             }
                             <div className={styles.description}>Nites are used to power the blocknite ecosystem, from buying and selling items to activating Soul Stones.</div>
@@ -145,8 +146,8 @@ export const ThirdScreen = () => {
                         <div className={styles.textBlock}>
                             {infoTitles.second &&
                                 <div className={styles.title}>
-                                    <Typewriter classname="titleOrange" text="Get a" time={200} delay={100} />
-                                    <Typewriter classname="titleWhite" text="Treanin" time={300} delay={300} />
+                                    <TypeWriter classname="titleOrange" text="Get a" time={200} delay={100} />
+                                    <TypeWriter classname="titleWhite" text="Treanin" time={300} delay={300} />
                                 </div>
                             }
                             <div className={styles.description}>Treanin are created when you activate a Soul Stone, you can also buy them from players at the marketplace.</div>
@@ -169,8 +170,8 @@ export const ThirdScreen = () => {
                         <div className={styles.textBlock}>
                             {infoTitles.third &&
                                 <div className={styles.title}>
-                                    <Typewriter classname="titleOrange" text="Fight & " time={300} delay={100} />
-                                    <Typewriter classname="titleWhite" text="earn!" time={200} delay={400} />
+                                    <TypeWriter classname="titleOrange" text="Fight & " time={300} delay={100} />
+                                    <TypeWriter classname="titleWhite" text="earn!" time={200} delay={400} />
                                 </div>
                             }
                             <div className={styles.description}>Battle Orgurin monsters at the battlegrounds, with new features such as boss fights and PVP coming soon.</div>
@@ -201,10 +202,10 @@ export const ThirdScreen = () => {
                                 <div className={styles.textBlock}>
                                     <div className={styles.title}>
                                         {infoTitles.first &&
-                                            <Typewriter classname="titleOrange" text="Buy" time={200} delay={100} />
+                                            <TypeWriter classname="titleOrange" text="Buy" time={200} delay={100} />
                                         }
                                         {infoTitles.first &&
-                                            <Typewriter classname="titleWhite" text="$NITE" time={300} delay={300} />
+                                            <TypeWriter classname="titleWhite" text="$NITE" time={300} delay={300} />
                                         }
                                     </div>
                                     <div className={styles.description}>Nites are used to power the blocknite ecosystem, from buying and selling items to activating Soul Stones.</div>
@@ -223,10 +224,10 @@ export const ThirdScreen = () => {
                                 <div className={styles.textBlock}>
                                     <div className={styles.title}>
                                         {infoTitles.second &&
-                                            <Typewriter classname="titleOrange" text="Get a" time={200} delay={100} />
+                                            <TypeWriter classname="titleOrange" text="Get a" time={200} delay={100} />
                                         }
                                         {infoTitles.second &&
-                                            <Typewriter classname="titleWhite" text="Treanin" time={300} delay={300} />
+                                            <TypeWriter classname="titleWhite" text="Treanin" time={300} delay={300} />
                                         }
                                     </div>
                                     <div className={styles.description}>Treanin are created when you activate a Soul Stone, you can also buy them from players at the marketplace.</div>
@@ -245,10 +246,10 @@ export const ThirdScreen = () => {
                                 <div className={styles.textBlock}>
                                     <div className={styles.title}>
                                         {infoTitles.third &&
-                                            <Typewriter classname="titleOrange" text="Fight & " time={300} delay={100} />
+                                            <TypeWriter classname="titleOrange" text="Fight & " time={300} delay={100} />
                                         }
                                         {infoTitles.third &&
-                                            <Typewriter classname="titleWhite" text="earn!" time={200} delay={400} />
+                                            <TypeWriter classname="titleWhite" text="earn!" time={200} delay={400} />
                                         }
                                     </div>
                                     <div className={styles.description}>Battle Orgurin monsters at the battlegrounds, with new features such as boss fights and PVP coming soon.</div>
@@ -303,3 +304,5 @@ export const ThirdScreen = () => {
         </div>
     );
 };
+
+export default memo(ThirdScreen)

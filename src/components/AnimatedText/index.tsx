@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { motion } from 'framer-motion';
 
 
@@ -17,4 +18,4 @@ const AltarinText = ({index, children}: any) => {
   );
 };
 
-export default AltarinText;
+export default memo(AltarinText);

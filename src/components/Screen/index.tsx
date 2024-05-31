@@ -1,8 +1,10 @@
 import styles from './style.module.scss'
-import ParticleCanvas from '../Particles';
 import { useStateProvider } from '../../context/state';
+import { lazy, memo } from 'react';
 
-export const Screen = ({ id, component, imageUrl, mobileImage, screen }: any) => {
+const ParticleCanvas = lazy(() => import("../Particles"));
+
+const Screen = ({ id, component, imageUrl, mobileImage, screen }: any) => {
   const { windowWidth } = useStateProvider()
 
   return <div style={{
@@ -50,3 +52,5 @@ export const Screen = ({ id, component, imageUrl, mobileImage, screen }: any) =>
     </div>
   </div>;
 };
+
+export default memo(Screen)

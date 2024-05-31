@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react';
+import { lazy, memo, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Button } from '../Button';
-import Typewriter from '../TypeWriter';
 import { calcVW } from '../../utils/hooks/functions';
 import { useStateProvider } from '../../context/state';
 
 import styles from './style.module.scss'
+
+const TypeWriter = lazy(() => import("../TypeWriter"));
+const Button = lazy(() => import("../Button"));
 
 const useScrollDeltaY = () => {
     const [scrollData, setScrollData] = useState({ deltaY: 0, scrollTop: 0 });
@@ -33,7 +34,7 @@ const useScrollDeltaY = () => {
 };
 
 
-export const MainScreen = () => {
+const MainScreen = () => {
     const { setOpenMenu, windowWidth } = useStateProvider();
     const [active, setActive] = useState('$NITE address');
     const { deltaY, scrollTop } = useScrollDeltaY();
@@ -75,7 +76,7 @@ export const MainScreen = () => {
                     }}
                     transition={{ duration: 0.7 }}
                 />
-                <Typewriter text="ALTARIN" classname="altarin" />
+                <TypeWriter text="ALTARIN" classname="altarin" />
                 <motion.hr
                     className={styles.line}
                     initial="hidden"
@@ -85,7 +86,7 @@ export const MainScreen = () => {
                         hidden: { width: '0' },
                         visible: { width: '100%' },
                     }} />
-                <Typewriter text="Defend your home" classname="name" delay={1000} />
+                <TypeWriter text="Defend your home" classname="name" delay={1000} />
                 <motion.hr
                     className={styles.line}
                     initial="hidden"
@@ -182,3 +183,5 @@ export const MainScreen = () => {
         </div>
     );
 };
+
+export default memo(MainScreen)

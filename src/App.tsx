@@ -1,7 +1,9 @@
 import './App.scss';
-import ScrollContainer from './components/ScrollContainer';
-import { NavBar } from './components/NavBar';
 import { StateProvider } from './context/state';
+import { lazy } from 'react';
+
+const ScrollContainer = lazy(() => import('./components/ScrollContainer'));
+const NavBar = lazy(() => import('./components/NavBar'));
 
 function App() {
   return (

@@ -1,11 +1,12 @@
-import { Button } from '../Button';
 import styles from './style.module.scss'
-import TitleBlock from '../TitleBlock';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { useEffect, useState } from 'react';
-import FAQInput from '../FAQInput';
+import { lazy, memo, useEffect, useState } from 'react';
 import { useStateProvider } from '../../context/state';
+
+const TitleBlock = lazy(() => import("../TitleBlock"));
+const FAQInput = lazy(() => import("../FAQInput"));
+const Button = lazy(() => import("../Button"));
 
 const FAQList = [
     {
@@ -26,7 +27,7 @@ const FAQList = [
     },
 ]
 
-export const SixthScreen = () => {
+const SixthScreen = () => {
     const { scrolling, windowWidth } = useStateProvider();
     const [active, setActive] = useState(0);
     const enterAppControls = useAnimation();
@@ -69,3 +70,5 @@ export const SixthScreen = () => {
         </div>
     );
 };
+
+export default memo(SixthScreen)

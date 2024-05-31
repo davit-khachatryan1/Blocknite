@@ -1,10 +1,11 @@
 import { motion, useAnimation } from 'framer-motion';
 import styles from './style.module.scss';
-import { useEffect, useRef, useState } from 'react';
+import { lazy, memo, useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-import Typewriter from '../TypeWriter';
 import { calcVW } from '../../utils/hooks/functions';
 import { useStateProvider } from '../../context/state';
+
+const TypeWriter = lazy(() => import("../TypeWriter"));
 
 function polarToCartesian(centerX: number, centerY: number, radius: number, angleInDegrees: number) {
     const angleInRadians = (angleInDegrees - 90) * Math.PI / 180.0;
@@ -25,7 +26,7 @@ function describeArc(x: number, y: number, radius: number, startAngle: number, e
     return d;
 }
 
-export const FourthScreen = () => {
+const FourthScreen = () => {
     const { scrolling, windowWidth } = useStateProvider();
 
     const strokeWidth = calcVW(108, windowWidth, 28.4);
@@ -298,7 +299,7 @@ export const FourthScreen = () => {
                             </div>
                             <div className={styles.value}>
                                 {Object.values(animations)[index].isValue &&
-                                    <Typewriter text={segment.value} classname="value" time={500} delay={500} />
+                                    <TypeWriter text={segment.value} classname="value" time={500} delay={500} />
                                 }
                             </div>
                         </div>
@@ -308,3 +309,5 @@ export const FourthScreen = () => {
         </div>
     );
 };
+
+export default memo(FourthScreen)

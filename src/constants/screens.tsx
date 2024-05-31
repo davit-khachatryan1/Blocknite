@@ -1,11 +1,13 @@
-import { FifthScreen } from "../components/FifthScreen";
-import { FourthScreen } from "../components/FourthScreen";
-import { MainScreen } from "../components/MainScreen";
-import { Point } from "../components/Particles";
-import { SecondScreen } from "../components/SecondScreen";
-import { SixthScreen } from "../components/SixthScreen";
-import { ThirdScreen } from "../components/ThirdScreen";
+import { lazy } from "react";
 import { calcVWP } from "../utils/hooks/functions";
+import { Point } from "../utils/interface/particles";
+
+const FifthScreen = lazy(() => import("../components/FifthScreen"));
+const FourthScreen = lazy(() => import("../components/FourthScreen"));
+const MainScreen = lazy(() => import("../components/MainScreen"));
+const SecondScreen = lazy(() => import("../components/SecondScreen"));
+const SixthScreen = lazy(() => import("../components/SixthScreen"));
+const ThirdScreen = lazy(() => import("../components/ThirdScreen"));
 
 export const screens = [
   {
@@ -32,68 +34,7 @@ export const screens = [
       ],
       [
         { x: calcVWP(0), y: calcVWP(650) },
-        // { x: calcVWP(195), y: calcVWP(418) },
-        // { x: calcVWP(394), y: calcVWP(307) },
-        // { x: calcVWP(433), y: calcVWP(189) },
-        // { x: calcVWP(556), y: calcVWP(65) },
-        // { x: calcVWP(634), y: calcVWP(7) },
-        // { x: calcVWP(790), y: calcVWP(5) },
-        // { x: calcVWP(853), y: calcVWP(47) },
-        // { x: calcVWP(877), y: calcVWP(79) },
-        // { x: calcVWP(864), y: calcVWP(106) },
-        // { x: calcVWP(824), y: calcVWP(42) },
-        // { x: calcVWP(833), y: calcVWP(77) },
-        // { x: calcVWP(843), y: calcVWP(111) },
-        // { x: calcVWP(845), y: calcVWP(147) },
-        // { x: calcVWP(860), y: calcVWP(182) },
-        // { x: calcVWP(839), y: calcVWP(172) },
-        // { x: calcVWP(832), y: calcVWP(172) },
-        // { x: calcVWP(810), y: calcVWP(141) },
-        // { x: calcVWP(803), y: calcVWP(143) },
-        // { x: calcVWP(776), y: calcVWP(125) },
-        // { x: calcVWP(748), y: calcVWP(96) },
-        // { x: calcVWP(728), y: calcVWP(62) },
-        // { x: calcVWP(717), y: calcVWP(33) },
-        // { x: calcVWP(714), y: calcVWP(3) },
-        // { x: calcVWP(709), y: calcVWP(4) },
-        // { x: calcVWP(710), y: calcVWP(41) },
-        // { x: calcVWP(723), y: calcVWP(87) },
-        // { x: calcVWP(746), y: calcVWP(130) },
-        // { x: calcVWP(759), y: calcVWP(169) },
-        // { x: calcVWP(762), y: calcVWP(181) },
-        // { x: calcVWP(758), y: calcVWP(196) },
-        // { x: calcVWP(739), y: calcVWP(221) },
-        // { x: calcVWP(715), y: calcVWP(220) },
-        // { x: calcVWP(679), y: calcVWP(206) },
-        // { x: calcVWP(644), y: calcVWP(180) },
-        // { x: calcVWP(619), y: calcVWP(148) },
-        // { x: calcVWP(608), y: calcVWP(121) },
-        // { x: calcVWP(604), y: calcVWP(89) },
-        // { x: calcVWP(605), y: calcVWP(66) },
-        // { x: calcVWP(607), y: calcVWP(44) },
-        // { x: calcVWP(601), y: calcVWP(63) },
-        // { x: calcVWP(598), y: calcVWP(108) },
-        // { x: calcVWP(603), y: calcVWP(152) },
-        // { x: calcVWP(618), y: calcVWP(187) },
-        // { x: calcVWP(636), y: calcVWP(213) },
-        // { x: calcVWP(665), y: calcVWP(243) },
-        // { x: calcVWP(684), y: calcVWP(260) },
-        // { x: calcVWP(694), y: calcVWP(279) },
-        // { x: calcVWP(693), y: calcVWP(291) },
-        // { x: calcVWP(674), y: calcVWP(300) },
-        // { x: calcVWP(661), y: calcVWP(298) },
-        // { x: calcVWP(628), y: calcVWP(284) },
-        // { x: calcVWP(599), y: calcVWP(268) },
-        // { x: calcVWP(569), y: calcVWP(240) },
-        // { x: calcVWP(552), y: calcVWP(212) },
-        // { x: calcVWP(544), y: calcVWP(190) },
-        // { x: calcVWP(546), y: calcVWP(212) },
-        // { x: calcVWP(558), y: calcVWP(241) },
-        // { x: calcVWP(576), y: calcVWP(269) },
-        // { x: calcVWP(604), y: calcVWP(296) },
-
         { x: calcVWP(633), y: calcVWP(316) },
-
         { x: calcVWP(658), y: calcVWP(327) },
         { x: calcVWP(683), y: calcVWP(339) },
         { x: calcVWP(699), y: calcVWP(357) },

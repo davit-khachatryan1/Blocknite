@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
@@ -66,4 +66,4 @@ const FAQInput = ({ title, description, index, setActive, active }: any) => {
     </div>
 };
 
-export default FAQInput;
+export default memo(FAQInput);
