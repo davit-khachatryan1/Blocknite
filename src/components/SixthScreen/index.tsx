@@ -1,8 +1,8 @@
-import styles from './style.module.scss'
+import { lazy, memo, useEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { lazy, memo, useEffect, useState } from 'react';
 import { useStateProvider } from '../../context/state';
+import styles from './style.module.scss'
 
 const TitleBlock = lazy(() => import("../TitleBlock"));
 const FAQInput = lazy(() => import("../FAQInput"));

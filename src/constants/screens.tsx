@@ -2,12 +2,12 @@ import { lazy } from "react";
 import { calcVWP } from "../utils/hooks/functions";
 import { Point } from "../utils/interface/particles";
 
-const FifthScreen = lazy(() => import("../components/FifthScreen"));
-const FourthScreen = lazy(() => import("../components/FourthScreen"));
 const MainScreen = lazy(() => import("../components/MainScreen"));
 const SecondScreen = lazy(() => import("../components/SecondScreen"));
-const SixthScreen = lazy(() => import("../components/SixthScreen"));
 const ThirdScreen = lazy(() => import("../components/ThirdScreen"));
+const FourthScreen = lazy(() => import("../components/FourthScreen"));
+const FifthScreen = lazy(() => import("../components/FifthScreen"));
+const SixthScreen = lazy(() => import("../components/SixthScreen"));
 
 export const screens = [
   {
