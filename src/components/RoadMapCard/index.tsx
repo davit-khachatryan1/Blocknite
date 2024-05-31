@@ -1,13 +1,21 @@
 import { motion, useAnimation } from 'framer-motion';
-import styles from './style.module.scss'
-import { memo, useEffect } from 'react';
+import styles from './style.module.scss';
+import { memo, useEffect, useMemo } from 'react';
 import { calcVW } from '../../utils/hooks/functions';
 import { useStateProvider } from '../../context/state';
 
-const RoadMapCard = ({ right = false, title = 'Pre-Launch', first = '', isAnimate = false, duration = 0, delay = 0 }) => {
+interface RoadMapCardProps {
+    right?: boolean;
+    title?: string;
+    first?: string;
+    isAnimate?: boolean;
+    duration?: number;
+    delay?: number;
+}
+
+const RoadMapCard: React.FC<RoadMapCardProps> = ({ right = false, title = 'Pre-Launch', first = '', isAnimate = false, duration = 0, delay = 0 }) => {
     const controls = useAnimation();
     const { scrolling, windowWidth } = useStateProvider();
-
 
     useEffect(() => {
         if (!scrolling) {
@@ -15,7 +23,20 @@ const RoadMapCard = ({ right = false, title = 'Pre-Launch', first = '', isAnimat
                 controls.start('visible');
             }
         }
-    }, [isAnimate, scrolling, windowWidth])
+    }, [isAnimate, scrolling, windowWidth, controls]);
+
+    const cardStyle = useMemo(() => ({
+        justifyContent: right ? 'flex-end' : 'flex-start',
+        right: right ? 'auto' : 0
+    }), [right]);
+
+    const variants = useMemo(() => ({
+        hidden: { width: '0' },
+        visible: {
+            width: calcVW('358px', windowWidth, 288),
+            transition: { duration, delay }
+        }
+    }), [windowWidth, duration, delay]);
 
     return (
         <motion.div
@@ -23,21 +44,11 @@ const RoadMapCard = ({ right = false, title = 'Pre-Launch', first = '', isAnimat
             className={`${right ? styles.right : styles.left}`}
             animate={controls}
             initial='hidden'
-            variants={{
-                hidden: { width: '0' },
-                visible: {
-                    width: calcVW('358px', windowWidth, 288),
-                    transition: { duration, delay }
-                }
-            }}
+            variants={variants}
         >
             {first && <div className={styles[first]} />}
 
-            <div className={styles.container} style={{
-                justifyContent: right ? 'flex-end' : 'flex-start',
-                right: right ? 'auto' : 0
-            }}>
-
+            <div className={styles.container} style={cardStyle}>
                 <div className={styles.title}>
                     {title}
                 </div>

@@ -2,27 +2,36 @@ import { useState, useEffect, memo } from 'react';
 
 import styles from './style.module.scss';
 
-const TypeWriter = ({ text, classname, delay = 0, time = 500 }: any) => {
+interface TypeWriterProps {
+    text: string;
+    classname: string;
+    delay?: number;
+    time?: number;
+}
+
+const TypeWriter: React.FC<TypeWriterProps> = ({ text, classname, delay = 0, time = 500 }) => {
     const [displayedText, setDisplayedText] = useState('');
     const typingSpeed = time / text.length;
 
     useEffect(() => {
-        let index = -1;
-        let timer: any = null;
-        const timeout = setTimeout(() => {
+        let index = 0;
+        let timer: NodeJS.Timeout | null = null;
+
+        const startTyping = () => {
             timer = setInterval(() => {
+                setDisplayedText((prev) => prev + text.charAt(index));
                 index++;
                 if (index === text.length) {
-                    if (timer)
-                        clearInterval(timer)
-                    return;
-                };
-                setDisplayedText((prev) => prev + text.charAt(index));
+                    if (timer) clearInterval(timer);
+                }
             }, typingSpeed);
-        }, delay)
+        };
+
+        const timeout = setTimeout(startTyping, delay);
+
         return () => {
-            clearInterval(timer);
-            clearTimeout(timeout)
+            if (timer) clearInterval(timer);
+            clearTimeout(timeout);
         };
     }, [text, typingSpeed]);
 

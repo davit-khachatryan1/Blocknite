@@ -1,21 +1,37 @@
 import { memo } from 'react';
 import styles from './style.module.scss';
 
-const Footer = () => {
+const socialSites = [
+    { src: "/icons/telegram.svg", alt: "Telegram", url: "https://t.me/Blocknite" },
+    { src: "/icons/twitter.svg", alt: "Twitter", url: "https://twitter.com/blockniteio" },
+    { src: "/icons/youtube.svg", alt: "YouTube", url: "https://www.youtube.com/@Blocknite" },
+    { src: "/icons/Dextools.svg", alt: "Dextools", url: "" },
+    { src: "/icons/Coingecko.svg", alt: "Coingecko", url: "" },
+    { src: "/icons/Radium.svg", alt: "Radium", url: "" }
+];
+
+const Footer: React.FC = () => {
     const openInNewTab = (url: string) => {
-        window.open(url, "_blank", "noreferrer");
+        if (url) {
+            window.open(url, "_blank", "noreferrer");
+        }
     };
+
     return (
         <div className={styles.container}>
-            <img src="/logos/blocknite.png" alt="" className={styles.logo} loading='lazy' />
-            <img src="/logos/fantasy.png" alt="" className={styles.fantasy} loading='lazy' />
+            <img src="/logos/blocknite.png" alt="Blocknite Logo" className={styles.logo} loading="lazy" />
+            <img src="/logos/fantasy.png" alt="Fantasy Logo" className={styles.fantasy} loading="lazy" />
             <div className={styles.socialSites}>
-                <img src="/icons/telegram.svg" alt="telegram" onClick={() => openInNewTab('https://t.me/Blocknite ')} loading='lazy' />
-                <img src="/icons/twitter.svg" alt="twitter" onClick={() => openInNewTab('https://twitter.com/blockniteio ')} loading='lazy' />
-                <img src="/icons/youtube.svg" alt="youtube" onClick={() => openInNewTab('https://www.youtube.com/@Blocknite')} loading='lazy' />
-                <img src="/icons/Dextools.svg" alt="Dextools" loading='lazy' />
-                <img src="/icons/Coingecko.svg" alt="Coingecko" loading='lazy' />
-                <img src="/icons/Radium.svg" alt="Radium" loading='lazy' />
+                {socialSites.map(({ src, alt, url }) => (
+                    <img
+                        key={alt}
+                        src={src}
+                        alt={alt}
+                        onClick={() => openInNewTab(url)}
+                        loading="lazy"
+                        className={url ? styles.clickable : ''}
+                    />
+                ))}
             </div>
             <div className={styles.info}>
                 <div className={styles.support}>
@@ -28,4 +44,4 @@ const Footer = () => {
     );
 };
 
-export default memo(Footer)
+export default memo(Footer);

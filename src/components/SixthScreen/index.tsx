@@ -1,14 +1,19 @@
-import { lazy, memo, useEffect, useState } from 'react';
+import { lazy, memo, useEffect, useState, useCallback } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useStateProvider } from '../../context/state';
-import styles from './style.module.scss'
+import styles from './style.module.scss';
 
 const TitleBlock = lazy(() => import("../TitleBlock"));
 const FAQInput = lazy(() => import("../FAQInput"));
 const Button = lazy(() => import("../Button"));
 
-const FAQList = [
+interface FAQItem {
+    title: string;
+    description: string;
+}
+
+const FAQList: FAQItem[] = [
     {
         title: 'Why should I play Blocknite?',
         description: 'You earn $NITE from playing our fantastic game! We have a lot of great features in the works that we are excited to show you, the earlier you start playing the quicker you level up your Treanin. Higher level Treanin receive more rewards and will put you in the best position to enjoy our future updates.'
@@ -25,35 +30,51 @@ const FAQList = [
         title: 'Do the team control the smart contracts?',
         description: 'Yes. We love what we have built so far and we aspire to continue building, adding brand new features to keep you happy. As such, we are required to keep control of the contracts. As soon as we revoke ownership of the contracts, we become unable to add new features. We will not be keeping control of anything that we do not need to keep control of.'
     },
-]
+];
 
-const SixthScreen = () => {
+const SixthScreen: React.FC = () => {
     const { scrolling, windowWidth } = useStateProvider();
-    const [active, setActive] = useState(0);
+    const [active, setActive] = useState<number>(0);
     const enterAppControls = useAnimation();
-    const [refEnterApp, inVewEnterApp] = useInView({
+    const [refEnterApp, inViewEnterApp] = useInView({
         triggerOnce: false,
         threshold: 1,
     });
 
     useEffect(() => {
-        if (!scrolling) {
-            if (inVewEnterApp) {
-                enterAppControls.start('visible')
-            }
+        if (!scrolling && inViewEnterApp) {
+            enterAppControls.start('visible');
         }
-    }, [inVewEnterApp, scrolling])
+    }, [inViewEnterApp, scrolling, enterAppControls]);
+
+    const handleSetActive = useCallback((index: number) => {
+        setActive(index);
+    }, []);
 
     return (
         <div className={styles.container}>
-            <TitleBlock title="frequently asked questions" secondTitle="FAQ" mobileClassName={windowWidth <= 576} description="Lorem ipsum dolor sit amet consectetur. Et massa fusce eget mi molestie egestas." withOutDescription={true} />
+            <TitleBlock 
+                title="frequently asked questions" 
+                secondTitle="FAQ" 
+                mobileClassName={windowWidth <= 576} 
+                description="Lorem ipsum dolor sit amet consectetur. Et massa fusce eget mi molestie egestas." 
+                withOutDescription={true} 
+            />
 
             <div className={styles.inputBlock}>
-                {FAQList.map((el, index) =>
-                    <FAQInput key={index} title={el.title} description={el.description} index={index} active={active} setActive={setActive} />
-                )}
+                {FAQList.map((el, index) => (
+                    <FAQInput 
+                        key={index} 
+                        title={el.title} 
+                        description={el.description} 
+                        index={index} 
+                        active={active} 
+                        setActive={handleSetActive} 
+                    />
+                ))}
             </div>
-            <motion.div className={styles.submit}
+            <motion.div 
+                className={styles.submit}
                 ref={refEnterApp}
                 animate={enterAppControls}
                 initial="hidden"
@@ -71,4 +92,4 @@ const SixthScreen = () => {
     );
 };
 
-export default memo(SixthScreen)
+export default memo(SixthScreen);

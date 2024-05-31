@@ -1,9 +1,9 @@
-import { lazy, memo, useEffect, useState } from 'react';
+import { lazy, memo, useEffect, useState, useCallback, useMemo, CSSProperties } from 'react';
 import { motion } from 'framer-motion';
 import { calcVW } from '../../utils/hooks/functions';
 import { useStateProvider } from '../../context/state';
 
-import styles from './style.module.scss'
+import styles from './style.module.scss';
 
 const TypeWriter = lazy(() => import("../TypeWriter"));
 const Button = lazy(() => import("../Button"));
@@ -12,12 +12,12 @@ const useScrollDeltaY = () => {
     const [scrollData, setScrollData] = useState({ deltaY: 0, scrollTop: 0 });
     const [lastScrollTop, setLastScrollTop] = useState(0);
 
-    const handleScroll = () => {
+    const handleScroll = useCallback(() => {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         const deltaY = scrollTop - lastScrollTop;
         setScrollData({ deltaY, scrollTop });
         setLastScrollTop(scrollTop);
-    };
+    }, [lastScrollTop]);
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
@@ -28,40 +28,55 @@ const useScrollDeltaY = () => {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, [lastScrollTop]);
+    }, [handleScroll]);
 
     return scrollData;
 };
-
 
 const MainScreen = () => {
     const { setOpenMenu, windowWidth } = useStateProvider();
     const [active, setActive] = useState('$NITE address');
     const { deltaY, scrollTop } = useScrollDeltaY();
 
+    const menuStyle: CSSProperties = useMemo(() => ({
+        ...(deltaY < 0 ? {
+            transition: '0.2s',
+            opacity: 1,
+            position: 'fixed',
+            top: 0,
+            right: 0,
+            zIndex: 10,
+        } : scrollTop > (calcVW(100, windowWidth, 100) as number) ? {
+            transition: '0.2s',
+            opacity: 0,
+            position: 'fixed',
+            top: 0,
+            right: 0,
+            zIndex: 10,
+        } : {})
+    }), [deltaY, scrollTop, windowWidth]);
+
+    const handleMenuClick = useCallback(() => {
+        setOpenMenu(true);
+    }, [setOpenMenu]);
+
+    const handleCopy = useCallback(() => {
+        const address = active === '$NITE address'
+            ? '0x123456789aBcDeF1234567890aBcDeF1234567890'
+            : '0x123456789aBcDeF1234567890aBcDeF1234567890';
+        navigator.clipboard.writeText(address);
+    }, [active]);
+
     return (
         <div className={styles.container}>
-            <div className={`${styles.menu}`}>
-                <img src="/icons/menu-open.svg" alt="menu" className={styles.menuOpenIcon} onClick={() => setOpenMenu(true)}
-                    style={{
-                        ...(deltaY < 0 ? {
-                            transition: '0.2s',
-                            opacity: 1,
-                            position: 'fixed',
-                            top: 0,
-                            right: 0,
-                            zIndex: 10,
-                        } : scrollTop > (calcVW(100, windowWidth, 100) as number) ?
-                            {
-                                transition: '0.2s',
-                                opacity: 0,
-                                position: 'fixed',
-                                top: 0,
-                                right: 0,
-                                zIndex: 10,
-                            } : {})
-                    }}
-                    loading='lazy'
+            <div className={styles.menu}>
+                <img
+                    src="/icons/menu-open.svg"
+                    alt="menu"
+                    className={styles.menuOpenIcon}
+                    onClick={handleMenuClick}
+                    style={menuStyle}
+                    loading="lazy"
                 />
             </div>
 
@@ -86,7 +101,8 @@ const MainScreen = () => {
                     variants={{
                         hidden: { width: '0' },
                         visible: { width: '100%' },
-                    }} />
+                    }}
+                />
                 <TypeWriter text="Defend your home" classname="name" delay={1000} />
                 <motion.hr
                     className={styles.line}
@@ -96,7 +112,8 @@ const MainScreen = () => {
                     variants={{
                         hidden: { width: '0' },
                         visible: { width: '100%' },
-                    }} />
+                    }}
+                />
                 <motion.div
                     className={styles.description}
                     initial="hidden"
@@ -124,7 +141,7 @@ const MainScreen = () => {
                     </motion.div>
 
                     <motion.div
-                        className={`${styles.documentation}`}
+                        className={styles.documentation}
                         initial="hidden"
                         animate="visible"
                         transition={{ duration: 0.5, delay: 2 }}
@@ -165,13 +182,7 @@ const MainScreen = () => {
                     }}
                 >
                     <div className={`${styles.twoButton} ${styles.copyBlock}`}>
-                        <div className={styles.copy}
-                            onClick={() =>
-                                navigator.clipboard.writeText(
-                                    active === '$NITE address' ?
-                                        '0x123456789aBcDeF1234567890aBcDeF1234567890' :
-                                        '0x123456789aBcDeF1234567890aBcDeF1234567890'
-                                )}>
+                        <div className={styles.copy} onClick={handleCopy}>
                             <div className={styles.square} />
                             <div className={styles.square} />
                         </div>
@@ -185,4 +196,4 @@ const MainScreen = () => {
     );
 };
 
-export default memo(MainScreen)
+export default memo(MainScreen);

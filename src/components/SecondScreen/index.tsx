@@ -1,4 +1,4 @@
-import { lazy, memo, useEffect, useRef, useState } from 'react';
+import { lazy, memo, useEffect, useRef, useState, useCallback } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import Slider from 'react-slick';
 import { useStateProvider } from '../../context/state';
@@ -16,8 +16,8 @@ const settings = {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 7000,
-    nextArrow: <img src='/icons/arrow-right-slider.svg' loading='lazy' />,
-    prevArrow: <img src='/icons/arrow-left-slider.svg' loading='lazy' />,
+    nextArrow: <img src='/icons/arrow-right-slider.svg' loading='lazy' alt="Next" />,
+    prevArrow: <img src='/icons/arrow-left-slider.svg' loading='lazy' alt="Previous" />,
     responsive: [
         {
             breakpoint: 577,
@@ -37,23 +37,25 @@ const items = [
     { id: '6', src: '/networks/metamask.png' },
     { id: '7', src: '/networks/coin-market-cap.png' },
     { id: '8', src: '/networks/coin-gecko.png' },
-]
+];
 
 const SecondScreen = () => {
-    const { windowWidth } = useStateProvider()
+    const { windowWidth } = useStateProvider();
     const videoId = 'ZaBl4QRO1oM';
     const [player, setPlayer] = useState<any>(null);
     const [isPlaying, setIsPlaying] = useState(false);
     const [showVideo, setShowVideo] = useState(false);
 
-    const playerRef = useRef(null);
+    const playerRef = useRef<HTMLDivElement>(null);
     const controls = useAnimation();
 
     useEffect(() => {
         const tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
         const firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag && firstScriptTag.parentNode && firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        if (firstScriptTag && firstScriptTag.parentNode) {
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        }
 
         (window as any).onYouTubeIframeAPIReady = () => {
             const newPlayer = new (window as any).YT.Player(playerRef.current, {
@@ -73,43 +75,42 @@ const SecondScreen = () => {
         };
 
         return () => { if (player) player?.destroy() };
-    }, [videoId]);
+    }, [videoId, player]);
 
-    const onPlayerStateChange = (event: any) => {
+    const onPlayerStateChange = useCallback((event: any) => {
         if (event.data === (window as any).YT.PlayerState.PLAYING) {
             setIsPlaying(true);
         } else if (event.data === (window as any).YT.PlayerState.ENDED || event.data === (window as any).YT.PlayerState.PAUSED) {
             setIsPlaying(false);
         }
-    };
+    }, []);
 
-    const handlePlayVideo = () => {
-        setShowVideo(true)
+    const handlePlayVideo = useCallback(() => {
+        setShowVideo(true);
         if (!isPlaying && player) {
             player.playVideo();
         }
-    };
+    }, [isPlaying, player]);
 
     useEffect(() => {
         if (isPlaying) {
             controls.start({
                 opacity: 0,
                 zIndex: 0
-
-            })
+            });
         } else {
             controls.start({
                 opacity: 1,
                 zIndex: 100
-            })
+            });
         }
-    }, [isPlaying])
+    }, [isPlaying, controls]);
 
     return (
         <div className={styles.container}>
             <TitleBlock title="Trea is waiting for you" description="Embark on a heroic quest to defend Mithruon from the Orgurin onslaught." mobileClassName={windowWidth <= 576} descriptionBottom={true} />
             <motion.div className={styles.playButton} onClick={handlePlayVideo} animate={controls}>
-                <img src='/icons/main-circle.svg' className={styles.mainCircle} loading='lazy' />
+                <img src='/icons/main-circle.svg' className={styles.mainCircle} loading='lazy' alt="Play" />
                 <motion.img
                     className={styles.partCircle1}
                     animate={{
@@ -122,6 +123,7 @@ const SecondScreen = () => {
                         }
                     }}
                     src='/icons/part-circle-1.svg'
+                    alt="Part Circle 1"
                 />
                 <motion.img
                     className={styles.partCircle2}
@@ -135,18 +137,21 @@ const SecondScreen = () => {
                         }
                     }}
                     src='/icons/part-circle-2.svg'
+                    alt="Part Circle 2"
                 />
             </motion.div>
             <div className={styles.video} style={{ opacity: showVideo ? 1 : 0 }}>
                 <div ref={playerRef} style={{ width: '100%', height: '100%', position: 'absolute', left: 0, top: 0 }} />
             </div>
             <div className={styles.carousel}>
-                <div className={styles.title}> Our partners </div>
+                <div className={styles.title}>Our partners</div>
                 <div className={styles.carouselContainer}>
                     <Slider {...settings}>
-                        {items.map((item, index) =>
-                            <div className={styles.swiperElement} key={index}> <img src={item.src} alt={`Slide ${index}`} style={{ height: calcVW('40px', windowWidth), width: 'auto', objectFit: 'contain' }} loading='lazy' /></div>
-                        )}
+                        {items.map((item, index) => (
+                            <div className={styles.swiperElement} key={item.id}>
+                                <img src={item.src} alt={`Slide ${index}`} style={{ height: calcVW('40px', windowWidth), width: 'auto', objectFit: 'contain' }} loading='lazy' />
+                            </div>
+                        ))}
                     </Slider>
                 </div>
             </div>
@@ -154,4 +159,4 @@ const SecondScreen = () => {
     );
 };
 
-export default memo(SecondScreen)
+export default memo(SecondScreen);

@@ -1,14 +1,21 @@
-import { memo, useEffect } from 'react';
+import { memo, useEffect, useMemo } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { calcVW } from '../../utils/hooks/functions';
 import { useStateProvider } from '../../context/state';
 
-import styles from './style.module.scss'
+import styles from './style.module.scss';
 
-const RoadMapText = ({ right = false, texts = [], isAnimate = false, duration = 0, delay = 0 }: { texts: string[], right?: boolean, isAnimate?: boolean, duration?: number, delay?: number }) => {
+interface RoadMapTextProps {
+    texts: string[];
+    right?: boolean;
+    isAnimate?: boolean;
+    duration?: number;
+    delay?: number;
+}
+
+const RoadMapText: React.FC<RoadMapTextProps> = ({ right = false, texts = [], isAnimate = false, duration = 0, delay = 0 }) => {
     const { scrolling, windowWidth } = useStateProvider();
     const controls = useAnimation();
-
 
     useEffect(() => {
         if (!scrolling) {
@@ -16,36 +23,37 @@ const RoadMapText = ({ right = false, texts = [], isAnimate = false, duration = 
                 controls.start('visible');
             }
         }
-    }, [isAnimate, scrolling, windowWidth])
+    }, [isAnimate, scrolling, windowWidth, controls]);
+
+    const variants = useMemo(() => ({
+        hidden: {
+            opacity: 0,
+            ...(right ? { marginLeft: calcVW('-100px', windowWidth), marginRight: calcVW('100px', windowWidth) } : { marginLeft: calcVW('100px', windowWidth), marginRight: calcVW('-100px', windowWidth) }),
+        },
+        visible: {
+            opacity: 1,
+            marginLeft: '0',
+            marginRight: '0',
+            transition: { duration, delay }
+        }
+    }), [right, windowWidth, duration, delay]);
 
     return (
         <motion.div
             style={{ overflow: 'hidden' }}
             className={styles.info}
             animate={controls}
-            initial='hidden'
-            variants={{
-                hidden: {
-                    opacity: 0,
-                    ...(right ? { marginLeft: calcVW('-100px', windowWidth), marginRight: calcVW('100px', windowWidth) } : { marginLeft: calcVW('100px', windowWidth), marginRight: calcVW('-100px', windowWidth) }),
-                },
-                visible: {
-                    opacity: 1,
-                    marginLeft: '0',
-                    marginRight: '0',
-                    transition: { duration, delay }
-                }
-            }}
+            initial="hidden"
+            variants={variants}
         >
-            {texts.map((el, index) =>
+            {texts.map((el, index) => (
                 <div key={index}>
                     <div className={styles.dot} />
-                    <div className={styles.text}>
-                        {el}
-                    </div>
+                    <div className={styles.text}>{el}</div>
                 </div>
-            )}
+            ))}
         </motion.div>
     );
 };
+
 export default memo(RoadMapText);
