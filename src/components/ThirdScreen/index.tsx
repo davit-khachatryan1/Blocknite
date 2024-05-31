@@ -1,14 +1,12 @@
 import { motion, useAnimation } from 'framer-motion';
-import { lazy, memo, useEffect, useState } from 'react';
 import Slider from 'react-slick';
+import { lazy, memo, useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { calcVW } from '../../utils/hooks/functions';
 import { useStateProvider } from '../../context/state';
 
 import styles from './style.module.scss';
-
-const TitleBlock = lazy(() => import("../TitleBlock"));
-const TypeWriter = lazy(() => import("../TypeWriter"));
+import TypeWriter from '../TypeWriter';
 
 const settings = {
     infinite: true,
@@ -32,6 +30,7 @@ const settingsMobile = {
     prevArrow: <img src='/icons/arrow-left-slider.svg' alt="Next" />
 };
 
+
 const items = [
     { id: '1', text: 'Forge Manna Stones at the Arcane Forge that power your Blocknite experience.' },
     { id: '2', text: 'Raise an army of Treanin through the Manna Nexus, fuse Treanin together and customise them to perfection.' },
@@ -40,7 +39,10 @@ const items = [
     { id: '5', text: 'Participate in the Blocknite community & devise the best strategies for maximising rewards.' },
 ];
 
+const TitleBlock = lazy(() => import("../TitleBlock"));
+
 const ThirdScreen = () => {
+
     const { scrolling, windowWidth, windowHeight } = useStateProvider();
     const [infoTitles, setInfoTitles] = useState({
         first: false,

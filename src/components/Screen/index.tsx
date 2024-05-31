@@ -26,7 +26,7 @@ const Screen = ({ id, component, imageUrl, mobileImage, screen }: any) => {
         top: 0
       }}
       >
-        <ParticleCanvas
+        {/* <ParticleCanvas
           spaces={
             screen.spaces
           }
@@ -39,7 +39,7 @@ const Screen = ({ id, component, imageUrl, mobileImage, screen }: any) => {
           pointMaxSize={screen.pointMaxSize}
           movementDirection={screen.movementDirection}
           divade={screen.divade}
-        />
+        /> */}
       </div>
     }
 
