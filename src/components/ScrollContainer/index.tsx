@@ -7,10 +7,11 @@ const Screen = lazy(() => import("../Screen"));
 const Footer = lazy(() => import("../Footer"));
 
 const ScrollContainer = () => {
-  const { updatePage, setScrolling, setWindowSize } = useStateProvider();
+  const { updatePage, setScrolling, setWindowSize, windowWidth } = useStateProvider();
   const pages = useRef<HTMLDivElement | null>(null);
 
   const checkCenter = useCallback(() => {
+    const screensValue = screens(windowWidth)
     if (pages.current) {
       const children = pages.current.children;
 
@@ -29,9 +30,9 @@ const ScrollContainer = () => {
         if (!(window as any)["scrolling"]) {
           const rect = ref.getBoundingClientRect();
           const isElementCentered = rect.top < window.innerHeight / 2 && rect.top > -window.innerHeight / 2;
-          if (isElementCentered && screens[i]?.id) {
+          if (isElementCentered && screensValue[i]?.id) {
             setTimeout(() => {
-              updatePage(screens[i].id, false);
+              updatePage(screensValue[i].id, false);
             }, 200);
           }
         }
@@ -56,7 +57,7 @@ const ScrollContainer = () => {
   
   return (
     <div className={styles.container} ref={pages}>
-      {screens.map((screen, index) => (
+      {screens(windowWidth).map((screen, index) => (
         <Screen
           key={index}
           id={screen.id}

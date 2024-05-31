@@ -1,6 +1,6 @@
 import styles from './style.module.scss';
 import { useStateProvider } from '../../context/state';
-import { CSSProperties, lazy, memo, useMemo } from 'react';
+import { CSSProperties, lazy, memo, useEffect, useMemo, useState } from 'react';
 
 const ParticleCanvas = lazy(() => import("../Particles"));
 
@@ -14,6 +14,7 @@ interface ScreenProps {
 
 const Screen: React.FC<ScreenProps> = ({ id, component, imageUrl, mobileImage, screen }) => {
   const { windowWidth } = useStateProvider();
+  const [showParticles, setShowParticles] = useState(true);
 
   const containerStyle: CSSProperties = useMemo(() => ({
     width: '100%',
@@ -23,20 +24,7 @@ const Screen: React.FC<ScreenProps> = ({ id, component, imageUrl, mobileImage, s
     backgroundImage: `url(${windowWidth <= 576 ? mobileImage : imageUrl})`
   }), [windowWidth, mobileImage, imageUrl]);
 
-  const particleCanvasProps = useMemo(() => ({
-    spaces: screen?.spaces,
-    minParticles: screen?.minParticles,
-    maxParticles: screen?.maxParticles,
-    minSpeed: screen?.minSpeed,
-    maxSpeed: screen?.maxSpeed,
-    pointColors: screen?.pointColors,
-    pointMinSize: screen?.pointMinSize,
-    pointMaxSize: screen?.pointMaxSize,
-    movementDirection: screen?.movementDirection,
-    divade: screen?.divade
-  }), [screen]);
-
-  const fullScreenStyle:CSSProperties = useMemo(() => ({
+  const fullScreenStyle: CSSProperties = useMemo(() => ({
     width: '100%',
     height: '100%',
     position: 'absolute',
@@ -50,9 +38,19 @@ const Screen: React.FC<ScreenProps> = ({ id, component, imageUrl, mobileImage, s
     overflow: 'hidden'
   }), []);
 
+  useEffect(() => {
+    if (windowWidth && showParticles) {
+      setShowParticles(false);
+      const timeout = setTimeout(() => {
+        setShowParticles(true);
+        clearTimeout(timeout)
+      }, 100)
+    }
+  }, [windowWidth])
+
   return (
     <div style={containerStyle} className={styles.container} id={id}>
-      {screen?.spaces && (
+      {showParticles && screen?.spaces && (
         <div style={fullScreenStyle}>
           <ParticleCanvas {...screen} />
         </div>

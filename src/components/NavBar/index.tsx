@@ -6,7 +6,7 @@ import { screens } from '../../constants/screens';
 const AltarinText = lazy(() => import('../AnimatedText'));
 
 const NavBar = () => {
-    const { page, updatePage, setOpenMenu, open } = useStateProvider();
+    const { page, updatePage, setOpenMenu, open, windowWidth } = useStateProvider();
 
     const scrollTo = useCallback((id: string, type: ScrollBehavior = 'smooth') => {
         const element = document.getElementById(id);
@@ -25,7 +25,7 @@ const NavBar = () => {
         setOpenMenu(false);
     }, [setOpenMenu]);
 
-    const menuItems = useMemo(() => screens.map((el, index) => (
+    const menuItems = useMemo(() => screens(windowWidth).map((el, index) => (
         <div
             key={index}
             className={`${styles.navElement} ${el.id === page && styles.active}`}
@@ -36,9 +36,9 @@ const NavBar = () => {
         >
             {el.name}
         </div>
-    )), [page, scrollTo, setOpenMenu]);
+    )), [page, scrollTo, setOpenMenu, windowWidth]);
 
-    const navItems = useMemo(() => screens.map((el, index) => (
+    const navItems = useMemo(() => screens(windowWidth).map((el, index) => (
         <AltarinText index={index} key={index}>
             <div
                 className={`${styles.navElement} ${el.id === page && styles.active}`}
@@ -48,7 +48,7 @@ const NavBar = () => {
                 <div className={styles.round} />
             </div>
         </AltarinText>
-    )), [page, scrollTo]);
+    )), [page, scrollTo, windowWidth]);
 
     return (
         <>
