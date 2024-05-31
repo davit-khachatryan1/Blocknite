@@ -13,8 +13,8 @@ export const calcVW = (value: string | number, windowWidth = window.innerWidth, 
     }
 }
 
-export const calcVWP = (value: string | number, windowWidth = window.innerWidth, mobileValue?: number) => {
-    const mediaValue = windowWidth <= 576 && mobileValue ? mobileValue : value
+export const calcVWP = (value: string | number, windowWidth = window.innerWidth) => {
+    const mediaValue = value
     let num = 0.000520833333;
     if (windowWidth <= 576) {
         num = 0.003125

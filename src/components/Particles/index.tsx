@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useCallback, memo } from 'react';
 import { calcVW } from '../../utils/hooks/functions';
 import { Particle, ParticleCanvasProps, Point } from '../../utils/interface/particles';
+import { useStateProvider } from '../../context/state';
 
 
 const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
@@ -15,6 +16,7 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
   maxParticles,
   divade,
 }) => {
+  const {windowWidth} = useStateProvider();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const particlesRef = useRef<Particle[]>([]);
 
@@ -24,8 +26,8 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
 
   const getRandomPosition = useCallback((): { x: number; y: number } => {
     return {
-      x: getRandomInt(0, (calcVW(1920) as number)),
-      y: getRandomInt(0, (calcVW(1080) as number)),
+      x: getRandomInt(0, (calcVW(1920, windowWidth, 320) as number)),
+      y: getRandomInt(0, (calcVW(1080, windowWidth, 568) as number)),
     };
   }, [getRandomInt]);
 
@@ -36,39 +38,39 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
     switch (movementDirection) {
       case 'left-to-right':
         x = 0;
-        y = getRandomInt(0, (calcVW(1080) as number));
+        y = getRandomInt(0, (calcVW(1080, windowWidth, 568) as number));
         break;
       case 'right-to-left':
-        x = (calcVW(1920) as number);
-        y = getRandomInt(0, (calcVW(1080) as number));
+        x = (calcVW(1920, windowWidth, 320) as number);
+        y = getRandomInt(0, (calcVW(1080, windowWidth, 568) as number));
         break;
       case 'top-to-bottom':
-        x = getRandomInt(0, (calcVW(1920) as number));
+        x = getRandomInt(0, (calcVW(1920, windowWidth, 320) as number));
         y = 0;
         break;
       case 'bottom-to-top':
-        x = getRandomInt(0, (calcVW(1920) as number));
-        y = (calcVW(1080) as number);
+        x = getRandomInt(0, (calcVW(1920, windowWidth, 320) as number));
+        y = (calcVW(1080, windowWidth, 568) as number);
         break;
       case 'left-top-to-right-bottom':
-        x = is ? Math.random() * (calcVW(1920) as number) : 0;
-        y = !is ? Math.random() * (calcVW(1080) as number) : 0;
+        x = is ? Math.random() * (calcVW(1920, windowWidth, 320) as number) : 0;
+        y = !is ? Math.random() * (calcVW(1080, windowWidth, 568) as number) : 0;
         break;
       case 'right-top-to-left-bottom':
-        x = is ? Math.random() * (calcVW(1920) as number) : (calcVW(1920) as number);
-        y = !is ? Math.random() * (calcVW(1080) as number) : 0;
+        x = is ? Math.random() * (calcVW(1920, windowWidth, 320) as number) : (calcVW(1920, windowWidth, 320) as number);
+        y = !is ? Math.random() * (calcVW(1080, windowWidth, 568) as number) : 0;
         break;
       case 'left-bottom-to-right-top':
-        x = is ? Math.random() * (calcVW(1920) as number) : 0;
-        y = !is ? (800 + Math.random() * (calcVW(280) as number)) : (calcVW(1080) as number);
+        x = is ? Math.random() * (calcVW(1920, windowWidth, 320) as number) : 0;
+        y = !is ? ((calcVW(800, windowWidth, 238) as number) + Math.random() * (calcVW(280, windowWidth, 330) as number)) : (calcVW(1080, windowWidth, 568) as number);
         break;
       case 'right-bottom-to-left-top':
-        x = is ? Math.random() * (calcVW(1920) as number) : (calcVW(1920) as number);
-        y = !is ? Math.random() * (calcVW(1080) as number) : (calcVW(1080) as number);
+        x = is ? Math.random() * (calcVW(1920, windowWidth, 320) as number) : (calcVW(1920, windowWidth, 320) as number);
+        y = !is ? Math.random() * (calcVW(1080, windowWidth, 568) as number) : (calcVW(1080, windowWidth, 568) as number);
         break;
       default:
-        x = getRandomInt(0, (calcVW(1920) as number));
-        y = getRandomInt(0, (calcVW(1080) as number));
+        x = getRandomInt(0, (calcVW(1920, windowWidth, 320) as number));
+        y = getRandomInt(0, (calcVW(1080, windowWidth, 568) as number));
         break;
     }
 
@@ -199,13 +201,13 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
     }
 
     if (
-      (movementDirection === 'left-to-right' && particle.x > (calcVW(1920) as number)) ||
+      (movementDirection === 'left-to-right' && particle.x > (calcVW(1920, windowWidth, 320) as number)) ||
       (movementDirection === 'right-to-left' && particle.x < 0) ||
-      (movementDirection === 'top-to-bottom' && particle.y > (calcVW(1080) as number)) ||
+      (movementDirection === 'top-to-bottom' && particle.y > (calcVW(1080, windowWidth, 568) as number)) ||
       (movementDirection === 'bottom-to-top' && particle.y < 0) ||
-      (movementDirection === 'left-top-to-right-bottom' && (particle.x > (calcVW(1920) as number) || particle.y > (calcVW(1080) as number))) ||
-      (movementDirection === 'right-top-to-left-bottom' && (particle.x < 0 || particle.y > (calcVW(1080) as number))) ||
-      (movementDirection === 'left-bottom-to-right-top' && (particle.x > (calcVW(1920) as number) || particle.y < 0)) ||
+      (movementDirection === 'left-top-to-right-bottom' && (particle.x > (calcVW(1920, windowWidth, 320) as number) || particle.y > (calcVW(1080, windowWidth, 568) as number))) ||
+      (movementDirection === 'right-top-to-left-bottom' && (particle.x < 0 || particle.y > (calcVW(1080, windowWidth, 568) as number))) ||
+      (movementDirection === 'left-bottom-to-right-top' && (particle.x > (calcVW(1920, windowWidth, 320) as number) || particle.y < 0)) ||
       (movementDirection === 'right-bottom-to-left-top' && (particle.x < 0 || particle.y < 0))
     ) {
       resetParticlePosition(particle);
@@ -275,7 +277,7 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
     }
   }, []);
 
-  return <canvas ref={canvasRef} width={calcVW(1920)} height={calcVW(1080)} />;
+  return <canvas ref={canvasRef} width={calcVW(1920, windowWidth, 320)} height={calcVW(1080, windowWidth, 568)} />;
 };
 
 export default memo(ParticleCanvas);

@@ -50,14 +50,14 @@ const Screen: React.FC<ScreenProps> = ({ id, component, imageUrl, mobileImage, s
 
   return (
     <div style={containerStyle} className={styles.container} id={id}>
-      {showParticles && screen?.spaces && (
-        <div style={fullScreenStyle}>
-          <ParticleCanvas {...screen} />
+      {showParticles && (
+        <div style={fullScreenStyle} >
+          <ParticleCanvas {...(windowWidth <= 576 ? screen.mobile : screen.desktop)} />
         </div>
       )}
-      <div style={contentStyle}>
+      {/* <div style={contentStyle}>
         {component}
-      </div>
+      </div> */}
     </div>
   );
 };
