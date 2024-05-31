@@ -20,8 +20,8 @@ const FifthScreen = () => {
         slidesToScroll: 1,
         autoplay: false,
         autoplaySpeed: 7000,
-        nextArrow: <img src='/icons/arrow-right-slider.svg' />,
-        prevArrow: <img src='/icons/arrow-left-slider.svg' />,
+        nextArrow: <img src='/icons/arrow-right-slider.svg' loading='lazy' />,
+        prevArrow: <img src='/icons/arrow-left-slider.svg' loading='lazy' />,
     });
 
     const titleControls = useAnimation();
@@ -191,7 +191,7 @@ const FifthScreen = () => {
                     animate={lineControls}
                     initial={{ height: '0' }}
                 >
-                    <img src="/icons/map-line.svg" alt="line" className={styles.mainLine} />
+                    <img src="/icons/map-line.svg" alt="line" className={styles.mainLine} loading='lazy' />
                 </motion.div>
                 <div className={styles.infoElement} >
                     <div className={styles.oneBlock} ref={lineControls2}>

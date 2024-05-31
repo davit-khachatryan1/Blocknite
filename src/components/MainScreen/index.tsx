@@ -61,6 +61,7 @@ const MainScreen = () => {
                                 zIndex: 10,
                             } : {})
                     }}
+                    loading='lazy'
                 />
             </div>
 

@@ -8,10 +8,10 @@ const Button = ({ withIcon = false, classname, children, onClick, buttonIcon = f
             {children}
             {withIcon &&
                 <>
-                    <img src="/icons/angle.svg" alt="icon" className={styles.icon} />
-                    <img src="/icons/angle.svg" alt="icon" className={styles.icon} />
-                    <img src="/icons/angle.svg" alt="icon" className={styles.icon} />
-                    <img src="/icons/angle.svg" alt="icon" className={styles.icon} />
+                    <img src="/icons/angle.svg" alt="icon" className={styles.icon} loading='lazy'/>
+                    <img src="/icons/angle.svg" alt="icon" className={styles.icon} loading='lazy' />
+                    <img src="/icons/angle.svg" alt="icon" className={styles.icon} loading='lazy' />
+                    <img src="/icons/angle.svg" alt="icon" className={styles.icon} loading='lazy' />
                 </>
             }
         </button>

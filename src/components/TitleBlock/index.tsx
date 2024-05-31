@@ -73,6 +73,7 @@ const TitleBlock = ({ title, description, mobileClassName, descriptionBottom, se
                             objectFit: 'cover',
                             objectPosition: 'center'
                         }}
+                        loading='lazy'
                     />
                 </motion.div>
             </div>
@@ -110,6 +111,7 @@ const TitleBlock = ({ title, description, mobileClassName, descriptionBottom, se
                             objectFit: 'cover',
                             objectPosition: 'center'
                         }}
+                        loading='lazy'
                     />
                 </motion.div>
             </div>

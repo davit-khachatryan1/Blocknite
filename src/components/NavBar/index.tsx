@@ -24,8 +24,8 @@ const NavBar = () => {
         <>
             <div className={`${styles.menu} ${open && styles.menuOpen}`}>
                 <div className={styles.menuHeader}>
-                    <img src="/logos/logo.png" alt="logo" className={styles.logo} />
-                    <img src="/icons/menu-close.svg" alt="menu" className={styles.menuOpenIcon} onClick={() => setOpenMenu(false)} />
+                    <img src="/logos/logo.png" alt="logo" className={styles.logo}  loading='lazy'/>
+                    <img src="/icons/menu-close.svg" alt="menu" className={styles.menuOpenIcon} onClick={() => setOpenMenu(false)}  loading='lazy'/>
                 </div>
                 <div>
                     {screens.map((el, index) =>

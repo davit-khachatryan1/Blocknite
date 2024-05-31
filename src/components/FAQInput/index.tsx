@@ -39,7 +39,7 @@ const FAQInput = ({ title, description, index, setActive, active }: any) => {
         <div className={styles.input} onClick={() => setActive(index == active ? -1 : index)}>
             {title}
             <div className={styles.vector}>
-                <img src='/icons/vector.svg' />
+                <img src='/icons/vector.svg' loading='lazy' />
             </div>
         </div>
         <motion.div
