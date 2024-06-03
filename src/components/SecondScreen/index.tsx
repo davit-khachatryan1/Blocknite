@@ -49,34 +49,6 @@ const SecondScreen = () => {
     const playerRef = useRef<HTMLDivElement>(null);
     const controls = useAnimation();
 
-    useEffect(() => {
-        const tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        const firstScriptTag = document.getElementsByTagName('script')[0];
-        if (firstScriptTag && firstScriptTag.parentNode) {
-            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-        }
-
-        (window as any).onYouTubeIframeAPIReady = () => {
-            const newPlayer = new (window as any).YT.Player(playerRef.current, {
-                videoId: videoId,
-                events: {
-                    'onStateChange': onPlayerStateChange
-                },
-                playerVars: {
-                    autoplay: 0, // Don't autoplay on load
-                    enablejsapi: 1, // Enable JS API
-                    modestbranding: 1, // Minimal YouTube branding
-                    rel: 0, // Don't show related videos after the end
-                    iv_load_policy: 3, // Don't show video annotations
-                }
-            });
-            setPlayer(newPlayer);
-        };
-
-        return () => { if (player) player?.destroy() };
-    }, [videoId, player]);
-
     const onPlayerStateChange = useCallback((event: any) => {
         if (event.data === (window as any).YT.PlayerState.PLAYING) {
             setIsPlaying(true);
@@ -87,10 +59,41 @@ const SecondScreen = () => {
 
     const handlePlayVideo = useCallback(() => {
         setShowVideo(true);
-        if (!isPlaying && player) {
+        if (!player) {
+            const tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            const firstScriptTag = document.getElementsByTagName('script')[0];
+            if (firstScriptTag && firstScriptTag.parentNode) {
+                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+            }
+
+            (window as any).onYouTubeIframeAPIReady = () => {
+                const newPlayer = new (window as any).YT.Player(playerRef.current, {
+                    videoId: videoId,
+                    events: {
+                        'onStateChange': onPlayerStateChange
+                    },
+                    playerVars: {
+                        autoplay: 0, // Don't autoplay on load
+                        enablejsapi: 1, // Enable JS API
+                        modestbranding: 1, // Minimal YouTube branding
+                        rel: 0, // Don't show related videos after the end
+                        iv_load_policy: 3, // Don't show video annotations
+                    }
+                });
+                setPlayer(newPlayer);
+                // Play video after player is initialized
+                const interval = setInterval(() => {
+                    if (newPlayer.playVideo) {
+                        newPlayer.playVideo();
+                        clearInterval(interval);
+                    }
+                })
+            };
+        } else if (!isPlaying) {
             player.playVideo();
         }
-    }, [isPlaying, player]);
+    }, [isPlaying, player, videoId, onPlayerStateChange]);
 
     useEffect(() => {
         if (isPlaying) {
