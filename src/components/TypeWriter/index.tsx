@@ -14,13 +14,13 @@ const TypeWriter: React.FC<TypeWriterProps> = ({ text, classname, delay = 0, tim
     const typingSpeed = time / text.length;
 
     useEffect(() => {
-        let index = 0;
+        let index = -1;
         let timer: NodeJS.Timeout | null = null;
 
         const startTyping = () => {
             timer = setInterval(() => {
-                setDisplayedText((prev) => prev + text.charAt(index));
                 index++;
+                setDisplayedText((prev) => prev + text.charAt(index));
                 if (index === text.length) {
                     if (timer) clearInterval(timer);
                 }
