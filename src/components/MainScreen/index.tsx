@@ -37,6 +37,7 @@ const MainScreen = () => {
     const { setOpenMenu, windowWidth } = useStateProvider();
     const [active, setActive] = useState('$NITE address');
     const { deltaY, scrollTop } = useScrollDeltaY();
+    const [showCopied, setShowCopied] = useState(false);
 
     const menuStyle: CSSProperties = useMemo(() => ({
         ...(deltaY < 0 ? {
@@ -60,11 +61,16 @@ const MainScreen = () => {
         setOpenMenu(true);
     }, [setOpenMenu]);
 
-    const handleCopy = useCallback(() => {
+    const handleCopy = useCallback(async () => {
         const address = active === '$NITE address'
             ? '0x123456789aBcDeF1234567890aBcDeF1234567890'
             : '0x123456789aBcDeF1234567890aBcDeF1234567890';
-        navigator.clipboard.writeText(address);
+        await navigator.clipboard.writeText(address);
+        setShowCopied(true);
+        const timeout = setTimeout(() => {
+            setShowCopied(false)
+            clearTimeout(timeout)
+        }, 2000)
     }, [active]);
 
     return (
@@ -183,8 +189,8 @@ const MainScreen = () => {
                 >
                     <div className={`${styles.twoButton} ${styles.copyBlock}`}>
                         <div className={styles.copy} onClick={handleCopy}>
-                            <div className={styles.square} />
-                            <div className={styles.square} />
+                            <div className={styles.square} style={{...(showCopied ? {borderColor: '#DEA96375'} : {})}}/>
+                            <div className={styles.square} style={{...(showCopied ? {borderColor: '#DEA96375'} : {})}}/>
                         </div>
                         <div>
                             0x123456789aBcDeF1234567890aBcDeF1234567890
