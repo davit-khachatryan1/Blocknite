@@ -35,10 +35,9 @@ const RoadMapText: React.FC<RoadMapTextProps> = ({ right = false, texts = [], is
             opacity: 1,
             transition: {
                 staggerChildren: duration / texts.length,
-                duration: duration / texts.length,
             }
         }
-    }), [right, windowWidth, duration, delay]);
+    }), [right, windowWidth, duration]);
 
     return (
         <motion.div
@@ -67,6 +66,9 @@ const RoadMapText: React.FC<RoadMapTextProps> = ({ right = false, texts = [], is
                             opacity: 1,
                             marginLeft: '0',
                             marginRight: '0',
+                            transition: {
+                                duration: duration / texts.length,
+                            }
                         },
                     }} key={index}>
                     <div className={styles.dot} />

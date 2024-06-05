@@ -57,7 +57,7 @@ const FifthScreen = () => {
                 });
             }
         }
-    }, [animationRefs, scrolling, started, lineControls, windowWidth]);
+    }, [animationRefs, scrolling, started, lineControls, windowWidth, lineControls]);
 
     return (
         <div className={styles.container} ref={titleRef}>
@@ -120,7 +120,7 @@ const FifthScreen = () => {
                             <div className={styles.info}>
                                 <RoadMapText
                                     isAnimate={inView}
-                                    duration={0.2}
+                                    duration={1}
                                     delay={i * 1.2 + 0.2}
                                     texts={i === 0 ? [
                                         'Launch social medias',
@@ -152,7 +152,7 @@ const FifthScreen = () => {
                             <div className={styles.info}>
                                 <RoadMapText
                                     isAnimate={inView}
-                                    duration={0.2}
+                                    duration={1}
                                     delay={i * 1.2 + 0.8}
                                     right={true}
                                     texts={i === 0 ? [
