@@ -34,9 +34,10 @@ const items = [
     { id: '3', src: '/networks/coin-market-cap.png' },
     { id: '4', src: '/networks/metamask.png' },
     { id: '5', src: '/networks/pancacke-swap.png' },
-    { id: '6', src: '/networks/metamask.png' },
-    { id: '7', src: '/networks/coin-market-cap.png' },
-    { id: '8', src: '/networks/coin-gecko.png' },
+    { id: '6', src: '/networks/chainlink-logo-white.png' },
+    { id: '7', src: '/networks/dex-tools.png' },
+    { id: '8', src: '/networks/dune-logo.png' },
+    { id: '9', src: '/networks/pinksale.png' },
 ];
 
 const SecondScreen = () => {
