@@ -8,8 +8,10 @@
     margin-top: calcVW(30);
 
     .dot {
-        width: calcVW(5);
-        height: calcVW(5);
+        min-width: calcVW(5);
+        min-height: calcVW(5);
+        max-width: calcVW(5);
+        max-height: calcVW(5);
         border-radius: 50%;
         background: $black-400;
         margin-top: calcVW(8);
@@ -18,6 +20,7 @@
     .text {
         text-wrap: wrap;
         max-width: calcVW(260);
+        min-width: calcVW(260);
         @include body;
     }
 
@@ -38,13 +41,18 @@
         .text {
             @include body-mobile;
             max-width: calcVWM(240);
+            min-width: calcVWM(240);
         }
+
         div {
             column-gap: calcVWM(5);
         }
+
         .dot {
             min-width: calcVWM(5);
             min-height: calcVWM(5);
+            max-width: calcVWM(5);
+            max-height: calcVWM(5);
             margin-top: calcVWM(6);
         }
     }
