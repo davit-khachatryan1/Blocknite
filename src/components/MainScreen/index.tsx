@@ -63,8 +63,8 @@ const MainScreen = () => {
 
     const handleCopy = useCallback(async () => {
         const address = active === '$NITE address'
-            ? '0x123456789aBcDeF1234567890aBcDeF1234567890'
-            : '0x123456789aBcDeF1234567890aBcDeF1234567890';
+            ? 'HN7cABqLq46Es1jh92dQQisAq662SmxELLLsHHe4YWrH'
+            : 'FrYwrqLcGfmXrgJKcZfrzoWsZ3pqQB9pjjUC9PxSq3xT';
         await navigator.clipboard.writeText(address);
         setShowCopied(true);
         const timeout = setTimeout(() => {
@@ -156,7 +156,7 @@ const MainScreen = () => {
                             visible: { opacity: 1, y: 0, x: 0, scale: 1, height: calcVW('70px', windowWidth) },
                         }}
                     >
-                        <Button buttonIcon={true}>GITBOOK</Button>
+                        <Button buttonIcon={true} onClick={() =>  window.open("https://docs.blocknite.io/", "_blank")}>GITBOOK</Button>
                     </motion.div>
                 </div>
             </div>
@@ -193,7 +193,7 @@ const MainScreen = () => {
                             <div className={styles.square} style={{...(showCopied ? {borderColor: '#DEA96375'} : {})}}/>
                         </div>
                         <div>
-                            0x123456789aBcDeF1234567890aBcDeF1234567890
+                            {active === '$NITE address' ? 'HN7cABqLq46Es1jh92dQQisAq662SmxELLLsHHe4YWrH': 'FrYwrqLcGfmXrgJKcZfrzoWsZ3pqQB9pjjUC9PxSq3xT'}
                         </div>
                     </div>
                 </motion.div>
