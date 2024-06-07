@@ -2,8 +2,8 @@ module.exports = {
     apps: [
         {
             name: 'Blocknite',
-            script: 'node_modules/.bin/react-scripts',
-            args: 'start -p 3000',
+            script: 'npm',
+            args: 'start',
             env: {
                 NODE_ENV: 'production'
             }
