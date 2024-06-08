@@ -11,12 +11,18 @@ module.exports = {
     ],
     deploy: {
         production: {
+            key: "./davit.pem",
             user: "blocbdzb",
             host: ["198.177.120.53"],
-            ref  : "origin/master",
+            port: '21098',
+            ref: "origin/main",
             repo: "https://davit-khachatryan1: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@github.com/davit-khachatryan1/Blocknite.git",
-            path: "/var/www/production",
-            "post-deploy": "pm2 startOrRestart ecosystem.json --env production"
+            path: "/home/blocbdzb/public_html",
+            "pre-setup": "echo 'commands or local script path to be run on the host before the setup process starts'",
+            "post-setup": "echo 'commands or a script path to be run on the host after cloning the repo'",
+            "pre-deploy": "pm2 startOrRestart ecosystem.json --env production",
+            "post-deploy": "pm2 startOrRestart ecosystem.json --env production",
+            "pre-deploy-local": "echo 'This is a local executed command'"
         }
     }
 };
