@@ -6,9 +6,13 @@ module.exports = {
             args: 'start',
             env: {
                 NODE_ENV: 'production',
-                user : "blocbdzb",
-                host : ["198.177.120.53"],
             }
         }
-    ]
+    ],
+    deploy: {
+        production: {
+            user: "blocbdzb",
+            host: ["198.177.120.53"],
+        }
+    }
 };
