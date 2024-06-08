@@ -20,8 +20,8 @@ module.exports = {
             path: "/home/blocbdzb/public_html",
             "pre-setup": "echo 'commands or local script path to be run on the host before the setup process starts'",
             "post-setup": "echo 'commands or a script path to be run on the host after cloning the repo'",
-            "pre-deploy": "pm2 startOrRestart ecosystem.json --env production",
-            "post-deploy": "pm2 startOrRestart ecosystem.json --env production",
+            "pre-deploy": "pm2 startOrRestart ecosystem.config.js --env production",
+            "post-deploy": "pm2 startOrRestart ecosystem.config.js --env production",
             "pre-deploy-local": "echo 'This is a local executed command'"
         }
     }
