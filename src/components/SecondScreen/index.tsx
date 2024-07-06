@@ -42,59 +42,59 @@ const items = [
 
 const SecondScreen = () => {
     const { windowWidth } = useStateProvider();
-    const videoId = 'ZaBl4QRO1oM';
-    const [player, setPlayer] = useState<any>(null);
+    // const videoId = 'ZaBl4QRO1oM';
+    // const [player, setPlayer] = useState<any>(null);
     const [isPlaying, setIsPlaying] = useState(false);
     const [showVideo, setShowVideo] = useState(false);
 
     const playerRef = useRef<HTMLDivElement>(null);
     const controls = useAnimation();
 
-    const onPlayerStateChange = useCallback((event: any) => {
-        if (event.data === (window as any).YT.PlayerState.PLAYING) {
-            setIsPlaying(true);
-        } else if (event.data === (window as any).YT.PlayerState.ENDED || event.data === (window as any).YT.PlayerState.PAUSED) {
-            setIsPlaying(false);
-        }
-    }, []);
+    // const onPlayerStateChange = useCallback((event: any) => {
+    //     if (event.data === (window as any).YT.PlayerState.PLAYING) {
+    //         setIsPlaying(true);
+    //     } else if (event.data === (window as any).YT.PlayerState.ENDED || event.data === (window as any).YT.PlayerState.PAUSED) {
+    //         setIsPlaying(false);
+    //     }
+    // }, []);
 
-    const handlePlayVideo = useCallback(() => {
-        setShowVideo(true);
-        if (!player) {
-            const tag = document.createElement('script');
-            tag.src = "https://www.youtube.com/iframe_api";
-            const firstScriptTag = document.getElementsByTagName('script')[0];
-            if (firstScriptTag && firstScriptTag.parentNode) {
-                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-            }
+    // const handlePlayVideo = useCallback(() => {
+    //     setShowVideo(true);
+    //     if (!player) {
+    //         const tag = document.createElement('script');
+    //         tag.src = "https://www.youtube.com/iframe_api";
+    //         const firstScriptTag = document.getElementsByTagName('script')[0];
+    //         if (firstScriptTag && firstScriptTag.parentNode) {
+    //             firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    //         }
 
-            (window as any).onYouTubeIframeAPIReady = () => {
-                const newPlayer = new (window as any).YT.Player(playerRef.current, {
-                    videoId: videoId,
-                    events: {
-                        'onStateChange': onPlayerStateChange
-                    },
-                    playerVars: {
-                        autoplay: 0, // Don't autoplay on load
-                        enablejsapi: 1, // Enable JS API
-                        modestbranding: 1, // Minimal YouTube branding
-                        rel: 0, // Don't show related videos after the end
-                        iv_load_policy: 3, // Don't show video annotations
-                    }
-                });
-                setPlayer(newPlayer);
-                // Play video after player is initialized
-                const interval = setInterval(() => {
-                    if (newPlayer.playVideo) {
-                        newPlayer.playVideo();
-                        clearInterval(interval);
-                    }
-                })
-            };
-        } else if (!isPlaying) {
-            player.playVideo();
-        }
-    }, [isPlaying, player, videoId, onPlayerStateChange]);
+    //         (window as any).onYouTubeIframeAPIReady = () => {
+    //             const newPlayer = new (window as any).YT.Player(playerRef.current, {
+    //                 videoId: videoId,
+    //                 events: {
+    //                     'onStateChange': onPlayerStateChange
+    //                 },
+    //                 playerVars: {
+    //                     autoplay: 0, // Don't autoplay on load
+    //                     enablejsapi: 1, // Enable JS API
+    //                     modestbranding: 1, // Minimal YouTube branding
+    //                     rel: 0, // Don't show related videos after the end
+    //                     iv_load_policy: 3, // Don't show video annotations
+    //                 }
+    //             });
+    //             setPlayer(newPlayer);
+    //             // Play video after player is initialized
+    //             const interval = setInterval(() => {
+    //                 if (newPlayer.playVideo) {
+    //                     newPlayer.playVideo();
+    //                     clearInterval(interval);
+    //                 }
+    //             })
+    //         };
+    //     } else if (!isPlaying) {
+    //         player.playVideo();
+    //     }
+    // }, [isPlaying, player, videoId, onPlayerStateChange]);
 
     useEffect(() => {
         if (isPlaying) {
@@ -113,7 +113,7 @@ const SecondScreen = () => {
     return (
         <div className={styles.container}>
             <TitleBlock title="Trea is waiting for you" description="Embark on a heroic quest to defend Mithruon from the Orgurin onslaught." mobileClassName={windowWidth <= 576} descriptionBottom={true} />
-            <motion.div className={styles.playButton} onClick={handlePlayVideo} animate={controls}>
+            <motion.div className={styles.playButton} onClick={() => {}} animate={controls}>
                 <img src='/icons/main-circle.svg' className={styles.mainCircle} loading='lazy' alt="Play" />
                 <motion.img
                     className={styles.partCircle1}
