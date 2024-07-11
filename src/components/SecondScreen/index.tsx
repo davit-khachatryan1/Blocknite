@@ -45,9 +45,9 @@ const SecondScreen = () => {
     // const videoId = 'ZaBl4QRO1oM';
     // const [player, setPlayer] = useState<any>(null);
     const [isPlaying, setIsPlaying] = useState(false);
-    const [showVideo, setShowVideo] = useState(false);
+    // const [showVideo, setShowVideo] = useState(false);
 
-    const playerRef = useRef<HTMLDivElement>(null);
+    // const playerRef = useRef<HTMLDivElement>(null);
     const controls = useAnimation();
 
     // const onPlayerStateChange = useCallback((event: any) => {
@@ -144,9 +144,9 @@ const SecondScreen = () => {
                     alt="Part Circle 2"
                 />
             </motion.div>
-            <div className={styles.video} style={{ opacity: showVideo ? 1 : 0 }}>
+            {/* <div className={styles.video} style={{ opacity: showVideo ? 1 : 0 }}>
                 <div ref={playerRef} style={{ width: '100%', height: '100%', position: 'absolute', left: 0, top: 0 }} />
-            </div>
+            </div> */}
             <div className={styles.carousel}>
                 <div className={styles.title}>Our partners</div>
                 <div className={styles.carouselContainer}>
