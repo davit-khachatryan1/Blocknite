@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkblocknite=self.webpackChunkblocknite||[]).push([[22],{1022:(i,e,n)=>{n.r(e),n.d(e,{default:()=>s});var t=n(5043),a=n(1984),d=n(579);const l=i=>{let{index:e,children:n}=i;return(0,d.jsx)(a.P.div,{initial:"hidden",animate:"visible",variants:{hidden:{opacity:0,y:0,x:-50},visible:{opacity:1,y:0,x:0}},transition:{duration:.4,delay:.2*e},children:n})},s=(0,t.memo)(l)}}]);
-//# sourceMappingURL=22.54b5c92a.chunk.js.map

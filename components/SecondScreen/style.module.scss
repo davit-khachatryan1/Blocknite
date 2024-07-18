@@ -1,0 +1,181 @@
+@import "../../styles/abstract/functions";
+@import "../../styles/base/variables";
+
+.container {
+    width: 100%;
+    height: 100%;
+    padding: calcVW(80);
+    display: flex;
+    flex-direction: column;
+
+    .playButton {
+        cursor: pointer;
+        position: absolute;
+        width: calcVW(176);
+        height: calcVW(176);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        left: calc(50% - calcVW(88));
+        top: calc(50% - calcVW(88));
+        z-index: 999;
+
+        .mainCircle {
+            width: calcVW(144);
+            height: calcVW(144);
+        }
+
+        .partCircle1 {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: calcVW(178);
+            height: calcVW(178);
+        }
+
+        .partCircle2 {
+            position: absolute;
+            left: calcVW(8);
+            top: calcVW(8);
+            width: calcVW(161);
+            height: calcVW(161);
+        }
+    }
+
+    .video {
+        position: absolute;
+        z-index: 1;
+        width: calcVW(1200);
+        height: calcVW(600);
+        top: calc(50% - calcVW(300));
+        left: calc(50% - calcVW(600));
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .carousel {
+        margin-top: auto;
+        margin-bottom: calcVW(50);
+        width: 100%;
+        display: flex;
+        column-gap: calcVW(100);
+        align-items: center;
+
+        .title {
+            @include header3;
+            color: $gold-400;
+            position: relative;
+            text-transform: uppercase;
+            text-wrap: nowrap;
+        }
+
+        .carouselContainer {
+            position: relative;
+            width: calcVW(1433);
+
+            .swiperElement {
+                cursor: pointer;
+
+                img {
+                    height: calcVW(40);
+                    width: auto;
+                    margin: 0 auto;
+                    outline: none !important;
+                }
+            }
+
+            :global(.slick-slide) {
+                div {
+                    outline: none !important;
+                }
+            }
+            :global(.slick-prev) {
+                right: calcVW(-25);
+                left: auto;
+                transform: rotate(180deg);
+                top: calcVW(12);
+                width: calcVW(20);
+                height: calcVW(20);
+            }
+            :global(.slick-next) {
+                left: calcVW(-25);
+                transform: rotate(180deg);
+                top: calcVW(12);
+                width: calcVW(20);
+                height: calcVW(20);
+            }
+        }
+    }
+
+    @media (max-width: 576px) {
+        padding: calcVWM(16);
+
+        .playButton {
+            width: calcVWM(92);
+            height: calcVWM(92);
+            left: calc(50% - calcVWM(44));
+            top: calc(50% - calcVWM(80));
+
+            .mainCircle {
+                width: calcVWM(77);
+                height: calcVWM(77);
+            }
+
+            .partCircle1 {
+                width: calcVWM(94);
+                height: calcVWM(94);
+            }
+
+            .partCircle2 {
+                left: calcVWM(4);
+                top: calcVWM(4);
+                width: calcVWM(85);
+                height: calcVWM(85);
+            }
+        }
+
+        .video {
+            position: absolute;
+            z-index: 1;
+            width: calcVWM(288);
+            height: calcVWM(150);
+            top: calc(50% - calcVWM(110));
+            left: calcVWM(16);
+        }
+
+        .carousel {
+            flex-direction: column;
+
+            .carouselContainer {
+                width: calcVWM(235);
+
+                .swiperElement {
+                    img {
+                        height: calcVWM(22);
+                    }
+                }
+                :global(.slick-next) {
+                    right: calcVWM(-30);
+                    left: auto;
+                    transform: rotate(0);
+                    top: calcVWM(12);
+                    width: calcVWM(20);
+                    height: calcVWM(20);
+                }
+                :global(.slick-prev) {
+                    left: calcVWM(-30);
+                    transform: rotate(0);
+                    top: calcVWM(12);
+                    width: calcVWM(20);
+                    height: calcVWM(20);
+                }
+            }
+
+            .title {
+                @include header3-mobile;
+                margin-bottom: calcVWM(16);
+            }
+        }
+    }
+}

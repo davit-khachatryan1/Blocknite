@@ -1,0 +1,11 @@
+@import './fonts.scss';
+@import './abstract/functions';
+@import './base/variables';
+
+
+.navbar {
+    position: fixed;
+    right: calcVW(50);
+    z-index: 100;
+    top: calc(50% - calcVW(128));
+  }

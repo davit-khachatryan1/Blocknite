@@ -1,0 +1,49 @@
+@import './fonts.scss';
+@import './abstract/functions';
+@import './base/variables';
+
+body {
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  border: 0;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgb(30, 33, 38);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $gold-400;
+    border-radius: calcVW(10);
+
+    &:hover {
+      background: $gold-300;
+      cursor: pointer;
+    }
+  }
+}
+
+.navbar {
+  position: fixed;
+  right: calcVW(50);
+  z-index: 100;
+  top: calc(50% - calcVW(128));
+}
