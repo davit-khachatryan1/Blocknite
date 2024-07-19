@@ -1,0 +1,16 @@
+{
+  "components\\ScrollContainer\\index.tsx -> ../Footer": {
+    "id": 4894,
+    "files": [
+      "static/css/cdd053cc81a2a3b4.css",
+      "static/chunks/894.5a1af678bbf2c4d0.js"
+    ]
+  },
+  "components\\ScrollContainer\\index.tsx -> ../Screen": {
+    "id": 6831,
+    "files": [
+      "static/css/1efb941dd0872676.css",
+      "static/chunks/831.5b31457bfef47a24.js"
+    ]
+  }
+}
