@@ -1,9 +1,8 @@
 import styles from './style.module.scss';
-import { useStateProvider } from '../../context/state';
-import { CSSProperties, lazy, memo, useEffect, useMemo, useState } from 'react';
+import { CSSProperties, memo, useMemo } from 'react';
 import useWindowSize from '@/utils/hooks/useWindowSize';
+import ParticleCanvas from '../Particles';
 
-import ParticleCanvas from "../Particles";
 
 interface ScreenProps {
   id: string;
@@ -11,11 +10,10 @@ interface ScreenProps {
   imageUrl: string;
   mobileImage: string;
   screen?: any;
+  windowWidth: number
 }
 
-const Screen: React.FC<ScreenProps> = ({ id, component, imageUrl, mobileImage, screen }) => {
-  const { windowWidth } = useWindowSize();
-  const [showParticles, setShowParticles] = useState(true);
+const Screen: React.FC<ScreenProps> = ({ id, component, imageUrl, mobileImage, screen, windowWidth }) => {
 
   const containerStyle: CSSProperties = useMemo(() => ({
     width: '100%',
@@ -39,25 +37,11 @@ const Screen: React.FC<ScreenProps> = ({ id, component, imageUrl, mobileImage, s
     overflow: 'hidden'
   }), []);
 
-  useEffect(() => {
-    if (windowWidth && showParticles) {
-      setShowParticles(false);
-      const timeout = setTimeout(() => {
-        setShowParticles(true);
-        clearTimeout(timeout)
-      }, 400)
-    }
-  }, [windowWidth])
-
-  console.log(windowWidth);
-  
   return (
     <div style={containerStyle} className={styles.container} id={id}>
-      {showParticles && (
         <div style={fullScreenStyle} >
-          {windowWidth && screen?.mobile && <ParticleCanvas {...(windowWidth <= 576 ? screen.mobile : screen.desktop)} />}
+          {windowWidth && screen?.mobile && <ParticleCanvas id={id} {...(windowWidth <= 576 ? screen.mobile : screen.desktop)}  windowWidth={windowWidth}/>}
         </div>
-      )}
       <div style={contentStyle}>
         {component}
       </div>

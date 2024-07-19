@@ -1,16 +1,15 @@
-import { lazy, memo, useEffect, useRef, useCallback } from 'react';
+import { memo, useEffect, useRef, useCallback } from 'react';
 import styles from './style.module.scss';
 import { useStateProvider } from '../../context/state';
 import { screens } from '../../constants/screens';
-import useWindowSize from '@/utils/hooks/useWindowSize';
+import dynamic from 'next/dynamic';
 
-import Screen from "../Screen";
-import Footer from "../Footer";
+const Screen = dynamic(() => import("../Screen"));
+const Footer = dynamic(() => import("../Footer"));
 
-const ScrollContainer = () => {
+const ScrollContainer = ({ windowWidth }: any) => {
   const { updatePage, setScrolling } = useStateProvider();
   const pages = useRef<HTMLDivElement | null>(null);
-  const { windowWidth } = useWindowSize()
 
 
   const checkCenter = useCallback(() => {
@@ -56,8 +55,9 @@ const ScrollContainer = () => {
 
   return (
     <div className={styles.container} ref={pages}>
-      {screens(windowWidth).map((screen, index) => (
+      {windowWidth ? screens(windowWidth).map((screen, index) => (
         <Screen
+          windowWidth={windowWidth}
           key={index}
           id={screen.id}
           component={screen.component}
@@ -65,7 +65,7 @@ const ScrollContainer = () => {
           mobileImage={screen.imageMobile}
           screen={screen}
         />
-      ))}
+      )) : <></>}
       <Footer />
     </div>
   );

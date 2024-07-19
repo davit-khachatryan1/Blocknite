@@ -18,6 +18,7 @@ export interface Particle {
 }
 
 export interface ParticleCanvasProps {
+    id: any,
     spaces: Point[][];
     minSpeed: number;
     maxSpeed: number;
@@ -28,4 +29,5 @@ export interface ParticleCanvasProps {
     minParticles: number;
     maxParticles: number;
     divade: number;
+    windowWidth: number
 }

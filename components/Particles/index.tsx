@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useCallback, memo } from 'react';
 import { calcVW } from '../../utils/hooks/functions';
 import { Particle, ParticleCanvasProps, Point } from '../../utils/interface/particles';
-import useWindowSize from '@/utils/hooks/useWindowSize';
 
 
 const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
+  id,
   spaces,
   minSpeed,
   maxSpeed,
@@ -15,8 +15,8 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
   minParticles,
   maxParticles,
   divade,
+  windowWidth
 }) => {
-  const { windowWidth } = useWindowSize()
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const particlesRef = useRef<Particle[]>([]);
 
@@ -230,63 +230,56 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
         ctx.fill();
       }
     });
-  }, []);
+  }, [particlesRef.current]);
 
-  const drawSpaces = useCallback((ctx: CanvasRenderingContext2D) => {
-    ctx.strokeStyle = '#000000';
-    spaces.forEach(space => {
-      ctx.beginPath();
-      ctx.moveTo(space[0].x, space[0].y);
-      space.forEach(point => ctx.lineTo(point.x, point.y));
-      ctx.closePath();
-      ctx.stroke();
-    });
-  }, [spaces]);
-
+  // const drawSpaces = useCallback((ctx: CanvasRenderingContext2D) => {
+  //   ctx.strokeStyle = '#000000';
+  //   spaces.forEach(space => {
+  //     ctx.beginPath();
+  //     ctx.moveTo(space[0].x, space[0].y);
+  //     space.forEach(point => ctx.lineTo(point.x, point.y));
+  //     ctx.closePath();
+  //     ctx.stroke();
+  //   });
+  // }, [spaces]);
 
   useEffect(() => {
-    if (windowWidth) {
-      setTimeout(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas?.getContext('2d');
+    if (ctx) {
+      const animate = () => {
+        // console.log("?????????????");
+        
+        particlesRef.current.forEach(updateParticlePosition);
+        drawParticles(ctx);
+        // drawSpaces(ctx);
+        requestAnimationFrame(animate);
+      };
 
+      if (particlesRef.current.length === 0) {
+        const numParticles = getRandomInt(minParticles, maxParticles);
 
-        const canvas = canvasRef.current;
-        console.log(canvas);
-
-        const ctx = canvas?.getContext('2d');
-        if (ctx) {
-          const animate = () => {
-            particlesRef.current.forEach(updateParticlePosition);
-            drawParticles(ctx);
-            drawSpaces(ctx);
-            requestAnimationFrame(animate);
-          };
-
-          if (particlesRef.current.length === 0) {
-            const numParticles = getRandomInt(minParticles, maxParticles);
-
-            for (let i = 0; i < numParticles; i++) {
-              particlesRef.current.push(createParticle(true));
-            }
-            animate();
-            const timout = setTimeout(() => {
-              clearTimeout(timout);
-              const createParticlesWithDelay = () => {
-                for (let i = 0; i < numParticles; i++) {
-                  const timout2 = setTimeout(() => {
-                    clearTimeout(timout2);
-                    particlesRef.current.push(createParticle(false));
-                  }, i * 200);
-                }
-              };
-              createParticlesWithDelay();
-            }, 1000);
-          }
+        for (let i = 0; i < numParticles; i++) {
+          particlesRef.current.push(createParticle(true));
         }
-      }, 500)
+        animate();
+        const timout = setTimeout(() => {
+          clearTimeout(timout);
+          const createParticlesWithDelay = () => {
+            for (let i = 0; i < numParticles; i++) {
+              const timout2 = setTimeout(() => {
+                clearTimeout(timout2);
+                particlesRef.current.push(createParticle(false));
+              }, i * 200);
+            }
+          };
+          createParticlesWithDelay();
+        }, 1000);
+      }
     }
-  }, [windowWidth]);
+  }, []);
 
-  return windowWidth ? <canvas ref={canvasRef} width={calcVW(1920, windowWidth, 320)} height={calcVW(1080, windowWidth, 568)} /> : <></>;
+  return <canvas id={id} ref={canvasRef} width={calcVW(1920, windowWidth, 320)} height={calcVW(1080, windowWidth, 568)} />;
 };
 
-export default memo(ParticleCanvas);
+export default ParticleCanvas;

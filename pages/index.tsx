@@ -6,11 +6,11 @@ import ScrollContainer from '@/components/ScrollContainer';
 import NavBar from '@/components/NavBar';
 
 export default function Home() {
-  const windowSize = useWindowSize();
+  const {windowWidth} = useWindowSize();
   return (
     <div>
       <StateProvider>
-        <ScrollContainer />
+        <ScrollContainer windowWidth={windowWidth}/>
         <div className={styles.navbar}>
           <NavBar />
         </div>
