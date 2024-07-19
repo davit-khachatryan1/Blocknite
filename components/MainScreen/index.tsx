@@ -1,4 +1,4 @@
-import { lazy, memo, useEffect, useState, useCallback, useMemo, CSSProperties } from 'react';
+import { memo, useEffect, useState, useCallback, useMemo, CSSProperties } from 'react';
 import { motion } from 'framer-motion';
 import { calcVW } from '../../utils/hooks/functions';
 import { useStateProvider } from '../../context/state';

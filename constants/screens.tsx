@@ -357,8 +357,8 @@ export const screens = (w: number) => ([
 
       minParticles: 400,
       maxParticles: 500,
-      minSpeed: calcVWP(5),
-      maxSpeed: calcVWP(10),
+      minSpeed: calcVWP(5, w),
+      maxSpeed: calcVWP(10, w),
       pointColors: ['#33FF5750'],
       pointMinSize: calcVWP(2, w),
       pointMaxSize: calcVWP(3, w),
@@ -369,745 +369,745 @@ export const screens = (w: number) => ([
       spaces: [
         [
           {
-            x: calcVWP(0),
-            y: calcVWP(238)
+            x: calcVWP(0, w),
+            y: calcVWP(238, w)
           },
           {
-            x: calcVWP(44),
-            y: calcVWP(211)
+            x: calcVWP(44, w),
+            y: calcVWP(211, w)
           },
           {
-            x: calcVWP(77),
-            y: calcVWP(188)
+            x: calcVWP(77, w),
+            y: calcVWP(188, w)
           },
           {
-            x: calcVWP(96),
-            y: calcVWP(174)
+            x: calcVWP(96, w),
+            y: calcVWP(174, w)
           },
           {
-            x: calcVWP(112),
-            y: calcVWP(169)
+            x: calcVWP(112, w),
+            y: calcVWP(169, w)
           },
           {
-            x: calcVWP(105),
-            y: calcVWP(176)
+            x: calcVWP(105, w),
+            y: calcVWP(176, w)
           },
           {
-            x: calcVWP(132),
-            y: calcVWP(173)
+            x: calcVWP(132, w),
+            y: calcVWP(173, w)
           },
           {
-            x: calcVWP(131),
-            y: calcVWP(179)
+            x: calcVWP(131, w),
+            y: calcVWP(179, w)
           },
           {
-            x: calcVWP(123),
-            y: calcVWP(180)
+            x: calcVWP(123, w),
+            y: calcVWP(180, w)
           },
           {
-            x: calcVWP(117),
-            y: calcVWP(185)
+            x: calcVWP(117, w),
+            y: calcVWP(185, w)
           },
           {
-            x: calcVWP(110),
-            y: calcVWP(188)
+            x: calcVWP(110, w),
+            y: calcVWP(188, w)
           },
           {
-            x: calcVWP(108),
-            y: calcVWP(180)
+            x: calcVWP(108, w),
+            y: calcVWP(180, w)
           },
           {
-            x: calcVWP(101),
-            y: calcVWP(191)
+            x: calcVWP(101, w),
+            y: calcVWP(191, w)
           },
           {
-            x: calcVWP(97),
-            y: calcVWP(191)
+            x: calcVWP(97, w),
+            y: calcVWP(191, w)
           },
           {
-            x: calcVWP(88),
-            y: calcVWP(179)
+            x: calcVWP(88, w),
+            y: calcVWP(179, w)
           },
           {
-            x: calcVWP(91),
-            y: calcVWP(187)
+            x: calcVWP(91, w),
+            y: calcVWP(187, w)
           },
           {
-            x: calcVWP(91),
-            y: calcVWP(194)
+            x: calcVWP(91, w),
+            y: calcVWP(194, w)
           },
           {
-            x: calcVWP(84),
-            y: calcVWP(197)
+            x: calcVWP(84, w),
+            y: calcVWP(197, w)
           },
           {
-            x: calcVWP(77),
-            y: calcVWP(191)
+            x: calcVWP(77, w),
+            y: calcVWP(191, w)
           },
           {
-            x: calcVWP(82),
-            y: calcVWP(203)
+            x: calcVWP(82, w),
+            y: calcVWP(203, w)
           },
           {
-            x: calcVWP(78),
-            y: calcVWP(207)
+            x: calcVWP(78, w),
+            y: calcVWP(207, w)
           },
           {
-            x: calcVWP(76),
-            y: calcVWP(204)
+            x: calcVWP(76, w),
+            y: calcVWP(204, w)
           },
           {
-            x: calcVWP(75),
-            y: calcVWP(212)
+            x: calcVWP(75, w),
+            y: calcVWP(212, w)
           },
           {
-            x: calcVWP(62),
-            y: calcVWP(198)
+            x: calcVWP(62, w),
+            y: calcVWP(198, w)
           },
           {
-            x: calcVWP(67),
-            y: calcVWP(217)
+            x: calcVWP(67, w),
+            y: calcVWP(217, w)
           },
           {
-            x: calcVWP(63),
-            y: calcVWP(226)
+            x: calcVWP(63, w),
+            y: calcVWP(226, w)
           },
           {
-            x: calcVWP(58),
-            y: calcVWP(227)
+            x: calcVWP(58, w),
+            y: calcVWP(227, w)
           },
           {
-            x: calcVWP(54),
-            y: calcVWP(218)
+            x: calcVWP(54, w),
+            y: calcVWP(218, w)
           },
           {
-            x: calcVWP(56),
-            y: calcVWP(237)
+            x: calcVWP(56, w),
+            y: calcVWP(237, w)
           },
           {
-            x: calcVWP(53),
-            y: calcVWP(242)
+            x: calcVWP(53, w),
+            y: calcVWP(242, w)
           },
           {
-            x: calcVWP(47),
-            y: calcVWP(236)
+            x: calcVWP(47, w),
+            y: calcVWP(236, w)
           },
           {
-            x: calcVWP(49),
-            y: calcVWP(251)
+            x: calcVWP(49, w),
+            y: calcVWP(251, w)
           },
           {
-            x: calcVWP(43),
-            y: calcVWP(248)
+            x: calcVWP(43, w),
+            y: calcVWP(248, w)
           },
           {
-            x: calcVWP(48),
-            y: calcVWP(257)
+            x: calcVWP(48, w),
+            y: calcVWP(257, w)
           },
           {
-            x: calcVWP(45),
-            y: calcVWP(273)
+            x: calcVWP(45, w),
+            y: calcVWP(273, w)
           },
           {
-            x: calcVWP(54),
-            y: calcVWP(291)
+            x: calcVWP(54, w),
+            y: calcVWP(291, w)
           },
           {
-            x: calcVWP(69),
-            y: calcVWP(299)
+            x: calcVWP(69, w),
+            y: calcVWP(299, w)
           },
           {
-            x: calcVWP(79),
-            y: calcVWP(299)
+            x: calcVWP(79, w),
+            y: calcVWP(299, w)
           },
           {
-            x: calcVWP(90),
-            y: calcVWP(299)
+            x: calcVWP(90, w),
+            y: calcVWP(299, w)
           },
           {
-            x: calcVWP(98),
-            y: calcVWP(298)
+            x: calcVWP(98, w),
+            y: calcVWP(298, w)
           },
           {
-            x: calcVWP(99),
-            y: calcVWP(294)
+            x: calcVWP(99, w),
+            y: calcVWP(294, w)
           },
           {
-            x: calcVWP(95),
-            y: calcVWP(280)
+            x: calcVWP(95, w),
+            y: calcVWP(280, w)
           },
           {
-            x: calcVWP(93),
-            y: calcVWP(278)
+            x: calcVWP(93, w),
+            y: calcVWP(278, w)
           },
           {
-            x: calcVWP(89),
-            y: calcVWP(277)
+            x: calcVWP(89, w),
+            y: calcVWP(277, w)
           },
           {
-            x: calcVWP(85),
-            y: calcVWP(271)
+            x: calcVWP(85, w),
+            y: calcVWP(271, w)
           },
           {
-            x: calcVWP(86),
-            y: calcVWP(265)
+            x: calcVWP(86, w),
+            y: calcVWP(265, w)
           },
           {
-            x: calcVWP(98),
-            y: calcVWP(271)
+            x: calcVWP(98, w),
+            y: calcVWP(271, w)
           },
           {
-            x: calcVWP(97),
-            y: calcVWP(274)
+            x: calcVWP(97, w),
+            y: calcVWP(274, w)
           },
           {
-            x: calcVWP(96),
-            y: calcVWP(280)
+            x: calcVWP(96, w),
+            y: calcVWP(280, w)
           },
           {
-            x: calcVWP(99),
-            y: calcVWP(294)
+            x: calcVWP(99, w),
+            y: calcVWP(294, w)
           },
           {
-            x: calcVWP(103),
-            y: calcVWP(293)
+            x: calcVWP(103, w),
+            y: calcVWP(293, w)
           },
           {
-            x: calcVWP(108),
-            y: calcVWP(271)
+            x: calcVWP(108, w),
+            y: calcVWP(271, w)
           },
           {
-            x: calcVWP(104),
-            y: calcVWP(260)
+            x: calcVWP(104, w),
+            y: calcVWP(260, w)
           },
           {
-            x: calcVWP(99),
-            y: calcVWP(255)
+            x: calcVWP(99, w),
+            y: calcVWP(255, w)
           },
           {
-            x: calcVWP(99),
-            y: calcVWP(249)
+            x: calcVWP(99, w),
+            y: calcVWP(249, w)
           },
           {
-            x: calcVWP(109),
-            y: calcVWP(243)
+            x: calcVWP(109, w),
+            y: calcVWP(243, w)
           },
           {
-            x: calcVWP(123),
-            y: calcVWP(242)
+            x: calcVWP(123, w),
+            y: calcVWP(242, w)
           },
           {
-            x: calcVWP(131),
-            y: calcVWP(246)
+            x: calcVWP(131, w),
+            y: calcVWP(246, w)
           },
           {
-            x: calcVWP(130),
-            y: calcVWP(240)
+            x: calcVWP(130, w),
+            y: calcVWP(240, w)
           },
           {
-            x: calcVWP(138),
-            y: calcVWP(236)
+            x: calcVWP(138, w),
+            y: calcVWP(236, w)
           },
           {
-            x: calcVWP(139),
-            y: calcVWP(233)
+            x: calcVWP(139, w),
+            y: calcVWP(233, w)
           },
           {
-            x: calcVWP(146),
-            y: calcVWP(233)
+            x: calcVWP(146, w),
+            y: calcVWP(233, w)
           },
           {
-            x: calcVWP(151),
-            y: calcVWP(236)
+            x: calcVWP(151, w),
+            y: calcVWP(236, w)
           },
           {
-            x: calcVWP(147),
-            y: calcVWP(228)
+            x: calcVWP(147, w),
+            y: calcVWP(228, w)
           },
           {
-            x: calcVWP(156),
-            y: calcVWP(223)
+            x: calcVWP(156, w),
+            y: calcVWP(223, w)
           },
           {
-            x: calcVWP(156),
-            y: calcVWP(220)
+            x: calcVWP(156, w),
+            y: calcVWP(220, w)
           },
           {
-            x: calcVWP(165),
-            y: calcVWP(212)
+            x: calcVWP(165, w),
+            y: calcVWP(212, w)
           },
           {
-            x: calcVWP(158),
-            y: calcVWP(216)
+            x: calcVWP(158, w),
+            y: calcVWP(216, w)
           },
           {
-            x: calcVWP(159),
-            y: calcVWP(206)
+            x: calcVWP(159, w),
+            y: calcVWP(206, w)
           },
           {
-            x: calcVWP(166),
-            y: calcVWP(197)
+            x: calcVWP(166, w),
+            y: calcVWP(197, w)
           },
           {
-            x: calcVWP(161),
-            y: calcVWP(194)
+            x: calcVWP(161, w),
+            y: calcVWP(194, w)
           },
           {
-            x: calcVWP(180),
-            y: calcVWP(186)
+            x: calcVWP(180, w),
+            y: calcVWP(186, w)
           },
           {
-            x: calcVWP(187),
-            y: calcVWP(176)
+            x: calcVWP(187, w),
+            y: calcVWP(176, w)
           },
           {
-            x: calcVWP(194),
-            y: calcVWP(169)
+            x: calcVWP(194, w),
+            y: calcVWP(169, w)
           },
           {
-            x: calcVWP(210),
-            y: calcVWP(182)
+            x: calcVWP(210, w),
+            y: calcVWP(182, w)
           },
           {
-            x: calcVWP(216),
-            y: calcVWP(183)
+            x: calcVWP(216, w),
+            y: calcVWP(183, w)
           },
           {
-            x: calcVWP(220),
-            y: calcVWP(186)
+            x: calcVWP(220, w),
+            y: calcVWP(186, w)
           },
           {
-            x: calcVWP(230),
-            y: calcVWP(191)
+            x: calcVWP(230, w),
+            y: calcVWP(191, w)
           },
           {
-            x: calcVWP(234),
-            y: calcVWP(193)
+            x: calcVWP(234, w),
+            y: calcVWP(193, w)
           },
           {
-            x: calcVWP(234),
-            y: calcVWP(196)
+            x: calcVWP(234, w),
+            y: calcVWP(196, w)
           },
           {
-            x: calcVWP(222),
-            y: calcVWP(193)
+            x: calcVWP(222, w),
+            y: calcVWP(193, w)
           },
           {
-            x: calcVWP(232),
-            y: calcVWP(198)
+            x: calcVWP(232, w),
+            y: calcVWP(198, w)
           },
           {
-            x: calcVWP(227),
-            y: calcVWP(202)
+            x: calcVWP(227, w),
+            y: calcVWP(202, w)
           },
           {
-            x: calcVWP(214),
-            y: calcVWP(206)
+            x: calcVWP(214, w),
+            y: calcVWP(206, w)
           },
           {
-            x: calcVWP(227),
-            y: calcVWP(207)
+            x: calcVWP(227, w),
+            y: calcVWP(207, w)
           },
           {
-            x: calcVWP(201),
-            y: calcVWP(223)
+            x: calcVWP(201, w),
+            y: calcVWP(223, w)
           },
           {
-            x: calcVWP(195),
-            y: calcVWP(223)
+            x: calcVWP(195, w),
+            y: calcVWP(223, w)
           },
           {
-            x: calcVWP(207),
-            y: calcVWP(226)
+            x: calcVWP(207, w),
+            y: calcVWP(226, w)
           },
           {
-            x: calcVWP(192),
-            y: calcVWP(233)
+            x: calcVWP(192, w),
+            y: calcVWP(233, w)
           },
           {
-            x: calcVWP(181),
-            y: calcVWP(234)
+            x: calcVWP(181, w),
+            y: calcVWP(234, w)
           },
           {
-            x: calcVWP(170),
-            y: calcVWP(234)
+            x: calcVWP(170, w),
+            y: calcVWP(234, w)
           },
           {
-            x: calcVWP(163),
-            y: calcVWP(231)
+            x: calcVWP(163, w),
+            y: calcVWP(231, w)
           },
           {
-            x: calcVWP(171),
-            y: calcVWP(240)
+            x: calcVWP(171, w),
+            y: calcVWP(240, w)
           },
           {
-            x: calcVWP(168),
-            y: calcVWP(242)
+            x: calcVWP(168, w),
+            y: calcVWP(242, w)
           },
           {
-            x: calcVWP(179),
-            y: calcVWP(244)
+            x: calcVWP(179, w),
+            y: calcVWP(244, w)
           },
           {
-            x: calcVWP(157),
-            y: calcVWP(259)
+            x: calcVWP(157, w),
+            y: calcVWP(259, w)
           },
           {
-            x: calcVWP(143),
-            y: calcVWP(276)
+            x: calcVWP(143, w),
+            y: calcVWP(276, w)
           },
           {
-            x: calcVWP(158),
-            y: calcVWP(267)
+            x: calcVWP(158, w),
+            y: calcVWP(267, w)
           },
           {
-            x: calcVWP(160),
-            y: calcVWP(269)
+            x: calcVWP(160, w),
+            y: calcVWP(269, w)
           },
           {
-            x: calcVWP(167),
-            y: calcVWP(265)
+            x: calcVWP(167, w),
+            y: calcVWP(265, w)
           },
           {
-            x: calcVWP(152),
-            y: calcVWP(282)
+            x: calcVWP(152, w),
+            y: calcVWP(282, w)
           },
           {
-            x: calcVWP(178),
-            y: calcVWP(264)
+            x: calcVWP(178, w),
+            y: calcVWP(264, w)
           },
           {
-            x: calcVWP(169),
-            y: calcVWP(272)
+            x: calcVWP(169, w),
+            y: calcVWP(272, w)
           },
           {
-            x: calcVWP(163),
-            y: calcVWP(282)
+            x: calcVWP(163, w),
+            y: calcVWP(282, w)
           },
           {
-            x: calcVWP(148),
-            y: calcVWP(298)
+            x: calcVWP(148, w),
+            y: calcVWP(298, w)
           },
           {
-            x: calcVWP(145),
-            y: calcVWP(307)
+            x: calcVWP(145, w),
+            y: calcVWP(307, w)
           },
           {
-            x: calcVWP(146),
-            y: calcVWP(313)
+            x: calcVWP(146, w),
+            y: calcVWP(313, w)
           },
           {
-            x: calcVWP(146),
-            y: calcVWP(316)
+            x: calcVWP(146, w),
+            y: calcVWP(316, w)
           },
           {
-            x: calcVWP(139),
-            y: calcVWP(324)
+            x: calcVWP(139, w),
+            y: calcVWP(324, w)
           },
           {
-            x: calcVWP(136),
-            y: calcVWP(323)
+            x: calcVWP(136, w),
+            y: calcVWP(323, w)
           },
           {
-            x: calcVWP(128),
-            y: calcVWP(319)
+            x: calcVWP(128, w),
+            y: calcVWP(319, w)
           },
           {
-            x: calcVWP(124),
-            y: calcVWP(318)
+            x: calcVWP(124, w),
+            y: calcVWP(318, w)
           },
           {
-            x: calcVWP(117),
-            y: calcVWP(312)
+            x: calcVWP(117, w),
+            y: calcVWP(312, w)
           },
           {
-            x: calcVWP(126),
-            y: calcVWP(331)
+            x: calcVWP(126, w),
+            y: calcVWP(331, w)
           },
           {
-            x: calcVWP(127),
-            y: calcVWP(336)
+            x: calcVWP(127, w),
+            y: calcVWP(336, w)
           },
           {
-            x: calcVWP(124),
-            y: calcVWP(339)
+            x: calcVWP(124, w),
+            y: calcVWP(339, w)
           },
           {
-            x: calcVWP(114),
-            y: calcVWP(341)
+            x: calcVWP(114, w),
+            y: calcVWP(341, w)
           },
           {
-            x: calcVWP(108),
-            y: calcVWP(341)
+            x: calcVWP(108, w),
+            y: calcVWP(341, w)
           },
           {
-            x: calcVWP(104),
-            y: calcVWP(344)
+            x: calcVWP(104, w),
+            y: calcVWP(344, w)
           },
           {
-            x: calcVWP(102),
-            y: calcVWP(343)
+            x: calcVWP(102, w),
+            y: calcVWP(343, w)
           },
           {
-            x: calcVWP(86),
-            y: calcVWP(346)
+            x: calcVWP(86, w),
+            y: calcVWP(346, w)
           },
           {
-            x: calcVWP(74),
-            y: calcVWP(347)
+            x: calcVWP(74, w),
+            y: calcVWP(347, w)
           },
           {
-            x: calcVWP(56),
-            y: calcVWP(342)
+            x: calcVWP(56, w),
+            y: calcVWP(342, w)
           },
           {
-            x: calcVWP(60),
-            y: calcVWP(334)
+            x: calcVWP(60, w),
+            y: calcVWP(334, w)
           },
           {
-            x: calcVWP(50),
-            y: calcVWP(338)
+            x: calcVWP(50, w),
+            y: calcVWP(338, w)
           },
           {
-            x: calcVWP(31),
-            y: calcVWP(329)
+            x: calcVWP(31, w),
+            y: calcVWP(329, w)
           },
           {
-            x: calcVWP(33),
-            y: calcVWP(337)
+            x: calcVWP(33, w),
+            y: calcVWP(337, w)
           },
           {
-            x: calcVWP(16),
-            y: calcVWP(331)
+            x: calcVWP(16, w),
+            y: calcVWP(331, w)
           },
           {
-            x: calcVWP(14),
-            y: calcVWP(324)
+            x: calcVWP(14, w),
+            y: calcVWP(324, w)
           },
           {
-            x: calcVWP(7),
-            y: calcVWP(328)
+            x: calcVWP(7, w),
+            y: calcVWP(328, w)
           },
           {
-            x: calcVWP(2),
-            y: calcVWP(327)
+            x: calcVWP(2, w),
+            y: calcVWP(327, w)
           },
           {
-            x: calcVWP(6),
-            y: calcVWP(316)
+            x: calcVWP(6, w),
+            y: calcVWP(316, w)
           },
           {
-            x: calcVWP(0),
-            y: calcVWP(319)
+            x: calcVWP(0, w),
+            y: calcVWP(319, w)
           }
         ],
         [
           {
-            x: calcVWP(218),
-            y: calcVWP(327)
+            x: calcVWP(218, w),
+            y: calcVWP(327, w)
           },
           {
-            x: calcVWP(224),
-            y: calcVWP(326)
+            x: calcVWP(224, w),
+            y: calcVWP(326, w)
           },
           {
-            x: calcVWP(241),
-            y: calcVWP(316)
+            x: calcVWP(241, w),
+            y: calcVWP(316, w)
           },
           {
-            x: calcVWP(242),
-            y: calcVWP(313)
+            x: calcVWP(242, w),
+            y: calcVWP(313, w)
           },
           {
-            x: calcVWP(245),
-            y: calcVWP(316)
+            x: calcVWP(245, w),
+            y: calcVWP(316, w)
           },
           {
-            x: calcVWP(246),
-            y: calcVWP(313)
+            x: calcVWP(246, w),
+            y: calcVWP(313, w)
           },
           {
-            x: calcVWP(274),
-            y: calcVWP(312)
+            x: calcVWP(274, w),
+            y: calcVWP(312, w)
           },
           {
-            x: calcVWP(266),
-            y: calcVWP(306)
+            x: calcVWP(266, w),
+            y: calcVWP(306, w)
           },
           {
-            x: calcVWP(270),
-            y: calcVWP(301)
+            x: calcVWP(270, w),
+            y: calcVWP(301, w)
           },
           {
-            x: calcVWP(273),
-            y: calcVWP(307)
+            x: calcVWP(273, w),
+            y: calcVWP(307, w)
           },
           {
-            x: calcVWP(276),
-            y: calcVWP(310)
+            x: calcVWP(276, w),
+            y: calcVWP(310, w)
           },
           {
-            x: calcVWP(281),
-            y: calcVWP(320)
+            x: calcVWP(281, w),
+            y: calcVWP(320, w)
           },
           {
-            x: calcVWP(282),
-            y: calcVWP(317)
+            x: calcVWP(282, w),
+            y: calcVWP(317, w)
           },
           {
-            x: calcVWP(289),
-            y: calcVWP(324)
+            x: calcVWP(289, w),
+            y: calcVWP(324, w)
           },
           {
-            x: calcVWP(294),
-            y: calcVWP(331)
+            x: calcVWP(294, w),
+            y: calcVWP(331, w)
           },
           {
-            x: calcVWP(294),
-            y: calcVWP(338)
+            x: calcVWP(294, w),
+            y: calcVWP(338, w)
           },
           {
-            x: calcVWP(301),
-            y: calcVWP(331)
+            x: calcVWP(301, w),
+            y: calcVWP(331, w)
           },
           {
-            x: calcVWP(301),
-            y: calcVWP(328)
+            x: calcVWP(301, w),
+            y: calcVWP(328, w)
           },
           {
-            x: calcVWP(304),
-            y: calcVWP(323)
+            x: calcVWP(304, w),
+            y: calcVWP(323, w)
           },
           {
-            x: calcVWP(304),
-            y: calcVWP(320)
+            x: calcVWP(304, w),
+            y: calcVWP(320, w)
           },
           {
-            x: calcVWP(306),
-            y: calcVWP(322)
+            x: calcVWP(306, w),
+            y: calcVWP(322, w)
           },
           {
-            x: calcVWP(307),
-            y: calcVWP(315)
+            x: calcVWP(307, w),
+            y: calcVWP(315, w)
           },
           {
-            x: calcVWP(309),
-            y: calcVWP(314)
+            x: calcVWP(309, w),
+            y: calcVWP(314, w)
           },
           {
-            x: calcVWP(311),
-            y: calcVWP(303)
+            x: calcVWP(311, w),
+            y: calcVWP(303, w)
           },
           {
-            x: calcVWP(317),
-            y: calcVWP(308)
+            x: calcVWP(317, w),
+            y: calcVWP(308, w)
           },
           {
-            x: calcVWP(317),
-            y: calcVWP(301)
+            x: calcVWP(317, w),
+            y: calcVWP(301, w)
           },
           {
-            x: calcVWP(315),
-            y: calcVWP(292)
+            x: calcVWP(315, w),
+            y: calcVWP(292, w)
           },
           {
-            x: calcVWP(317),
-            y: calcVWP(292)
+            x: calcVWP(317, w),
+            y: calcVWP(292, w)
           },
           {
-            x: calcVWP(317),
-            y: calcVWP(347)
+            x: calcVWP(317, w),
+            y: calcVWP(347, w)
           },
           {
-            x: calcVWP(311),
-            y: calcVWP(350)
+            x: calcVWP(311, w),
+            y: calcVWP(350, w)
           },
           {
-            x: calcVWP(308),
-            y: calcVWP(352)
+            x: calcVWP(308, w),
+            y: calcVWP(352, w)
           },
           {
-            x: calcVWP(302),
-            y: calcVWP(348)
+            x: calcVWP(302, w),
+            y: calcVWP(348, w)
           },
           {
-            x: calcVWP(299),
-            y: calcVWP(351)
+            x: calcVWP(299, w),
+            y: calcVWP(351, w)
           },
           {
-            x: calcVWP(289),
-            y: calcVWP(353)
+            x: calcVWP(289, w),
+            y: calcVWP(353, w)
           },
           {
-            x: calcVWP(282),
-            y: calcVWP(352)
+            x: calcVWP(282, w),
+            y: calcVWP(352, w)
           },
           {
-            x: calcVWP(275),
-            y: calcVWP(349)
+            x: calcVWP(275, w),
+            y: calcVWP(349, w)
           },
           {
-            x: calcVWP(268),
-            y: calcVWP(349)
+            x: calcVWP(268, w),
+            y: calcVWP(349, w)
           },
           {
-            x: calcVWP(263),
-            y: calcVWP(347)
+            x: calcVWP(263, w),
+            y: calcVWP(347, w)
           },
           {
-            x: calcVWP(258),
-            y: calcVWP(348)
+            x: calcVWP(258, w),
+            y: calcVWP(348, w)
           },
           {
-            x: calcVWP(255),
-            y: calcVWP(344)
+            x: calcVWP(255, w),
+            y: calcVWP(344, w)
           },
           {
-            x: calcVWP(244),
-            y: calcVWP(346)
+            x: calcVWP(244, w),
+            y: calcVWP(346, w)
           },
           {
-            x: calcVWP(241),
-            y: calcVWP(343)
+            x: calcVWP(241, w),
+            y: calcVWP(343, w)
           },
           {
-            x: calcVWP(236),
-            y: calcVWP(342)
+            x: calcVWP(236, w),
+            y: calcVWP(342, w)
           },
           {
-            x: calcVWP(231),
-            y: calcVWP(344)
+            x: calcVWP(231, w),
+            y: calcVWP(344, w)
           },
           {
-            x: calcVWP(228),
-            y: calcVWP(341)
+            x: calcVWP(228, w),
+            y: calcVWP(341, w)
           },
           {
-            x: calcVWP(222),
-            y: calcVWP(342)
+            x: calcVWP(222, w),
+            y: calcVWP(342, w)
           },
           {
-            x: calcVWP(218),
-            y: calcVWP(346)
+            x: calcVWP(218, w),
+            y: calcVWP(346, w)
           },
           {
-            x: calcVWP(209),
-            y: calcVWP(345)
+            x: calcVWP(209, w),
+            y: calcVWP(345, w)
           },
           {
-            x: calcVWP(207),
-            y: calcVWP(344)
+            x: calcVWP(207, w),
+            y: calcVWP(344, w)
           },
           {
-            x: calcVWP(204),
-            y: calcVWP(343)
+            x: calcVWP(204, w),
+            y: calcVWP(343, w)
           }
         ]
       ] as Point[][],
       minParticles: 400,
       maxParticles: 500,
-      minSpeed: calcVWP(2),
-      maxSpeed: calcVWP(5),
+      minSpeed: calcVWP(2, w),
+      maxSpeed: calcVWP(5, w),
       pointColors: ['#33FF5750'],
       pointMinSize: calcVWP(1, w),
       pointMaxSize: calcVWP(1.5, w),
@@ -1186,89 +1186,89 @@ export const screens = (w: number) => ([
 
       minParticles: 500,
       maxParticles: 600,
-      minSpeed: calcVWP(5),
-      maxSpeed: calcVWP(10),
+      minSpeed: calcVWP(5, w),
+      maxSpeed: calcVWP(10, w),
       pointColors: ['#ff910080'],
       pointMinSize: calcVWP(2, w),
       pointMaxSize: calcVWP(3, w),
       movementDirection: 'bottom-to-top',
       noVisible: "top",
-      divade: calcVWD(5)
+      divade: calcVWD(5, w)
     },
     mobile: {
       spaces: [
         [
           {
-            x: calcVWP(28),
-            y: calcVWP(296)
+            x: calcVWP(28, w),
+            y: calcVWP(296, w)
           },
           {
-            x: calcVWP(1),
-            y: calcVWP(279)
+            x: calcVWP(1, w),
+            y: calcVWP(279, w)
           },
           {
-            x: calcVWP(1),
-            y: calcVWP(219)
+            x: calcVWP(1, w),
+            y: calcVWP(219, w)
           },
           {
-            x: calcVWP(32),
-            y: calcVWP(205)
+            x: calcVWP(32, w),
+            y: calcVWP(205, w)
           },
           {
-            x: calcVWP(66),
-            y: calcVWP(222)
+            x: calcVWP(66, w),
+            y: calcVWP(222, w)
           },
           {
-            x: calcVWP(56),
-            y: calcVWP(271)
+            x: calcVWP(56, w),
+            y: calcVWP(271, w)
           },
           {
-            x: calcVWP(41),
-            y: calcVWP(293)
+            x: calcVWP(41, w),
+            y: calcVWP(293, w)
           },
           {
-            x: calcVWP(31),
-            y: calcVWP(295)
+            x: calcVWP(31, w),
+            y: calcVWP(295, w)
           }
         ],
         [
           {
-            x: calcVWP(307),
-            y: calcVWP(299)
+            x: calcVWP(307, w),
+            y: calcVWP(299, w)
           },
           {
-            x: calcVWP(282),
-            y: calcVWP(281)
+            x: calcVWP(282, w),
+            y: calcVWP(281, w)
           },
           {
-            x: calcVWP(274),
-            y: calcVWP(231)
+            x: calcVWP(274, w),
+            y: calcVWP(231, w)
           },
           {
-            x: calcVWP(293),
-            y: calcVWP(195)
+            x: calcVWP(293, w),
+            y: calcVWP(195, w)
           },
           {
-            x: calcVWP(317),
-            y: calcVWP(206)
+            x: calcVWP(317, w),
+            y: calcVWP(206, w)
           },
           {
-            x: calcVWP(317),
-            y: calcVWP(298)
+            x: calcVWP(317, w),
+            y: calcVWP(298, w)
           }
         ]
       ] as Point[][],
 
       minParticles: 500,
       maxParticles: 600,
-      minSpeed: calcVWP(5),
-      maxSpeed: calcVWP(10),
+      minSpeed: calcVWP(5, w),
+      maxSpeed: calcVWP(10, w),
       pointColors: ['#ff910080'],
       pointMinSize: calcVWP(1, w),
       pointMaxSize: calcVWP(1.5, w),
       movementDirection: 'bottom-to-top',
       noVisible: "top",
-      divade: calcVWD(5)
+      divade: calcVWD(5, w)
     }
   },
   {
@@ -1297,68 +1297,68 @@ export const screens = (w: number) => ([
 
       minParticles: 150,
       maxParticles: 250,
-      minSpeed: calcVWP(5),
-      maxSpeed: calcVWP(10),
+      minSpeed: calcVWP(5, w),
+      maxSpeed: calcVWP(10, w),
       pointColors: ['#FF004570', '#00000070'],
       pointMinSize: calcVWP(2, w),
       pointMaxSize: calcVWP(3, w),
       movementDirection: 'right-bottom-to-left-top',
-      divade: calcVWD(5)
+      divade: calcVWD(5, w)
     },
     mobile: {
       spaces: [
         [
           {
-            x: calcVWP(1),
-            y: calcVWP(46)
+            x: calcVWP(1, w),
+            y: calcVWP(46, w)
           },
           {
-            x: calcVWP(227),
-            y: calcVWP(50)
+            x: calcVWP(227, w),
+            y: calcVWP(50, w)
           },
           {
-            x: calcVWP(316),
-            y: calcVWP(112)
+            x: calcVWP(316, w),
+            y: calcVWP(112, w)
           },
           {
-            x: calcVWP(314),
-            y: calcVWP(244)
+            x: calcVWP(314, w),
+            y: calcVWP(244, w)
           },
           {
-            x: calcVWP(315),
-            y: calcVWP(500)
+            x: calcVWP(315, w),
+            y: calcVWP(500, w)
           },
           {
-            x: calcVWP(222),
-            y: calcVWP(444)
+            x: calcVWP(222, w),
+            y: calcVWP(444, w)
           },
           {
-            x: calcVWP(142),
-            y: calcVWP(408)
+            x: calcVWP(142, w),
+            y: calcVWP(408, w)
           },
           {
-            x: calcVWP(99),
-            y: calcVWP(276)
+            x: calcVWP(99, w),
+            y: calcVWP(276, w)
           },
           {
-            x: calcVWP(26),
-            y: calcVWP(299)
+            x: calcVWP(26, w),
+            y: calcVWP(299, w)
           },
           {
-            x: calcVWP(2),
-            y: calcVWP(247)
+            x: calcVWP(2, w),
+            y: calcVWP(247, w)
           }
         ]
       ] as Point[][],
       minParticles: 150,
       maxParticles: 250,
-      minSpeed: calcVWP(5),
-      maxSpeed: calcVWP(10),
+      minSpeed: calcVWP(5, w),
+      maxSpeed: calcVWP(10, w),
       pointColors: ['#FF004570', '#00000070'],
       pointMinSize: calcVWP(1, w),
       pointMaxSize: calcVWP(1.5, w),
       movementDirection: 'right-bottom-to-left-top',
-      divade: calcVWD(5)
+      divade: calcVWD(5, w)
     }
   },
   { id: 'tokenomics', color: 'yellow', name: 'Tokenomics', component: <FourthScreen />, imageUrl: '/bg-images/fourth-bg.webp', imageMobile: '/bg-images/fourth-mobile-bg.webp' },
@@ -1403,90 +1403,90 @@ export const screens = (w: number) => ([
 
       minParticles: 400,
       maxParticles: 500,
-      minSpeed: calcVWP(5),
-      maxSpeed: calcVWP(10),
+      minSpeed: calcVWP(5, w),
+      maxSpeed: calcVWP(10, w),
       pointColors: ['#FF00FF60'],
       pointMinSize: calcVWP(2, w),
       pointMaxSize: calcVWP(3, w),
       movementDirection: 'right-top-to-left-bottom',
       noVisible: "left",
-      divade: calcVWD(5)
+      divade: calcVWD(5, w)
     },
     mobile: {
       spaces: [
         [
           {
-            x: calcVWP(0),
-            y: calcVWP(50)
+            x: calcVWP(0, w),
+            y: calcVWP(50, w)
           },
           {
-            x: calcVWP(64),
-            y: calcVWP(9)
+            x: calcVWP(64, w),
+            y: calcVWP(9, w)
           },
           {
-            x: calcVWP(156),
-            y: calcVWP(34)
+            x: calcVWP(156, w),
+            y: calcVWP(34, w)
           },
           {
-            x: calcVWP(219),
-            y: calcVWP(6)
+            x: calcVWP(219, w),
+            y: calcVWP(6, w)
           },
           {
-            x: calcVWP(288),
-            y: calcVWP(57)
+            x: calcVWP(288, w),
+            y: calcVWP(57, w)
           },
           {
-            x: calcVWP(320),
-            y: calcVWP(114)
+            x: calcVWP(320, w),
+            y: calcVWP(114, w)
           },
           {
-            x: calcVWP(320),
-            y: calcVWP(204)
+            x: calcVWP(320, w),
+            y: calcVWP(204, w)
           },
           {
-            x: calcVWP(320),
-            y: calcVWP(264)
+            x: calcVWP(320, w),
+            y: calcVWP(264, w)
           },
           {
-            x: calcVWP(320),
-            y: calcVWP(330)
+            x: calcVWP(320, w),
+            y: calcVWP(330, w)
           },
           {
-            x: calcVWP(320),
-            y: calcVWP(568)
+            x: calcVWP(320, w),
+            y: calcVWP(568, w)
           },
           {
-            x: calcVWP(200),
-            y: calcVWP(500)
+            x: calcVWP(200, w),
+            y: calcVWP(500, w)
           },
           {
-            x: calcVWP(150),
-            y: calcVWP(540)
+            x: calcVWP(150, w),
+            y: calcVWP(540, w)
           },
           {
-            x: calcVWP(100),
-            y: calcVWP(520)
+            x: calcVWP(100, w),
+            y: calcVWP(520, w)
           },
           {
-            x: calcVWP(50),
-            y: calcVWP(568)
+            x: calcVWP(50, w),
+            y: calcVWP(568, w)
           },
           {
-            x: calcVWP(0),
-            y: calcVWP(540)
+            x: calcVWP(0, w),
+            y: calcVWP(540, w)
           }
         ]
       ] as Point[][],
       minParticles: 400,
       maxParticles: 500,
-      minSpeed: calcVWP(5),
-      maxSpeed: calcVWP(10),
+      minSpeed: calcVWP(5, w),
+      maxSpeed: calcVWP(10, w),
       pointColors: ['#FF00FF60'],
       pointMinSize: calcVWP(1, w),
       pointMaxSize: calcVWP(1.5, w),
       movementDirection: 'right-top-to-left-bottom',
       noVisible: "left",
-      divade: calcVWD(5)
+      divade: calcVWD(5, w)
     }
   },
   {
@@ -1557,68 +1557,68 @@ export const screens = (w: number) => ([
 
       minParticles: 300,
       maxParticles: 400,
-      minSpeed: calcVWP(5),
-      maxSpeed: calcVWP(10),
+      minSpeed: calcVWP(5, w),
+      maxSpeed: calcVWP(10, w),
       pointColors: ['#00EEFF'],
       pointMinSize: calcVWP(1.5, w),
       pointMaxSize: calcVWP(2.5, w),
       movementDirection: 'bottom-to-top',
       noVisible: "bottom",
-      divade: calcVWD(5)
+      divade: calcVWD(5, w)
     },
     mobile: {
       spaces: [
         [
           {
-            x: calcVWP(320),
-            y: calcVWP(464)
+            x: calcVWP(320, w),
+            y: calcVWP(464, w)
           },
           {
-            x: calcVWP(282),
-            y: calcVWP(443)
+            x: calcVWP(282, w),
+            y: calcVWP(443, w)
           },
           {
-            x: calcVWP(283),
-            y: calcVWP(405)
+            x: calcVWP(283, w),
+            y: calcVWP(405, w)
           },
           {
-            x: calcVWP(320),
-            y: calcVWP(389)
+            x: calcVWP(320, w),
+            y: calcVWP(389, w)
           },
           {
-            x: calcVWP(320),
-            y: calcVWP(386)
+            x: calcVWP(320, w),
+            y: calcVWP(386, w)
           }
         ],
         [
           {
-            x: calcVWP(0),
-            y: calcVWP(401)
+            x: calcVWP(0, w),
+            y: calcVWP(401, w)
           },
           {
-            x: calcVWP(26),
-            y: calcVWP(437)
+            x: calcVWP(26, w),
+            y: calcVWP(437, w)
           },
           {
-            x: calcVWP(19),
-            y: calcVWP(448)
+            x: calcVWP(19, w),
+            y: calcVWP(448, w)
           },
           {
-            x: calcVWP(0),
-            y: calcVWP(458)
+            x: calcVWP(0, w),
+            y: calcVWP(458, w)
           }
         ]
       ] as Point[][],
       minParticles: 300,
       maxParticles: 400,
-      minSpeed: calcVWP(5),
-      maxSpeed: calcVWP(10),
+      minSpeed: calcVWP(5, w),
+      maxSpeed: calcVWP(10, w),
       pointColors: ['#00EEFF'],
       pointMinSize: calcVWP(0.5, w),
       pointMaxSize: calcVWP(1, w),
       movementDirection: 'bottom-to-top',
       noVisible: "bottom",
-      divade: calcVWD(5)
+      divade: calcVWD(5, w)
     }
   },
 ])

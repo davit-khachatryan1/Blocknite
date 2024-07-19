@@ -43,15 +43,15 @@ const ScrollContainer = ({ windowWidth }: any) => {
   }, [setScrolling, updatePage, windowWidth]);
 
 
-  // useEffect(() => {
-  //   if (typeof window !== 'undefined') {
-  //     window.addEventListener("scroll", checkCenter);
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.addEventListener("scroll", checkCenter);
 
-  //     return () => {
-  //       window.removeEventListener("scroll", checkCenter);
-  //     };
-  //   }
-  // }, []);
+      return () => {
+        window.removeEventListener("scroll", checkCenter);
+      };
+    }
+  }, []);
 
   return (
     <div className={styles.container} ref={pages}>

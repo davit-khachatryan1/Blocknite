@@ -1,6 +1,5 @@
 import styles from './style.module.scss';
 import { CSSProperties, memo, useMemo } from 'react';
-import useWindowSize from '@/utils/hooks/useWindowSize';
 import ParticleCanvas from '../Particles';
 
 
@@ -36,7 +35,7 @@ const Screen: React.FC<ScreenProps> = ({ id, component, imageUrl, mobileImage, s
     height: '100%',
     overflow: 'hidden'
   }), []);
-
+  
   return (
     <div style={containerStyle} className={styles.container} id={id}>
         <div style={fullScreenStyle} >
