@@ -1,11 +1,13 @@
 import { motion, useAnimation } from 'framer-motion';
 import styles from './style.module.scss';
-import { lazy, memo, useEffect, useRef, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { calcVW } from '../../utils/hooks/functions';
 import { useStateProvider } from '../../context/state';
 import useWindowSize from '@/utils/hooks/useWindowSize';
-import TypeWriter from '../TypeWriter';
+import dynamic from 'next/dynamic';
+
+const TypeWriter = dynamic(() => import("../TypeWriter"));
 
 
 function polarToCartesian(centerX: number, centerY: number, radius: number, angleInDegrees: number) {

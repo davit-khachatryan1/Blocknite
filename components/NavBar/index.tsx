@@ -1,4 +1,4 @@
-import { lazy, memo, useCallback, useMemo } from 'react';
+import { memo, useCallback, useMemo } from 'react';
 import styles from './style.module.scss';
 import { useStateProvider } from '../../context/state';
 import { screens } from '../../constants/screens';
@@ -6,7 +6,10 @@ import Image from 'next/image';
 import logoPng from "/public/logos/logo.png"
 import menuCloseSvg from "/public/icons/menu-close.svg"
 import useWindowSize from '@/utils/hooks/useWindowSize';
-import AltarinText from '../AnimatedText';
+import dynamic from 'next/dynamic';
+
+const AltarinText = dynamic(() => import("../AnimatedText"));
+
 
 const NavBar = () => {
     const { page, updatePage, setOpenMenu, open } = useStateProvider();

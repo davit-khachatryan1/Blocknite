@@ -282,4 +282,4 @@ const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
   return <canvas id={id} ref={canvasRef} width={calcVW(1920, windowWidth, 320)} height={calcVW(1080, windowWidth, 568)} />;
 };
 
-export default ParticleCanvas;
+export default memo(ParticleCanvas);

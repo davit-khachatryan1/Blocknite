@@ -1,9 +1,10 @@
 import { StateProvider } from '@/context/state';
-import { lazy } from 'react';
 import styles from "@/styles/Home.module.scss";
 import useWindowSize from '@/utils/hooks/useWindowSize';
-import ScrollContainer from '@/components/ScrollContainer';
-import NavBar from '@/components/NavBar';
+import dynamic from 'next/dynamic';
+
+const ScrollContainer = dynamic(() => import('@/components/ScrollContainer'));
+const NavBar = dynamic(() => import('@/components/NavBar'));
 
 export default function Home() {
   const {windowWidth} = useWindowSize();

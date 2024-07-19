@@ -4,6 +4,7 @@ import { memo, useEffect, useMemo } from 'react';
 import { calcVW } from '../../utils/hooks/functions';
 import { useStateProvider } from '../../context/state';
 import useWindowSize from '@/utils/hooks/useWindowSize';
+import Image from 'next/image';
 
 interface RoadMapCardProps {
     right?: boolean;
@@ -54,8 +55,8 @@ const RoadMapCard: React.FC<RoadMapCardProps> = ({ right = false, title = 'Pre-L
                 <div className={styles.title}>
                     {title}
                 </div>
-                <img src={right ? "/icons/map-card-right.svg" : "/icons/map-card-left.svg"} alt="" className={styles.desktopIcon} loading='lazy' />
-                <img src={"/icons/map-card-mobile.svg"} alt="" className={styles.mobileIcon} loading='lazy' />
+                <Image src={right ? "/icons/map-card-right.svg" : "/icons/map-card-left.svg"} alt="" className={styles.desktopIcon} loading='lazy' width={288} height={135} />
+                <Image src={"/icons/map-card-mobile.svg"} alt="" className={styles.mobileIcon} loading='lazy' width={288} height={135} />
             </div>
         </motion.div>
     );

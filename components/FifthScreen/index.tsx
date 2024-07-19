@@ -1,4 +1,4 @@
-import { lazy, memo, useEffect, useState, useMemo } from 'react';
+import { memo, useEffect, useState, useMemo } from 'react';
 import { useInView } from 'react-intersection-observer';
 import Slider from 'react-slick';
 import { motion, useAnimation } from 'framer-motion';
@@ -10,8 +10,11 @@ import mapLeft from '../../public/icons/map-line.svg'
 import styles from './style.module.scss';
 import Image from 'next/image';
 import useWindowSize from '@/utils/hooks/useWindowSize';
-import RoadMapCard from '../RoadMapCard';
-import RoadMapText from '../RoadMapText';
+import dynamic from 'next/dynamic';
+
+const RoadMapCard = dynamic(() => import('../RoadMapCard'));
+const RoadMapText = dynamic(() => import('../RoadMapText'));
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 

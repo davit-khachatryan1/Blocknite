@@ -1,13 +1,14 @@
-import { lazy, memo, useEffect, useState, useCallback } from 'react';
+import { memo, useEffect, useState, useCallback } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useStateProvider } from '../../context/state';
 import styles from './style.module.scss';
 import useWindowSize from '@/utils/hooks/useWindowSize';
-import TitleBlock from '../TitleBlock';
-import FAQInput from '../FAQInput';
-import Button from '../Button';
+import dynamic from 'next/dynamic';
 
+const TitleBlock = dynamic(() => import("../TitleBlock"));
+const FAQInput = dynamic(() => import("../FAQInput"));
+const Button = dynamic(() => import("../Button"));
 
 interface FAQItem {
     title: string;

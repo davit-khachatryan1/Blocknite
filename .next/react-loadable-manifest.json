@@ -1,16 +1,140 @@
 {
-  "components\\ScrollContainer\\index.tsx -> ../Footer": {
-    "id": 4894,
+  "components\\FifthScreen\\index.tsx -> ../RoadMapCard": {
+    "id": "components\\FifthScreen\\index.tsx -> ../RoadMapCard",
     "files": [
-      "static/css/cdd053cc81a2a3b4.css",
-      "static/chunks/894.5a1af678bbf2c4d0.js"
+      "static/chunks/components_RoadMapCard_index_tsx.js"
+    ]
+  },
+  "components\\FifthScreen\\index.tsx -> ../RoadMapText": {
+    "id": "components\\FifthScreen\\index.tsx -> ../RoadMapText",
+    "files": [
+      "static/chunks/components_RoadMapText_index_tsx.js"
+    ]
+  },
+  "components\\FourthScreen\\index.tsx -> ../TypeWriter": {
+    "id": "components\\FourthScreen\\index.tsx -> ../TypeWriter",
+    "files": [
+      "static/chunks/components_TypeWriter_index_tsx.js"
+    ]
+  },
+  "components\\MainScreen\\index.tsx -> ../Button": {
+    "id": "components\\MainScreen\\index.tsx -> ../Button",
+    "files": [
+      "static/chunks/components_Button_index_tsx-_ebbd1.js"
+    ]
+  },
+  "components\\MainScreen\\index.tsx -> ../TypeWriter": {
+    "id": "components\\MainScreen\\index.tsx -> ../TypeWriter",
+    "files": [
+      "static/chunks/components_TypeWriter_index_tsx.js"
+    ]
+  },
+  "components\\NavBar\\index.tsx -> ../AnimatedText": {
+    "id": "components\\NavBar\\index.tsx -> ../AnimatedText",
+    "files": [
+      "static/chunks/components_AnimatedText_index_tsx.js"
+    ]
+  },
+  "components\\Screen\\index.tsx -> ../Particles": {
+    "id": "components\\Screen\\index.tsx -> ../Particles",
+    "files": [
+      "static/chunks/components_Particles_index_tsx.js"
+    ]
+  },
+  "components\\ScrollContainer\\index.tsx -> ../Footer": {
+    "id": "components\\ScrollContainer\\index.tsx -> ../Footer",
+    "files": [
+      "static/chunks/components_Footer_index_tsx.js"
     ]
   },
   "components\\ScrollContainer\\index.tsx -> ../Screen": {
-    "id": 6831,
+    "id": "components\\ScrollContainer\\index.tsx -> ../Screen",
     "files": [
-      "static/css/1efb941dd0872676.css",
-      "static/chunks/831.5b31457bfef47a24.js"
+      "static/chunks/components_Screen_index_tsx.js"
+    ]
+  },
+  "components\\SecondScreen\\index.tsx -> ../TitleBlock": {
+    "id": "components\\SecondScreen\\index.tsx -> ../TitleBlock",
+    "files": [
+      "static/chunks/components_TitleBlock_index_tsx-_e0a91.js"
+    ]
+  },
+  "components\\SixthScreen\\index.tsx -> ../Button": {
+    "id": "components\\SixthScreen\\index.tsx -> ../Button",
+    "files": [
+      "static/chunks/components_Button_index_tsx-_ebbd0.js"
+    ]
+  },
+  "components\\SixthScreen\\index.tsx -> ../FAQInput": {
+    "id": "components\\SixthScreen\\index.tsx -> ../FAQInput",
+    "files": [
+      "static/chunks/components_FAQInput_index_tsx.js"
+    ]
+  },
+  "components\\SixthScreen\\index.tsx -> ../TitleBlock": {
+    "id": "components\\SixthScreen\\index.tsx -> ../TitleBlock",
+    "files": [
+      "static/chunks/components_TitleBlock_index_tsx-_e0a90.js"
+    ]
+  },
+  "components\\ThirdScreen\\index.tsx -> ../TitleBlock": {
+    "id": "components\\ThirdScreen\\index.tsx -> ../TitleBlock",
+    "files": [
+      "static/chunks/components_TitleBlock_index_tsx-_e0a90.js"
+    ]
+  },
+  "components\\ThirdScreen\\index.tsx -> ../TypeWriter": {
+    "id": "components\\ThirdScreen\\index.tsx -> ../TypeWriter",
+    "files": [
+      "static/chunks/components_TypeWriter_index_tsx.js"
+    ]
+  },
+  "constants\\screens.tsx -> @/components/FifthScreen": {
+    "id": "constants\\screens.tsx -> @/components/FifthScreen",
+    "files": [
+      "static/chunks/components_FifthScreen_index_tsx.js"
+    ]
+  },
+  "constants\\screens.tsx -> @/components/FourthScreen": {
+    "id": "constants\\screens.tsx -> @/components/FourthScreen",
+    "files": [
+      "static/chunks/components_FourthScreen_index_tsx.js"
+    ]
+  },
+  "constants\\screens.tsx -> @/components/MainScreen": {
+    "id": "constants\\screens.tsx -> @/components/MainScreen",
+    "files": [
+      "static/chunks/components_MainScreen_index_tsx.js"
+    ]
+  },
+  "constants\\screens.tsx -> @/components/SecondScreen": {
+    "id": "constants\\screens.tsx -> @/components/SecondScreen",
+    "files": [
+      "static/chunks/components_SecondScreen_index_tsx.js"
+    ]
+  },
+  "constants\\screens.tsx -> @/components/SixthScreen": {
+    "id": "constants\\screens.tsx -> @/components/SixthScreen",
+    "files": [
+      "static/chunks/components_SixthScreen_index_tsx.js"
+    ]
+  },
+  "constants\\screens.tsx -> @/components/ThirdScreen": {
+    "id": "constants\\screens.tsx -> @/components/ThirdScreen",
+    "files": [
+      "static/chunks/components_ThirdScreen_index_tsx.js"
+    ]
+  },
+  "pages\\index.tsx -> @/components/NavBar": {
+    "id": "pages\\index.tsx -> @/components/NavBar",
+    "files": [
+      "static/chunks/components_NavBar_index_tsx.js"
+    ]
+  },
+  "pages\\index.tsx -> @/components/ScrollContainer": {
+    "id": "pages\\index.tsx -> @/components/ScrollContainer",
+    "files": [
+      "static/chunks/components_ScrollContainer_index_tsx.js"
     ]
   }
 }

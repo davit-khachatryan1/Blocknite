@@ -5,11 +5,15 @@ import { useInView } from 'react-intersection-observer';
 import { useStateProvider } from '../../context/state';
 import { calcVW } from '../../utils/hooks/functions';
 import styles from './style.module.scss';
-import TypeWriter from '../TypeWriter';
 import useWindowSize from '@/utils/hooks/useWindowSize';
-import TitleBlock from '../TitleBlock';
+
+const TitleBlock = dynamic(() => import("../TitleBlock"));
+const TypeWriter = dynamic(() => import("../TypeWriter"));
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
 
 
 const settings = {
@@ -19,7 +23,7 @@ const settings = {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 7000,
-    prevArrow: <img src='/icons/arrow-right-slider.svg' alt="Next" loading='lazy' />,
+    prevArrow: <Image width={20} height={20} src='/icons/arrow-right-slider.svg' alt="Next" loading='lazy' />,
     nextArrow: <></>
 };
 
@@ -30,8 +34,8 @@ const settingsMobile = {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
-    nextArrow: <img src='/icons/arrow-right-slider.svg' alt="Next" loading='lazy' />,
-    prevArrow: <img src='/icons/arrow-left-slider.svg' alt="Prev" loading='lazy' />
+    nextArrow: <Image width={20} height={20} src='/icons/arrow-right-slider.svg' alt="Next" loading='lazy' />,
+    prevArrow: <Image width={20} height={20} src='/icons/arrow-left-slider.svg' alt="Prev" loading='lazy' />
 };
 
 const items = [
@@ -181,7 +185,7 @@ const ThirdScreen: React.FC = () => {
                     </div>
                 </motion.div>
             </div>
-            {/* {windowWidth <= 576 && (
+            {windowWidth <= 576 && (
                 <Slider {...settingsMobile} className={styles.mobileSlider} afterChange={handleAfterChange}>
                     <div className={styles.mainBlock}>
                         <div className={styles.infoBlockContainer}>
@@ -235,7 +239,7 @@ const ThirdScreen: React.FC = () => {
                         </div>
                     </div>
                 </Slider>
-            )} */}
+            )}
 
             <div ref={ref} className={styles.bottomContainer}>
                 <motion.img

@@ -1,7 +1,8 @@
+import dynamic from 'next/dynamic';
 import styles from './style.module.scss';
 import { CSSProperties, memo, useMemo } from 'react';
-import ParticleCanvas from '../Particles';
 
+const ParticleCanvas = dynamic(() => import("../Particles"));
 
 interface ScreenProps {
   id: string;

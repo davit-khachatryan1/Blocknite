@@ -6,8 +6,10 @@ import menuOpenSvg from "/public/icons/menu-open.svg"
 import styles from './style.module.scss';
 import Image from 'next/image';
 import useWindowSize from '@/utils/hooks/useWindowSize';
-import Button from '../Button';
-import TypeWriter from '../TypeWriter';
+import dynamic from 'next/dynamic';
+
+const TypeWriter = dynamic(() => import("../TypeWriter"));
+const Button = dynamic(() => import("../Button"));
 
 const useScrollDeltaY = () => {
     const [scrollData, setScrollData] = useState({ deltaY: 0, scrollTop: 0 });

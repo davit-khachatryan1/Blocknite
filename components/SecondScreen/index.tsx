@@ -6,8 +6,10 @@ import styles from './style.module.scss';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import useWindowSize from '@/utils/hooks/useWindowSize';
-import TitleBlock from '../TitleBlock';
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
 
+const TitleBlock = dynamic(() => import("../TitleBlock"));
 
 const settings = {
     infinite: true,
@@ -16,8 +18,8 @@ const settings = {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 7000,
-    nextArrow: <img src='/icons/arrow-right-slider.svg' loading='lazy' alt="Next" />,
-    prevArrow: <img src='/icons/arrow-left-slider.svg' loading='lazy' alt="Previous" />,
+    nextArrow: <Image width={20} height={20} src='/icons/arrow-right-slider.svg' loading='lazy' alt="Next" />,
+    prevArrow: <Image width={20} height={20} src='/icons/arrow-left-slider.svg' loading='lazy' alt="Previous" />,
     responsive: [
         {
             breakpoint: 577,
@@ -114,7 +116,7 @@ const SecondScreen = () => {
         <div className={styles.container}>
             <TitleBlock title="Trea is waiting for you" description="Embark on a heroic quest to defend Mithruon from the Orgurin onslaught." mobileClassName={windowWidth <= 576} descriptionBottom={true} />
             <motion.div className={styles.playButton} onClick={() => { }} animate={controls}>
-                <img src='/icons/main-circle.svg' className={styles.mainCircle} loading='lazy' alt="Play" />
+                <Image width={144} height={144} src='/icons/main-circle.svg' className={styles.mainCircle} loading='lazy' alt="Play" />
                 <motion.img
                     className={styles.partCircle1}
                     animate={{
@@ -153,7 +155,7 @@ const SecondScreen = () => {
                     <Slider {...settings}>
                         {items.map((item, index) => (
                             <div className={styles.swiperElement} key={item.id}>
-                                <img src={item.src} alt={`Slide ${index}`} style={{ height: calcVW('40px', windowWidth), width: 'auto', objectFit: 'contain' }} loading='lazy' />
+                                <img  src={item.src} alt={`Slide ${index}`} style={{ height: calcVW('40px', windowWidth), width: 'auto', objectFit: 'contain' }} loading='lazy' />
                             </div>
                         ))}
                     </Slider>

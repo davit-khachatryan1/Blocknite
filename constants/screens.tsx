@@ -1,13 +1,13 @@
 import { lazy } from "react";
 import { calcVWD, calcVWP } from "../utils/hooks/functions";
 import { Point } from "../utils/interface/particles";
-import SecondScreen from "@/components/SecondScreen";
-import ThirdScreen from "@/components/ThirdScreen";
-import FourthScreen from "@/components/FourthScreen";
-import FifthScreen from "@/components/FifthScreen";
-import SixthScreen from "@/components/SixthScreen";
-import MainScreen from "@/components/MainScreen";
-
+import dynamic from "next/dynamic";
+const SecondScreen = dynamic(() => import("@/components/SecondScreen"));
+const ThirdScreen = dynamic(() => import("@/components/ThirdScreen"));
+const FourthScreen = dynamic(() => import("@/components/FourthScreen"));
+const FifthScreen = dynamic(() => import("@/components/FifthScreen"));
+const SixthScreen = dynamic(() => import("@/components/SixthScreen"));
+const MainScreen = dynamic(() => import("@/components/MainScreen"));
 
 export const screens = (w: number) => ([
   {
