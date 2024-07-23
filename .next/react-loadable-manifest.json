@@ -1,183 +1,140 @@
 {
   "components/FifthScreen/index.tsx -> ../RoadMapCard": {
-    "id": 3401,
+    "id": "components/FifthScreen/index.tsx -> ../RoadMapCard",
     "files": [
-      "static/css/947f9d83bc5a6d60.css",
-      "static/chunks/401.fbd5e2a302f9bc35.js"
+      "static/chunks/components_RoadMapCard_index_tsx.js"
     ]
   },
   "components/FifthScreen/index.tsx -> ../RoadMapText": {
-    "id": 7205,
+    "id": "components/FifthScreen/index.tsx -> ../RoadMapText",
     "files": [
-      "static/css/89b19a943c8c094a.css",
-      "static/chunks/33.5fe90a3410090cd3.js"
+      "static/chunks/components_RoadMapText_index_tsx.js"
     ]
   },
   "components/FourthScreen/index.tsx -> ../TypeWriter": {
-    "id": 167,
+    "id": "components/FourthScreen/index.tsx -> ../TypeWriter",
     "files": [
-      "static/css/c38f2f640adf0357.css",
-      "static/chunks/271.44fde7307caacf47.js"
+      "static/chunks/components_TypeWriter_index_tsx.js"
     ]
   },
   "components/MainScreen/index.tsx -> ../Button": {
-    "id": 2604,
+    "id": "components/MainScreen/index.tsx -> ../Button",
     "files": [
-      "static/css/06c364276fc418e5.css",
-      "static/chunks/342.f38d65548eff2b42.js"
+      "static/chunks/components_Button_index_tsx-_ebbd1.js"
     ]
   },
   "components/MainScreen/index.tsx -> ../TypeWriter": {
-    "id": 167,
+    "id": "components/MainScreen/index.tsx -> ../TypeWriter",
     "files": [
-      "static/css/c38f2f640adf0357.css",
-      "static/chunks/271.44fde7307caacf47.js"
+      "static/chunks/components_TypeWriter_index_tsx.js"
     ]
   },
   "components/NavBar/index.tsx -> ../AnimatedText": {
-    "id": 4946,
+    "id": "components/NavBar/index.tsx -> ../AnimatedText",
     "files": [
-      "static/chunks/687.8a6066d43ac3d988.js",
-      "static/chunks/946.f947b1997087d92d.js"
+      "static/chunks/components_AnimatedText_index_tsx.js"
     ]
   },
   "components/Screen/index.tsx -> ../Particles": {
-    "id": 778,
+    "id": "components/Screen/index.tsx -> ../Particles",
     "files": [
-      "static/chunks/778.ab65dab3eda6311e.js"
+      "static/chunks/components_Particles_index_tsx.js"
     ]
   },
   "components/ScrollContainer/index.tsx -> ../Footer": {
-    "id": 4894,
+    "id": "components/ScrollContainer/index.tsx -> ../Footer",
     "files": [
-      "static/css/cdd053cc81a2a3b4.css",
-      "static/chunks/675.45f9f7ae57ff0f95.js",
-      "static/chunks/894.0e8b1d4e9db44489.js"
+      "static/chunks/components_Footer_index_tsx.js"
     ]
   },
   "components/ScrollContainer/index.tsx -> ../Screen": {
-    "id": 1329,
+    "id": "components/ScrollContainer/index.tsx -> ../Screen",
     "files": [
-      "static/css/1efb941dd0872676.css",
-      "static/chunks/329.e44100ab6daba341.js"
+      "static/chunks/components_Screen_index_tsx.js"
     ]
   },
   "components/SecondScreen/index.tsx -> ../TitleBlock": {
-    "id": 6247,
+    "id": "components/SecondScreen/index.tsx -> ../TitleBlock",
     "files": [
-      "static/css/54a19641db601533.css",
-      "static/chunks/488.f90fdae4056302c4.js"
+      "static/chunks/components_TitleBlock_index_tsx-_e0a91.js"
     ]
   },
   "components/SixthScreen/index.tsx -> ../Button": {
-    "id": 2604,
+    "id": "components/SixthScreen/index.tsx -> ../Button",
     "files": [
-      "static/css/06c364276fc418e5.css",
-      "static/chunks/675.45f9f7ae57ff0f95.js",
-      "static/chunks/604.dd9554ed3e673d1f.js"
+      "static/chunks/components_Button_index_tsx-_ebbd0.js"
     ]
   },
   "components/SixthScreen/index.tsx -> ../FAQInput": {
-    "id": 2708,
+    "id": "components/SixthScreen/index.tsx -> ../FAQInput",
     "files": [
-      "static/css/7b39a803ee839d93.css",
-      "static/chunks/675.45f9f7ae57ff0f95.js",
-      "static/chunks/708.4ccab545c3204c44.js"
+      "static/chunks/components_FAQInput_index_tsx.js"
     ]
   },
   "components/SixthScreen/index.tsx -> ../TitleBlock": {
-    "id": 6247,
+    "id": "components/SixthScreen/index.tsx -> ../TitleBlock",
     "files": [
-      "static/css/54a19641db601533.css",
-      "static/chunks/247.f80897818cd155bb.js"
+      "static/chunks/components_TitleBlock_index_tsx-_e0a90.js"
     ]
   },
   "components/ThirdScreen/index.tsx -> ../TitleBlock": {
-    "id": 6247,
+    "id": "components/ThirdScreen/index.tsx -> ../TitleBlock",
     "files": [
-      "static/css/54a19641db601533.css",
-      "static/chunks/247.f80897818cd155bb.js"
+      "static/chunks/components_TitleBlock_index_tsx-_e0a90.js"
     ]
   },
   "components/ThirdScreen/index.tsx -> ../TypeWriter": {
-    "id": 167,
+    "id": "components/ThirdScreen/index.tsx -> ../TypeWriter",
     "files": [
-      "static/css/c38f2f640adf0357.css",
-      "static/chunks/271.44fde7307caacf47.js"
+      "static/chunks/components_TypeWriter_index_tsx.js"
     ]
   },
   "constants/screens.tsx -> @/components/FifthScreen": {
-    "id": 4864,
+    "id": "constants/screens.tsx -> @/components/FifthScreen",
     "files": [
-      "static/css/f62449e270c279ac.css",
-      "static/css/615db9b4c41756df.css",
-      "static/chunks/675.45f9f7ae57ff0f95.js",
-      "static/chunks/687.8a6066d43ac3d988.js",
-      "static/chunks/367.00907c0da9b55231.js",
-      "static/chunks/864.ec701d8531005dbd.js"
+      "static/chunks/components_FifthScreen_index_tsx.js"
     ]
   },
   "constants/screens.tsx -> @/components/FourthScreen": {
-    "id": 6082,
+    "id": "constants/screens.tsx -> @/components/FourthScreen",
     "files": [
-      "static/css/64a86ffb4e789358.css",
-      "static/chunks/687.8a6066d43ac3d988.js",
-      "static/chunks/82.5323b22c0615046c.js"
+      "static/chunks/components_FourthScreen_index_tsx.js"
     ]
   },
   "constants/screens.tsx -> @/components/MainScreen": {
-    "id": 9519,
+    "id": "constants/screens.tsx -> @/components/MainScreen",
     "files": [
-      "static/css/bcec1efbbbbcaf57.css",
-      "static/chunks/675.45f9f7ae57ff0f95.js",
-      "static/chunks/687.8a6066d43ac3d988.js",
-      "static/chunks/519.8c4a68646dabe195.js"
+      "static/chunks/components_MainScreen_index_tsx.js"
     ]
   },
   "constants/screens.tsx -> @/components/SecondScreen": {
-    "id": 5861,
+    "id": "constants/screens.tsx -> @/components/SecondScreen",
     "files": [
-      "static/css/615db9b4c41756df.css",
-      "static/chunks/675.45f9f7ae57ff0f95.js",
-      "static/chunks/687.8a6066d43ac3d988.js",
-      "static/chunks/367.00907c0da9b55231.js",
-      "static/chunks/861.0f7dfb702384233c.js"
+      "static/chunks/components_SecondScreen_index_tsx.js"
     ]
   },
   "constants/screens.tsx -> @/components/SixthScreen": {
-    "id": 6859,
+    "id": "constants/screens.tsx -> @/components/SixthScreen",
     "files": [
-      "static/css/58a09d94e359b3f0.css",
-      "static/chunks/687.8a6066d43ac3d988.js",
-      "static/chunks/859.d6b94acf6ab19d66.js"
+      "static/chunks/components_SixthScreen_index_tsx.js"
     ]
   },
   "constants/screens.tsx -> @/components/ThirdScreen": {
-    "id": 1932,
+    "id": "constants/screens.tsx -> @/components/ThirdScreen",
     "files": [
-      "static/css/b4976499ff7d6042.css",
-      "static/css/615db9b4c41756df.css",
-      "static/chunks/675.45f9f7ae57ff0f95.js",
-      "static/chunks/687.8a6066d43ac3d988.js",
-      "static/chunks/367.00907c0da9b55231.js",
-      "static/chunks/932.1b03951ef6fc971e.js"
+      "static/chunks/components_ThirdScreen_index_tsx.js"
     ]
   },
   "pages/index.tsx -> @/components/NavBar": {
-    "id": 6748,
+    "id": "pages/index.tsx -> @/components/NavBar",
     "files": [
-      "static/css/fd441688d1497157.css",
-      "static/chunks/675.45f9f7ae57ff0f95.js",
-      "static/chunks/51.a5992604a971bef7.js",
-      "static/chunks/748.ac5fe1f0a2c7ae8f.js"
+      "static/chunks/components_NavBar_index_tsx.js"
     ]
   },
   "pages/index.tsx -> @/components/ScrollContainer": {
-    "id": 2688,
+    "id": "pages/index.tsx -> @/components/ScrollContainer",
     "files": [
-      "static/css/b318d5fb51b2baab.css",
-      "static/chunks/51.a5992604a971bef7.js",
-      "static/chunks/688.afa630d2e9375490.js"
+      "static/chunks/components_ScrollContainer_index_tsx.js"
     ]
   }
 }
