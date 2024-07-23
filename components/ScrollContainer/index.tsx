@@ -55,7 +55,7 @@ const ScrollContainer = ({ windowWidth }: any) => {
 
   return (
     <div className={styles.container} ref={pages}>
-      {windowWidth ? screens(windowWidth).map((screen, index) => (
+      {screens(windowWidth).map((screen, index) => (
         <Screen
           windowWidth={windowWidth}
           key={index}
@@ -65,7 +65,7 @@ const ScrollContainer = ({ windowWidth }: any) => {
           mobileImage={screen.imageMobile}
           screen={screen}
         />
-      )) : <></>}
+      ))}
       <Footer />
     </div>
   );

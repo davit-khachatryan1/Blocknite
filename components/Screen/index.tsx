@@ -36,12 +36,12 @@ const Screen: React.FC<ScreenProps> = ({ id, component, imageUrl, mobileImage, s
     height: '100%',
     overflow: 'hidden'
   }), []);
-  
+
   return (
     <div style={containerStyle} className={styles.container} id={id}>
-        <div style={fullScreenStyle} >
-          {windowWidth && screen?.mobile && <ParticleCanvas id={id} {...(windowWidth <= 576 ? screen.mobile : screen.desktop)}  windowWidth={windowWidth}/>}
-        </div>
+      <div style={fullScreenStyle} >
+        {windowWidth && screen?.mobile ? <ParticleCanvas id={id} {...(windowWidth <= 576 ? screen.mobile : screen.desktop)} windowWidth={windowWidth} /> : <></>}
+      </div>
       <div style={contentStyle}>
         {component}
       </div>
