@@ -15,9 +15,6 @@ import dynamic from 'next/dynamic';
 const RoadMapCard = dynamic(() => import('../RoadMapCard'));
 const RoadMapText = dynamic(() => import('../RoadMapText'));
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
 const FifthScreen = () => {
     const { scrolling } = useStateProvider();
     const { windowWidth } = useWindowSize()

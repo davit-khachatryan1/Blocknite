@@ -3,8 +3,6 @@ import { motion, useAnimation } from 'framer-motion';
 import Slider from 'react-slick';
 import { calcVW } from '../../utils/hooks/functions';
 import styles from './style.module.scss';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import useWindowSize from '@/utils/hooks/useWindowSize';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';

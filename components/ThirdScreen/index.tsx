@@ -10,8 +10,6 @@ import useWindowSize from '@/utils/hooks/useWindowSize';
 const TitleBlock = dynamic(() => import("../TitleBlock"));
 const TypeWriter = dynamic(() => import("../TypeWriter"));
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 
