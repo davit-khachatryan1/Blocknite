@@ -78,10 +78,17 @@
                 cursor: pointer;
 
                 img {
+                    transition: 0.2s;
                     height: calcVW(40);
                     width: auto;
                     margin: 0 auto;
                     outline: none !important;
+                    filter: grayscale(100%);
+
+                    &:hover {
+                        transition: 0.2s;
+                        filter: grayscale(0);
+                    }
                 }
             }
 
@@ -90,6 +97,7 @@
                     outline: none !important;
                 }
             }
+
             :global(.slick-prev) {
                 right: calcVW(-25);
                 left: auto;
@@ -98,6 +106,7 @@
                 width: calcVW(20);
                 height: calcVW(20);
             }
+
             :global(.slick-next) {
                 left: calcVW(-25);
                 transform: rotate(180deg);
@@ -155,6 +164,7 @@
                         height: calcVWM(22);
                     }
                 }
+
                 :global(.slick-next) {
                     right: calcVWM(-30);
                     left: auto;
@@ -163,6 +173,7 @@
                     width: calcVWM(20);
                     height: calcVWM(20);
                 }
+
                 :global(.slick-prev) {
                     left: calcVWM(-30);
                     transform: rotate(0);

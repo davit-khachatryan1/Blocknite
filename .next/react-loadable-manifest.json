@@ -17,7 +17,7 @@
     "id": 167,
     "files": [
       "static/css/c38f2f640adf0357.css",
-      "static/chunks/271.44fde7307caacf47.js"
+      "static/chunks/271.bae932bddd871978.js"
     ]
   },
   "components/MainScreen/index.tsx -> ../Button": {
@@ -31,7 +31,7 @@
     "id": 167,
     "files": [
       "static/css/c38f2f640adf0357.css",
-      "static/chunks/271.44fde7307caacf47.js"
+      "static/chunks/271.bae932bddd871978.js"
     ]
   },
   "components/NavBar/index.tsx -> ../AnimatedText": {
@@ -103,14 +103,14 @@
     "id": 167,
     "files": [
       "static/css/c38f2f640adf0357.css",
-      "static/chunks/271.44fde7307caacf47.js"
+      "static/chunks/271.bae932bddd871978.js"
     ]
   },
   "constants/screens.tsx -> @/components/FifthScreen": {
     "id": 4864,
     "files": [
       "static/css/f62449e270c279ac.css",
-      "static/css/615db9b4c41756df.css",
+      "static/css/7c41265983842c8e.css",
       "static/chunks/675.45f9f7ae57ff0f95.js",
       "static/chunks/687.8a6066d43ac3d988.js",
       "static/chunks/367.00907c0da9b55231.js",
@@ -137,7 +137,7 @@
   "constants/screens.tsx -> @/components/SecondScreen": {
     "id": 5861,
     "files": [
-      "static/css/615db9b4c41756df.css",
+      "static/css/7c41265983842c8e.css",
       "static/chunks/675.45f9f7ae57ff0f95.js",
       "static/chunks/687.8a6066d43ac3d988.js",
       "static/chunks/367.00907c0da9b55231.js",
@@ -156,7 +156,7 @@
     "id": 1932,
     "files": [
       "static/css/b4976499ff7d6042.css",
-      "static/css/615db9b4c41756df.css",
+      "static/css/7c41265983842c8e.css",
       "static/chunks/675.45f9f7ae57ff0f95.js",
       "static/chunks/687.8a6066d43ac3d988.js",
       "static/chunks/367.00907c0da9b55231.js",
