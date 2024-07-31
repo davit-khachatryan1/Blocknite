@@ -14,9 +14,11 @@
         justify-content: center;
 
         .value {
-            @include header4;
-            color: $white-400;
-        }
+                @include header4;
+                color: $white-400;
+                unicode-bidi: bidi-override;
+                direction: rtl;
+            }
 
         .title {
             @include subtitle;
