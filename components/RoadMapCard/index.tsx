@@ -55,8 +55,8 @@ const RoadMapCard: React.FC<RoadMapCardProps> = ({ right = false, title = 'Pre-L
                 <div className={styles.title}>
                     {title}
                 </div>
-                <Image src={right ? "/icons/map-card-right.svg" : "/icons/map-card-left.svg"} alt="" className={styles.desktopIcon} loading='lazy' width={288} height={135} />
-                <Image src={"/icons/map-card-mobile.svg"} alt="" className={styles.mobileIcon} loading='lazy' width={288} height={135} />
+                <Image src={right ? "/icons/map-card-right.svg" : "/icons/map-card-left.svg"} alt="map" className={styles.desktopIcon} loading='lazy' width={288} height={135} />
+                <Image src={"/icons/map-card-mobile.svg"} alt="map" className={styles.mobileIcon} loading='lazy' width={288} height={135} />
             </div>
         </motion.div>
     );

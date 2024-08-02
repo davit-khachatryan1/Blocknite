@@ -16,7 +16,9 @@
         .value {
                 @include header4;
                 color: $white-400;
-                unicode-bidi: bidi-override;
+                unicode-bidi: isolate;
+                direction: ltr; 
+                user-select: none;
             }
 
         .title {
