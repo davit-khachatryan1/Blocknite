@@ -9,6 +9,7 @@ export default function Document() {
           name="description"
           content="Solana Play-to-earn. Altarin, command your army of powerful Treanin to defeat the invading Orgurin army. Defend Trea and get paid in NITE tokens. Play now!"
         />
+         <meta name="format-detection" content="telephone=no" />
       </Head>
       <body>
         <Main />

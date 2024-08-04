@@ -227,7 +227,7 @@ const FourthScreen = () => {
                     }}
                 >
                     <div className={styles.title}>Total supply</div>
-                    <div className={styles.value}>2 500 000 000 </div>
+                    <div className={styles.value}>2&nbsp;500&nbsp;000&nbsp;000 </div>
                 </motion.div>
             </div>
             <div className={styles.infoBlock}>
