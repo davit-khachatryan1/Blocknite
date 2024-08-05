@@ -119,9 +119,9 @@
   "constants/screens.tsx -> @/components/FourthScreen": {
     "id": 6082,
     "files": [
-      "static/css/0c58b65650717953.css",
+      "static/css/280358dd03cb0e4b.css",
       "static/chunks/687.8a6066d43ac3d988.js",
-      "static/chunks/82.5323b22c0615046c.js"
+      "static/chunks/82.01d20121b1992c6a.js"
     ]
   },
   "constants/screens.tsx -> @/components/MainScreen": {
