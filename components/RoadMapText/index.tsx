@@ -21,8 +21,10 @@ const RoadMapText: React.FC<RoadMapTextProps> = ({ right = false, texts = [], is
 
     useEffect(() => {
         if (!scrolling) {
-            if (isAnimate || windowWidth <= 576) {
-                controls.start('visible');
+            if (isAnimate || (windowWidth && windowWidth <= 576)) {
+                setTimeout(() => {
+                    controls.start('visible');
+                }, delay * 1000)
             }
         }
     }, [isAnimate, scrolling, windowWidth, controls]);
@@ -30,29 +32,50 @@ const RoadMapText: React.FC<RoadMapTextProps> = ({ right = false, texts = [], is
     const variants = useMemo(() => ({
         hidden: {
             opacity: 0,
-            ...(right ? { marginLeft: calcVW('-100px', windowWidth), marginRight: calcVW('100px', windowWidth) } : { marginLeft: calcVW('100px', windowWidth), marginRight: calcVW('-100px', windowWidth) }),
         },
         visible: {
             opacity: 1,
-            marginLeft: '0',
-            marginRight: '0',
-            transition: { duration, delay }
+            transition: {
+                staggerChildren: duration / texts.length,
+            }
         }
-    }), [right, windowWidth, duration, delay]);
+    }), [right, windowWidth, duration]);
 
     return (
         windowWidth ? <motion.div
-            style={{ overflow: 'hidden' }}
             className={styles.info}
             animate={controls}
             initial="hidden"
             variants={variants}
         >
             {texts.map((el, index) => (
-                <div key={index}>
+                <motion.div
+                    variants={{
+                        hidden: {
+                            ...(right ?
+                                {
+                                    marginLeft: calcVW('-100px', windowWidth),
+                                    marginRight: calcVW('100px', windowWidth),
+                                    opacity: 0
+                                } :
+                                {
+                                    marginLeft: calcVW('100px', windowWidth),
+                                    marginRight: calcVW('-100px', windowWidth),
+                                    opacity: 0
+                                }),
+                        },
+                        visible: {
+                            opacity: 1,
+                            marginLeft: '0',
+                            marginRight: '0',
+                            transition: {
+                                duration: duration / texts.length,
+                            }
+                        },
+                    }} key={index}>
                     <div className={styles.dot} />
                     <div className={styles.text}>{el}</div>
-                </div>
+                </motion.div>
             ))}
         </motion.div> : <></>
     );

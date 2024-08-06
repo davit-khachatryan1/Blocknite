@@ -10,7 +10,7 @@
     "id": 7205,
     "files": [
       "static/css/89b19a943c8c094a.css",
-      "static/chunks/33.5fe90a3410090cd3.js"
+      "static/chunks/33.69ab2259a3881aa7.js"
     ]
   },
   "components/FourthScreen/index.tsx -> ../TypeWriter": {
@@ -113,7 +113,7 @@
       "static/chunks/675.45f9f7ae57ff0f95.js",
       "static/chunks/687.8a6066d43ac3d988.js",
       "static/chunks/196.765486825157214e.js",
-      "static/chunks/864.21f35d137248473f.js"
+      "static/chunks/864.6810d77a147440c1.js"
     ]
   },
   "constants/screens.tsx -> @/components/FourthScreen": {
