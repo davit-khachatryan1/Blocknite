@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "npm run build && next dev",
+    "dev": "next build && next dev",
     "build": "next build",
-    "start": "npm run build && next start",
+    "start": "next build && next start",
     "lint": "next lint"
   },
   "dependencies": {
@@ -13,7 +13,7 @@
     "@types/react-slick": "^0.23.13",
     "express": "^4.19.2",
     "framer-motion": "^11.2.10",
-    "next": "14.2.3",
+    "next": "14.2.3", 
     "react": "^18",
     "react-intersection-observer": "^9.10.2",
     "react-slick": "^0.30.2",
