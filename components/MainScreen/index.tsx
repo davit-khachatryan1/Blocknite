@@ -64,11 +64,14 @@ const MainScreen = () => {
         setOpenMenu(true);
     }, [setOpenMenu]);
 
+    const addressValue = useMemo(()=>{
+        return active === '$NITE address'
+        ? 'HN7cABqLq46Es1jh92dQQisAq662SmxELLLsHHe4YWrH'
+        : 'FrYwrqLcGfmXrgJKcZfrzoWsZ3pqQB9pjjUC9PxSq3xT'
+    }, [active])
+
     const handleCopy = useCallback(() => {
-        const address = active === '$NITE address'
-            ? '0x123456789aBcDeF1234567890aBcDeF1234567890'
-            : '0x123456789aBcDeF1234567890aBcDeF1234567890';
-        navigator.clipboard.writeText(address);
+        navigator.clipboard.writeText(addressValue);
     }, [active]);
 
     return (
@@ -191,7 +194,9 @@ const MainScreen = () => {
                             <div className={styles.square} />
                         </div>
                         <div>
-                            0x123456789aBcDeF1234567890aBcDeF1234567890
+                            {active === '$NITE address'
+                                ? 'HN7cABqLq46Es1jh92dQQisAq662SmxELLLsHHe4YWrH'
+                                : 'FrYwrqLcGfmXrgJKcZfrzoWsZ3pqQB9pjjUC9PxSq3xT'}
                         </div>
                     </div>
                 </motion.div>
